@@ -5,8 +5,9 @@
 Let a source controlled system and a target controlled system represent two
 finite ecological stages connected by turnover, extinction, recolonization, or
 rewiring. The raw state spaces need not be nested. When can one exact macro-law
-be transported from source to target, and when it cannot, what is the minimum
-exact target repair of the carried macro partition?
+be transported from source to target, when it cannot, what is the minimum exact
+target repair of the carried macro partition, and when is that repair independent
+of replacement history?
 
 The paper target is not “all ecology after turnover.” It is the finite structural
 problem
@@ -127,6 +128,33 @@ memory. For the accumulating binary witness with \(m\) newly legal probes,
 
 See [transport defect](transport_defect.md) for the proof and boundary.
 
+## Theorem F — path-label coherence and route-independent repair
+
+Let a rooted finite directed acyclic replacement graph have root exact projection
+\(q_r\). Compose declared total edge relations along every root-to-terminal path
+\(p\), yielding \(R_p\). When each path defines a carried terminal map
+
+\[
+c_p(t)=q_r(s)\qquad ((s,t)\in R_p),
+\]
+
+assume the maps agree pointwise across all root-to-terminal paths:
+
+\[
+c_p(t)=c_{p'}(t).
+\]
+
+Then one carried terminal partition is route independent. Because relative exact
+refinement is a deterministic function of the terminal system and that carried
+partition, its repaired target projection and the defects \(\Delta_{\#}\) and
+\(\Delta_K\) are also route independent.
+
+This graph-level theorem composes **declared** relations. It does not re-prove
+that each edge preserves output, legal rows, and successors; those stronger
+edge-level claims remain available through Theorems A–C. See [path-label
+coherence](path_coherence.md) for proof, positive diamond, and negative boundary
+witness.
+
 ## Ecological interpretation
 
 | Mathematical object | Synthetic ecological reading |
@@ -137,6 +165,7 @@ See [transport defect](transport_defect.md) for the proof and boundary.
 | action | permitted intervention, connection, perturbation, or future event |
 | macro-law | coarse ecological description exact under the declared action grammar |
 | transport defect | additional coarse ecological states required because new target interactions distinguish configurations formerly merged |
+| path-label coherence | different declared turnover histories preserve one carried terminal macro-law and repair |
 
 Possible application contracts include pollinator guild turnover, island
 colonization/extinction, host replacement after pathogen invasion, restoration
@@ -145,9 +174,11 @@ declared finite model and relation.
 
 ## Explicit non-claims
 
-- No theorem infers replacement relations from field observations.
+- No theorem infers replacement relations or replacement histories from field observations.
 - No failed transport certificate proves all macro-laws fail.
 - The transport defect is relative to a declared carried partition; it does not
   prove a globally minimal target abstraction after abandoning source provenance.
+- Path coherence is sufficient for route-independent carried labels, not a
+  characterization of every history-independent ecological representation.
 - No result yet covers stochastic, approximate, continuous, or unbounded systems.
 - No result validates a macro-law for a real ecosystem.
