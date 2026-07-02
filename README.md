@@ -6,13 +6,37 @@ EXT studies one question in finite deterministic mathematical ecology:
 
 The project develops finite theorems for **non-nested** system changes. It does not assume that the source state space embeds into the target state space.
 
-## Central program
+## Central results
 
-1. Start from an exact source macro-projection.
-2. Give a declared relation between source and target product states.
-3. Derive target macro labels from the relation whenever each target fiber carries one source macro label.
-4. Check output preservation, old-action preservation, and successor closure.
-5. Decide whether the target realizes the same macro-law, a conservative extension of it, or a concrete fiber-split obstruction.
+1. **Replacement transport.** A total relation between two exact projected stages preserves one common macro-law when it preserves macro labels, current output, legal-action rows, and successors.
+2. **Derived target projection.** A source projection plus a total, target-fiber-label-consistent relation constructs the target projection; target labels need not be supplied in advance.
+3. **Conservative target-only actions.** A target may add an action only when its availability and macro successor are uniform inside each derived target macro fiber.
+4. **Fiber-split obstruction.** A word newly legal after replacement refutes one proposed carried merge if it yields different target traces from two states in that fiber.
+
+## Ecological reading
+
+- **Source stage:** an ecological community before turnover, extinction, colonization, habitat reconfiguration, or interaction rewiring.
+- **Target stage:** the altered community, potentially with a different raw state space.
+- **Relation:** a declared correspondence between source and target finite configurations; it may be many-to-one or one-to-many.
+- **Macro-law:** a coarse ecological state description preserving all outputs and actions declared by the finite model contract.
+
+EXT does not infer a replacement relation from field data. The relation, states, outputs, and permissible interventions are assumptions of a finite mathematical model.
+
+## Start here
+
+- [Theorem program](docs/theorem_program.md) — definitions, theorem statements, non-claims, and paper direction.
+- [RACH provenance](docs/rach_provenance.md) — exact source assets copied from the legacy branch and what was deliberately excluded.
+- [Reproducibility](docs/reproducibility.md) — tests, deterministic JSON replay, and GitHub Actions artifact.
+
+## Run
+
+```bash
+python -m pip install -e '.[dev]'
+pytest
+python scripts/verify_transport_core.py --write-report
+```
+
+The last command writes `artifacts/transport_core_report.json`.
 
 ## Current status
 
