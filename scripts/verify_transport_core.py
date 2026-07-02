@@ -8,6 +8,10 @@ import os
 import platform
 from pathlib import Path
 
+from ext_transport.defect_witnesses import (
+    accumulating_transport_defect_witness,
+    local_fiber_split_defect_witness,
+)
 from ext_transport.witnesses import (
     conservative_transport_witness,
     derived_target_projection_witness,
@@ -24,18 +28,28 @@ def build_report() -> dict[str, object]:
     target_projection = derived_target_projection_witness()
     conservative = conservative_transport_witness()
     obstruction = new_action_fiber_split_witness()
-    if not all(item.verify() for item in (replacement, target_projection, conservative, obstruction)):
+    local_defect = local_fiber_split_defect_witness()
+    accumulating_defect = accumulating_transport_defect_witness(4)
+    certificates = (
+        replacement,
+        target_projection,
+        conservative,
+        obstruction,
+        local_defect,
+        accumulating_defect,
+    )
+    if not all(item.verify() for item in certificates):
         raise AssertionError("one EXT finite witness failed verification")
     transport = replacement.transports[0]
     return {
-        "schema_version": 1,
+        "schema_version": 2,
         "source": {
             "git_sha": os.environ.get("GITHUB_SHA", "local-unpinned"),
             "python": platform.python_version(),
         },
         "scope": {
-            "model_class": "declared finite deterministic controlled systems and finite replacement relations",
-            "non_claim": "the replay does not infer an ecological replacement relation, establish a field turnover mechanism, or prove transport for arbitrary stochastic systems",
+            "model_class": "declared finite deterministic controlled systems, finite prefix-closed grammars, and finite replacement relations",
+            "non_claim": "the replay does not infer an ecological replacement relation, establish a field turnover mechanism, or prove transport or repair for arbitrary stochastic systems",
         },
         "exact_replacement_transport": {
             "source_product_states": transport.source.constrained_system.product_state_count,
@@ -57,6 +71,24 @@ def build_report() -> dict[str, object]:
             "left_source_index": obstruction.left_source_index,
             "right_source_index": obstruction.right_source_index,
             "status": "the proposed carried merge is refuted",
+        },
+        "relative_exact_refinement": {
+            "carried_labels": list(local_defect.carried_labels),
+            "refined_labels": list(local_defect.refinement.refined_labels),
+            "refinement_rounds": local_defect.refinement.refinement_rounds,
+            "fiber_split_profile": list(local_defect.refinement.fiber_split_profile),
+            "source_macrostate_count": local_defect.source_macrostate_count,
+            "target_macrostate_count": local_defect.target_macrostate_count,
+            "defect_states": local_defect.transport_defect_states,
+            "defect_bits": local_defect.transport_defect_bits,
+        },
+        "accumulating_transport_defect": {
+            "module_count": 4,
+            "source_macrostate_count": accumulating_defect.source_macrostate_count,
+            "target_macrostate_count": accumulating_defect.target_macrostate_count,
+            "defect_states": accumulating_defect.transport_defect_states,
+            "defect_bits": accumulating_defect.transport_defect_bits,
+            "fiber_split_profile": list(accumulating_defect.refinement.fiber_split_profile),
         },
     }
 
