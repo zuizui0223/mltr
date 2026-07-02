@@ -1,21 +1,22 @@
 """Exact transport of finite macro-laws across non-nested ecological replacement.
 
 The public API deliberately contains only the replacement/rewiring theorem
-program.  It does not re-export the RACH open-composition lower bound,
+program. It does not re-export RACH's open-composition lower bound,
 identifiability companions, or experimental-design shelves.
 """
 
+from .conservative import ConservativeTransportedSchemaCertificate, certify_conservative_transported_schema
 from .finite import FiniteControlledOutputSystem, FinitePrefixGrammar, GrammarAwareControlledSystem
 from .macro import ConservativeMacroSchema, PortableMacroDynamics, StageMacroProjection
-from .transport import (
-    ConservativeTransportedSchemaCertificate,
-    ReplacementFiberSplitObstructionCertificate,
+from .obstruction import ReplacementFiberSplitObstructionCertificate
+from .relation_transport import (
     ReplacementTransport,
     TransportCoherentMacroLawCertificate,
     TransportedTargetProjectionCertificate,
-    certify_conservative_transported_schema,
     certify_transport_coherent_macro_law,
     certify_transported_target_projection,
+)
+from .witnesses import (
     conservative_transport_witness,
     derived_target_projection_witness,
     many_to_one_replacement_witness,
