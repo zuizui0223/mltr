@@ -10,6 +10,18 @@ from .defect_witnesses import accumulating_transport_defect_witness, local_fiber
 from .finite import FiniteControlledOutputSystem, FinitePrefixGrammar, GrammarAwareControlledSystem
 from .macro import ConservativeMacroSchema, PortableMacroDynamics, StageMacroProjection
 from .obstruction import ReplacementFiberSplitObstructionCertificate
+from .path_transport import (
+    PathCoherentTransportCertificate,
+    ReplacementPathEdge,
+    ReplacementPathStage,
+    RootedReplacementGraph,
+    certify_path_coherent_transport,
+    compose_relations,
+    derive_root_carried_labels,
+    path_carried_labels,
+    path_label_coherent,
+)
+from .path_witnesses import coherent_defect_diamond_witness, incoherent_label_diamond_witness
 from .refinement import (
     RelativeExactRefinement,
     TransportDefectCertificate,
@@ -45,16 +57,27 @@ __all__ = [
     "ReplacementFiberSplitObstructionCertificate",
     "RelativeExactRefinement",
     "TransportDefectCertificate",
+    "ReplacementPathStage",
+    "ReplacementPathEdge",
+    "RootedReplacementGraph",
+    "PathCoherentTransportCertificate",
     "certify_transported_target_projection",
     "certify_transport_coherent_macro_law",
     "certify_conservative_transported_schema",
     "relative_exact_refinement",
     "is_refinement",
     "certify_transport_defect",
+    "compose_relations",
+    "derive_root_carried_labels",
+    "path_carried_labels",
+    "path_label_coherent",
+    "certify_path_coherent_transport",
     "many_to_one_replacement_witness",
     "derived_target_projection_witness",
     "conservative_transport_witness",
     "new_action_fiber_split_witness",
     "local_fiber_split_defect_witness",
     "accumulating_transport_defect_witness",
+    "coherent_defect_diamond_witness",
+    "incoherent_label_diamond_witness",
 ]
