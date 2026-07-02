@@ -26,12 +26,12 @@ jobs:
           python-version: '3.12'
       - name: Install package and test dependencies
         run: python -m pip install -e '.[dev]'
-      - name: Run exact transport theorem suite
+      - name: Run exact transport and relative-refinement theorem suites
         shell: bash
         run: |
           set -o pipefail
           mkdir -p artifacts
-          python -m pytest tests/test_transport_theorems.py -q 2>&1 | tee artifacts/transport_core_test.log
+          python -m pytest tests/test_transport_theorems.py tests/test_transport_defect.py -q 2>&1 | tee artifacts/transport_core_test.log
       - name: Write deterministic transport replay report
         run: python scripts/verify_transport_core.py --write-report
       - name: Upload transport-core reproducibility artifact
