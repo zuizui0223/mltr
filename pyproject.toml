@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ext-ecological-transport"
+version = "0.1.0"
+description = "Exact macro-law transport across finite ecological replacement and rewiring."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[tool.setuptools]
+packages = ["ext_transport"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

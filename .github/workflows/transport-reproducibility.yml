@@ -1,0 +1,45 @@
+name: Transport-core reproducibility
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    paths:
+      - 'ext_transport/**'
+      - 'tests/**'
+      - 'scripts/verify_transport_core.py'
+      - 'pyproject.toml'
+      - '.github/workflows/transport-reproducibility.yml'
+      - 'docs/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  replay:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install package and test dependencies
+        run: python -m pip install -e '.[dev]'
+      - name: Run exact transport theorem suite
+        shell: bash
+        run: |
+          set -o pipefail
+          mkdir -p artifacts
+          python -m pytest tests/test_transport_theorems.py -q 2>&1 | tee artifacts/transport_core_test.log
+      - name: Write deterministic transport replay report
+        run: python scripts/verify_transport_core.py --write-report
+      - name: Upload transport-core reproducibility artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: transport-core-reproducibility
+          path: |
+            artifacts/transport_core_test.log
+            artifacts/transport_core_report.json
+          if-no-files-found: warn
