@@ -1,9 +1,9 @@
 """Minimal exact repair of carried macro partitions after replacement.
 
 A replacement relation may preserve all source-legal actions while target-only
-interactions split a carried target macro fiber.  This module computes the
-coarsest exact target interface that refines that carried partition.  It does
-not claim that every failed replacement relation has this form: the source
+interactions split a carried target macro fiber. This module computes the
+coarsest exact target interface that refines that carried partition. It does not
+claim that every failed replacement relation has this form: the source
 projection, relation, and old-action preservation are declared finite-model
 assumptions.
 """
@@ -13,7 +13,6 @@ from __future__ import annotations
 from collections.abc import Iterable
 from dataclasses import dataclass
 from math import log2
-from typing import Hashable
 
 from .conservative import derive_conservative_target_labels
 from .exact import canonical_labels, is_exact_interface
@@ -47,7 +46,7 @@ def is_refinement(fine_labels: Iterable[int], coarse_labels: Iterable[int], coun
 
 def _refine_once(system: GrammarAwareControlledSystem, labels: tuple[int, ...]) -> tuple[int, ...]:
     """Split each current block by output, legal row, and successor blocks."""
-    signature_to_label: dict[tuple[Hashable | int | tuple[object, ...], ...], int] = {}
+    signature_to_label: dict[tuple[object, ...], int] = {}
     refined: list[int] = []
     for index in range(system.product_state_count):
         state, grammar_state = system.product_pair(index)
@@ -60,15 +59,32 @@ def _refine_once(system: GrammarAwareControlledSystem, labels: tuple[int, ...]) 
     return tuple(refined)
 
 
+def _compute_fixed_point(
+    system: GrammarAwareControlledSystem,
+    carried_labels: tuple[int, ...],
+) -> tuple[tuple[int, ...], int]:
+    """Run monotone finite partition refinement without constructing certificates."""
+    current = carried_labels
+    rounds = 0
+    while True:
+        next_labels = _refine_once(system, current)
+        if next_labels == current:
+            return current, rounds
+        current = next_labels
+        rounds += 1
+        if rounds >= system.product_state_count:
+            raise AssertionError("finite partition refinement did not stabilize")
+
+
 @dataclass(frozen=True)
 class RelativeExactRefinement:
     """The coarsest exact target partition refining a carried partition.
 
     ``carried_labels`` are derived from a source macro-law through a declared
-    replacement relation.  ``refined_labels`` are obtained by monotone
-    partition refinement on the target controlled system.  The construction
-    never merges carried blocks, so every increase in label count is a required
-    repair of the transported macro description.
+    replacement relation. ``refined_labels`` are obtained by monotone partition
+    refinement on the target controlled system. The construction never merges
+    carried blocks, so every increase in label count is a required repair of the
+    transported macro description.
     """
 
     target_system: GrammarAwareControlledSystem
@@ -109,14 +125,14 @@ class RelativeExactRefinement:
                 return False
             if not isinstance(self.refinement_rounds, int) or self.refinement_rounds < 0:
                 return False
-            recomputed = relative_exact_refinement(self.target_system, carried)
+            expected, expected_rounds = _compute_fixed_point(self.target_system, carried)
             return (
-                recomputed.refined_labels == refined
-                and recomputed.refinement_rounds == self.refinement_rounds
+                expected == refined
+                and expected_rounds == self.refinement_rounds
                 and is_refinement(refined, carried, count)
                 and is_exact_interface(self.target_system, refined)
             )
-        except (TypeError, ValueError):
+        except (AssertionError, TypeError, ValueError):
             return False
 
     @property
@@ -133,33 +149,18 @@ def relative_exact_refinement(
 ) -> RelativeExactRefinement:
     """Compute the coarsest exact interface refining ``carried_labels``.
 
-    The finite iteration is the standard output/legal-row/successor partition
-    refinement, constrained never to merge the supplied carried partition.  At
-    its fixed point, blocks satisfy the exact-interface condition.  Any exact
-    target interface refining the carried partition must refine every iteration
-    and hence the returned fixed point.
+    The finite iteration is output/legal-row/successor partition refinement,
+    constrained never to merge the supplied carried partition. At its fixed
+    point, blocks satisfy the exact-interface condition. Any exact target
+    interface refining the carried partition must refine every iteration and
+    hence the returned fixed point.
     """
-    current = _first_occurrence_labels(carried_labels, target_system.product_state_count)
-    rounds = 0
-    while True:
-        next_labels = _refine_once(target_system, current)
-        if next_labels == current:
-            result = RelativeExactRefinement(target_system, current if rounds == 0 else _first_occurrence_labels(carried_labels, target_system.product_state_count), current, rounds)
-            # ``carried_labels`` must remain the initial partition, rather than
-            # the last refinement, in the returned certificate.
-            result = RelativeExactRefinement(
-                target_system,
-                _first_occurrence_labels(carried_labels, target_system.product_state_count),
-                current,
-                rounds,
-            )
-            if not result.verify():
-                raise AssertionError("relative refinement fixed point failed exactness verification")
-            return result
-        current = next_labels
-        rounds += 1
-        if rounds >= target_system.product_state_count:
-            raise AssertionError("finite partition refinement did not stabilize")
+    carried = _first_occurrence_labels(carried_labels, target_system.product_state_count)
+    refined, rounds = _compute_fixed_point(target_system, carried)
+    result = RelativeExactRefinement(target_system, carried, refined, rounds)
+    if not result.verify():
+        raise AssertionError("relative refinement fixed point failed exactness verification")
+    return result
 
 
 @dataclass(frozen=True)
@@ -167,10 +168,10 @@ class TransportDefectCertificate:
     """Quantify minimal exact target repair after conservative replacement.
 
     The source projection and relation first induce a carried target partition
-    that preserves all source-legal actions.  The relative exact refinement then
-    gives the coarsest exact target projection refining that partition.  The
-    defect is therefore a repair cost for this carried macro-law, not a claim
-    that every target macro-law or every replacement relation is impossible.
+    that preserves all source-legal actions. The relative exact refinement then
+    gives the coarsest exact target projection refining that partition. The
+    defect is a repair cost for this carried macro-law, not a claim that every
+    target macro-law or every replacement relation is impossible.
     """
 
     source: StageMacroProjection
