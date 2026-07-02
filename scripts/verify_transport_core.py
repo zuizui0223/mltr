@@ -12,6 +12,7 @@ from ext_transport.defect_witnesses import (
     accumulating_transport_defect_witness,
     local_fiber_split_defect_witness,
 )
+from ext_transport.path_witnesses import coherent_defect_diamond_witness, incoherent_label_diamond_witness
 from ext_transport.witnesses import (
     conservative_transport_witness,
     derived_target_projection_witness,
@@ -30,6 +31,8 @@ def build_report() -> dict[str, object]:
     obstruction = new_action_fiber_split_witness()
     local_defect = local_fiber_split_defect_witness()
     accumulating_defect = accumulating_transport_defect_witness(4)
+    coherent_path = coherent_defect_diamond_witness()
+    incoherent_path = incoherent_label_diamond_witness()
     certificates = (
         replacement,
         target_projection,
@@ -37,19 +40,21 @@ def build_report() -> dict[str, object]:
         obstruction,
         local_defect,
         accumulating_defect,
+        coherent_path,
+        incoherent_path,
     )
     if not all(item.verify() for item in certificates):
         raise AssertionError("one EXT finite witness failed verification")
     transport = replacement.transports[0]
     return {
-        "schema_version": 2,
+        "schema_version": 3,
         "source": {
             "git_sha": os.environ.get("GITHUB_SHA", "local-unpinned"),
             "python": platform.python_version(),
         },
         "scope": {
-            "model_class": "declared finite deterministic controlled systems, finite prefix-closed grammars, and finite replacement relations",
-            "non_claim": "the replay does not infer an ecological replacement relation, establish a field turnover mechanism, or prove transport or repair for arbitrary stochastic systems",
+            "model_class": "declared finite deterministic controlled systems, finite prefix-closed grammars, finite replacement relations, and rooted finite replacement DAGs",
+            "non_claim": "the replay does not infer ecological replacement histories, establish field turnover mechanisms, or prove transport, repair, or route coherence for arbitrary stochastic systems",
         },
         "exact_replacement_transport": {
             "source_product_states": transport.source.constrained_system.product_state_count,
@@ -89,6 +94,20 @@ def build_report() -> dict[str, object]:
             "defect_states": accumulating_defect.transport_defect_states,
             "defect_bits": accumulating_defect.transport_defect_bits,
             "fiber_split_profile": list(accumulating_defect.refinement.fiber_split_profile),
+        },
+        "path_coherent_transport": {
+            "path_count": len(coherent_path.paths),
+            "paths": [list(path) for path in coherent_path.paths],
+            "labels_by_path": [list(labels) for labels in coherent_path.labels_by_path],
+            "carried_labels": list(coherent_path.carried_labels),
+            "refined_labels": list(coherent_path.refinement.refined_labels),
+            "defect_states": coherent_path.transport_defect_states,
+            "defect_bits": coherent_path.transport_defect_bits,
+            "status": "one carried partition and one minimal repair across all declared routes",
+        },
+        "path_incoherence_boundary": {
+            "labels_by_path": [list(labels) for labels in incoherent_path.labels_by_path],
+            "status": "different declared routes assign different root macro labels; coherence certificate is rejected",
         },
     }
 
