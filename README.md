@@ -1,8 +1,8 @@
-# EXT — Exact macro-law transport through ecological replacement
+# MLTR — Macro-Law Transport and Repair
 
-EXT studies one question in finite deterministic mathematical ecology:
+MLTR is a theorem-first finite mathematical-ecology repository for one question:
 
-> When species turnover, extinction, recolonization, or interaction rewiring replaces one ecological system by another rather than merely adding modules, when can one exact macro-law be transported across the replacement—and, when it cannot, what is the minimal exact repair?
+> When species turnover, extinction, recolonization, or interaction rewiring replaces one ecological system by another rather than merely adding modules, when can an exact macro-law be transported across the replacement—and, when it cannot, what is the minimal exact repair?
 
 The project develops finite theorems for **non-nested** system changes. It does not assume that the source state space embeds into the target state space.
 
@@ -26,17 +26,18 @@ The project develops finite theorems for **non-nested** system changes. It does 
 - **Path-label coherence:** a condition ensuring that different declared replacement histories give one carried terminal macro-law rather than history-dependent labels.
 - **History augmentation:** the minimum finite context retaining only the path classes that carry genuinely different terminal macro labels.
 
-EXT does not infer a replacement relation, replacement history, or action grammar from field data. These are assumptions of a finite mathematical model.
+MLTR does not infer a replacement relation, replacement history, or action grammar from field data. These are assumptions of a finite mathematical model.
 
 ## Start here
 
+- [Submission audit](docs/submission_audit.md) — claim hierarchy, theorem-to-figure map, and remaining pre-submission work.
 - [Paper architecture](docs/paper_architecture.md) — recommended central claim, theorem hierarchy, Results order, and figure plan.
 - [Working Results and Discussion](docs/paper_results_discussion.md) — manuscript-facing English draft for the theorem results and interpretation.
 - [Theorem program](docs/theorem_program.md) — definitions, theorem statements, non-claims, and paper direction.
 - [Transport defect theorem](docs/transport_defect.md) — the coarsest relative exact refinement and the accumulating binary family.
 - [Path-label coherence theorem](docs/path_coherence.md) — route-independent carried labels and repair on replacement graphs.
 - [Minimal history augmentation theorem](docs/history_augmentation.md) — minimum path context and exact history-aware repair after route incoherence.
-- [RACH provenance](docs/rach_provenance.md) — exact source assets copied from the legacy branch and what was deliberately excluded.
+- [CCOC provenance](docs/rach_provenance.md) — exact source assets copied from the legacy branch and what was deliberately excluded.
 - [Reproducibility](docs/reproducibility.md) — tests, deterministic JSON replay, and GitHub Actions artifact.
 
 ## Run
@@ -49,11 +50,11 @@ python scripts/verify_transport_core.py --write-report
 
 The last command writes `artifacts/transport_core_report.json`.
 
-## Current status
+## Provenance and status
 
-This repository was initialized from the non-nested replacement branch (`EXT-1`–`EXT-4`) of `zuizui0223/rach-causal-invariants`, pinned after its RACH paper-core audit merge commit `b52ee777ac63a332e60a59d5e64721d98745be3f`.
+This repository was initialized from the non-nested replacement branch (`EXT-1`–`EXT-4`) of the CCOC/RACH archive. `EXT` was the development name; **MLTR** is the publication-facing repository identity. The current Python package remains `ext_transport` for compatibility with the finite replay surface.
 
-RACH remains the frozen provenance archive. EXT is the active workspace for the separate replacement/rewiring theorem program.
+CCOC remains the frozen provenance archive. MLTR is the active workspace for the separate replacement/rewiring theorem program.
 
 ## Scope
 
