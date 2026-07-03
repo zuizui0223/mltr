@@ -30,6 +30,8 @@ EXT does not infer a replacement relation, replacement history, or action gramma
 
 ## Start here
 
+- [Paper architecture](docs/paper_architecture.md) — recommended central claim, theorem hierarchy, Results order, and figure plan.
+- [Working Results and Discussion](docs/paper_results_discussion.md) — manuscript-facing English draft for the theorem results and interpretation.
 - [Theorem program](docs/theorem_program.md) — definitions, theorem statements, non-claims, and paper direction.
 - [Transport defect theorem](docs/transport_defect.md) — the coarsest relative exact refinement and the accumulating binary family.
 - [Path-label coherence theorem](docs/path_coherence.md) — route-independent carried labels and repair on replacement graphs.
