@@ -6,8 +6,8 @@ Let a source controlled system and a target controlled system represent two
 finite ecological stages connected by turnover, extinction, recolonization, or
 rewiring. The raw state spaces need not be nested. When can one exact macro-law
 be transported from source to target, when it cannot, what is the minimum exact
-target repair of the carried macro partition, and when is that repair independent
-of replacement history?
+target repair of the carried macro partition, when is that repair independent of
+replacement history, and what is the minimum history context when it is not?
 
 The paper target is not “all ecology after turnover.” It is the finite structural
 problem
@@ -155,6 +155,44 @@ edge-level claims remain available through Theorems A–C. See [path-label
 coherence](path_coherence.md) for proof, positive diamond, and negative boundary
 witness.
 
+## Theorem G — minimum history augmentation after route incoherence
+
+Let \(c_p\) range over all well-defined carried terminal maps induced by declared
+root-to-terminal paths. A finite history assignment can place two paths in one
+history mode only when their entire carried label tuples coincide. Therefore the
+minimum number of modes is
+
+\[
+|H_{\min}|=\bigl|\{c_p\}\bigr|.
+\]
+
+Retain one immutable terminal-system copy per distinct tuple and lift that tuple
+to its copy. Relative exact refinement of this history-context system is the
+coarsest exact interface compatible with every declared path-specific carried
+map.
+
+Define raw context and final exact-interface costs by
+
+\[
+\Delta_H^{\#}=|H_{\min}|-1,
+\qquad
+\Delta_H^K=\log_2|H_{\min}|,
+\]
+
+and
+
+\[
+\Delta_{\mathrm{HA}}^{\#}=|Q_{T\times H}^{\min}|-|Q_r|,
+\qquad
+\Delta_{\mathrm{HA}}^K=
+\log_2|Q_{T\times H}^{\min}|-\log_2|Q_r|.
+\]
+
+The first cost is the minimum history context needed to retain all incompatible
+carried maps; the second is the resulting exact macrostate repair. They need not
+be equal. See [minimal history augmentation](history_augmentation.md) for proof
+and the two-route boundary witness.
+
 ## Ecological interpretation
 
 | Mathematical object | Synthetic ecological reading |
@@ -166,6 +204,7 @@ witness.
 | macro-law | coarse ecological description exact under the declared action grammar |
 | transport defect | additional coarse ecological states required because new target interactions distinguish configurations formerly merged |
 | path-label coherence | different declared turnover histories preserve one carried terminal macro-law and repair |
+| history augmentation | minimal retained path context when terminal labels are history dependent |
 
 Possible application contracts include pollinator guild turnover, island
 colonization/extinction, host replacement after pathogen invasion, restoration
@@ -180,5 +219,7 @@ declared finite model and relation.
   prove a globally minimal target abstraction after abandoning source provenance.
 - Path coherence is sufficient for route-independent carried labels, not a
   characterization of every history-independent ecological representation.
+- History augmentation is relative to declared carried maps; it does not infer a
+  unique ecological memory variable or prove that observed history must be stored.
 - No result yet covers stochastic, approximate, continuous, or unbounded systems.
 - No result validates a macro-law for a real ecosystem.
