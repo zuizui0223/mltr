@@ -14,6 +14,7 @@ The project develops finite theorems for **non-nested** system changes. It does 
 4. **Fiber-split obstruction.** A word newly legal after replacement refutes one proposed carried merge if it yields different target traces from two states in that fiber.
 5. **Relative exact refinement and transport defect.** Starting from the carried target partition, finite output/legal-row/successor refinement constructs the coarsest exact target interface that preserves every carried merge possible. The extra target macrostates and bits quantify the minimum repair cost for that carried macro-law.
 6. **Path-label coherence.** In a declared rooted replacement DAG, if every root-to-terminal history carries the same root macro labels to each terminal state, then the carried partition, its coarsest exact repair, and its transport defect are independent of replacement route.
+7. **Minimal history augmentation.** If declared histories carry different terminal label tuples, exactly one immutable history mode per distinct tuple is necessary and sufficient to preserve them all. Relative exact refinement on the history-sliced terminal system then gives the coarsest exact history-aware macro-law.
 
 ## Ecological reading
 
@@ -23,6 +24,7 @@ The project develops finite theorems for **non-nested** system changes. It does 
 - **Macro-law:** a coarse ecological state description preserving all outputs and actions declared by the finite model contract.
 - **Transport defect:** the number of additional coarse ecological states required after replacement because newly possible interactions distinguish configurations that the old macro-law merged.
 - **Path-label coherence:** a condition ensuring that different declared replacement histories give one carried terminal macro-law rather than history-dependent labels.
+- **History augmentation:** the minimum finite context retaining only the path classes that carry genuinely different terminal macro labels.
 
 EXT does not infer a replacement relation, replacement history, or action grammar from field data. These are assumptions of a finite mathematical model.
 
@@ -31,6 +33,7 @@ EXT does not infer a replacement relation, replacement history, or action gramma
 - [Theorem program](docs/theorem_program.md) — definitions, theorem statements, non-claims, and paper direction.
 - [Transport defect theorem](docs/transport_defect.md) — the coarsest relative exact refinement and the accumulating binary family.
 - [Path-label coherence theorem](docs/path_coherence.md) — route-independent carried labels and repair on replacement graphs.
+- [Minimal history augmentation theorem](docs/history_augmentation.md) — minimum path context and exact history-aware repair after route incoherence.
 - [RACH provenance](docs/rach_provenance.md) — exact source assets copied from the legacy branch and what was deliberately excluded.
 - [Reproducibility](docs/reproducibility.md) — tests, deterministic JSON replay, and GitHub Actions artifact.
 

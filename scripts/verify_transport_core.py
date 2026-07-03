@@ -12,6 +12,10 @@ from ext_transport.defect_witnesses import (
     accumulating_transport_defect_witness,
     local_fiber_split_defect_witness,
 )
+from ext_transport.history_witnesses import (
+    coherent_history_augmentation_witness,
+    incoherent_history_augmentation_witness,
+)
 from ext_transport.path_witnesses import coherent_defect_diamond_witness, incoherent_label_diamond_witness
 from ext_transport.witnesses import (
     conservative_transport_witness,
@@ -33,6 +37,8 @@ def build_report() -> dict[str, object]:
     accumulating_defect = accumulating_transport_defect_witness(4)
     coherent_path = coherent_defect_diamond_witness()
     incoherent_path = incoherent_label_diamond_witness()
+    coherent_history = coherent_history_augmentation_witness()
+    incoherent_history = incoherent_history_augmentation_witness()
     certificates = (
         replacement,
         target_projection,
@@ -42,19 +48,21 @@ def build_report() -> dict[str, object]:
         accumulating_defect,
         coherent_path,
         incoherent_path,
+        coherent_history,
+        incoherent_history,
     )
     if not all(item.verify() for item in certificates):
         raise AssertionError("one EXT finite witness failed verification")
     transport = replacement.transports[0]
     return {
-        "schema_version": 3,
+        "schema_version": 4,
         "source": {
             "git_sha": os.environ.get("GITHUB_SHA", "local-unpinned"),
             "python": platform.python_version(),
         },
         "scope": {
-            "model_class": "declared finite deterministic controlled systems, finite prefix-closed grammars, finite replacement relations, and rooted finite replacement DAGs",
-            "non_claim": "the replay does not infer ecological replacement histories, establish field turnover mechanisms, or prove transport, repair, or route coherence for arbitrary stochastic systems",
+            "model_class": "declared finite deterministic controlled systems, finite prefix-closed grammars, finite replacement relations, rooted finite replacement DAGs, and immutable finite history slices",
+            "non_claim": "the replay does not infer ecological replacement histories, establish field turnover mechanisms, or prove transport, repair, coherence, or history augmentation for arbitrary stochastic systems",
         },
         "exact_replacement_transport": {
             "source_product_states": transport.source.constrained_system.product_state_count,
@@ -108,6 +116,20 @@ def build_report() -> dict[str, object]:
         "path_incoherence_boundary": {
             "labels_by_path": [list(labels) for labels in incoherent_path.labels_by_path],
             "status": "different declared routes assign different root macro labels; coherence certificate is rejected",
+        },
+        "history_augmentation": {
+            "coherent_mode_count": coherent_history.minimum_history_mode_count,
+            "coherent_refined_labels": list(coherent_history.refinement.refined_labels),
+            "incoherent_mode_count": incoherent_history.minimum_history_mode_count,
+            "incoherent_path_modes": list(incoherent_history.path_history_modes),
+            "incoherent_label_maps": [list(labels) for labels in incoherent_history.history_label_maps],
+            "incoherent_augmented_carried_labels": list(incoherent_history.augmented_carried_labels),
+            "incoherent_refined_labels": list(incoherent_history.refinement.refined_labels),
+            "additional_history_modes": incoherent_history.additional_history_modes,
+            "history_augmentation_bits": incoherent_history.history_augmentation_bits,
+            "history_aware_defect_states": incoherent_history.history_aware_defect_states,
+            "history_aware_defect_bits": incoherent_history.history_aware_defect_bits,
+            "status": "distinct carried label histories are minimally retained before exact history-aware refinement",
         },
     }
 
