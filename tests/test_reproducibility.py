@@ -19,7 +19,7 @@ def test_transport_core_replay_writes_the_expected_finite_report():
     )
     report = json.loads(completed.stdout)
     assert REPORT.is_file()
-    assert report["schema_version"] == 3
+    assert report["schema_version"] == 4
     assert report["exact_replacement_transport"]["source_product_states"] == 3
     assert report["exact_replacement_transport"]["target_product_states"] == 2
     assert not report["exact_replacement_transport"]["source_to_target_injection"]
@@ -37,3 +37,10 @@ def test_transport_core_replay_writes_the_expected_finite_report():
     assert report["path_coherent_transport"]["refined_labels"] == [0, 1, 2]
     assert report["path_coherent_transport"]["defect_states"] == 1
     assert report["path_incoherence_boundary"]["labels_by_path"] == [[0, 1], [1, 0]]
+    assert report["history_augmentation"]["coherent_mode_count"] == 1
+    assert report["history_augmentation"]["incoherent_mode_count"] == 2
+    assert report["history_augmentation"]["incoherent_path_modes"] == [0, 1]
+    assert report["history_augmentation"]["incoherent_augmented_carried_labels"] == [0, 1, 1, 0]
+    assert report["history_augmentation"]["incoherent_refined_labels"] == [0, 1, 2, 3]
+    assert report["history_augmentation"]["additional_history_modes"] == 1
+    assert report["history_augmentation"]["history_aware_defect_states"] == 2
