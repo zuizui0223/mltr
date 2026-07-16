@@ -10,6 +10,8 @@ on:
       - 'scripts/verify_transport_core.py'
       - 'scripts/verify_submission_story.py'
       - 'scripts/write_submission_figure_data.py'
+      - 'scripts/render_submission_figures.py'
+      - 'manuscript/**'
       - 'pyproject.toml'
       - '.github/workflows/transport-reproducibility.yml'
       - 'docs/**'
@@ -33,12 +35,13 @@ jobs:
         run: |
           set -o pipefail
           mkdir -p artifacts
-          python -m pytest tests/test_transport_theorems.py tests/test_transport_defect.py tests/test_path_transport.py tests/test_history_augmentation.py tests/test_submission_story.py tests/test_submission_figure_data.py -q 2>&1 | tee artifacts/transport_core_test.log
-      - name: Write deterministic transport replay reports
+          python -m pytest tests/test_transport_theorems.py tests/test_transport_defect.py tests/test_path_transport.py tests/test_history_augmentation.py tests/test_submission_story.py tests/test_submission_figure_data.py tests/test_render_submission_figures.py -q 2>&1 | tee artifacts/transport_core_test.log
+      - name: Write deterministic transport replay reports and figures
         run: |
           python scripts/verify_transport_core.py --write-report
           python scripts/verify_submission_story.py
           python scripts/write_submission_figure_data.py
+          python scripts/render_submission_figures.py
       - name: Upload transport-core reproducibility artifact
         if: always()
         uses: actions/upload-artifact@v4
@@ -50,4 +53,8 @@ jobs:
             artifacts/submission_story_report.json
             artifacts/submission_transport_defect_curve.csv
             artifacts/submission_structural_change_summary.csv
+            artifacts/figure1_local_split.svg
+            artifacts/figure2_transport_defect.svg
+            artifacts/figure3_history_completion.svg
+            manuscript/paper_a_main.tex
           if-no-files-found: warn

@@ -1,0 +1,61 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,booktabs,graphicx,hyperref}
+\title{When Ecological Macro-Laws Survive Structural Change:\\Exact Portability, Minimal Repair, and Historical Context}
+\author{Author names withheld for drafting}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Ecological models compress many configurations into functional macrostates, yet community turnover, novel interactions, and management interventions can expose distinctions hidden by the inherited law. We give an exact finite criterion for portability after structural change, a finite local obstruction when portability fails, and the unique coarsest source-relative exact repair. The increase in states or bits defines a transport defect. A sharp family shows that repair burden can grow rapidly as independent target distinctions become operational. Across replacement histories, route-independent repair exists exactly when all routes carry the same terminal label map; otherwise a minimum finite history context is necessary and sufficient. A plant--pollinator turnover example illustrates the theory.
+\end{abstract}
+
+\section{Introduction}
+State the ecological transfer problem, distinguish predictive fit from operational exactness, and motivate preservation of inherited ecological meaning.
+
+\section{Framework}
+Define controlled ecological systems, exact macro-laws, structural-change relations, carried partitions, and source-relative repair.
+
+\section{Results}
+\subsection{Portability and finite obstruction}
+State the necessary-and-sufficient portability criterion and local witness corollary.
+
+\subsection{Unique minimal source-relative repair}
+State the fixed-point refinement theorem and minimality result.
+
+\subsection{Transport defect}
+Define state and bit defects and present the sharp accumulating family.
+
+\subsection{Historical coherence}
+State route coherence and minimum history-completion results.
+
+\section{Worked ecological example}
+Develop the plant--pollinator guild-loss and replacement example in one notation.
+
+\section{Discussion}
+Emphasize operational macro-laws, exactness versus approximate transfer, minimal repair, and finite historical context. Keep empirical inference of replacement relations outside the theorem claim.
+
+\section{Methods and proofs}
+The complete proof dependency graph is maintained in \texttt{docs/master\_theorem\_proof\_package.md}.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.95\linewidth]{../artifacts/figure1_local_split.svg}
+\caption{A target-only action separates two states inherited in the same macro-fiber, forcing the unique minimal source-relative split.}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.9\linewidth]{../artifacts/figure2_transport_defect.svg}
+\caption{Verified repair burden for the sharp family with independently exposed target distinctions.}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.95\linewidth]{../artifacts/figure3_history_completion.svg}
+\caption{Coherent routes share one repair; incompatible carried maps require the minimum finite history context.}
+\end{figure}
+
+\end{document}
