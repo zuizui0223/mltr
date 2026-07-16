@@ -3,18 +3,22 @@
 from __future__ import annotations
 
 import csv
+import runpy
 from pathlib import Path
-
-from verify_submission_story import build_report
 
 ROOT = Path(__file__).resolve().parents[1]
 ARTIFACTS = ROOT / "artifacts"
 DEFECT_CSV = ARTIFACTS / "submission_transport_defect_curve.csv"
 SUMMARY_CSV = ARTIFACTS / "submission_structural_change_summary.csv"
+VERIFY_SCRIPT = Path(__file__).with_name("verify_submission_story.py")
+
+
+def _build_report(max_module_count: int):
+    return runpy.run_path(str(VERIFY_SCRIPT))["build_report"](max_module_count)
 
 
 def write_tables(max_module_count: int = 8) -> tuple[Path, Path]:
-    report = build_report(max_module_count)
+    report = _build_report(max_module_count)
     ARTIFACTS.mkdir(parents=True, exist_ok=True)
 
     with DEFECT_CSV.open("w", newline="", encoding="utf-8") as handle:
