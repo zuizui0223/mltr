@@ -7,6 +7,8 @@ on:
       - "artifacts/**"
       - "scripts/render_submission_figures.py"
       - "scripts/verify_submission_story.py"
+      - "ext_transport/**"
+      - "pyproject.toml"
       - ".github/workflows/manuscript-build.yml"
   push:
     branches: [main]
@@ -15,6 +17,8 @@ on:
       - "artifacts/**"
       - "scripts/render_submission_figures.py"
       - "scripts/verify_submission_story.py"
+      - "ext_transport/**"
+      - "pyproject.toml"
       - ".github/workflows/manuscript-build.yml"
   workflow_dispatch:
 
@@ -26,6 +30,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Install MLTR package
+        run: python -m pip install -e .
       - name: Install LaTeX and SVG converter
         run: |
           sudo apt-get update
