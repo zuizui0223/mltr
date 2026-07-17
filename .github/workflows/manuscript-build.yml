@@ -29,6 +29,7 @@ jobs:
             test -f "$figure"
             rsvg-convert -f pdf -o "${figure%.svg}.pdf" "$figure"
           done
+          sed -i 's/\.svg}/.pdf}/g' manuscript/paper_a_main.tex
       - name: Compile Paper A
         working-directory: manuscript
         run: latexmk -pdf -interaction=nonstopmode -halt-on-error paper_a_main.tex
