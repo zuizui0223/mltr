@@ -5,12 +5,16 @@ on:
     paths:
       - "manuscript/**"
       - "artifacts/**"
+      - "scripts/render_submission_figures.py"
+      - "scripts/verify_submission_story.py"
       - ".github/workflows/manuscript-build.yml"
   push:
     branches: [main]
     paths:
       - "manuscript/**"
       - "artifacts/**"
+      - "scripts/render_submission_figures.py"
+      - "scripts/verify_submission_story.py"
       - ".github/workflows/manuscript-build.yml"
   workflow_dispatch:
 
@@ -19,10 +23,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
       - name: Install LaTeX and SVG converter
         run: |
           sudo apt-get update
           sudo apt-get install -y latexmk texlive-latex-extra librsvg2-bin
+      - name: Generate verified SVG figures
+        run: python scripts/render_submission_figures.py
       - name: Convert verified SVG figures to PDF
         run: |
           for figure in artifacts/figure1_local_split.svg artifacts/figure2_transport_defect.svg artifacts/figure3_history_completion.svg; do
