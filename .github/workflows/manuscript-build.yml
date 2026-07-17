@@ -1,0 +1,41 @@
+name: Manuscript build
+
+on:
+  pull_request:
+    paths:
+      - "manuscript/**"
+      - "artifacts/**"
+      - ".github/workflows/manuscript-build.yml"
+  push:
+    branches: [main]
+    paths:
+      - "manuscript/**"
+      - "artifacts/**"
+      - ".github/workflows/manuscript-build.yml"
+  workflow_dispatch:
+
+jobs:
+  build-paper-a:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install LaTeX and SVG converter
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y latexmk texlive-latex-extra librsvg2-bin
+      - name: Convert verified SVG figures to PDF
+        run: |
+          for figure in artifacts/figure1_local_split.svg artifacts/figure2_transport_defect.svg artifacts/figure3_history_completion.svg; do
+            test -f "$figure"
+            rsvg-convert -f pdf -o "${figure%.svg}.pdf" "$figure"
+          done
+      - name: Compile Paper A
+        working-directory: manuscript
+        run: latexmk -pdf -interaction=nonstopmode -halt-on-error paper_a_main.tex
+      - name: Upload manuscript PDF and log
+        uses: actions/upload-artifact@v4
+        with:
+          name: paper-a-manuscript
+          path: |
+            manuscript/paper_a_main.pdf
+            manuscript/paper_a_main.log
