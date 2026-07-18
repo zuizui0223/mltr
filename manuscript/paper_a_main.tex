@@ -37,6 +37,46 @@ The ecological value of these results is diagnostic rather than merely classific
 
 Our claims are deliberately limited. We do not propose a new generic partition-refinement algorithm, and we do not infer structural-change relations from data. Exactness is used as a benchmark for isolating structural failure before sampling error, parameter uncertainty, or approximate prediction are introduced. The contribution is instead a source-relative theory of ecological model reuse: a criterion for unchanged portability, a canonical minimal repair when portability fails, and a minimal account of historical context when replacement routes disagree.
 
+\section{Relation to existing theory}
+The relevant distinction among neighboring literatures is not whether they use partitions, reduced states, or transfer language. It is the ecological question assigned to those objects. Table~\ref{tab:boundaries} summarizes the boundary: the present framework starts with an accepted source classification, carries it through a declared structural change, and asks whether its inherited meaning still supports target interventions. If not, the admissible solution is constrained to repair that inherited classification rather than replace it with an unrelated target-only model.
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{p{0.18\linewidth}p{0.25\linewidth}p{0.23\linewidth}p{0.25\linewidth}}
+\toprule
+Literature & Primary question & Object preserved or estimated & Boundary of the present work \\
+\midrule
+Coarse graining & Which reduced variables retain behavior of a specified system? & A useful or exact aggregation & We test reuse of an already inherited aggregation after structural change. \\
+Lumpability & When does a partition define an exact reduced stochastic or dynamical process? & Transition behavior within one specified system & Source and target may differ, and repair must refine carried source labels. \\
+Bisimulation & Which states are behaviorally indistinguishable, and what is the coarsest valid quotient? & Behavioral equivalence under observations and transitions & Refinement machinery is standard; the new constraint is source-relative transport and repair. \\
+Transportability & Which causal, statistical, or predictive conclusions transfer between environments? & Effects, distributions, or predictors & The source--target relation is declared, and the question is exact operational closure rather than estimation. \\
+Resilience and regime shifts & When does a system persist, cross a threshold, or move between qualitative regimes? & Stability, basin structure, or regime identity & We ask whether the variable used to describe such regimes remains sufficient after structural change. \\
+Adaptive management & How should actions change as evidence and system state are updated? & A decision policy under learning and uncertainty & We audit whether the state variable supplied to that policy can distinguish target action consequences. \\
+Present framework & Can an accepted ecological macro-law be reused, and what is its least exact repair? & Inherited semantics under changed outputs, actions, and successors & Returns portability, a local witness, source-relative repair, defect, and required history context. \\
+\bottomrule
+\end{tabular}
+\caption{Question-based boundary between neighboring theories and source-relative transport of ecological macro-laws. The categories overlap technically, but they deliver different answers to an ecological model-reuse decision.}
+\label{tab:boundaries}
+\end{table}
+
+\subsection{Coarse graining and lumpability}
+Coarse graining is indispensable whenever ecological detail must be reduced to functional groups, occupancy states, trophic compartments, or other aggregate variables. Lumpability sharpens one part of this problem by asking when a proposed partition preserves a process exactly within a fixed system. Our portability criterion uses a related exactness standard, and our repair ultimately relies on refinement of state classes. The difference is the direction of the question. We do not begin with an unconstrained target system and search for any valid reduction. We begin with a source macro-law whose interpretation is already accepted, carry that interpretation to a structurally changed target, and require every repaired target class to remain inside an inherited class. A target-only optimum may therefore be mathematically smaller while being inadmissible because it abandons the source meaning that managers intended to reuse.
+
+\subsection{Bisimulation, abstraction, and partition refinement}
+Bisimulation and related abstraction theories characterize states that agree in observations and future behavior. Coarsest-quotient and partition-refinement algorithms are established tools for constructing such equivalences, including probabilistic, controlled, compositional, and incremental variants. We therefore do not claim novelty for quotient construction or iterative splitting. Their role here is machinery for a different constrained object: the unique coarsest exact partition among those that refine the labels carried from the source. Structural change may also be non-nested, so the problem is not limited to adding a component or action to one fixed state space. The substantive result is that failure of inherited semantics has a finite operational witness and that standard refinement, when initialized by the carried labels, yields a canonical least repair rather than an arbitrary new abstraction.
+
+\subsection{Transportability and model transfer}
+Transportability, domain adaptation, and ecological model-transfer research ask whether results learned in one environment remain valid in another. Their central difficulties commonly concern distribution shift, causal identifiability, parameter instability, extrapolation, or predictive error. Our framework addresses a prior structural question. It assumes that the source and target systems and their relation have been declared and asks whether the inherited macrostate interface can, even in principle, support target outputs and interventions. It neither estimates the relation nor guarantees empirical transfer. A model may pass the structural audit and still transfer poorly because parameters or observations are uncertain; conversely, no amount of parameter refitting can make an inherited aggregation exact when a target action sends two states in one inherited class to different successor classes. Thus structural portability is complementary to, rather than a substitute for, statistical or causal transport analysis.
+
+\subsection{Resilience, regime shifts, and ecological state classifications}
+Resilience and regime-shift theory focus on persistence, thresholds, alternative stable states, and changes in qualitative system behavior. These literatures often motivate the ecological macrostates that managers actually monitor, such as desirable and degraded regimes or classes of recovery potential. Our question begins one level earlier: after species turnover, rewiring, or intervention change, do those regime labels still contain enough information to predict the target actions under consideration? We do not introduce a new definition of resilience or a new threshold criterion. Instead, the framework can audit whether a resilience class or regime label remains operationally meaningful and, when it does not, identify the least distinction needed within that class. In the plant--pollinator example, the repaired distinction is not a new regime name imposed from scratch; it is substitute-response capacity revealed inside a formerly homogeneous functional state.
+
+\subsection{Adaptive management}
+Adaptive management treats intervention as an iterative decision problem in which policies are revised as evidence accumulates. Our framework is compatible with that goal but solves a different layer of the problem. Adaptive decision procedures generally require a state representation on which action consequences can be evaluated. We ask whether an inherited representation remains sufficient after the action repertoire or ecological structure changes. A local obstruction identifies which apparently equivalent states respond differently to a newly legal action; the minimal repair identifies the smallest additional variable that must enter monitoring before the decision policy can be trusted again. The framework therefore audits and repairs the information interface supplied to adaptive management, rather than replacing policy optimization, learning, or uncertainty analysis.
+
+Across these literatures, the boundary is intentionally narrow. The paper does not claim that exact aggregation, behavioral equivalence, model transfer, resilience analysis, or adaptive decision-making are new. Its contribution is to connect them through one source-relative ecological question: whether a previously accepted macro-law survives declared structural change and, if not, how to preserve as much inherited meaning as exact target prediction permits.
+
 \section{Operational framework}
 A finite controlled ecological system is a tuple
 \[
