@@ -26,7 +26,10 @@ def _svg(width: int, height: int, body: str) -> str:
         f'viewBox="0 0 {width} {height}" role="img">\n'
         '<style>text{font-family:Arial,sans-serif;fill:#111} .axis{stroke:#111;stroke-width:1.5} '
         '.thin{stroke:#555;stroke-width:1.2;fill:none} .box{fill:#fff;stroke:#111;stroke-width:1.5} '
-        '.fiber{fill:#ececec;stroke:#111;stroke-width:1.2}</style>\n'
+        '.fiber{fill:#ececec;stroke:#111;stroke-width:1.2} .decision{fill:#f7f7f7;stroke:#111;stroke-width:1.5} '
+        '.arrow{stroke:#111;stroke-width:1.5;fill:none;marker-end:url(#arrowhead)}</style>\n'
+        '<defs><marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">'
+        '<polygon points="0 0, 10 3.5, 0 7" fill="#111"/></marker></defs>\n'
         f"{body}\n</svg>\n"
     )
 
@@ -39,21 +42,46 @@ def _text(x: float, y: float, value: object, size: int = 15, anchor: str = "midd
 
 
 def render_local_split(report: dict[str, object]) -> str:
+    """Show how a hidden response channel reverses a restoration decision."""
     local = report["local_split"]
     carried = tuple(local["carried_labels"])
     repaired = tuple(local["repaired_labels"])
-    body = [_text(400, 32, "Inherited macro-fiber and minimal target repair", 20)]
-    xs = (160, 400, 640)
-    for x, label in zip(xs, carried):
-        body.append(f'<circle class="fiber" cx="{x}" cy="105" r="38"/>')
-        body.append(_text(x, 111, f"x{xs.index(x)} | q={label}", 14))
-    body.append('<path class="thin" d="M160 145 C220 205 340 205 400 145"/>')
-    body.append(_text(280, 215, "target-only action separates successors", 14))
-    for x, label in zip(xs, repaired):
-        body.append(f'<rect class="box" x="{x-55}" y="260" width="110" height="58" rx="8"/>')
-        body.append(_text(x, 294, f"repaired {label}", 14))
-    body.append(_text(400, 365, f"transport defect = {local['transport_defect_states']} macrostate", 16))
-    return _svg(800, 400, "\n".join(body))
+    body = [_text(500, 30, "Structural change can reverse a restoration priority", 20)]
+
+    body.append('<rect class="box" x="35" y="58" width="260" height="112" rx="10"/>')
+    body.append(_text(165, 84, "Source monitoring model", 16))
+    body.append(_text(165, 110, "Sites A and B share one", 14))
+    body.append(_text(165, 132, "functional macrostate", 14))
+    body.append(_text(165, 154, f"carried labels: {carried}", 13))
+
+    body.append('<path class="arrow" d="M295 114 L365 114"/>')
+    body.append('<rect class="decision" x="365" y="58" width="270" height="112" rx="10"/>')
+    body.append(_text(500, 84, "Decision under inherited law", 16))
+    body.append(_text(500, 111, "Equal expected pollination response", 14))
+    body.append(_text(500, 134, "Choose cheaper restoration: Site A", 14))
+    body.append(_text(500, 156, "A > B", 16))
+
+    body.append('<path class="arrow" d="M635 114 L705 114"/>')
+    body.append('<rect class="box" x="705" y="58" width="260" height="112" rx="10"/>')
+    body.append(_text(835, 84, "Target-only intervention", 16))
+    body.append(_text(835, 110, "Competitor removal exposes", 14))
+    body.append(_text(835, 132, "substitute-pollinator access", 14))
+    body.append(_text(835, 154, "A loses; B retains response", 14))
+
+    body.append('<path class="arrow" d="M835 170 L835 220 L500 220 L500 252"/>')
+    body.append('<rect class="decision" x="330" y="252" width="340" height="118" rx="10"/>')
+    body.append(_text(500, 280, "Portability fails: local witness", 16))
+    body.append(_text(500, 306, "same inherited label, different successor", 14))
+    body.append(_text(500, 330, f"minimal repair: {carried} → {repaired}", 14))
+    body.append(_text(500, 352, f"transport defect = {local['transport_defect_states']} macrostate", 14))
+
+    body.append('<path class="arrow" d="M500 370 L500 410"/>')
+    body.append('<rect class="box" x="330" y="410" width="340" height="90" rx="10"/>')
+    body.append(_text(500, 438, "Decision after source-relative repair", 16))
+    body.append(_text(500, 464, "Prioritize Site B, which retains the", 14))
+    body.append(_text(500, 486, "substitute response channel: B > A", 14))
+
+    return _svg(1000, 530, "\n".join(body))
 
 
 def render_defect_curve(report: dict[str, object]) -> str:
