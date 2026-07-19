@@ -1,0 +1,31 @@
+\section{Proofs}
+
+This section records the proof architecture separately from the ecological narrative in the main text. The statements use the definitions in Supplementary Section~1 and preserve the source-relative constraint throughout.
+
+\subsection{Operational portability}
+\begin{proof}[Proof of the operational portability theorem]
+Necessity follows because an exact carried macro-law must factor the target output, legal-action row, and every declared successor through its carried label. Hence each of these quantities is constant inside a carried fiber.
+
+For sufficiency, assume those three quantities are constant in every carried fiber. Define the quotient output and legal-action row by their common values on each fiber. For each legal action, successor carried labels are also constant, so the quotient successor is well defined. Therefore all declared target observations and legal futures factor through the carried partition, which is exact.
+\end{proof}
+
+\subsection{Local obstruction}
+\begin{proof}[Proof of the local-obstruction proposition]
+If portability fails, at least one factorization condition in the preceding proof is not well defined. Thus there exist two target states in one inherited fiber that differ in current output, legal-action row, or the carried label of a successor under a declared legal action. Repeating the same argument along a shortest distinguishing legal future gives a finite witness. Conversely, any such pair contradicts exactness of the carried partition.
+\end{proof}
+
+\subsection{Unique coarsest source-relative repair}
+\begin{proof}[Proof of the repair theorem]
+Initialize refinement with the carried partition $P_0=\pi_R$. At each step, split every block by the joint signature consisting of current output, legal-action row, and successor blocks under all declared actions. Because the target state set is finite, every nontrivial update strictly increases the number of blocks and the procedure terminates at a fixed point $P_*$. Fixed-point stability is exactly the operational exactness condition, so $P_*$ is exact.
+
+Let $E$ be any exact target partition with $E\preceq P_0$. Inductively, exactness forces $E$ to separate every signature difference used to construct $P_{k+1}$ from $P_k$. Hence $E\preceq P_k$ for every $k$, and therefore $E\preceq P_*$. Thus $P_*$ is coarser than every admissible exact repair and is unique.
+\end{proof}
+
+\subsection{History coherence and minimum completion}
+\begin{proof}[Proof of history coherence]
+If all root-to-terminal paths induce the same carried terminal map, the target receives one route-independent inherited partition; its repair and defect are consequently route independent. If two complete carried maps differ, some terminal configuration receives incompatible inherited labels, so no route-free carried partition can represent both histories.
+\end{proof}
+
+\begin{proof}[Proof of minimum history completion]
+Group histories by equality of their complete carried terminal maps. One immutable mode for each equivalence class is sufficient because the carried map is then well defined within every mode and source-relative refinement can be applied. It is necessary because histories with different complete maps assign incompatible inherited semantics somewhere in the terminal system and therefore cannot share one immutable mode. The number of distinct carried maps is consequently the minimum exact history completion.
+\end{proof}

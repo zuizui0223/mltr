@@ -1,0 +1,25 @@
+\section{Mathematical preliminaries}
+
+\subsection{Finite operational systems}
+A finite controlled ecological system is a tuple
+\[
+\mathcal{S}=(X,A,G,\delta,y),
+\]
+where $X$ is a finite state set, $A$ is a declared action alphabet, $G$ is the legal finite action grammar, $\delta$ is the controlled successor rule, and $y$ is the declared output. The grammar is part of the model: two states may be observationally identical yet operationally distinct if they admit different actions or different legal futures.
+
+A macro-law is represented by a surjection $\pi:X\times G\to Q$. Its fibers are the ecological macrostates used for prediction and intervention. Exactness requires equality of current output, legal-action rows, and successor macro-labels within every fiber.
+
+\subsection{Structural change and carried labels}
+Let $\mathcal{S}_0$ and $\mathcal{S}_1$ be source and target systems. A declared total relation
+\[
+R\subseteq (X_0\times G_0)\times(X_1\times G_1)
+\]
+carries source semantics to the target. The induced carried partition is denoted $\pi_R$. The relation may be non-nested: turnover, replacement, or rewiring need not embed the source state space into the target.
+
+The admissible repair class consists only of exact target partitions that refine $\pi_R$. This source-relative constraint preserves every inherited merge not contradicted by target outputs, actions, or successors.
+
+\subsection{Partition order}
+For partitions $P$ and $P'$ of the same finite set, write $P'\preceq P$ when every block of $P'$ is contained in a block of $P$. Thus $P'$ is a refinement of $P$. The unique coarsest source-relative repair is the greatest element, under this order, among exact target partitions refining $\pi_R$.
+
+\subsection{History-indexed transport}
+For a rooted directed acyclic graph of declared structural changes, every root-to-terminal path induces a carried terminal map. Two paths are operationally coherent exactly when these complete maps agree. When they disagree, an immutable history mode indexes the distinct carried terminal maps before exact refinement is applied.

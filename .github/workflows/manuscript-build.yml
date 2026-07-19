@@ -48,10 +48,15 @@ jobs:
       - name: Compile Paper A
         working-directory: manuscript
         run: latexmk -pdf -interaction=nonstopmode -halt-on-error paper_a_main.tex
-      - name: Upload manuscript PDF and log
+      - name: Compile Paper A supplement
+        working-directory: manuscript
+        run: latexmk -pdf -interaction=nonstopmode -halt-on-error paper_a_supplement.tex
+      - name: Upload manuscript PDFs and logs
         uses: actions/upload-artifact@v4
         with:
           name: paper-a-manuscript
           path: |
             manuscript/paper_a_main.pdf
             manuscript/paper_a_main.log
+            manuscript/paper_a_supplement.pdf
+            manuscript/paper_a_supplement.log
