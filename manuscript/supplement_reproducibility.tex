@@ -1,0 +1,27 @@
+\section{Implementation and reproducibility}
+
+\subsection{Repository components}
+The executable witness and figure pipeline is separated from the manuscript text.
+\begin{itemize}
+\item \texttt{scripts/verify\_submission\_story.py} constructs the verified finite examples and summary values used in the manuscript.
+\item \texttt{scripts/render\_submission\_figures.py} renders the three submission figures from those verified values.
+\item \texttt{artifacts/figure1\_local\_split.svg} records the management-decision workflow and minimal split.
+\item \texttt{artifacts/figure2\_transport\_defect.svg} records the accumulating finite witness family.
+\item \texttt{artifacts/figure3\_history\_completion.svg} records coherent and incoherent replacement histories.
+\item \texttt{ext\_transport/} contains the finite transport and refinement implementation used by the reproducibility checks.
+\end{itemize}
+
+\subsection{Reproduction commands}
+From the repository root, install the package and regenerate the verified figures with
+\begin{verbatim}
+python -m pip install -e .
+python scripts/verify_submission_story.py
+python scripts/render_submission_figures.py
+\end{verbatim}
+The manuscript workflow converts the SVG files to PDF and compiles both the main paper and this supplement with \texttt{latexmk}.
+
+\subsection{Consistency principle}
+Numerical labels in the figures are taken from the verification report rather than duplicated manually in the renderer. This prevents the displayed carried labels, repaired labels, defect values, and minimum history-mode counts from silently drifting away from the executable witness.
+
+\subsection{Scope of the implementation}
+The current code verifies finite deterministic examples and exact refinement. It does not estimate source--target relations from observations, handle imperfect detection, or provide approximate and stochastic repair. These are outside the claims of the present manuscript.
