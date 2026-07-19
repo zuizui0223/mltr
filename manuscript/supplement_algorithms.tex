@@ -1,0 +1,31 @@
+\section{Algorithms}
+
+\subsection{Source-relative refinement}
+The repair procedure is initialized by the carried source labels rather than by the indiscrete partition or a target-only objective.
+
+\begin{enumerate}
+\item Construct the carried target partition $P_0=\pi_R$.
+\item For every target state, form a signature containing its output, legal-action row, and the current blocks of all declared successors.
+\item Split each block of $P_k$ by equality of signatures to obtain $P_{k+1}$.
+\item Stop when $P_{k+1}=P_k$.
+\end{enumerate}
+
+The resulting partition is the unique coarsest exact target partition refining the inherited labels. A failed comparison recorded during a split is also a local operational witness and should be retained as a diagnostic output.
+
+\subsection{Pseudocode}
+\begin{verbatim}
+P <- carried_partition(source_labels, relation)
+repeat
+    signatures <- output_action_successor_signatures(target, P)
+    P_new <- split_within_existing_blocks(P, signatures)
+    if P_new == P:
+        break
+    P <- P_new
+return P, recorded_split_witnesses
+\end{verbatim}
+
+\subsection{Termination and computational scope}
+Termination is guaranteed for finite targets because every nontrivial iteration strictly refines a finite partition. The implementation may use standard partition-refinement data structures; no new generic refinement algorithm is claimed. The ecological output is the constrained fixed point together with the inherited block that failed, the action or output producing the failure, and the additional distinction required by the repair.
+
+\subsection{History-aware refinement}
+For multiple replacement histories, first compute the complete carried terminal map for every path. Collapse paths with identical maps into one immutable mode, augment terminal states by that mode only when more than one distinct map exists, and then run the same source-relative refinement procedure on the augmented system.
