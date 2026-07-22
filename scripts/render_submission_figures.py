@@ -42,46 +42,44 @@ def _text(x: float, y: float, value: object, size: int = 15, anchor: str = "midd
 
 
 def render_local_split(report: dict[str, object]) -> str:
-    """Show how a hidden response channel reverses a restoration decision."""
+    """Show the ecological sequence from pollinator loss to decision reversal."""
     local = report["local_split"]
     carried = tuple(local["carried_labels"])
     repaired = tuple(local["repaired_labels"])
-    body = [_text(500, 30, "Structural change can reverse a restoration priority", 20)]
+    body = [_text(500, 30, "From pollinator turnover to repaired restoration priority", 20)]
 
-    body.append('<rect class="box" x="35" y="58" width="260" height="112" rx="10"/>')
-    body.append(_text(165, 84, "Source monitoring model", 16))
-    body.append(_text(165, 110, "Sites A and B share one", 14))
-    body.append(_text(165, 132, "functional macrostate", 14))
-    body.append(_text(165, 154, f"carried labels: {carried}", 13))
+    steps = [
+        ("1. Pollinator loss", "Original dominant guild disappears", "community structure changes"),
+        ("2. Inherited monitoring class", "Sites A and B remain grouped", f"carried labels: {carried}"),
+        ("3. New management action", "Competitor removal becomes legal", "substitute access is tested"),
+        ("4. Local obstruction", "Same inherited label, different successor", "A fails; B retains response"),
+        ("5. Minimal source-relative repair", f"labels: {carried} → {repaired}", f"defect = {local['transport_defect_states']} macrostate"),
+        ("6. Revised restoration decision", "Prioritize Site B", "B retains substitute response"),
+    ]
 
-    body.append('<path class="arrow" d="M295 114 L365 114"/>')
-    body.append('<rect class="decision" x="365" y="58" width="270" height="112" rx="10"/>')
-    body.append(_text(500, 84, "Decision under inherited law", 16))
-    body.append(_text(500, 111, "Equal expected pollination response", 14))
-    body.append(_text(500, 134, "Choose cheaper restoration: Site A", 14))
-    body.append(_text(500, 156, "A > B", 16))
+    x_positions = [95, 255, 415, 575, 735, 895]
+    widths = [140, 140, 140, 140, 150, 150]
+    for index, ((title, line1, line2), x, width) in enumerate(zip(steps, x_positions, widths)):
+        left = x - width / 2
+        css_class = "decision" if index in {1, 5} else "box"
+        body.append(f'<rect class="{css_class}" x="{left}" y="85" width="{width}" height="165" rx="10"/>')
+        body.append(_text(x, 112, title, 14))
+        body.append(_text(x, 151, line1, 12))
+        body.append(_text(x, 174, line2, 12))
+        if index == 1:
+            body.append(_text(x, 212, "old rule: choose cheaper A", 12))
+        if index == 4:
+            body.append(_text(x, 212, "retain all valid old merges", 12))
+        if index < len(steps) - 1:
+            next_left = x_positions[index + 1] - widths[index + 1] / 2
+            body.append(f'<path class="arrow" d="M{left + width} 167 L{next_left - 10} 167"/>')
 
-    body.append('<path class="arrow" d="M635 114 L705 114"/>')
-    body.append('<rect class="box" x="705" y="58" width="260" height="112" rx="10"/>')
-    body.append(_text(835, 84, "Target-only intervention", 16))
-    body.append(_text(835, 110, "Competitor removal exposes", 14))
-    body.append(_text(835, 132, "substitute-pollinator access", 14))
-    body.append(_text(835, 154, "A loses; B retains response", 14))
+    body.append('<rect class="fiber" x="245" y="300" width="510" height="95" rx="10"/>')
+    body.append(_text(500, 328, "Management consequence", 16))
+    body.append(_text(500, 354, "Inherited law: A > B because outcomes appear tied and A is cheaper", 13))
+    body.append(_text(500, 378, "Repaired law: B > A because only B can recover pollination service", 13))
 
-    body.append('<path class="arrow" d="M835 170 L835 220 L500 220 L500 252"/>')
-    body.append('<rect class="decision" x="330" y="252" width="340" height="118" rx="10"/>')
-    body.append(_text(500, 280, "Portability fails: local witness", 16))
-    body.append(_text(500, 306, "same inherited label, different successor", 14))
-    body.append(_text(500, 330, f"minimal repair: {carried} → {repaired}", 14))
-    body.append(_text(500, 352, f"transport defect = {local['transport_defect_states']} macrostate", 14))
-
-    body.append('<path class="arrow" d="M500 370 L500 410"/>')
-    body.append('<rect class="box" x="330" y="410" width="340" height="90" rx="10"/>')
-    body.append(_text(500, 438, "Decision after source-relative repair", 16))
-    body.append(_text(500, 464, "Prioritize Site B, which retains the", 14))
-    body.append(_text(500, 486, "substitute response channel: B > A", 14))
-
-    return _svg(1000, 530, "\n".join(body))
+    return _svg(1000, 430, "\n".join(body))
 
 
 def render_defect_curve(report: dict[str, object]) -> str:
