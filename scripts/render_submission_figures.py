@@ -46,15 +46,15 @@ def render_local_split(report: dict[str, object]) -> str:
     local = report["local_split"]
     carried = tuple(local["carried_labels"])
     repaired = tuple(local["repaired_labels"])
-    body = [_text(500, 34, "Why an inherited monitoring class can reverse restoration priority", 21)]
+    body: list[str] = []
 
     boxes = [
-        (80, 75, "1. Structural change", "Dominant pollinator is lost", "community interaction structure changes", "box"),
-        (540, 75, "2. Inherited classification", "Sites A and B remain grouped", f"carried labels: {carried}", "decision"),
-        (540, 245, "3. New intervention", "Competitor removal becomes legal", "the action tests substitute-pollinator access", "box"),
-        (80, 245, "4. Local obstruction", "Same inherited label", "but A fails and B retains pollination response", "box"),
-        (80, 415, "5. Minimal source-relative repair", f"split only the exposed class: {carried} → {repaired}", f"transport defect = {local['transport_defect_states']} macrostate", "box"),
-        (540, 415, "6. Decision reversal", "Old rule: prioritize cheaper Site A", "Repaired rule: prioritize responsive Site B", "decision"),
+        (80, 30, "1. Structural change", "Dominant pollinator is lost", "community interaction structure changes", "box"),
+        (540, 30, "2. Inherited classification", "Sites A and B remain grouped", f"carried labels: {carried}", "decision"),
+        (540, 200, "3. New intervention", "Competitor removal becomes legal", "the action tests substitute-pollinator access", "box"),
+        (80, 200, "4. Local obstruction", "Same inherited label", "but A fails and B retains pollination response", "box"),
+        (80, 370, "5. Minimal source-relative repair", f"split only the exposed class: {carried} → {repaired}", f"transport defect = {local['transport_defect_states']} macrostate", "box"),
+        (540, 370, "6. Decision reversal", "Old rule: prioritize cheaper Site A", "Repaired rule: prioritize responsive Site B", "decision"),
     ]
 
     for x, y, title, line1, line2, css_class in boxes:
@@ -64,29 +64,29 @@ def render_local_split(report: dict[str, object]) -> str:
         body.append(_text(x + 190, y + 90, line2, 13))
 
     body.extend([
-        '<path class="arrow" d="M460 135 L530 135"/>',
-        '<path class="arrow" d="M730 195 L730 235"/>',
-        '<path class="arrow" d="M540 305 L470 305"/>',
-        '<path class="arrow" d="M270 365 L270 405"/>',
-        '<path class="arrow" d="M460 475 L530 475"/>',
+        '<path class="arrow" d="M460 90 L530 90"/>',
+        '<path class="arrow" d="M730 150 L730 190"/>',
+        '<path class="arrow" d="M540 260 L470 260"/>',
+        '<path class="arrow" d="M270 320 L270 360"/>',
+        '<path class="arrow" d="M460 430 L530 430"/>',
     ])
 
-    body.append('<rect class="fiber" x="180" y="585" width="640" height="88" rx="12"/>')
-    body.append(_text(500, 614, "Management consequence", 16))
-    body.append(_text(500, 642, "The inherited law treats A and B as tied; the repaired law recognizes only B as recoverable.", 14))
-    body.append(_text(500, 664, "The theorem changes the decision by identifying exactly one missing ecological distinction.", 13))
+    body.append('<rect class="fiber" x="180" y="540" width="640" height="88" rx="12"/>')
+    body.append(_text(500, 569, "Management consequence", 16))
+    body.append(_text(500, 597, "The inherited law treats A and B as tied; the repaired law recognizes only B as recoverable.", 14))
+    body.append(_text(500, 619, "The theorem changes the decision by identifying exactly one missing ecological distinction.", 13))
 
-    return _svg(1000, 710, "\n".join(body))
+    return _svg(1000, 660, "\n".join(body))
 
 
 def render_defect_curve(report: dict[str, object]) -> str:
     rows = list(report["accumulating_defect"])
-    width, height = 820, 480
-    left, right, top, bottom = 90, 760, 55, 405
+    width, height = 820, 440
+    left, right, top, bottom = 90, 760, 25, 365
     max_x = max(row["module_count"] for row in rows)
     max_y = max(row["repaired_target_macrostates"] for row in rows)
     points = []
-    body = [_text(410, 30, "Minimal repair burden under independently exposed distinctions", 20)]
+    body: list[str] = []
     body.extend([
         f'<line class="axis" x1="{left}" y1="{bottom}" x2="{right}" y2="{bottom}"/>',
         f'<line class="axis" x1="{left}" y1="{bottom}" x2="{left}" y2="{top}"/>',
@@ -99,31 +99,31 @@ def render_defect_curve(report: dict[str, object]) -> str:
         body.append(_text(x, y-10, row["repaired_target_macrostates"], 12))
         body.append(_text(x, bottom+24, row["module_count"], 12))
     body.append(f'<polyline class="thin" points="{" ".join(points)}"/>')
-    body.append(_text((left+right)/2, 456, "independently exposed target distinctions (m)", 15))
+    body.append(_text((left+right)/2, 416, "independently exposed target distinctions (m)", 15))
     body.append(_text(18, (top+bottom)/2, "repaired states", 15, "start"))
-    body.append(_text(585, 75, "verified family: |Q*| = 2^m + 1", 14))
+    body.append(_text(585, 45, "verified family: |Q*| = 2^m + 1", 14))
     return _svg(width, height, "\n".join(body))
 
 
 def render_history(report: dict[str, object]) -> str:
     history = report["history"]
-    body = [_text(450, 32, "Route coherence and minimum history completion", 20)]
+    body: list[str] = []
     for offset, label in ((0, "coherent"), (450, "incoherent")):
-        body.append(f'<circle class="fiber" cx="{100+offset}" cy="120" r="30"/>')
-        body.append(f'<circle class="fiber" cx="{240+offset}" cy="75" r="30"/>')
-        body.append(f'<circle class="fiber" cx="{240+offset}" cy="165" r="30"/>')
-        body.append(f'<circle class="fiber" cx="{380+offset}" cy="120" r="30"/>')
+        body.append(f'<circle class="fiber" cx="{100+offset}" cy="90" r="30"/>')
+        body.append(f'<circle class="fiber" cx="{240+offset}" cy="45" r="30"/>')
+        body.append(f'<circle class="fiber" cx="{240+offset}" cy="135" r="30"/>')
+        body.append(f'<circle class="fiber" cx="{380+offset}" cy="90" r="30"/>')
         body.extend([
-            f'<line class="thin" x1="130" y1="110" x2="210" y2="82" transform="translate({offset},0)"/>',
-            f'<line class="thin" x1="130" y1="130" x2="210" y2="158" transform="translate({offset},0)"/>',
-            f'<line class="thin" x1="270" y1="82" x2="350" y2="110" transform="translate({offset},0)"/>',
-            f'<line class="thin" x1="270" y1="158" x2="350" y2="130" transform="translate({offset},0)"/>',
+            f'<line class="thin" x1="130" y1="80" x2="210" y2="52" transform="translate({offset},0)"/>',
+            f'<line class="thin" x1="130" y1="100" x2="210" y2="128" transform="translate({offset},0)"/>',
+            f'<line class="thin" x1="270" y1="52" x2="350" y2="80" transform="translate({offset},0)"/>',
+            f'<line class="thin" x1="270" y1="128" x2="350" y2="100" transform="translate({offset},0)"/>',
         ])
-        body.append(_text(240+offset, 225, label, 16))
-    body.append(_text(225, 270, "one route-independent repair", 14))
-    body.append(_text(675, 270, f"requires {history['minimum_history_modes']} history modes", 14))
-    body.append(_text(675, 305, f"history-aware states = {history['history_aware_label_count']}", 14))
-    return _svg(900, 350, "\n".join(body))
+        body.append(_text(240+offset, 195, label, 16))
+    body.append(_text(225, 240, "one route-independent repair", 14))
+    body.append(_text(675, 240, f"requires {history['minimum_history_modes']} history modes", 14))
+    body.append(_text(675, 275, f"history-aware states = {history['history_aware_label_count']}", 14))
+    return _svg(900, 310, "\n".join(body))
 
 
 def render_all() -> tuple[Path, Path, Path]:
