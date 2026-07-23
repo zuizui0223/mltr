@@ -19,6 +19,10 @@ def test_submission_figures_render_from_verified_report(tmp_path, monkeypatch):
         text = path.read_text(encoding="utf-8")
         assert text.startswith("<svg")
         assert "</svg>" in text
-    assert "transport defect = 1 macrostate" in outputs[0].read_text(encoding="utf-8")
+    local_split = outputs[0].read_text(encoding="utf-8")
+    assert "Minimal source-relative repair" in local_split
+    assert "transport defect = 1 macrostate" in local_split
+    assert "Decision reversal" in local_split
+    assert "The inherited law treats A and B as tied" in local_split
     assert "2^m + 1" in outputs[1].read_text(encoding="utf-8")
     assert "requires 2 history modes" in outputs[2].read_text(encoding="utf-8")
