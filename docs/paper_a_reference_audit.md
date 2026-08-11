@@ -13,9 +13,26 @@ Use these for claims that lumpability concerns exact aggregation of a specified 
 
 - Milner (1989), *Communication and Concurrency*: standard process-theoretic treatment of bisimulation.
 - Larsen and Skou (1991), “Bisimulation through Probabilistic Testing”: probabilistic bisimulation baseline.
-- Paige and Tarjan (1987), “Three Partition Refinement Algorithms”: coarsest-partition refinement machinery.
+- Paige and Tarjan (1987), “Three Partition Refinement Algorithms”: the relational coarsest partition problem, **posed for an arbitrary initial partition**.
+- Givan, Dean and Greig (2003), “Equivalence Notions and Model Minimization in Markov Decision Processes”: **the coarsest homogeneous refinement of any partition of the state space**, in a stochastic setting strictly containing Paper A's deterministic one.
+- Li, Walsh and Littman (2006), “Towards a Unified Theory of State Abstraction for MDPs”: taxonomy of abstractions by what each preserves.
+- Ravindran and Barto (2003), “SMDP Homomorphisms”: maps between distinct decision processes.
 
-Use these when explicitly crediting behavioral equivalence and refinement algorithms as existing machinery. The Paper A claim must remain restricted to initialization by carried source labels and source-relative minimality.
+**Correction to an earlier version of this audit.** This document previously instructed that the Paper A claim be “restricted to initialization by carried source labels and source-relative minimality.” That restriction does not establish novelty, because refinement from an arbitrary initial partition is exactly what Paige–Tarjan and Givan–Dean–Greig solve. The unique coarsest refinement of a given partition is **established prior art and must be cited as such**, not credited as machinery while the theorem is presented as new.
+
+The defensible contribution is therefore relocated to three places:
+
+1. the construction of the initial partition by transporting an accepted source law across a declared relation between non-coinciding state spaces (contrast with homomorphisms, where dynamics preservation is assumed rather than tested);
+2. the reading of the inherited-to-repaired difference as an ecological quantity; and
+3. path-label coherence and minimum history completion, for which no direct counterpart in the abstraction literature has been identified.
+
+Item 3 is the only headline result with a plausible claim to mathematical novelty and should carry corresponding weight in the manuscript.
+
+## Ecological model transferability
+
+- Yates et al. (2018), “Outstanding Challenges in the Transferability of Ecological Models”, *TREE* 33(10):790–802: expert assessment establishing transferability as a recognized open problem in ecology.
+
+Use this to establish **importance**, not gap. The twelve listed challenges are predominantly statistical (predictive accuracy under novel conditions, data quality, model complexity, uncertainty quantification). Paper A addresses a structural failure that is not among them, and the manuscript must say so explicitly rather than implying that it answers the listed challenges.
 
 ## Transportability
 
@@ -49,7 +66,8 @@ Use these for iterative decision-making, learning through management, and changi
 
 ## Guardrails
 
-- No citation should be used to claim that source-relative transport or minimal inherited repair is established prior art.
-- Partition refinement must be described as established machinery.
+- The coarsest refinement of a carried partition **is** established prior art and must be cited to Paige–Tarjan and Givan–Dean–Greig at every point where the repair theorem is stated. Do not present it as a new theorem, and do not defend it by describing refinement as "machinery" while claiming the constrained object is new.
+- Novelty claims are confined to the transport construction, the ecological reading of the defect, and path coherence / minimum history completion.
+- Yates et al. supports importance only. Do not cite it as evidence that the structural question is unsolved.
 - “Transport defect” remains a definition tied to the unique repair, not a literature-backed universal ecological effect size.
 - The plant–pollinator management reversal remains a finite worked example, not an empirical claim about a particular species or restoration programme.
