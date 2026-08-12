@@ -35,11 +35,11 @@ This is best described as a theory of ecological state representation for manage
 
 **Consequence:** neither targeted monitoring nor linking information to management decisions is new in general. Paper A's role is upstream: diagnose when the inherited state definition itself is no longer sufficient and specify the state pairs a monitoring design must resolve.
 
-### Historical formalisms
+### Historical and path-sensitive formalisms
 
-History-preserving bisimulation and related causal-history equivalences are established formal topics; Montanari & Pistore (1997) provide a concrete baseline.
+History-preserving bisimulation and related causal-history equivalences are established formal topics; Montanari & Pistore (1997) provide a concrete baseline. Additional searches also locate broad work on path semantics, commutativity conditions, and refinement.
 
-**Consequence:** Paper A must not claim invention of history-sensitive state representations. Its scoped result concerns equality or disagreement of complete terminal label maps carried by externally declared ecological replacement routes.
+**Consequence:** Paper A must not claim invention of history-sensitive state representations or path consistency. Its route result is a scoped closure statement for complete terminal label maps carried by externally declared ecological replacement routes.
 
 ## Defensible contribution hierarchy
 
@@ -70,13 +70,25 @@ The plant--pollinator example now includes an illustrative probability/cost laye
 
 A route-independent inherited interface exists exactly when all declared root-to-terminal routes induce the same complete terminal carried map. If not, one immutable context per distinct carried map is necessary before exact refinement.
 
-This is the only component that currently retains a plausible **scoped mathematical-novelty** claim after adversarial review. The claim must remain explicitly scoped against the wider history-sensitive formal literature.
+Keep this as a useful **scoped formal closure result**, not as the paper's mathematical-priority claim. Its logic is elementary enough that publication value should not depend on asserting that no analogous result exists elsewhere.
+
+## Where the novelty now lives
+
+The novelty claim is **ecological and integrative**:
+
+- a state classification already embedded in monitoring/management is treated as an inherited scientific object whose adequacy can expire;
+- structural failure is separated from statistical transfer error;
+- an exact obstruction is translated into a concrete requirement for monitoring redesign;
+- representation complexity is separated from measurement cost and management consequence;
+- route history is retained only when it changes the present operational meaning.
+
+No single mathematical ingredient needs to be advertised as a new general theorem for this contribution to stand.
 
 ## Safe novelty statement for abstract / cover letter
 
-> Existing aggregation, partition-refinement, and state-abstraction-transfer theories provide the formal machinery used here. We organize these ingredients around a different ecological problem: whether a state classification already embedded in a management and monitoring workflow remains sufficient after structural change. The framework audits the inherited interface against target outputs and interventions, returns a local hidden distinction when reuse fails, converts the least exact repair into a monitoring requirement, separates representation complexity from decision consequence, and identifies when replacement-route context is unavoidable.
+> Existing aggregation, partition-refinement, state-abstraction-transfer, monitoring, and decision-analysis theories provide the ingredients used here. We organize them around a different ecological problem: whether a state classification already embedded in a management and monitoring workflow remains sufficient after structural change. The framework audits the inherited interface against target outputs and interventions, returns a local hidden distinction when reuse fails, converts the least exact repair into a monitoring requirement, separates representation complexity from decision consequence, and identifies when replacement-route context is unavoidable.
 
-Avoid saying that coarsest refinement, state-abstraction transfer, targeted monitoring, value of information, or history-sensitive equivalence is new.
+Avoid saying that coarsest refinement, state-abstraction transfer, targeted monitoring, value of information, history-sensitive equivalence, or path consistency is new in general.
 
 ## Journal strategy
 
