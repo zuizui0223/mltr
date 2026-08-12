@@ -53,22 +53,24 @@ The probabilities and costs are illustrative sensitivity values, not empirical e
 3. route coherence and minimum carried-map context;
 4. probabilistic decision-reversal region for the illustrative plant–pollinator example.
 
-## Verification completed 2026-08-12
+## Final verification completed 2026-08-12
 
-Scientific/build commit `38e0353e72743841412cd7465982d018e333bae0`:
+Final manuscript/supplement head `bc40b4d28cb997da34c5239b0ce8d207d27e85a3`:
 
 - CI: pass;
 - Transport-core reproducibility: pass;
 - Manuscript build: pass;
-- main and supplement compile;
-- four SVG figures are generated and converted;
-- no undefined citations in the successful build;
+- main manuscript: 12 pages;
+- supplementary manuscript: 9 pages;
+- four SVG figures generated and converted;
+- no undefined citations in the successful main build;
 - abstract: 226 words, within the journal's 150--250-word range;
-- 12-page main PDF rendered and inspected page by page: no clipping, overlap, broken glyphs, or missing figures.
+- main and supplement PDFs rendered and inspected page by page: no clipping, overlap, broken glyphs, or missing figures;
+- supplement title, proof language, algorithms, reproducibility section, and examples all use the same decision-sufficiency / prior-art boundary as the main paper.
 
 The earlier manuscript failure was traced to a hard-coded three-figure conversion loop after Figure 4 was added. The workflow now derives the referenced SVG list from the manuscript, preventing recurrence of that failure mode.
 
-Minor generic-LaTeX box warnings remain but are not visually damaging; they can be handled during final Springer-template migration.
+Remaining TeX warnings are minor and visually harmless in the generic `article` layout: underfull boxes in the compact related-work table, one approximately 6.9-pt overfull main-text heading, and one approximately 0.21-pt overfull supplementary line. These can be removed during final Springer-template migration rather than by destabilizing the scientific draft.
 
 ## Current stop rule for theorem expansion
 
@@ -86,7 +88,6 @@ Otherwise prioritize manuscript readability, supervisor review, bibliography dis
 Scientific/editorial:
 
 - supervisor review of the ecological framing;
-- decide whether the conditional-information and monitoring-realization propositions remain in the main text or move to the supplement;
 - final Springer template/caption styling and removal of minor box warnings.
 
 Author-supplied:
@@ -101,4 +102,4 @@ Author-supplied:
 
 ## Current verdict
 
-The repository is in manuscript-completion mode, not theorem-expansion mode. The current manuscript is technically ready for supervisor scientific review. Formal journal submission should wait for author metadata, declarations, archival DOI/Data Availability, and final journal-template decisions.
+The repository is in manuscript-completion mode, not theorem-expansion mode. The current main manuscript and supplement are technically ready for supervisor scientific review. Formal journal submission should wait for author metadata, declarations, archival DOI/Data Availability, and final journal-template decisions.
