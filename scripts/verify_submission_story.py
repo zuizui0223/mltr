@@ -1,8 +1,9 @@
-"""Submission-facing structural-change analysis for the combined CCOC–MLTR paper."""
+"""Submission-facing structural-change analysis for Paper A."""
 
 from __future__ import annotations
 
 import json
+import math
 from pathlib import Path
 
 from ext_transport.defect_witnesses import (
@@ -17,6 +18,65 @@ from ext_transport.path_witnesses import (
 
 ROOT = Path(__file__).resolve().parents[1]
 REPORT = ROOT / "artifacts" / "submission_story_report.json"
+
+
+def _entropy(probabilities: tuple[float, ...]) -> float:
+    return -sum(p * math.log2(p) for p in probabilities if p > 0.0)
+
+
+def _uniform_conditional_repair_information(
+    carried_labels: tuple[int, ...],
+    repaired_labels: tuple[int, ...],
+) -> float:
+    """Return H(repaired | carried) under a uniform microstate distribution."""
+    count = len(carried_labels)
+    if count == 0 or len(repaired_labels) != count:
+        raise ValueError("carried and repaired labels must have the same positive length")
+    total = 0.0
+    for carried in sorted(set(carried_labels)):
+        members = [i for i, label in enumerate(carried_labels) if label == carried]
+        repaired_counts: dict[int, int] = {}
+        for index in members:
+            repaired = repaired_labels[index]
+            repaired_counts[repaired] = repaired_counts.get(repaired, 0) + 1
+        conditional = tuple(value / len(members) for value in repaired_counts.values())
+        total += (len(members) / count) * _entropy(conditional)
+    return total
+
+
+def _decision_reversal_example() -> dict[str, object]:
+    benefit = 1.0
+    cost_a = 0.20
+    cost_b = 0.35
+    success_a = 0.25
+    success_b = 0.80
+    pooled_success = (success_a + success_b) / 2.0
+    inherited_a = benefit * pooled_success - cost_a
+    inherited_b = benefit * pooled_success - cost_b
+    repaired_a = benefit * success_a - cost_a
+    repaired_b = benefit * success_b - cost_b
+    inherited_choice = "A" if inherited_a >= inherited_b else "B"
+    repaired_choice = "A" if repaired_a >= repaired_b else "B"
+    true_value_of_inherited_choice = repaired_a if inherited_choice == "A" else repaired_b
+    true_value_of_repaired_choice = repaired_a if repaired_choice == "A" else repaired_b
+    return {
+        "benefit": benefit,
+        "cost_a": cost_a,
+        "cost_b": cost_b,
+        "success_a": success_a,
+        "success_b": success_b,
+        "pooled_success": pooled_success,
+        "inherited_expected_net_a": inherited_a,
+        "inherited_expected_net_b": inherited_b,
+        "repaired_expected_net_a": repaired_a,
+        "repaired_expected_net_b": repaired_b,
+        "inherited_choice": inherited_choice,
+        "repaired_choice": repaired_choice,
+        "decision_regret": true_value_of_repaired_choice - true_value_of_inherited_choice,
+        "reversal_threshold_delta_p": (cost_b - cost_a) / benefit,
+        "observed_delta_p": success_b - success_a,
+        "interpretation": "illustrative decision analysis; probabilities and costs are not empirical estimates",
+    }
 
 
 def build_report(max_module_count: int = 6) -> dict[str, object]:
@@ -40,18 +100,24 @@ def build_report(max_module_count: int = 6) -> dict[str, object]:
     coherent = coherent_defect_diamond_witness()
     incoherent = incoherent_label_diamond_witness()
     augmented = incoherent_history_augmentation_witness()
+    carried = tuple(local.carried_labels)
+    repaired = tuple(local.refinement.refined_labels)
 
     return {
-        "schema_version": 1,
-        "paper_claim": "structural change preserves an inherited macro-law exactly, forces a unique source-relative repair, or requires minimum history context",
+        "schema_version": 2,
+        "paper_claim": "audit whether an inherited ecological state classification remains decision-sufficient after declared structural change and identify the least distinction required when it does not",
         "local_split": {
-            "carried_labels": local.carried_labels,
-            "repaired_labels": local.refinement.refined_labels,
+            "carried_labels": carried,
+            "repaired_labels": repaired,
             "source_macrostates": local.source_macrostate_count,
             "target_macrostates": local.target_macrostate_count,
             "transport_defect_states": local.transport_defect_states,
             "fiber_split_profile": local.refinement.fiber_split_profile,
+            "uniform_conditional_repair_information_bits": round(
+                _uniform_conditional_repair_information(carried, repaired), 12
+            ),
         },
+        "decision_reversal": _decision_reversal_example(),
         "accumulating_defect": accumulation,
         "history": {
             "coherent_path_count": len(coherent.paths),
@@ -64,9 +130,11 @@ def build_report(max_module_count: int = 6) -> dict[str, object]:
             "history_aware_label_count": augmented.history_aware_macrostate_count,
         },
         "submission_interpretation": {
-            "headline_result": "coarsest source-relative exact repair",
-            "quantitative_result": "transport defect grows with independently exposed target distinctions",
-            "closing_result": "path coherence yields one repair; incoherence has a minimum finite history completion",
+            "headline_result": "ecological decision-sufficiency audit of an inherited state classification",
+            "repair_result": "established coarsest-refinement machinery returns the least exact distinction once the carried interface fails",
+            "measurement_result": "separating witnesses specify which distinctions candidate monitoring variables must resolve",
+            "decision_result": "structural repair complexity is distinct from decision regret; an illustrative pollinator example produces a priority reversal",
+            "closing_result": "path coherence yields one route-independent interface; incoherence requires minimum immutable carried-map context",
         },
     }
 
