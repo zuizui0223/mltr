@@ -40,11 +40,12 @@ This audit maps the manuscript's boundary claims to verified prior work. It is d
 
 Use Yates et al. to establish importance, not to claim that Paper A solves the twelve challenges in that review. Those challenges are largely statistical; the present failure can occur even with perfect knowledge of the declared source and target systems.
 
-## History-sensitive formal theories
+## History-sensitive and path-consistency formal theories
 
 - Montanari and Pistore (1997): minimal transition systems for history-preserving bisimulation, representing a broad formal literature in which past causal structure can be retained in behavioral equivalence.
+- Additional adversarial searches found broad literatures on history-sensitive equivalence, commutativity conditions, refinement, and path-based semantics. None of the sources reviewed gave the exact ecological object used here -- externally declared replacement routes carrying source label maps to a common terminal system -- but lack of a direct match is not a basis for a strong mathematical-novelty claim.
 
-**Boundary.** The words "history" and "path" are not novel. Paper A's history result concerns a different object: several externally declared replacement routes can carry different source label maps to the same terminal system. The manuscript should claim only the specific route-independence criterion and minimum number of immutable carried-map contexts. We found no direct counterpart for that exact construction in the sources reviewed, but this is a scoped literature finding, not proof of absence.
+**Boundary.** The words "history," "path," "coherence," and "minimum context" are not novel. The route criterion in Paper A is a scoped formal closure statement: one route-independent carried interface exists when the complete terminal carried maps agree, and incompatible maps require distinct immutable contexts before exact refinement.
 
 ## What Paper A may claim
 
@@ -54,16 +55,16 @@ The safest contribution statement is:
 2. use established refinement machinery to return the least state distinction required once the inherited interface fails;
 3. translate separating witnesses into requirements for candidate monitoring variables;
 4. separate structural repair complexity from distribution-sensitive information, monitoring cost, and decision regret; and
-5. characterize when multiple declared replacement routes admit one route-independent carried interface and when immutable history context is necessary.
+5. integrate route consistency into the same audit so that historical context is retained only when alternative declared replacement routes assign incompatible operational meanings.
 
-Only item 5 currently has a plausible claim to mathematical novelty. Items 1--4 are best presented as a new ecological organization and interpretation of established formal and decision-theoretic ingredients.
+**Do not sell any one of these as a standalone new generic mathematical theorem.** The defensible novelty is the ecological problem formulation and the integration of established formal ingredients into a management-state audit with explicit monitoring and decision consequences. Item 5 remains a useful scoped formal result, but its proof is elementary enough that the paper should not depend on a claim of mathematical priority for publication value.
 
 ## Source-verification notes added 2026-08-12
 
 - Walsh--Li--Littman (2006) was verified from the author's publication page and the workshop paper itself; its abstract explicitly states that it provides a general treatment and algorithm for transferring state abstractions in MDPs.
 - Jones et al. (2023) was verified from the publisher page; it explicitly develops targeted monitoring from a pre-existing state-and-transition model by selecting variables that distinguish states and thresholds.
 - Canessa et al. (2015) was verified from the publisher page; it defines value of information as the expected improvement in management outcomes from additional information and emphasizes dependence on actions, objectives, and information quality.
-- The history novelty search found a substantial history-preserving bisimulation literature, including Montanari--Pistore (1997). This is why the manuscript now scopes its history claim to externally declared replacement routes and carried terminal maps.
+- The history/path search found a substantial history-preserving and path-sensitive formal literature, including Montanari--Pistore (1997), as well as work on commutativity/refinement. This is why the manuscript scopes the route result narrowly and does not advertise it as the primary novelty.
 
 ## Guardrails
 
@@ -73,4 +74,5 @@ Only item 5 currently has a plausible claim to mathematical novelty. Items 1--4 
 - If a target-state distribution is supplied, conditional repair information may be reported separately as H(Q* | C).
 - Candidate monitoring variables and their costs define a separate minimum realization problem; decision values define a separate regret/VoI problem.
 - The plant--pollinator case is an illustrative finite management example. Any probabilities or costs introduced for sensitivity analysis must be labeled illustrative, not empirical.
-- History-preserving bisimulation and related causal-history formalisms exist; Paper A's scoped claim is about externally declared replacement routes and carried terminal label maps, not the invention of history-sensitive equivalence.
+- History-preserving bisimulation and related causal-history formalisms exist; Paper A's scoped route result is about externally declared replacement routes and carried terminal label maps, not the invention of history-sensitive equivalence.
+- The cover letter and abstract should lead with the ecological management-state problem, not with claims of a new formal algorithm or new general mathematics.
