@@ -27,6 +27,7 @@ def _svg(width: int, height: int, body: str) -> str:
         '<style>text{font-family:Arial,sans-serif;fill:#111} .axis{stroke:#111;stroke-width:1.5} '
         '.thin{stroke:#555;stroke-width:1.2;fill:none} .box{fill:#fff;stroke:#111;stroke-width:1.5} '
         '.fiber{fill:#ececec;stroke:#111;stroke-width:1.2} .decision{fill:#f7f7f7;stroke:#111;stroke-width:1.5} '
+        '.shade{fill:#efefef;stroke:none} .dash{stroke:#777;stroke-width:1.2;stroke-dasharray:5,5;fill:none} '
         '.arrow{stroke:#111;stroke-width:1.5;fill:none;marker-end:url(#arrowhead)}</style>\n'
         '<defs><marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">'
         '<polygon points="0 0, 10 3.5, 0 7" fill="#111"/></marker></defs>\n'
@@ -42,7 +43,7 @@ def _text(x: float, y: float, value: object, size: int = 15, anchor: str = "midd
 
 
 def render_local_split(report: dict[str, object]) -> str:
-    """Show a readable ecological pathway from turnover to decision reversal."""
+    """Show the ecological pathway from structural change to a monitoring repair."""
     local = report["local_split"]
     carried = tuple(local["carried_labels"])
     repaired = tuple(local["repaired_labels"])
@@ -52,9 +53,9 @@ def render_local_split(report: dict[str, object]) -> str:
         (80, 30, "1. Structural change", "Dominant pollinator is lost", "community interaction structure changes", "box"),
         (540, 30, "2. Inherited classification", "Sites A and B remain grouped", f"carried labels: {carried}", "decision"),
         (540, 200, "3. New intervention", "Competitor removal becomes legal", "the action tests substitute-pollinator access", "box"),
-        (80, 200, "4. Local obstruction", "Same inherited label", "but A fails and B retains pollination response", "box"),
-        (80, 370, "5. Minimal source-relative repair", f"split only the exposed class: {carried} → {repaired}", f"transport defect = {local['transport_defect_states']} macrostate", "box"),
-        (540, 370, "6. Decision reversal", "Old rule: prioritize cheaper Site A", "Repaired rule: prioritize responsive Site B", "decision"),
+        (80, 200, "4. Decision-sufficiency failure", "Same inherited label", "but A and B have different intervention successors", "box"),
+        (80, 370, "5. Least exact distinction", f"standard refinement gives: {carried} → {repaired}", f"structural defect = {local['transport_defect_states']} macrostate", "box"),
+        (540, 370, "6. Monitoring implication", "Measure substitute-response capacity", "then reevaluate restoration priority", "decision"),
     ]
 
     for x, y, title, line1, line2, css_class in boxes:
@@ -73,8 +74,8 @@ def render_local_split(report: dict[str, object]) -> str:
 
     body.append('<rect class="fiber" x="180" y="540" width="640" height="88" rx="12"/>')
     body.append(_text(500, 569, "Management consequence", 16))
-    body.append(_text(500, 597, "The inherited law treats A and B as tied; the repaired law recognizes only B as recoverable.", 14))
-    body.append(_text(500, 619, "The theorem changes the decision by identifying exactly one missing ecological distinction.", 13))
+    body.append(_text(500, 597, "The inherited state hides a difference that matters under the target intervention.", 14))
+    body.append(_text(500, 619, "The audit returns the least state distinction that a monitoring design must recover.", 13))
 
     return _svg(1000, 660, "\n".join(body))
 
@@ -102,6 +103,7 @@ def render_defect_curve(report: dict[str, object]) -> str:
     body.append(_text((left+right)/2, 416, "independently exposed target distinctions (m)", 15))
     body.append(_text(18, (top+bottom)/2, "repaired states", 15, "start"))
     body.append(_text(585, 45, "verified family: |Q*| = 2^m + 1", 14))
+    body.append(_text(585, 68, "structural complexity only: not monitoring cost or regret", 12))
     return _svg(width, height, "\n".join(body))
 
 
@@ -120,19 +122,68 @@ def render_history(report: dict[str, object]) -> str:
             f'<line class="thin" x1="270" y1="128" x2="350" y2="100" transform="translate({offset},0)"/>',
         ])
         body.append(_text(240+offset, 195, label, 16))
-    body.append(_text(225, 240, "one route-independent repair", 14))
-    body.append(_text(675, 240, f"requires {history['minimum_history_modes']} history modes", 14))
+    body.append(_text(225, 240, "one route-independent carried interface", 14))
+    body.append(_text(675, 240, f"requires {history['minimum_history_modes']} carried-map contexts", 14))
     body.append(_text(675, 275, f"history-aware states = {history['history_aware_label_count']}", 14))
     return _svg(900, 310, "\n".join(body))
 
 
-def render_all() -> tuple[Path, Path, Path]:
+def render_decision_reversal(report: dict[str, object]) -> str:
+    """Show where the repaired two-site decision prefers Site B."""
+    decision = report["decision_reversal"]
+    width, height = 760, 520
+    left, right, top, bottom = 95, 700, 45, 430
+    threshold = float(decision["reversal_threshold_delta_p"])
+
+    def px(value: float) -> float:
+        return left + (right - left) * value
+
+    def py(value: float) -> float:
+        return bottom - (bottom - top) * value
+
+    body: list[str] = [
+        f'<line class="axis" x1="{left}" y1="{bottom}" x2="{right}" y2="{bottom}"/>',
+        f'<line class="axis" x1="{left}" y1="{bottom}" x2="{left}" y2="{top}"/>',
+    ]
+
+    boundary_start_x = 0.0
+    boundary_start_y = threshold
+    boundary_end_x = 1.0 - threshold
+    boundary_end_y = 1.0
+    body.append(
+        f'<polygon class="shade" points="{px(boundary_start_x):.1f},{py(boundary_start_y):.1f} '
+        f'{px(boundary_end_x):.1f},{py(boundary_end_y):.1f} {px(0.0):.1f},{py(1.0):.1f}"/>'
+    )
+    body.append(
+        f'<line class="thin" x1="{px(boundary_start_x):.1f}" y1="{py(boundary_start_y):.1f}" '
+        f'x2="{px(boundary_end_x):.1f}" y2="{py(boundary_end_y):.1f}"/>'
+    )
+
+    for tick in (0.0, 0.25, 0.5, 0.75, 1.0):
+        body.append(f'<line class="thin" x1="{px(tick):.1f}" y1="{bottom}" x2="{px(tick):.1f}" y2="{bottom+6}"/>')
+        body.append(_text(px(tick), bottom + 24, f"{tick:.2g}", 11))
+        body.append(f'<line class="thin" x1="{left-6}" y1="{py(tick):.1f}" x2="{left}" y2="{py(tick):.1f}"/>')
+        body.append(_text(left - 12, py(tick) + 4, f"{tick:.2g}", 11, "end"))
+
+    point_x = px(float(decision["success_a"]))
+    point_y = py(float(decision["success_b"]))
+    body.append(f'<circle cx="{point_x:.1f}" cy="{point_y:.1f}" r="6" fill="#111"/>')
+    body.append(_text(point_x + 12, point_y - 10, "illustrative case", 12, "start"))
+    body.append(_text(450, 92, f"Site B preferred when p_B - p_A > {threshold:.2f}", 14))
+    body.append(_text(450, 116, "shaded region: repaired classification reverses the cheap-site rule", 12))
+    body.append(_text((left + right) / 2, 492, "Site A intervention success probability (p_A)", 14))
+    body.append(_text(22, (top + bottom) / 2, "p_B", 14, "start"))
+    return _svg(width, height, "\n".join(body))
+
+
+def render_all() -> tuple[Path, Path, Path, Path]:
     report = _report()
     ARTIFACTS.mkdir(parents=True, exist_ok=True)
     outputs = (
         (ARTIFACTS / "figure1_local_split.svg", render_local_split(report)),
         (ARTIFACTS / "figure2_transport_defect.svg", render_defect_curve(report)),
         (ARTIFACTS / "figure3_history_completion.svg", render_history(report)),
+        (ARTIFACTS / "figure4_decision_reversal.svg", render_decision_reversal(report)),
     )
     for path, content in outputs:
         path.write_text(content, encoding="utf-8")
