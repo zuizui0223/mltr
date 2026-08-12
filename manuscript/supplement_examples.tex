@@ -1,17 +1,75 @@
-\section{Additional finite examples}
+\section{Additional finite and decision examples}
 
-\subsection{Accumulating transport defect}
-The verified family used in Figure~2 begins with two source macrostates. Each independently exposed binary target distinction forces a separate split inside the inherited class, producing
+\subsection{Accumulating structural repair complexity}
+The verified family used in Figure~2 begins with two inherited macrostates. Each independently exposed binary target distinction forces a separate split inside one inherited class, producing
 \[
-|Q_0|=2,\qquad |Q_1^{\min}|=2^m+1,
+|C|=2,\qquad |Q^\ast|=2^m+1,
 \]
-and therefore $\Delta_{\#}=2^m-1$. This construction is a sharp finite witness showing that repair burden can grow rapidly when target operations independently expose previously suppressed coordinates. It is not presented as an empirical ecological scaling law.
+and therefore $\Delta_{\#}=2^m-1$. This construction is a sharp finite witness showing that exact representation complexity can grow rapidly when target operations independently expose previously suppressed coordinates. It is not presented as an empirical ecological scaling law, a monitoring-cost curve, or a decision-regret curve.
 
-\subsection{Coherent replacement histories}
-When two declared replacement routes induce the same complete carried terminal map, they share one inherited terminal partition. The source-relative repair and transport defect are then route independent, so no historical mode is retained.
+\subsection{Local plant--pollinator obstruction}
+The main-text plant--pollinator example uses the smallest verified local split: inherited labels
+\[
+(0,0,1)
+\]
+are repaired to
+\[
+(0,1,2).
+\]
+The target-only intervention distinguishes the first two states because their action-conditioned successors differ after pollinator turnover. The structural audit therefore says that these states can no longer share one management state for that intervention.
 
-\subsection{Incoherent replacement histories}
-When two routes induce different complete carried terminal maps, at least one terminal configuration receives incompatible inherited meanings. A route-free carried law is impossible. Grouping histories by equality of their complete maps gives the minimum immutable context, after which exact source-relative refinement is performed within the augmented state space.
+The ecological reading assigned in the worked example is substitute-pollinator response capacity. This label is interpretive: the finite witness proves the need for a distinction in the declared model, while an empirical study would still need to identify and measure the biological variable that realizes the distinction in a real system.
 
-\subsection{Interpretation of the plant--pollinator witness}
-The main-text example uses the smallest verified local split: inherited labels $(0,0,1)$ are repaired to $(0,1,2)$. The additional state records substitute-pollinator response capacity. The example is intentionally finite and diagnostic: it demonstrates how a target-only management action can reverse a restoration priority without claiming to estimate the ecological transition structure from field data.
+\subsection{Illustrative probabilistic restoration-priority layer}
+To show how the structural split can matter for a decision without pretending to provide empirical transition estimates, the main text adds a one-step probability/cost layer. If treatment success at Site $i$ has probability $p_i$, success has benefit $B$, and treatment costs $c_i$, the repaired model prefers Site B when
+\[
+Bp_B-c_B>Bp_A-c_A,
+\]
+or equivalently
+\[
+p_B-p_A>\frac{c_B-c_A}{B}.
+\]
+
+For the illustrative values
+\[
+B=1,\qquad c_A=0.20,\qquad c_B=0.35,
+\qquad p_A=0.25,\qquad p_B=0.80,
+\]
+the inherited model pools the two sites at
+\[
+\bar p=0.525.
+\]
+It therefore assigns net values
+\[
+0.525-0.20=0.325\quad\text{and}\quad 0.525-0.35=0.175
+\]
+and chooses Site A because it is cheaper. With repaired state information, the net values are
+\[
+0.25-0.20=0.05\quad\text{and}\quad 0.80-0.35=0.45,
+\]
+so Site B is preferred. Evaluated under the repaired consequences, the inherited choice incurs one-step regret
+\[
+0.45-0.05=0.40.
+\]
+For these costs and benefit the reversal boundary is $p_B-p_A>0.15$, shown in Figure~4 of the main article.
+
+These values are deliberately illustrative. The result is a sensitivity calculation identifying which quantities a field application would need to estimate; it is not evidence about a particular plant, pollinator guild, or restoration program.
+
+\subsection{Conditional information in the local witness}
+Under a uniform distribution over the three target microstates in the local witness, the inherited class containing the first two states has probability $2/3$ and is split into two equiprobable repaired states. The third inherited class is unchanged. Hence
+\[
+H(Q^\ast\mid C)=\frac{2}{3}\times 1+\frac{1}{3}\times 0=\frac{2}{3}\text{ bit}.
+\]
+This quantity depends on a state distribution and is therefore distinct from the uniform code-length proxy $\Delta_K$.
+
+\subsection{Coherent replacement routes}
+When two declared replacement routes induce the same complete carried terminal map, they share one inherited terminal classification. The exact repair is then route independent, so route identity can be discarded for this interface. This is a statement about carried operational meaning, not about the absence of ecological legacy effects in general.
+
+\subsection{Incoherent replacement routes}
+When two routes induce different complete carried terminal maps, at least one terminal configuration receives incompatible inherited meanings. A route-free carried classification is impossible for the declared interface. Grouping routes by equality of their complete maps gives the minimum immutable carried-map context, after which exact refinement is performed within the augmented representation.
+
+In the verified two-route boundary example, the carried maps are
+\[
+(0,1)\qquad\text{and}\qquad(1,0),
+\]
+so two immutable contexts are required. The point of the example is economical history retention: keep only the route information needed to disambiguate the inherited operational state, rather than a complete historical record.
