@@ -1,120 +1,111 @@
-# Paper A novelty and journal strategy
+# Paper A novelty and journal strategy — revised 2026-08-12
 
-## Fixed claim
+## Current claim
 
-**Exact Ecological Macro-Laws under Structural Change** is not presented as a new generic bisimulation, lumpability, or partition-refinement method. Its contribution is a source-relative transport problem:
+Paper A is **not** a new generic refinement theorem and is **not** novel merely because a state abstraction is transferred from a source to a target system.
 
-> Given an already accepted exact ecological macro-law and a declared structural change between possibly non-nested systems, determine whether the inherited law remains exact; if not, return the unique coarsest exact target law constrained to preserve every inherited merge that remains valid.
+The current publication claim is:
 
-The paper then quantifies the minimum repair burden and characterizes when several declared replacement histories admit one route-independent repair.
+> Given an ecological state classification that is already used for a source management problem, audit whether it remains decision-sufficient after declared structural change and a changed intervention repertoire. If it fails, identify the local hidden distinction, use established coarsest refinement to recover the least exact state repair, translate that split into a monitoring requirement, and determine whether replacement-route context must remain explicit.
 
-## Nearest prior literatures and the boundary
+This is best described as a theory of ecological state representation for management under structural change.
 
-### 1. Lumpability and state aggregation
+## Prior art that constrains the novelty claim
 
-Classical lumpability asks whether a partition yields an exact reduced process within one fixed Markov or dynamical system. The relevant baseline includes Kemeny and Snell's finite-chain theory, subsequent exact and approximate lumpability, and state-aggregation work for controlled and probabilistic systems.
+### Exact aggregation and refinement
 
-**Overlap:** exact aggregation, quotient states, preservation of transition behavior.
+- Kemeny & Snell: lumpability baseline.
+- Paige & Tarjan (1987): coarsest stable refinement from an arbitrary initial partition.
+- Givan, Dean & Greig (2003): coarsest homogeneous refinement of any MDP state partition.
+- Li, Walsh & Littman (2006): taxonomy of MDP state abstractions.
 
-**Difference:** Paper A starts with an inherited source partition, carries it through a declared source-target relation, and seeks the coarsest exact *refinement of that inherited partition*. It does not optimize an unconstrained target-only aggregation.
+**Consequence:** finite termination, coarseness, uniqueness, and refinement from the carried partition are prior art.
 
-### 2. Bisimulation and partition refinement
+### Source-to-target abstraction transfer
 
-Bisimulation, quotient transition systems, and Paige-Tarjan-style refinement already provide coarsest behavior-preserving partitions. Modern work includes probabilistic and continuous-state bisimulation metrics, constrained bisimulations, and incremental abstraction.
+- Ravindran & Barto (2003): homomorphisms between distinct decision processes.
+- Walsh, Li & Littman (2006), *Transferring State Abstractions Between MDPs*: explicit algorithmic transfer of source abstractions to target MDPs.
 
-**Overlap:** output/action/successor stability and fixed-point refinement.
+**Consequence:** the phrase "source-to-target abstraction transfer" cannot carry novelty by itself.
 
-**Difference:** algorithmic refinement is credited as standard machinery. The novelty claim is the transport test and constrained repair relative to source semantics under structural change, including non-nested replacement relations and changes in legal operational grammar.
+### Ecological state monitoring and decision analysis
 
-### 3. Abstraction and model reduction under composition
+- Jones et al. (2023): targeted monitoring from a pre-existing state-and-transition model, including field validation and reduced indicator selection.
+- Canessa et al. (2015): value-of-information analysis for whether additional ecological information is worth collecting given actions, objectives, uncertainty, and consequences.
 
-Compositional verification, supervisory control, open systems, and modular abstraction study whether guarantees and reductions survive composition or extension.
+**Consequence:** neither targeted monitoring nor linking information to management decisions is new in general. Paper A's role is upstream: diagnose when the inherited state definition itself is no longer sufficient and specify the state pairs a monitoring design must resolve.
 
-**Overlap:** environmental interaction can invalidate an abstraction; context matters.
+### Historical formalisms
 
-**Difference:** Paper A gives an explicit finite ecological decision structure for an inherited macro-law: unchanged portability, a local operational obstruction, unique least source-relative repair, repair defect, and minimum history completion. Open composition is only a special case of the more general source-target relation.
+History-preserving bisimulation and related causal-history equivalences are established formal topics; Montanari & Pistore (1997) provide a concrete baseline.
 
-### 4. Transportability and domain adaptation
+**Consequence:** Paper A must not claim invention of history-sensitive state representations. Its scoped result concerns equality or disagreement of complete terminal label maps carried by externally declared ecological replacement routes.
 
-Causal transportability and statistical domain adaptation ask whether effects or predictors transfer between populations or environments.
+## Defensible contribution hierarchy
 
-**Overlap:** transfer across changed environments.
+### Contribution 1 — ecological decision-sufficiency audit
 
-**Difference:** Paper A is not an estimation theorem and does not infer a transport relation. It studies exact operational closure of a declared macrostate interface under outputs, legal interventions, and successors, and returns a canonical structural repair when transfer fails.
+Make an inherited state representation, rather than a newly optimized target abstraction, the object being tested. The audit asks whether outputs, legal actions, and action-conditioned successors remain uniform within inherited target classes.
 
-### 5. Ecological coarse variables, resilience classes, and model transfer
+### Contribution 2 — local obstruction as a monitoring target
 
-Ecology routinely uses functional groups, occupancy states, resilience categories, regime states, and reduced ecosystem models. Existing ecological modeling literature discusses structural uncertainty, transfer failure, and prediction under interventions.
+When the inherited state fails, return a concrete state pair and action/future that expose the missing distinction. Candidate monitoring variables must separate the obstruction pairs generated by the least exact repair.
 
-**Overlap:** ecological variables can fail after turnover or intervention.
+This translation from a formal splitter to a targeted ecological measurement requirement is the main applied bridge.
 
-**Difference:** the present paper supplies a finite necessary-and-sufficient portability criterion and a unique minimal repair, rather than only showing that models may fail or refitting an unrelated target model.
+### Contribution 3 — separate four consequences of repair
 
-## Defensible novelty statement
+Do not treat transport defect as a universal ecological burden. Report separately:
 
-Use this wording in the abstract, introduction, cover letter, and reviewer responses:
+- structural state-count / code-length defect;
+- conditional repair information `H(Q* | C)` under a target-state distribution;
+- minimum monitoring realization cost when candidate measurements and costs are supplied;
+- decision regret / downstream value of information when utilities and uncertainty are supplied.
 
-> Existing lumpability, bisimulation, and partition-refinement theories characterize exact aggregation within a specified system. We address a different constrained problem: an accepted macro-law is transported through a declared structural change, and any repair must preserve its inherited semantics. We characterize unchanged portability, prove that failure has a finite operational witness, and obtain the unique coarsest exact target refinement of the carried labels. This source-relative minimality supports a transport-defect measure and a sharp characterization of when multiple replacement histories require explicit context.
+### Contribution 4 — restoration-priority consequence
 
-Avoid claims that partition refinement, bisimulation, quotient construction, or exact aggregation are new.
+The plant--pollinator example now includes an illustrative probability/cost layer showing that a hidden state distinction can reverse restoration priority. This is a theoretical sensitivity result, not an empirical case study.
 
-## The most vulnerable claims
+### Contribution 5 — route coherence and minimum carried-map context
 
-1. **“Unique coarsest repair” may look like ordinary coarsest bisimulation.** The theorem statement and proof must make the constraint `refines the carried source labels` visible in every clause.
-2. **“Transport defect” is a definition, not a standalone theorem.** Its value comes from being tied to the unique minimal repair and verified witness families.
-3. **“History completion” can look like copying the system by path.** The main result must emphasize the necessary-and-sufficient minimum: histories share a mode exactly when their complete carried terminal maps agree.
-4. **The ecological contribution is currently conceptual.** The plant-pollinator example must show a management conclusion that changes after a target-only intervention; otherwise editors may see computer-science formalism with ecological nouns.
+A route-independent inherited interface exists exactly when all declared root-to-terminal routes induce the same complete terminal carried map. If not, one immutable context per distinct carried map is necessary before exact refinement.
 
-## Required literature groups for the manuscript
+This is the only component that currently retains a plausible **scoped mathematical-novelty** claim after adversarial review. The claim must remain explicitly scoped against the wider history-sensitive formal literature.
 
-- exact and weak lumpability; approximate aggregation;
-- strong, weak, probabilistic, and constrained bisimulation;
-- Paige-Tarjan and later partition-refinement algorithms;
-- compositional and incremental abstraction;
-- causal/statistical transportability and domain shift;
-- ecological model structural uncertainty and intervention prediction.
+## Safe novelty statement for abstract / cover letter
 
-Representative anchors include Kemeny & Snell; Paige & Tarjan; Milner; Larsen & Skou; Ferns, Panangaden & Precup; Feret et al. on lumpability abstractions; modern incremental bisimulation work; and ecological literature on structural uncertainty and unreliable intervention forecasts.
+> Existing aggregation, partition-refinement, and state-abstraction-transfer theories provide the formal machinery used here. We organize these ingredients around a different ecological problem: whether a state classification already embedded in a management and monitoring workflow remains sufficient after structural change. The framework audits the inherited interface against target outputs and interventions, returns a local hidden distinction when reuse fails, converts the least exact repair into a monitoring requirement, separates representation complexity from decision consequence, and identifies when replacement-route context is unavoidable.
 
-## Journal ranking
+Avoid saying that coarsest refinement, state-abstraction transfer, targeted monitoring, value of information, or history-sensitive equivalence is new.
+
+## Journal strategy
 
 ### First choice: Theoretical Ecology
 
-**Fit:** strongest thematic match if the paper is framed around an ecological question and the worked example is developed enough to increase ecological understanding. The journal explicitly welcomes mathematical, computational, statistical, and conceptual theory but rejects mathematics that does not advance ecology.
+**Current fit:** substantially improved. The paper now starts from an ecological state-management problem and uses formal theory to answer three ecologically legible questions:
 
-**Submission condition:** make the ecological result primary; move most formal-computer-science terminology to Methods or Supplement; add a clear paragraph explaining what field ecologists or ecological modelers can decide using the theorem.
+1. Can the old state classification still be trusted for the target intervention?
+2. If not, what ecological distinction must monitoring recover?
+3. When must historical route context remain part of the present state description?
 
-### Second choice: Ecological Modelling
+The current 12-page compiled draft keeps the finite mathematics visible but makes the management and monitoring interpretation primary.
 
-**Fit:** very good and lower-risk. It explicitly publishes new mathematical models, systems analysis, ecological theory, reproducibility, and environmental-management applications.
+### Immediate fallback: Ecological Modelling
 
-**Submission condition:** emphasize the framework as a model-audit and model-transfer method, retain executable examples, and show how transport defect or repair affects a management variable.
+Still a strong alternative if Theoretical Ecology judges the exact finite formalism too computer-science-adjacent. The model-audit and reproducibility framing would transfer naturally.
 
-### Ambitious alternative: Journal of the Royal Society Interface
+### Not the first move: Methods in Ecology and Evolution
 
-**Fit:** plausible only after strengthening the bridge between formal systems theory and ecology and demonstrating broader biological significance.
+The manuscript now has a clearer monitoring-design bridge, but it still lacks multi-system empirical benchmarking and a user-facing field workflow of the kind that would make MEE the natural first venue.
 
-**Risk:** the current single finite example may be judged too abstract or too narrow.
+## Submission stop rule
 
-### Mathematical fallback: Bulletin of Mathematical Biology
+Do not expand the theorem inventory simply to make the paper look more mathematical. Add theory only if it closes a visible logical gap, changes the ecological conclusion, or survives a direct prior-art challenge.
 
-**Fit:** appropriate if the theorem package becomes the primary product and the ecological interpretation remains substantial.
+The remaining work is manuscript endgame:
 
-**Risk:** the result may be viewed as more formal-methods/state-reduction than mathematical biology unless linked to a genuine biological modeling class.
-
-### Not first choice now: Methods in Ecology and Evolution
-
-MEE accepts conceptual and analytical methods and values reproducible uptake, but the present manuscript lacks a broad empirical workflow, benchmarking suite, and user-facing validation across real ecological problems. It becomes realistic only after adding several realistic case studies or a reusable diagnostic tool with clear adoption potential.
-
-## Final recommendation
-
-Submit first to **Theoretical Ecology** after one ecological-strengthening revision. Use **Ecological Modelling** as the immediate transfer target. Do not lead with MEE or PLOS Computational Biology in the current form.
-
-## Revision gate before submission
-
-- add a related-work section using the five boundaries above;
-- state the carried-label constraint in the main repair theorem;
-- add one table contrasting fixed-system aggregation, statistical transport, and source-relative repair;
-- develop the plant-pollinator example into a complete decision workflow;
-- ensure every headline claim can be read without CCOC/MLTR terminology;
-- prepare a cover letter centered on the constrained transport problem, not on a new refinement algorithm.
+- supervisor review of the ecological framing;
+- final visual/layout polish;
+- author metadata and declarations;
+- archive/DOI and Data Availability statement;
+- final Springer template/caption decision.
