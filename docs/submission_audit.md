@@ -16,7 +16,7 @@ The publication-facing workflow is:
 
 ## Novelty boundary
 
-Established prior art now explicitly credited:
+Established prior art explicitly credited:
 
 - arbitrary-initial-partition coarsest refinement: Paige & Tarjan (1987);
 - coarsest homogeneous MDP refinement: Givan, Dean & Greig (2003);
@@ -25,15 +25,15 @@ Established prior art now explicitly credited:
 - mappings between distinct decision processes: Ravindran & Barto (2003);
 - targeted monitoring from state-and-transition models: Jones et al. (2023);
 - ecological value of information: Canessa et al. (2015);
-- history-sensitive formal equivalence: Montanari & Pistore (1997) and the wider history-preserving bisimulation literature.
+- history-sensitive formal equivalence and path-sensitive formalisms: Montanari & Pistore (1997) and adjacent literatures.
 
 The manuscript must not claim these individual constructions as new.
 
-The defensible Paper A contribution is the ecological organization of the audit, repair, monitoring implication, and route-context logic. The route-coherence/minimum-carried-map-context result remains the only component with a plausible scoped mathematical-novelty claim after the current review.
+The defensible Paper A novelty is **ecological rather than algorithmic or general-mathematical**: it organizes existing formal ingredients around a management-state audit, makes failure of an inherited classification the scientific object, translates exact separating pairs into monitoring requirements, and keeps representation complexity distinct from decision consequence. Route coherence/minimum carried-map context is retained as a scoped formal closure result, but the paper does not depend on a claim of mathematical priority for it.
 
 ## Reproducible results
 
-The submission replay now includes:
+The submission replay includes:
 
 - inherited labels `(0, 0, 1)` and least exact repair `(0, 1, 2)`;
 - structural defect of one macrostate in the local witness;
@@ -53,25 +53,41 @@ The probabilities and costs are illustrative sensitivity values, not empirical e
 3. route coherence and minimum carried-map context;
 4. probabilistic decision-reversal region for the illustrative plant–pollinator example.
 
+## Verification completed 2026-08-12
+
+Scientific/build commit `38e0353e72743841412cd7465982d018e333bae0`:
+
+- CI: pass;
+- Transport-core reproducibility: pass;
+- Manuscript build: pass;
+- main and supplement compile;
+- four SVG figures are generated and converted;
+- no undefined citations in the successful build;
+- abstract: 226 words, within the journal's 150--250-word range;
+- 12-page main PDF rendered and inspected page by page: no clipping, overlap, broken glyphs, or missing figures.
+
+The earlier manuscript failure was traced to a hard-coded three-figure conversion loop after Figure 4 was added. The workflow now derives the referenced SVG list from the manuscript, preventing recurrence of that failure mode.
+
+Minor generic-LaTeX box warnings remain but are not visually damaging; they can be handled during final Springer-template migration.
+
 ## Current stop rule for theorem expansion
 
-Do not add more general mathematics by default. Add a theorem only if it:
+Do not add more general mathematics by default. Add formal development only if it:
 
 - closes a specific logical gap in the decision-sufficiency story;
 - is required to make the monitoring interpretation correct;
 - survives a direct prior-art challenge; or
 - changes the ecological conclusion.
 
-Otherwise prioritize manuscript readability, figure inspection, bibliography verification, and submission metadata.
+Otherwise prioritize manuscript readability, supervisor review, bibliography discipline, and submission metadata.
 
 ## Remaining submission blockers
 
-Scientific/technical:
+Scientific/editorial:
 
-- verify the current reframed HEAD with CI, transport reproducibility, and manuscript build;
-- visually inspect the rebuilt four-figure PDF;
-- check that the abstract remains within the journal word limit and that all citation keys resolve;
-- decide whether the conditional-information and monitoring-realization propositions remain in the main text or move to the supplement.
+- supervisor review of the ecological framing;
+- decide whether the conditional-information and monitoring-realization propositions remain in the main text or move to the supplement;
+- final Springer template/caption styling and removal of minor box warnings.
 
 Author-supplied:
 
@@ -80,9 +96,9 @@ Author-supplied:
 - ORCID identifiers if used;
 - funding, acknowledgments, competing interests, and author contributions;
 - final archive/DOI for code and replay artifacts;
-- final Springer template/caption decision;
+- Data Availability wording tied to that archive;
 - suggested reviewers if requested by the submission system.
 
 ## Current verdict
 
-The repository is in manuscript-completion mode, not theorem-expansion mode. If the current Actions run is green and the rebuilt PDF is visually clean, the next scientific decision is supervisor review of the ecological framing rather than further formal development.
+The repository is in manuscript-completion mode, not theorem-expansion mode. The current manuscript is technically ready for supervisor scientific review. Formal journal submission should wait for author metadata, declarations, archival DOI/Data Availability, and final journal-template decisions.
