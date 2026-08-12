@@ -44,7 +44,7 @@ Because $P(x)$ is included in $\sigma_P(x)$, $T(P)$ can split blocks of $P$ but 
 
 At a fixed point $P_\ast=T(P_\ast)$, two states in the same $P_\ast$ block have identical signatures. They therefore have identical outputs, identical legal-action sets, and, for each legal action, successors in the same $P_\ast$ block. This is exactly the target exactness condition, so $P_\ast$ is exact.
 
-It remains to prove coarseness. Let $E$ be any exact target partition satisfying $E\preceq C$. We show inductively that $E\preceq P_k$ for every $k$. The base case is the assumption $E\preceq C=P_0$. Suppose $E\preceq P_k$ and $E(x)=E(x')$. Exactness of $E$ gives
+It remains to prove coarseness. Let $E$ be any exact target partition satisfying $E\preceq C$. We show inductively that $E\preceq P_k$ for every $k$. The base case is $E\preceq C=P_0$. Suppose $E\preceq P_k$ and $E(x)=E(x')$. Exactness of $E$ gives
 \[
 y(x)=y(x'),\qquad L(x)=L(x'),
 \]
@@ -80,11 +80,7 @@ If carried class $c$ contains $k_c$ repaired $Q^\ast$ blocks, then
 \end{proposition}
 
 \begin{proof}
-By the preceding proposition, every exact refinement $P$ of $C$ also refines $Q^\ast$. Therefore there is a deterministic map $f$ such that
-\[
-Q=f(P).
-\]
-Consequently
+By the preceding proposition, every exact refinement $P$ of $C$ also refines $Q^\ast$. Therefore there is a deterministic map $f$ such that $Q=f(P)$. Consequently
 \[
 H_\mu(P\mid C)
 =H_\mu(Q,P\mid C)
@@ -93,7 +89,7 @@ H_\mu(P\mid C)
 \]
 which proves the minimum-information statement.
 
-For the upper bound, conditional on $C=c$, the random variable $Q$ has at most $k_c$ possible values. Hence
+Conditional on $C=c$, the random variable $Q$ has at most $k_c$ possible values, so
 \[
 H_\mu(Q\mid C=c)\le \log_2 k_c.
 \]
@@ -101,9 +97,10 @@ Averaging over $c$ gives
 \[
 H_\mu(Q\mid C)
 =\sum_c \Pr_\mu(C=c)H_\mu(Q\mid C=c)
-\le \sum_c \Pr_\mu(C=c)\log_2 k_c.
+\le \sum_c \Pr_\mu(C=c)\log_2 k_c
+\le \log_2\max_c k_c.
 \]
-The final inequality follows because a probability-weighted average cannot exceed its largest term. Nonnegativity of conditional entropy gives the lower bound.
+Nonnegativity of conditional entropy gives the lower bound.
 \end{proof}
 
 This proposition is an information-theoretic corollary of coarsest exact repair. It is not used to claim a new general entropy theorem.
@@ -116,11 +113,7 @@ Q^\ast(x)=d_S(C(x),z_S(x))
 for every target state.
 
 \begin{proposition}[Monitoring realization criterion]
-A selected measurement set $S$ realizes $Q^\ast$ relative to $C$ if and only if every obstruction pair
-\[
-(x,x')\in E
-\]
-is separated by at least one selected measurement:
+A selected measurement set $S$ realizes $Q^\ast$ relative to $C$ if and only if every obstruction pair $(x,x')\in E$ is separated by at least one selected measurement:
 \[
 \forall (x,x')\in E\;\exists j\in S:
 \quad z_j(x)\ne z_j(x').
@@ -134,10 +127,7 @@ C(x)=C(x')
 \quad\text{and}\quad
 z_S(x)=z_S(x').
 \]
-The decoder would receive identical inputs for $x$ and $x'$ and therefore return the same repaired label, contradicting
-\[
-Q^\ast(x)\ne Q^\ast(x').
-\]
+The decoder would receive identical inputs and return the same repaired label, contradicting $Q^\ast(x)\ne Q^\ast(x')$.
 
 For sufficiency, assume every pair in $E$ is separated by at least one selected measurement. Consider two states with
 \[
@@ -145,22 +135,22 @@ C(x)=C(x')
 \quad\text{and}\quad
 z_S(x)=z_S(x').
 \]
-If their repaired labels differed, $(x,x')$ would belong to $E$, but then some selected measurement would separate them, contradicting $z_S(x)=z_S(x')$. Therefore $Q^\ast(x)=Q^\ast(x')$ whenever the inherited label and selected-measurement vector agree.
+If their repaired labels differed, $(x,x')$ would belong to $E$, but then some selected measurement would separate them, a contradiction. Therefore $Q^\ast(x)=Q^\ast(x')$ whenever the inherited label and selected-measurement vector agree.
 
 Define $d_S$ on every realized tuple $(C(x),z_S(x))$ by
 \[
 d_S(C(x),z_S(x))=Q^\ast(x).
 \]
-The preceding argument shows this definition is independent of the representative state $x$, hence well defined. Extend $d_S$ arbitrarily to tuples not realized by any target state. Then $d_S$ reconstructs $Q^\ast$ for every target state, so $S$ realizes the repair.
+The preceding argument makes this definition independent of the representative state. Extend $d_S$ arbitrarily to unrealized tuples. Then $d_S$ reconstructs $Q^\ast$ for every target state, so $S$ realizes the repair.
 \end{proof}
 
-For each measurement $j$, define the set of obstruction pairs it separates by
+For each measurement $j$, define
 \[
 A_j=\{(x,x')\in E:z_j(x)\ne z_j(x')\}.
 \]
 
 \begin{corollary}[Minimum-cost monitoring realization]
-The least-cost exact monitoring realization over the candidate library is the weighted set-cover problem
+The least-cost exact monitoring realization over the candidate library is
 \[
 \min_{S\subseteq J}\sum_{j\in S}c_j
 \quad\text{subject to}\quad
@@ -174,18 +164,18 @@ Any obstruction pair outside this union is an explicit certificate that the supp
 \end{corollary}
 
 \begin{proof}
-By the monitoring realization criterion, a selected set is feasible exactly when its measurements collectively separate every obstruction pair, which is exactly the set-cover condition. Taking the minimum of the additive acquisition costs over feasible sets gives the weighted set-cover objective. Feasibility of at least one selected set is equivalent to coverage by the full candidate library.
+By the monitoring realization criterion, a selected set is feasible exactly when its measurements collectively separate every obstruction pair, which is the set-cover condition. Minimizing additive acquisition cost over feasible sets gives weighted set cover. Feasibility of at least one selected set is equivalent to coverage by the full candidate library.
 \end{proof}
 
-This is the central bridge from the structural audit to monitoring design: the theorem says exactly what a candidate field-observation library must distinguish. It does not claim a new generic set-cover algorithm and it does not address measurement error.
+This is the central bridge from the structural audit to monitoring design. It states exactly what a candidate field-observation library must distinguish; it does not claim a new generic set-cover algorithm and it does not address measurement error.
 
 \subsection{Structural defect does not determine decision regret}
 \begin{proposition}[No universal defect--regret ordering]
-For every integer $d\ge1$ and every real $r\ge0$, there exists a finite target-state distribution, inherited classification $C$, repaired classification $Q$ refining $C$, finite management action set, and payoff function such that
+For every integer $d\ge1$ and every real $r\ge0$, there exists a finite target operational system, inherited classification $C$, coarsest exact repair $Q^\ast$, target-state distribution $\mu$, finite management action set, and payoff function such that
 \[
-|Q|-|C|=d
+|Q^\ast|-|C|=d
 \qquad\text{and}\qquad
-V_\mu(Q;u)-V_\mu(C;u)=r.
+\mathcal{R}_\mu(C,Q^\ast;u)=r.
 \]
 Consequently structural state-count defect alone provides neither a nontrivial universal upper bound nor a positive universal lower bound on decision regret, and it cannot universally rank management consequence.
 \end{proposition}
@@ -195,38 +185,43 @@ Fix $d\ge1$ and let
 \[
 X=\{x_0,x_1,\ldots,x_d\}.
 \]
-Let $C$ put all states in one inherited class, and let $Q$ assign a distinct repaired class to every state. Then
+Let $C$ put all states in one inherited class. Equip the target operational system with one legal self-loop action at every state and distinct declared outputs
 \[
-|Q|-|C|=(d+1)-1=d.
+y(x_k)=k.
 \]
+Because exact classes must have constant output, every exact refinement of $C$ must separate all $d+1$ states. Hence the coarsest exact repair $Q^\ast$ is the singleton partition and
+\[
+|Q^\ast|-|C|=(d+1)-1=d.
+\]
+
 Let the target distribution satisfy
 \[
 \mu(x_0)=\mu(x_1)=\tfrac12,
 \qquad
 \mu(x_k)=0\quad(k\ge2),
 \]
-and let the management action set be $U=\{a_0,a_1\}$. Define payoffs by
+and let the downstream management action set be $U=\{a_0,a_1\}$. Define payoffs by
 \[
-u(x_0,a_0)=2r,\qquad u(x_0,a_1)=0,
+ u(x_0,a_0)=2r,\qquad u(x_0,a_1)=0,
 \]
 \[
-u(x_1,a_0)=0,\qquad u(x_1,a_1)=2r,
+ u(x_1,a_0)=0,\qquad u(x_1,a_1)=2r,
 \]
-with arbitrary zero payoffs on the remaining zero-probability states.
+with zero payoffs on the remaining zero-probability states.
 
-Using $Q$, the decision rule chooses $a_0$ at $x_0$ and $a_1$ at $x_1$, so
+Using $Q^\ast$, the decision rule chooses $a_0$ at $x_0$ and $a_1$ at $x_1$, so
 \[
-V_\mu(Q;u)=2r.
+V_\mu(Q^\ast;u)=2r.
 \]
 Using $C$, both positive-probability states share one label and must receive the same action. Either action yields expected value $r$, so
 \[
 V_\mu(C;u)=r.
 \]
-Therefore the regret is exactly
+Therefore
 \[
-V_\mu(Q;u)-V_\mu(C;u)=r.
+\mathcal{R}_\mu(C,Q^\ast;u)=r.
 \]
-Because $r$ was arbitrary, the same structural defect can coexist with arbitrarily small, zero, or arbitrarily large regret. Choosing two different values of $d$ and reversing their choices of $r$ also directly violates any universal monotone ordering by state-count defect.
+Because $r$ was arbitrary, the same structural defect can coexist with zero, arbitrarily small, or arbitrarily large regret. Choosing two different defects and reversing their choices of $r$ directly violates any universal monotone ranking by state-count defect.
 \end{proof}
 
 This negative result concerns information structure versus decision consequence. It is compatible with value-of-information theory: once probabilities, utilities, and measurement costs are specified, those quantities should be analyzed directly rather than inferred from partition size.
