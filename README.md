@@ -1,61 +1,71 @@
-# MLTR — Macro-Law Transport and Repair
+# MLTR — Ecological State-Interface Transport and Repair
 
-MLTR is a theorem-first finite mathematical-ecology repository for one question:
+MLTR is a finite mathematical-ecology repository centered on one management question:
 
-> When species turnover, extinction, recolonization, or interaction rewiring replaces one ecological system by another rather than merely adding modules, when can an exact macro-law be transported across the replacement—and, when it cannot, what is the minimal exact repair?
+> When an ecological state classification was accepted for a source system, does it remain decision-sufficient after structural change, and what is the least additional distinction required when it does not?
 
-The project develops finite theorems for **non-nested** system changes. It does not assume that the source state space embeds into the target state space.
+The project treats turnover, extinction, recolonization, habitat reconfiguration, interaction rewiring, and changes in the available intervention repertoire as **non-nested** system changes. The source state space need not embed into the target state space.
 
-## Central results
+## Publication-facing workflow
 
-1. **Replacement transport.** A total relation between two exact projected stages preserves one common macro-law when it preserves macro labels, current output, legal-action rows, and successors.
-2. **Derived target projection.** A source projection plus a total, target-fiber-label-consistent relation constructs the target projection; target labels need not be supplied in advance.
-3. **Conservative target-only actions.** A target may add an action only when its availability and macro successor are uniform inside each derived target macro fiber.
-4. **Fiber-split obstruction.** A word newly legal after replacement refutes one proposed carried merge if it yields different target traces from two states in that fiber.
-5. **Relative exact refinement and transport defect.** Starting from the carried target partition, finite output/legal-row/successor refinement constructs the coarsest exact target interface that preserves every carried merge possible. The extra target macrostates and bits quantify the minimum repair cost for that carried macro-law.
-6. **Path-label coherence.** In a declared rooted replacement DAG, if every root-to-terminal history carries the same root macro labels to each terminal state, then the carried partition, its coarsest exact repair, and its transport defect are independent of replacement route.
-7. **Minimal history augmentation.** If declared histories carry different terminal label tuples, exactly one immutable history mode per distinct tuple is necessary and sufficient to preserve them all. Relative exact refinement on the history-sliced terminal system then gives the coarsest exact history-aware macro-law.
+1. **Carry an inherited state interface.** A declared relation maps a source classification to the target system.
+2. **Audit decision sufficiency.** States sharing an inherited target label must agree in current output, legal actions, and action-conditioned successor labels.
+3. **Return a local obstruction.** When the audit fails, a finite state pair and action/future witness the missing distinction.
+4. **Recover the least exact distinction.** Established coarsest-partition refinement is applied to the carried partition. MLTR does not claim this generic refinement construction as new.
+5. **Translate repair into monitoring requirements.** Candidate measurements must separate pairs merged by the inherited interface but split by the exact repair.
+6. **Separate consequences.** Structural repair complexity is kept distinct from distribution-sensitive information, measurement cost, and decision regret.
+7. **Retain history only when necessary.** Alternative declared replacement routes share one interface when they carry the same terminal label map; incompatible carried maps require immutable route context.
 
-## Ecological reading
+## Novelty boundary
 
-- **Source stage:** an ecological community before turnover, extinction, colonization, habitat reconfiguration, or interaction rewiring.
-- **Target stage:** the altered community, potentially with a different raw state space.
-- **Relation:** a declared correspondence between source and target finite configurations; it may be many-to-one or one-to-many.
-- **Macro-law:** a coarse ecological state description preserving all outputs and actions declared by the finite model contract.
-- **Transport defect:** the number of additional coarse ecological states required after replacement because newly possible interactions distinguish configurations that the old macro-law merged.
-- **Path-label coherence:** a condition ensuring that different declared replacement histories give one carried terminal macro-law rather than history-dependent labels.
-- **History augmentation:** the minimum finite context retaining only the path classes that carry genuinely different terminal macro labels.
+The repository explicitly does **not** claim invention of:
 
-MLTR does not infer a replacement relation, replacement history, or action grammar from field data. These are assumptions of a finite mathematical model.
+- partition refinement or coarsest stable refinement;
+- MDP bisimulation or model minimization;
+- the general idea of transferring state abstractions from source to target decision processes;
+- targeted ecological monitoring; or
+- value-of-information analysis.
 
-## Start here
+Those are established literatures and are credited in `manuscript/references.bib` and `docs/paper_a_reference_audit.md`.
 
-- [Submission audit](docs/submission_audit.md) — claim hierarchy, theorem-to-figure map, and remaining pre-submission work.
-- [Paper architecture](docs/paper_architecture.md) — recommended central claim, theorem hierarchy, Results order, and figure plan.
-- [Working Results and Discussion](docs/paper_results_discussion.md) — manuscript-facing English draft for the theorem results and interpretation.
-- [Theorem program](docs/theorem_program.md) — definitions, theorem statements, non-claims, and paper direction.
-- [Transport defect theorem](docs/transport_defect.md) — the coarsest relative exact refinement and the accumulating binary family.
-- [Path-label coherence theorem](docs/path_coherence.md) — route-independent carried labels and repair on replacement graphs.
-- [Minimal history augmentation theorem](docs/history_augmentation.md) — minimum path context and exact history-aware repair after route incoherence.
-- [CCOC provenance](docs/rach_provenance.md) — exact source assets copied from the legacy branch and what was deliberately excluded.
-- [Reproducibility](docs/reproducibility.md) — tests, deterministic JSON replay, and GitHub Actions artifact.
+The contribution is instead the organization of those ingredients around an inherited ecological management interface: audit the old state variable after declared structural change, identify the exact distinction that the target action set exposes, translate the obstruction into a monitoring requirement, and determine when replacement history changes the operational meaning of the present state.
 
-## Run
+## Submission-facing results
+
+The current Paper A replay verifies:
+
+- exact pass/fail auditing of an inherited finite state interface;
+- a local target-action obstruction and its least exact repair;
+- a sharp family showing growth of **structural** repair complexity;
+- conditional repair information for the finite local witness;
+- an illustrative probabilistic plant–pollinator priority reversal and one-step decision regret;
+- route coherence and minimum carried-map context.
+
+The plant–pollinator probabilities and costs are illustrative sensitivity values, not empirical estimates.
+
+## Reproducibility
 
 ```bash
 python -m pip install -e '.[dev]'
 pytest
 python scripts/verify_transport_core.py --write-report
+python scripts/verify_submission_story.py
+python scripts/render_submission_figures.py
 ```
 
-The last command writes `artifacts/transport_core_report.json`.
+Generated JSON reports, SVG figures, and LaTeX build products are ignored on working branches and rebuilt in GitHub Actions. Submission/release commits should archive the generated artifacts separately.
 
-## Provenance and status
+## Start here
 
-This repository was initialized from the non-nested replacement branch (`EXT-1`–`EXT-4`) of the CCOC/RACH archive. `EXT` was the development name; **MLTR** is the publication-facing repository identity. The current Python package remains `ext_transport` for compatibility with the finite replay surface.
-
-CCOC remains the frozen provenance archive. MLTR is the active workspace for the separate replacement/rewiring theorem program.
+- [Paper A manuscript](manuscript/paper_a_main.tex) — current publication-facing draft.
+- [Paper A reference audit](docs/paper_a_reference_audit.md) — adversarial novelty boundary and citation guardrails.
+- [Submission audit](docs/submission_audit.md) — claim hierarchy and pre-submission work.
+- [Paper architecture](docs/paper_architecture.md) — theorem hierarchy and figure plan.
+- [Transport defect](docs/transport_defect.md) — finite structural repair witnesses.
+- [Path coherence](docs/path_coherence.md) — route-independent carried labels and repair.
+- [History augmentation](docs/history_augmentation.md) — minimum carried-map context after route incoherence.
+- [Reproducibility](docs/reproducibility.md) — deterministic replay and Actions artifacts.
 
 ## Scope
 
-The current domain is declared finite deterministic controlled systems and finite prefix-closed action grammars. No empirical ecological data, field inference, parameter fitting, or claim that a finite certificate validates an observed ecosystem is included.
+The current formal domain is declared finite deterministic controlled systems, finite prefix-closed action grammars, finite replacement relations, and finite replacement DAGs. MLTR does not infer replacement relations, histories, actions, ecological probabilities, or field mechanisms from observations. Exactness is used as a structural benchmark; stochastic, approximate, and empirically estimated variants remain extensions.
