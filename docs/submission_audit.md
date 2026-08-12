@@ -1,85 +1,88 @@
-# MLTR submission-readiness audit
+# MLTR / Paper A submission audit
 
-## Publication-facing identity
+## Current publication claim
 
-- **Repository:** MLTR — Macro-Law Transport and Repair.
-- **Recommended article title:** *Exact Macro-Law Transport under Non-nested Ecological Replacement: Minimal Repair and Historical Context*.
-- **One-sentence thesis:** An inherited exact macro-law is not merely portable or nonportable after replacement: it can remain exact, require a uniquely minimal target refinement, remain route-independent under coherent histories, or require a minimum finite history context when carried labels conflict.
+Paper A is no longer positioned as a new generic refinement theorem. The current claim is an ecological **decision-sufficiency audit of an inherited state classification after declared structural change**.
 
-`EXT` is retained only as the historical development name and the compatibility
-package name `ext_transport`; it is not the public article identity.
+The publication-facing workflow is:
 
-## Claim hierarchy for the manuscript
+1. carry an accepted source classification to a target through a declared relation;
+2. audit whether target outputs, legal actions, and action-conditioned successors are uniform within inherited target classes;
+3. return a local obstruction when the inherited interface fails;
+4. apply established coarsest-partition refinement to obtain the least exact additional distinction;
+5. translate obstruction pairs into requirements for candidate monitoring variables;
+6. distinguish structural defect from conditional information, monitoring cost, and decision regret; and
+7. retain immutable replacement-route context only when different declared routes carry incompatible terminal label maps.
 
-| Level | Formal result | Role in paper | Required wording boundary |
-|---|---|---|---|
-| I | exact relation transport and derived target labels | foundation | declared relation; no inferred ecological correspondence |
-| II | relative exact refinement and transport defect | headline theorem | minimum repair **relative to the carried source partition** |
-| III | accumulating binary defect family | sharp finite witness | global probe alphabet grows with the family parameter |
-| IV | path-label coherence | graph-level theorem | sufficient condition for route-independent carried semantics |
-| V | history augmentation | canonical completion proposition | minimum context for declared carried maps, not generic ecological memory |
+## Novelty boundary
 
-The manuscript should not present all five as equal discoveries. Result II is the
-main theorem. Result V closes the decision structure but is deliberately not the
-headline.
+Established prior art now explicitly credited:
 
-## Required formal proof package
+- arbitrary-initial-partition coarsest refinement: Paige & Tarjan (1987);
+- coarsest homogeneous MDP refinement: Givan, Dean & Greig (2003);
+- state-abstraction taxonomy: Li, Walsh & Littman (2006);
+- source-to-target state-abstraction transfer: Walsh, Li & Littman (2006);
+- mappings between distinct decision processes: Ravindran & Barto (2003);
+- targeted monitoring from state-and-transition models: Jones et al. (2023);
+- ecological value of information: Canessa et al. (2015);
+- history-sensitive formal equivalence: Montanari & Pistore (1997) and the wider history-preserving bisimulation literature.
 
-Before submission, the manuscript—not the repository alone—must contain proofs
-of the following statements under one consistent notation:
+The manuscript must not claim these individual constructions as new.
 
-1. relation-preserving exact transport;
-2. well-defined derived target labels;
-3. conservative target-only action transport;
-4. local fiber-split obstruction;
-5. coarsest relative exact refinement;
-6. route independence under path-label coherence; and
-7. minimal distinct-label-map history augmentation.
+The defensible Paper A contribution is the ecological organization of the audit, repair, monitoring implication, and route-context logic. The route-coherence/minimum-carried-map-context result remains the only component with a plausible scoped mathematical-novelty claim after the current review.
 
-Finite replay artifacts are regression evidence for supplied witnesses. They are
-not automated proofs of the all-finite-system claims.
+## Reproducible results
 
-## Result and figure map
+The submission replay now includes:
 
-| Main-text object | Formal purpose | Planned visual |
-|---|---|---|
-| transport / repair decision structure | orient the reader | Figure 1 |
-| local fiber split + accumulating family | make the defect concrete and quantitative | Figure 2 |
-| coherent and incoherent diamonds | separate terminal from historical nonportability | Figure 3 |
-| finite outcomes after replacement | compact decision summary | Table 1 |
+- inherited labels `(0, 0, 1)` and least exact repair `(0, 1, 2)`;
+- structural defect of one macrostate in the local witness;
+- uniform-distribution conditional repair information of `2/3` bit in that witness;
+- sharp structural family `|Q*| = 2^m + 1`;
+- illustrative plant–pollinator decision layer with `B=1`, `c_A=0.20`, `c_B=0.35`, `p_A=0.25`, `p_B=0.80`;
+- pooled inherited choice `A`, repaired choice `B`, and one-step regret `0.40`;
+- decision-reversal boundary `p_B - p_A > 0.15` for that cost/benefit setting;
+- route-coherent and route-incoherent witnesses, with two carried-map contexts in the incoherent case.
 
-The binary-family caption must state that its selectable global probe repertoire
-grows with the number of independently distinguished target coordinates.
+The probabilities and costs are illustrative sensitivity values, not empirical estimates.
 
-## Scope language to preserve verbatim in spirit
+## Figure map
 
-- The state spaces, outputs, action grammar, and replacement relations are
-  declared finite-model objects.
-- A positive transport defect does not prove that no smaller target abstraction
-  exists after abandoning source provenance.
-- Path incoherence does not prove that all ecological models must store history.
-- The present theory does not infer replacement histories, fit field data, or
-  cover stochastic, approximate, continuous, recurrent, or partially observed
-  systems.
+1. ecological audit workflow: structural change -> inherited class -> target intervention -> local failure -> least exact distinction -> monitoring implication;
+2. structural repair-complexity witness family;
+3. route coherence and minimum carried-map context;
+4. probabilistic decision-reversal region for the illustrative plant–pollinator example.
 
-## Remaining pre-submission work
+## Current stop rule for theorem expansion
 
-1. Convert the Results / Discussion draft into a complete manuscript with formal
-   definitions and proofs in a single notation.
-2. Perform a fresh, source-verified related-work and bibliography pass for the
-   chosen journal.
-3. Generate vector versions of the three planned figures and cross-check every
-   caption against the theorem assumptions.
-4. Choose the code-release policy required by the target venue. MLTR is currently
-   private; a public or anonymized archival release decision should be made before
-   submission rather than after acceptance.
-5. Create a stable release tag and archive the deterministic replay artifact at
-   the submission commit.
+Do not add more general mathematics by default. Add a theorem only if it:
 
-## Relationship to CCOC
+- closes a specific logical gap in the decision-sufficiency story;
+- is required to make the monitoring interpretation correct;
+- survives a direct prior-art challenge; or
+- changes the ecological conclusion.
 
-CCOC asks how open future composition changes the exact memory needed within a
-fixed finite system. MLTR asks whether an already exact macro-law survives,
-repairs, or becomes history-dependent after the system itself is non-nestedly
-replaced. The manuscripts may cite one another as complementary program pieces,
-but neither theorem package should be required to prove the other.
+Otherwise prioritize manuscript readability, figure inspection, bibliography verification, and submission metadata.
+
+## Remaining submission blockers
+
+Scientific/technical:
+
+- verify the current reframed HEAD with CI, transport reproducibility, and manuscript build;
+- visually inspect the rebuilt four-figure PDF;
+- check that the abstract remains within the journal word limit and that all citation keys resolve;
+- decide whether the conditional-information and monitoring-realization propositions remain in the main text or move to the supplement.
+
+Author-supplied:
+
+- author names and order;
+- affiliations and corresponding-author email;
+- ORCID identifiers if used;
+- funding, acknowledgments, competing interests, and author contributions;
+- final archive/DOI for code and replay artifacts;
+- final Springer template/caption decision;
+- suggested reviewers if requested by the submission system.
+
+## Current verdict
+
+The repository is in manuscript-completion mode, not theorem-expansion mode. If the current Actions run is green and the rebuilt PDF is visually clean, the next scientific decision is supervisor review of the ecological framing rather than further formal development.
