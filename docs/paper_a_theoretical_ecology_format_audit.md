@@ -1,79 +1,50 @@
-# Paper A format audit against Theoretical Ecology submission guidelines
+# Paper A — Theoretical Ecology submission audit
 
-Audit date: 2026-07-23
+Audit refreshed: 2026-08-12.
 
-Official source checked: Theoretical Ecology, Springer Nature, Submission guidelines.
+This file supersedes the 2026-07-23 snapshot. The live scientific/format audit is also maintained in `docs/paper_a_format_audit.md`.
 
-## Confirmed compliant
+## Current verified state
 
-- Manuscript is supplied as editable LaTeX and builds to PDF.
-- Abstract length is 197 words, within the required 150--250 words.
-- Six keywords are supplied, within the required 4--6 keywords.
-- In-text citations use author--year form.
-- References are alphabetized by first author in the compiled bibliography.
-- Tables and figures are numbered and cited consecutively.
-- Figures are embedded in the body of the manuscript.
-- Supplementary text is supplied as PDF-compatible LaTeX output.
-- Main manuscript, supplement, CI, and reproducibility workflows pass on commit 5cb2a470720334c4c9446003d2cbcc1770f2c6fd.
+- Paper A has been reframed as an ecological decision-sufficiency audit rather than a new generic refinement theorem.
+- The current compiled main manuscript is 12 A4 pages.
+- Abstract length is 226 words, within the journal's 150--250-word requirement.
+- Six keywords are supplied.
+- Author--year citations compile with no undefined citations.
+- Four reproducible figures compile and render correctly.
+- Main manuscript and supplement build successfully in GitHub Actions.
+- CI and transport-core reproducibility pass on the scientific/build commit `38e0353e72743841412cd7465982d018e333bae0`.
+- The generated main PDF was visually inspected page by page on 2026-08-12; no clipping, overlaps, missing figures, or broken glyphs were found.
+- `hidelinks` is enabled in the main manuscript and supplement.
+- Internal figure titles were removed from the artwork; descriptive wording is carried by manuscript captions.
 
-## Corrected in this PR
+## Remaining typesetting polish
 
-- Added `hidelinks` to the supplementary manuscript so internal hyperlinks do not appear as red boxes in the delivered PDF.
-- Identified the supplement as `Online Resource 1` and named the target journal in the supplement title.
-- Reworked Figure 1 into a legible two-column, three-row ecological workflow.
-- Replaced the over-dense four-column literature table with a readable three-column table.
-- Added verified author--year citations and bibliography integration.
+The generic `article` class is still used. Before final submission, decide whether to migrate to the current Springer Nature `sn-jnl` template or reproduce the journal caption conventions explicitly.
 
-## Objective format gaps still requiring repository changes
+The current build contains only minor TeX box warnings:
 
-1. **Main-PDF hyperlink appearance**
-   - The compiled main PDF currently displays colored citation links and red link boxes.
-   - Add `\hypersetup{hidelinks}` to `paper_a_main.tex`.
+- underfull boxes in the compact related-work table;
+- one small overfull heading warning (~6.9 pt) in the current generic article layout.
 
-2. **Titles inside figures**
-   - Springer instructs authors not to include titles or captions inside illustrations.
-   - The three generated SVG figures currently contain internal title lines.
-   - Remove those title lines; retain the explanatory text only in the manuscript captions.
-
-3. **Figure captions**
-   - The journal requests captions beginning with `Fig.` in bold and no terminal punctuation.
-   - The generic `article` class currently produces `Figure 1:` and captions ending in periods.
-   - Prefer the Springer Nature LaTeX template, or configure the caption package explicitly.
-
-4. **Springer Nature LaTeX template**
-   - Mathematical manuscripts may be submitted in LaTeX, and the journal recommends the Springer Nature template.
-   - The current manuscript uses the generic `article` class. This is editable and compilable, but it is not template-conformant.
-   - Before final submission, migrate to the current Springer Nature `sn-jnl` template and rerun all PDF checks.
-
-5. **Statements and Declarations**
-   - The journal requires a `Statements and Declarations` section after the References.
-   - It must include Funding and Competing Interests; Author Contributions are encouraged.
-   - These statements are absent from the current manuscript.
-
-6. **Data Availability Statement**
-   - Original research articles must contain a Data Availability Statement.
-   - For this theoretical paper, the statement should clarify that no empirical data were generated and identify the repository/archived release containing code and finite verification cases.
-
-7. **Supplementary identification details**
-   - Each supplementary file must contain the article title, journal name, author names, affiliation, and corresponding-author email.
-   - Journal and article identification are now present.
-   - Author, affiliation, and email remain unresolved until the final author list is supplied.
+Neither warning caused visible clipping in the rendered PDF, but both can be eliminated during final template migration.
 
 ## Author-supplied submission blockers
 
-The following cannot be inferred safely from the repository and must be supplied by the authors before the manuscript is marked submission-ready:
+The repository cannot safely infer:
 
 - complete author names and order;
-- author affiliations;
-- corresponding author and active email;
-- ORCID identifiers, if available;
+- affiliations;
+- corresponding-author email;
+- ORCID identifiers if used;
 - acknowledgments;
-- funding statement and grant numbers, or an explicit no-funding statement;
+- funding statement / grant numbers or explicit no-funding statement;
 - competing-interest statement;
 - author-contribution statement;
-- final public archive/DOI for code and verification materials;
-- five suggested reviewers for the cover letter.
+- final archive/DOI for code and verification materials;
+- final Data Availability wording tied to that archive;
+- suggested reviewers if required by the submission interface.
 
 ## Current verdict
 
-The manuscript is scientifically buildable and visually improved, but it is **not yet formally submission-ready** for Theoretical Ecology. The outstanding work is concentrated in Springer-template migration, declarations/data availability, figure-caption conventions, removal of internal figure titles, and final author metadata.
+The manuscript is **scientifically and technically ready for supervisor review**, but not yet formally submission-ready because author metadata, declarations, archival DOI/Data Availability, and final journal-template decisions are unresolved.
