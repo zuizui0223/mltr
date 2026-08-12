@@ -1,31 +1,38 @@
-\section{Algorithms}
+\section{Implementation algorithms}
 
-\subsection{Source-relative refinement}
-The repair procedure is initialized by the carried source labels rather than by the indiscrete partition or a target-only objective.
+\subsection{Least exact distinction by standard refinement}
+The executable repair procedure instantiates established partition-refinement machinery with the inherited target classification as its initial partition.
 
 \begin{enumerate}
-\item Construct the carried target partition $P_0=\pi_R$.
-\item For every target state, form a signature containing its output, legal-action row, and the current blocks of all declared successors.
-\item Split each block of $P_k$ by equality of signatures to obtain $P_{k+1}$.
+\item Construct the carried target classification $C=\pi_R$ from the declared source--target relation.
+\item For every target state, form a signature containing its current output, legal-action row, and the current blocks of all declared successors.
+\item Split only within existing blocks of $P_k$ by equality of signatures to obtain $P_{k+1}$.
 \item Stop when $P_{k+1}=P_k$.
 \end{enumerate}
 
-The resulting partition is the unique coarsest exact target partition refining the inherited labels. A failed comparison recorded during a split is also a local operational witness and should be retained as a diagnostic output.
+The resulting partition is the coarsest exact target partition $Q^\ast$ refining the inherited labels. This is a standard coarsest-refinement result, not a new generic algorithm. The MLTR-specific outputs are the inherited classification supplied to the routine and the diagnostic information retained from the splits.
 
 \subsection{Pseudocode}
 \begin{verbatim}
-P <- carried_partition(source_labels, relation)
+C <- carried_classification(source_labels, relation)
+P <- C
 repeat
     signatures <- output_action_successor_signatures(target, P)
-    P_new <- split_within_existing_blocks(P, signatures)
+    P_new, witnesses <- split_within_existing_blocks(P, signatures)
     if P_new == P:
         break
     P <- P_new
-return P, recorded_split_witnesses
+return P, witnesses
 \end{verbatim}
 
-\subsection{Termination and computational scope}
-Termination is guaranteed for finite targets because every nontrivial iteration strictly refines a finite partition. The implementation may use standard partition-refinement data structures; no new generic refinement algorithm is claimed. The ecological output is the constrained fixed point together with the inherited block that failed, the action or output producing the failure, and the additional distinction required by the repair.
+\subsection{Diagnostic obstruction set}
+For publication-facing use, the routine should retain not only $Q^\ast$ but also the pairs that were merged by $C$ and separated by $Q^\ast$. These obstruction pairs define the distinctions that a candidate monitoring system must be capable of resolving. A field implementation would then map the formal distinction to measurable ecological variables and account for observation error separately.
 
-\subsection{History-aware refinement}
-For multiple replacement histories, first compute the complete carried terminal map for every path. Collapse paths with identical maps into one immutable mode, augment terminal states by that mode only when more than one distinct map exists, and then run the same source-relative refinement procedure on the augmented system.
+\subsection{Monitoring realization}
+Given candidate measurements $z_j$ and costs $c_j$, record for each measurement the obstruction pairs it separates. Selecting a minimum-cost collection of measurements that covers every obstruction pair is a weighted set-cover/test-cover problem. This step is a translation of the repair output into a monitoring-design requirement, not a new optimization algorithm.
+
+\subsection{Termination and computational scope}
+Termination of the finite refinement is inherited from the standard finite partition-refinement construction. The implementation may use standard data structures; no generic complexity improvement is claimed. The ecological output is the audit result, the local hidden distinction, and the candidate distinctions that monitoring must recover.
+
+\subsection{Route-aware refinement}
+For multiple declared replacement routes, first compute the complete carried terminal map for every route. Collapse routes with identical maps into one immutable context. If more than one distinct map remains, augment terminal states by this context and then apply the same standard exact-refinement procedure within the augmented representation. The context is retained only because the declared routes assign incompatible inherited meanings; it is not intended as a full record of ecological history.
