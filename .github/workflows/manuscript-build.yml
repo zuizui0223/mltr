@@ -40,7 +40,16 @@ jobs:
         run: python scripts/render_submission_figures.py
       - name: Convert verified SVG figures to PDF
         run: |
-          for figure in artifacts/figure1_local_split.svg artifacts/figure2_transport_defect.svg artifacts/figure3_history_completion.svg; do
+          # Derive the figure list from the manuscript rather than hardcoding it, so
+          # that adding a figure to the .tex cannot silently outrun this step. Each
+          # referenced figure must exist, so a missing one fails here with a clear
+          # message instead of as an opaque pdflatex error much later.
+          mapfile -t figures < <(
+            grep -oE '\.\./artifacts/[A-Za-z0-9_]+\.svg' manuscript/paper_a_main.tex \
+              | sed 's|^\.\./||' | sort -u
+          )
+          test "${#figures[@]}" -gt 0
+          for figure in "${figures[@]}"; do
             test -f "$figure"
             rsvg-convert -f pdf -o "${figure%.svg}.pdf" "$figure"
           done
