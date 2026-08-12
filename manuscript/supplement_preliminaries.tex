@@ -5,30 +5,76 @@ A finite controlled ecological system is a tuple
 \[
 \mathcal{S}=(X,A,G,\delta,y),
 \]
-where $X$ is a finite state set, $A$ is a declared action alphabet, $G$ is the legal finite action grammar, $\delta$ is the controlled successor rule, and $y$ is the declared output. The grammar is part of the model: two states may be observationally identical yet operationally distinct if they admit different actions or different legal futures.
+where $X$ is a finite state set, $A$ is a declared finite action alphabet, $G$ is the legal finite action grammar, $\delta$ is the controlled successor rule, and $y$ is the declared output. The grammar is part of the model: two states may be observationally identical yet operationally distinct if they admit different actions or different legal futures.
 
-A macro-law is represented by a surjection $\pi:X\times G\to Q$. Its fibers are the ecological state classes supplied to prediction and intervention. Exactness requires equality of current output, legal-action rows, and successor macro-labels within every fiber. In the main text this property is interpreted as exact decision sufficiency for the declared target interface.
+For the proof statements below it is convenient to work on the finite target product-state set directly and to write $L(x)\subseteq A$ for the actions legal at product state $x$. A classification is a surjection $P:X\to\mathcal{P}$. It is \emph{exact} when
+\[
+P(x)=P(x')
+\]
+implies equality of current outputs, equality of legal-action sets, and
+\[
+P(\delta(x,a))=P(\delta(x',a))
+\]
+for every common legal action $a$. This is the exact decision-sufficiency condition used in the main text.
 
 \subsection{Structural change and inherited target labels}
 Let $\mathcal{S}_0$ and $\mathcal{S}_1$ be source and target systems. A declared total relation
 \[
 R\subseteq (X_0\times G_0)\times(X_1\times G_1)
 \]
-carries source labels to the target. When every target state is covered and each target fiber is source-label consistent, the induced carried classification is denoted $C=\pi_R$. The relation may be non-nested: turnover, replacement, or rewiring need not embed the source state space into the target.
+carries source labels to the target. When every target state is covered and each target fiber is source-label consistent, the induced carried classification is denoted $C=\pi_R$.
 
-The relation is part of the declared scientific model and is not inferred by the present framework. The audit asks whether the carried classification $C$ is exact for the target outputs and actions. If it is not, the admissible repair class consists of exact target partitions that refine $C$; this preserves inherited distinctions and only splits inherited classes where target operation requires it.
+The relation is part of the declared scientific model and is not inferred by the present framework. The audit asks whether $C$ is exact for the target outputs and actions. If it is not, admissible repairs are exact target classifications that refine $C$.
 
 \subsection{Partition order and least exact distinction}
-For partitions $P$ and $P'$ of the same finite set, write $P'\preceq P$ when every block of $P'$ is contained in a block of $P$. Thus $P'$ is a refinement of $P$. Let $Q^\ast$ denote the coarsest exact target partition among those refining $C$.
+For classifications $P$ and $P'$ on the same finite state set, write $P'\preceq P$ when equality under $P'$ implies equality under $P$; equivalently, every $P'$ block is contained in a $P$ block. Thus $P'$ is a refinement of $P$.
 
-The existence and construction of such a coarsest stable refinement from a supplied initial partition are established partition-refinement results, as credited in the main manuscript. In this supplement, $Q^\ast$ is therefore treated as the specialized output of that standard construction, not as a newly invented generic mathematical object.
+Let $Q^\ast$ denote the coarsest exact target classification among those refining $C$. The generic existence and computation of coarsest stable refinements from a supplied initial partition are established partition-refinement results, as credited in the main manuscript. Supplementary Section~2 gives a self-contained finite specialization for the exact interface used here, so no external theorem is logically required for correctness of the manuscript's finite statement.
 
-\subsection{Obstruction pairs and monitoring realization}
+\subsection{Target-state distribution and conditional repair information}
+When a probability distribution $\mu$ on the finite target state set is supplied, let $X_\mu$ denote a target state drawn from $\mu$ and use the same symbols $C$, $Q^\ast$, and $P$ for the corresponding random labels. The conditional repair information is
+\[
+D_H(\mu)=H_\mu(Q^\ast\mid C).
+\]
+If carried class $c$ contains $k_c$ distinct $Q^\ast$ blocks, then $k_c$ is the number of repaired labels that remain possible after the inherited label $C=c$ is known.
+
+\subsection{Candidate measurements and exact monitoring realization}
+Let $J$ be a finite library of candidate measurements. Measurement $j\in J$ is a deterministic map
+\[
+z_j:X\to Z_j
+\]
+with nonnegative acquisition cost $c_j$. For a selected set $S\subseteq J$, write
+\[
+z_S(x)=(z_j(x))_{j\in S}.
+\]
+We say that $S$ \emph{realizes the repaired classification relative to $C$} when there exists a decoder $d_S$ such that
+\[
+Q^\ast(x)=d_S(C(x),z_S(x))
+\qquad\text{for every }x\in X.
+\]
+Thus the inherited label and the selected measurements together are sufficient to reconstruct the repaired state exactly.
+
 Define the obstruction-pair set
 \[
 E=\{(x,x'):C(x)=C(x'),\;Q^\ast(x)\ne Q^\ast(x')\}.
 \]
-Each pair records a distinction suppressed by the inherited classification but required by the exact target interface. If candidate measurements $z_j$ are available, a measurement set realizes the repair only when every pair in $E$ is separated by at least one selected $z_j$. This is the bridge from the formal audit to a targeted monitoring requirement.
+Each pair records a distinction suppressed by the inherited classification but required by the exact target interface.
+
+\subsection{Classification-limited decision value and regret}
+To separate representation complexity from management consequence, consider a finite management action set $U$, a payoff function
+\[
+u:X\times U\to\mathbb{R},
+\]
+and target-state distribution $\mu$. For a classification $P$, a $P$-measurable decision rule is a map $\alpha:\mathcal{P}\to U$, and the best expected value available from that classification is
+\[
+V_\mu(P;u)=\max_{\alpha}\;\mathbb{E}_\mu\bigl[u(X_\mu,\alpha(P(X_\mu)))\bigr].
+\]
+When $Q^\ast\preceq C$, define the one-step decision regret of using the inherited rather than repaired state information by
+\[
+\mathcal{R}_\mu(C,Q^\ast;u)
+=V_\mu(Q^\ast;u)-V_\mu(C;u)\ge 0.
+\]
+The inequality follows because any $C$-measurable rule is also implementable from the finer label $Q^\ast$.
 
 \subsection{History-indexed transport}
 For a rooted directed acyclic graph of declared structural changes, every root-to-terminal path induces a complete carried terminal map. Two paths are route-compatible for the inherited interface exactly when these maps agree. When they disagree, an immutable context indexes the distinct carried terminal maps before exact refinement is applied. This construction concerns externally declared replacement routes; it is not a claim that history-sensitive equivalence is new in general.
