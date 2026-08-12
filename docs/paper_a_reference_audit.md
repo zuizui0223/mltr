@@ -58,6 +58,13 @@ The safest contribution statement is:
 
 Only item 5 currently has a plausible claim to mathematical novelty. Items 1--4 are best presented as a new ecological organization and interpretation of established formal and decision-theoretic ingredients.
 
+## Source-verification notes added 2026-08-12
+
+- Walsh--Li--Littman (2006) was verified from the author's publication page and the workshop paper itself; its abstract explicitly states that it provides a general treatment and algorithm for transferring state abstractions in MDPs.
+- Jones et al. (2023) was verified from the publisher page; it explicitly develops targeted monitoring from a pre-existing state-and-transition model by selecting variables that distinguish states and thresholds.
+- Canessa et al. (2015) was verified from the publisher page; it defines value of information as the expected improvement in management outcomes from additional information and emphasizes dependence on actions, objectives, and information quality.
+- The history novelty search found a substantial history-preserving bisimulation literature, including Montanari--Pistore (1997). This is why the manuscript now scopes its history claim to externally declared replacement routes and carried terminal maps.
+
 ## Guardrails
 
 - Never call the coarsest-refinement construction a new theorem without immediately crediting Paige--Tarjan and Givan--Dean--Greig.
