@@ -1,73 +1,69 @@
 # Paper A reference audit
 
-This audit maps each boundary claim in the main manuscript to a verified reference before citation commands are inserted. It is intentionally conservative: references are included only where bibliographic metadata and the claimed scope match.
+This audit maps the manuscript's boundary claims to verified prior work. It is deliberately adversarial: when a close formal or ecological precedent exists, the manuscript must credit it and move novelty elsewhere.
 
-## Fixed-system aggregation and lumpability
+## Established formal machinery
 
-- Kemeny and Snell (1960), *Finite Markov Chains*: classical finite-chain lumpability baseline.
-- Feret et al. (2012), “Lumpability Abstractions of Rule-based Systems”: biological rule-based systems, weak lumpability, and Markov bisimulation.
+- Kemeny and Snell (1960): finite-chain lumpability.
+- Feret et al. (2012): lumpability abstractions for rule-based systems.
+- Milner (1989) and Larsen and Skou (1991): behavioral and probabilistic bisimulation baselines.
+- Paige and Tarjan (1987): relational coarsest partition from an arbitrary initial partition.
+- Givan, Dean and Greig (2003): coarsest homogeneous refinement of any MDP partition in a stochastic setting that contains the deterministic case used here.
+- Li, Walsh and Littman (2006): taxonomy of MDP state abstractions by what they preserve.
 
-Use these for claims that lumpability concerns exact aggregation of a specified stochastic or dynamical system. Do not cite them as solving source-relative transport under structural replacement.
+**Consequence.** The coarsest exact refinement of a carried partition is established prior art. Paper A must not present the refinement algorithm, its finite termination, or its coarseness/uniqueness as a new general result.
 
-## Bisimulation and partition refinement
+## Transfer of abstractions across decision processes
 
-- Milner (1989), *Communication and Concurrency*: standard process-theoretic treatment of bisimulation.
-- Larsen and Skou (1991), “Bisimulation through Probabilistic Testing”: probabilistic bisimulation baseline.
-- Paige and Tarjan (1987), “Three Partition Refinement Algorithms”: the relational coarsest partition problem, **posed for an arbitrary initial partition**.
-- Givan, Dean and Greig (2003), “Equivalence Notions and Model Minimization in Markov Decision Processes”: **the coarsest homogeneous refinement of any partition of the state space**, in a stochastic setting strictly containing Paper A's deterministic one.
-- Li, Walsh and Littman (2006), “Towards a Unified Theory of State Abstraction for MDPs”: taxonomy of abstractions by what each preserves.
-- Ravindran and Barto (2003), “SMDP Homomorphisms”: maps between distinct decision processes.
+- Ravindran and Barto (2003): homomorphisms between distinct semi-Markov decision processes.
+- Walsh, Li and Littman (2006), *Transferring State Abstractions Between MDPs*: explicit treatment and an algorithm for transferring state abstractions from source MDPs to target MDPs.
 
-**Correction to an earlier version of this audit.** This document previously instructed that the Paper A claim be “restricted to initialization by carried source labels and source-relative minimality.” That restriction does not establish novelty, because refinement from an arbitrary initial partition is exactly what Paige–Tarjan and Givan–Dean–Greig solve. The unique coarsest refinement of a given partition is **established prior art and must be cited as such**, not credited as machinery while the theorem is presented as new.
+**Correction to PR #30's initial novelty boundary.** It is not enough to say that the present framework is new because a source abstraction is moved to a target system. Abstraction transfer itself is prior art. The defensible distinction is narrower: an already accepted ecological state classification is carried through a declared ecological correspondence and then **audited for target decision sufficiency**; failure is treated as the scientific object rather than assumed away or resolved solely for computational speed.
 
-The defensible contribution is therefore relocated to three places:
+## Ecological state models and targeted monitoring
 
-1. the construction of the initial partition by transporting an accepted source law across a declared relation between non-coinciding state spaces (contrast with homomorphisms, where dynamics preservation is assumed rather than tested);
-2. the reading of the inherited-to-repaired difference as an ecological quantity; and
-3. path-label coherence and minimum history completion, for which no direct counterpart in the abstraction literature has been identified.
+- Jones et al. (2023), *Ecological Applications*: uses a pre-existing state-and-transition model, validates state classifications with field data, and identifies a reduced set of variables and thresholds for targeted monitoring of transitions.
+- Holling (1978) and Walters (1986): adaptive-management foundations.
+- Holling (1973) and Scheffer et al. (2001): resilience/regime-state background.
 
-Item 3 is the only headline result with a plausible claim to mathematical novelty and should carry corresponding weight in the manuscript.
+**Boundary.** Paper A does not claim that selecting a small set of monitoring indicators is new. Its proposed ecological role is upstream: first test whether an inherited state classification remains sufficient for the changed action set; only when it fails, use the separating pairs to define what distinctions a monitoring design must be able to resolve.
+
+## Decision analysis and value of information
+
+- Canessa et al. (2015): value-of-information analysis for deciding whether additional ecological information is worth collecting given objectives, actions, uncertainty, and consequences.
+
+**Boundary.** Paper A does not replace VoI. Its exact audit is a structural precondition: it identifies distinctions that the inherited state representation suppresses. VoI can then evaluate whether measuring those distinctions is worth the cost under uncertainty.
 
 ## Ecological model transferability
 
-- Yates et al. (2018), “Outstanding Challenges in the Transferability of Ecological Models”, *TREE* 33(10):790–802: expert assessment establishing transferability as a recognized open problem in ecology.
+- Yates et al. (2018): expert assessment establishing transferability as a major ecological prediction problem.
 
-Use this to establish **importance**, not gap. The twelve listed challenges are predominantly statistical (predictive accuracy under novel conditions, data quality, model complexity, uncertainty quantification). Paper A addresses a structural failure that is not among them, and the manuscript must say so explicitly rather than implying that it answers the listed challenges.
+Use Yates et al. to establish importance, not to claim that Paper A solves the twelve challenges in that review. Those challenges are largely statistical; the present failure can occur even with perfect knowledge of the declared source and target systems.
 
-## Transportability
+## History-sensitive formal theories
 
-- Pearl and Bareinboim (2014), “External Validity: From Do-Calculus to Transportability Across Populations”: causal transportability between populations.
+- Montanari and Pistore (1997): minimal transition systems for history-preserving bisimulation, representing a broad formal literature in which past causal structure can be retained in behavioral equivalence.
 
-Use this for the contrast between causal-effect transport and exact operational closure. Do not imply that Paper A estimates causal effects or identifies source–target relations.
+**Boundary.** The words "history" and "path" are not novel. Paper A's history result concerns a different object: several externally declared replacement routes can carry different source label maps to the same terminal system. The manuscript should claim only the specific route-independence criterion and minimum number of immutable carried-map contexts. We found no direct counterpart for that exact construction in the sources reviewed, but this is a scoped literature finding, not proof of absence.
 
-## Resilience and regime shifts
+## What Paper A may claim
 
-- Holling (1973), “Resilience and Stability of Ecological Systems”: ecological resilience baseline.
-- Scheffer et al. (2001), “Catastrophic Shifts in Ecosystems”: abrupt ecosystem shifts and alternative regimes.
+The safest contribution statement is:
 
-Use these for the ecological role of resilience classes, thresholds, and regime labels. Paper A audits whether such labels remain operationally sufficient; it does not redefine resilience or derive tipping thresholds.
+1. formulate reuse of an inherited ecological state classification as a **decision-sufficiency audit** under declared structural change and a target action repertoire;
+2. use established refinement machinery to return the least state distinction required once the inherited interface fails;
+3. translate separating witnesses into requirements for candidate monitoring variables;
+4. separate structural repair complexity from distribution-sensitive information, monitoring cost, and decision regret; and
+5. characterize when multiple declared replacement routes admit one route-independent carried interface and when immutable history context is necessary.
 
-## Adaptive management
-
-- Holling (ed., 1978), *Adaptive Environmental Assessment and Management*.
-- Walters (1986), *Adaptive Management of Renewable Resources*.
-
-Use these for iterative decision-making, learning through management, and changing policies under uncertainty. Paper A audits the state representation supplied to those procedures; it does not optimize policies or perform Bayesian learning.
-
-## Citation insertion targets
-
-1. Introduction paragraph naming neighboring literatures.
-2. “Coarse graining and lumpability” subsection.
-3. “Bisimulation, abstraction, and partition refinement” subsection.
-4. “Transportability and model transfer” subsection.
-5. “Resilience, regime shifts, and ecological state classifications” subsection.
-6. “Adaptive management” subsection.
-7. Discussion statements about regime history and monitoring design only where the reference directly supports the ecological background claim.
+Only item 5 currently has a plausible claim to mathematical novelty. Items 1--4 are best presented as a new ecological organization and interpretation of established formal and decision-theoretic ingredients.
 
 ## Guardrails
 
-- The coarsest refinement of a carried partition **is** established prior art and must be cited to Paige–Tarjan and Givan–Dean–Greig at every point where the repair theorem is stated. Do not present it as a new theorem, and do not defend it by describing refinement as "machinery" while claiming the constrained object is new.
-- Novelty claims are confined to the transport construction, the ecological reading of the defect, and path coherence / minimum history completion.
-- Yates et al. supports importance only. Do not cite it as evidence that the structural question is unsolved.
-- “Transport defect” remains a definition tied to the unique repair, not a literature-backed universal ecological effect size.
-- The plant–pollinator management reversal remains a finite worked example, not an empirical claim about a particular species or restoration programme.
+- Never call the coarsest-refinement construction a new theorem without immediately crediting Paige--Tarjan and Givan--Dean--Greig.
+- Never claim novelty merely from source-to-target abstraction transfer; cite Walsh--Li--Littman (2006).
+- Treat the transport-defect state count as a **structural diagnostic**, not an ecological effect size, monetary cost, information measure, or proxy for decision regret.
+- If a target-state distribution is supplied, conditional repair information may be reported separately as H(Q* | C).
+- Candidate monitoring variables and their costs define a separate minimum realization problem; decision values define a separate regret/VoI problem.
+- The plant--pollinator case is an illustrative finite management example. Any probabilities or costs introduced for sensitivity analysis must be labeled illustrative, not empirical.
+- History-preserving bisimulation and related causal-history formalisms exist; Paper A's scoped claim is about externally declared replacement routes and carried terminal label maps, not the invention of history-sensitive equivalence.
