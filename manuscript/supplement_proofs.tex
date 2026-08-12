@@ -1,31 +1,61 @@
-\section{Proofs}
+\section{Specialized proof details}
 
-This section records the proof architecture separately from the ecological narrative in the main text. The statements use the definitions in Supplementary Section~1 and preserve the source-relative constraint throughout.
+This section records finite proof details separately from the ecological narrative in the main text. Where a statement is a direct specialization of established partition-refinement machinery, we say so explicitly rather than claiming a new generic theorem.
 
-\subsection{Operational portability}
+\subsection{Operational decision-sufficiency criterion}
 \begin{proof}[Proof of the operational portability theorem]
-Necessity follows because an exact carried macro-law must factor the target output, legal-action row, and every declared successor through its carried label. Hence each of these quantities is constant inside a carried fiber.
+Necessity follows because an exact carried state interface must factor the target output, legal-action row, and every declared successor through its carried label. Hence each of these quantities is constant inside a carried fiber.
 
-For sufficiency, assume those three quantities are constant in every carried fiber. Define the quotient output and legal-action row by their common values on each fiber. For each legal action, successor carried labels are also constant, so the quotient successor is well defined. Therefore all declared target observations and legal futures factor through the carried partition, which is exact.
+For sufficiency, assume those three quantities are constant in every carried fiber. Define the quotient output and legal-action row by their common values on each fiber. For each legal action, successor carried labels are also constant, so the quotient successor is well defined. Therefore all declared target observations and legal futures factor through the carried classification, which is exact for the declared interface.
 \end{proof}
 
 \subsection{Local obstruction}
 \begin{proof}[Proof of the local-obstruction proposition]
-If portability fails, at least one factorization condition in the preceding proof is not well defined. Thus there exist two target states in one inherited fiber that differ in current output, legal-action row, or the carried label of a successor under a declared legal action. Repeating the same argument along a shortest distinguishing legal future gives a finite witness. Conversely, any such pair contradicts exactness of the carried partition.
+If the inherited interface is not exact, at least one factorization condition in the preceding proof is not well defined. Thus there exist two target states in one inherited fiber that differ in current output, legal-action row, or the carried label of a successor under a declared legal action. Repeating the same argument along a shortest distinguishing legal future gives a finite witness. Conversely, any such pair contradicts exactness of the carried classification.
 \end{proof}
 
-\subsection{Unique coarsest source-relative repair}
-\begin{proof}[Proof of the repair theorem]
-Initialize refinement with the carried partition $P_0=\pi_R$. At each step, split every block by the joint signature consisting of current output, legal-action row, and successor blocks under all declared actions. Because the target state set is finite, every nontrivial update strictly increases the number of blocks and the procedure terminates at a fixed point $P_*$. Fixed-point stability is exactly the operational exactness condition, so $P_*$ is exact.
+\subsection{Least exact distinction using established refinement}
+Let $C$ be the inherited target classification. The general fact that a finite starting partition has a coarsest stable refinement under the relevant behavioral signatures is established prior art, as credited in the main manuscript. For self-containment, the following argument verifies how that construction specializes to the present exact interface.
 
-Let $E$ be any exact target partition with $E\preceq P_0$. Inductively, exactness forces $E$ to separate every signature difference used to construct $P_{k+1}$ from $P_k$. Hence $E\preceq P_k$ for every $k$, and therefore $E\preceq P_*$. Thus $P_*$ is coarser than every admissible exact repair and is unique.
+Initialize $P_0=C$. At each step, split every current block by the joint signature consisting of current output, legal-action row, and successor blocks under all declared legal actions. Because the target state set is finite, every nontrivial update strictly increases the number of blocks and the procedure reaches a fixed point $P_\ast$. Fixed-point stability is precisely the exact-interface condition, so $P_\ast$ is exact.
+
+If $E$ is any exact target partition with $E\preceq C$, exactness forces $E$ to separate every signature difference used at each refinement step. Inductively $E\preceq P_k$ for all $k$, hence $E\preceq P_\ast$. Therefore the specialized fixed point equals the standard coarsest exact refinement $Q^\ast$ used in the main text.
+
+This argument establishes notation and applicability for the MLTR finite interface; it is not presented as a new proof of the general coarsest-partition theorem.
+
+\subsection{Minimum conditional repair information}
+Let a target microstate be distributed according to $\mu$. Since $Q^\ast$ refines $C$, the pair $(C,Q^\ast)$ is equivalent to knowing the repaired label. For any other exact refinement $P$ of $C$, coarseness of $Q^\ast$ implies that $P$ refines $Q^\ast$. Hence $Q^\ast$ is a deterministic function of $P$ and
+\[
+H_{\mu}(Q^\ast\mid C)\le H_{\mu}(P\mid C).
+\]
+If carried class $c$ is split into $k_c$ repaired blocks, the conditional entropy within that class is at most $\log_2 k_c$. Averaging over carried classes gives
+\[
+0\le H_{\mu}(Q^\ast\mid C)
+\le \sum_c\mu(c)\log_2 k_c
+\le \log_2\max_c k_c.
+\]
+
+\subsection{Monitoring realization}
+For every obstruction pair $(x,x')\in E$, define the candidate measurements that separate the pair by
+\[
+J(x,x')=\{j:z_j(x)\ne z_j(x')\}.
+\]
+A selected set $S$ recovers every repaired distinction exactly when
+\[
+S\cap J(x,x')\ne\varnothing
+\]
+for every $(x,x')\in E$. Thus each measurement covers the obstruction pairs it separates, and minimizing total measurement cost is the standard weighted set-cover/test-cover formulation stated in the main text. No new generic set-cover algorithm is claimed.
+
+\subsection{Structural defect does not order decision regret}
+Partition structure is unchanged by multiplying every management payoff by a positive constant $a$, whereas decision regret is multiplied by $a$. Thus no nontrivial universal upper bound on regret can be a function of the structural state-count defect alone. Conversely, for any fixed or growing repaired state count, management payoff differences between repaired states can be made arbitrarily small, making regret arbitrarily small while leaving the partition unchanged. Structural repair complexity and decision consequence therefore require separate quantities.
+
+\subsection{Route coherence and carried-map context}
+\begin{proof}[Proof of route coherence]
+If all root-to-terminal routes induce the same complete carried terminal map, the terminal system receives one route-independent inherited classification. Since exact refinement is a deterministic function of the terminal system and that supplied classification, the repaired interface is route independent as well. If two complete carried maps differ, at least one terminal configuration receives incompatible inherited labels, so no single route-free carried classification represents both declared routes.
 \end{proof}
 
-\subsection{History coherence and minimum completion}
-\begin{proof}[Proof of history coherence]
-If all root-to-terminal paths induce the same carried terminal map, the target receives one route-independent inherited partition; its repair and defect are consequently route independent. If two complete carried maps differ, some terminal configuration receives incompatible inherited labels, so no route-free carried partition can represent both histories.
+\begin{proof}[Proof of the carried-map context statement]
+Group declared routes by equality of their complete carried terminal maps. One immutable context for each equivalence class is sufficient because the inherited map is well defined within every context and exact refinement can then be applied. It is necessary because routes with different complete maps assign incompatible inherited meanings to at least one terminal configuration and therefore cannot share one immutable carried-label context. Thus one context per distinct carried terminal map is the minimum for this declared route representation.
 \end{proof}
 
-\begin{proof}[Proof of minimum history completion]
-Group histories by equality of their complete carried terminal maps. One immutable mode for each equivalence class is sufficient because the carried map is then well defined within every mode and source-relative refinement can be applied. It is necessary because histories with different complete maps assign incompatible inherited semantics somewhere in the terminal system and therefore cannot share one immutable mode. The number of distinct carried maps is consequently the minimum exact history completion.
-\end{proof}
+The final argument is a scoped closure statement for the declared replacement graph. It does not claim that retaining history, path identity, or causal context is a new idea in formal systems generally.
