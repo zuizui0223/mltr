@@ -6,7 +6,7 @@
 \newtheorem{proposition}{Proposition}
 \newtheorem{corollary}{Corollary}
 \newtheorem{definition}{Definition}
-\title{Auditing Ecological State Classifications after Structural Change:\\Decision Sufficiency, Minimal Repair, and Historical Context}
+\title{Auditing Ecological State Classifications after Structural Change:\\Decision Sufficiency and Monitoring Repair}
 \author{Author names withheld for drafting}
 \date{}
 
@@ -14,7 +14,7 @@
 \maketitle
 
 \begin{abstract}
-Ecological management often reuses coarse state classifications after species turnover, interaction rewiring, habitat change, or changes in the available interventions. A classification that was adequate when it was defined can then become insufficient for a new management decision even if all model parameters are known perfectly. We formalize this problem as an audit of the decision sufficiency of an inherited ecological state variable. A source classification is carried to a target system through a declared structural relation and tested against target outputs, legal actions, and action-conditioned successors. Failure has a local operational witness. We then apply established coarsest-partition refinement machinery to return the least exact distinction that must be added to the inherited interface; the algorithm itself is not new. We separate the resulting structural repair complexity from distribution-sensitive information, monitoring cost, and decision regret, and show how separating witnesses define requirements for targeted monitoring. For multiple declared replacement routes, we characterize when one route-independent carried interface exists and when immutable historical context is necessary. A finite plant--pollinator example, supplemented by an illustrative probabilistic decision analysis, shows how an inherited functional class can reverse restoration priority after turnover. The framework is therefore a structural precondition for adaptive management: before optimizing a policy or collecting more data, it asks whether the state representation supplied to that decision still contains the distinctions that the target intervention can expose.
+Ecological management often reuses coarse state classifications after species turnover, interaction rewiring, habitat change, or changes in the available interventions. A classification that was adequate when it was defined can then become insufficient for a new management decision even if all model parameters are known perfectly. We formalize this problem as an audit of the decision sufficiency of an inherited ecological state variable. A source classification is carried to a target system through a declared structural relation and tested against target outputs, legal actions, and action-conditioned successors. Failure returns a local obstruction: states that share an inherited label but can no longer be treated interchangeably. Established coarsest-refinement machinery then supplies the least exact state distinction required by the target interface. Our main applied result converts that distinction into an exact monitoring requirement: a candidate measurement set recovers the repaired state if and only if it separates every obstruction pair, yielding both an impossibility certificate for inadequate measurement libraries and a minimum-cost monitoring realization problem. We distinguish this monitoring requirement from structural repair complexity, conditional information, and decision regret. An illustrative plant--pollinator decision example shows how the missing distinction can reverse restoration priority, while a route-coherence result identifies when historical context must remain explicit. The framework therefore links state-classification failure directly to monitoring redesign before downstream policy optimization or value-of-information analysis.
 \end{abstract}
 
 \noindent\textbf{Keywords:} ecological state classification; adaptive management; structural change; targeted monitoring; model transfer; decision sufficiency
@@ -26,21 +26,19 @@ The difficulty is that the adequacy of a state classification need not survive e
 
 Ecologists have identified transferability as a persistent challenge for prediction across places and conditions \citep{YatesEtAl2018}. Most familiar transfer problems are statistical: whether fitted relationships remain accurate, how extrapolation should be diagnosed, or how uncertainty should be propagated. The failure considered here is deliberately prior to those questions. It can occur with perfect knowledge of both source and target systems and with no sampling or parameter error. The question is structural:
 \begin{quote}
-When does an ecological state classification that was accepted for a source management problem remain sufficient after structural change, and what is the least additional distinction required when it does not?
+When does an ecological state classification that was accepted for a source management problem remain sufficient after structural change, and, when it fails, what must a monitoring system be able to distinguish before that state representation can again support the target decision?
 \end{quote}
 
 Formal work already supplies much of the mathematical machinery needed to answer parts of this question. Lumpability and bisimulation characterize exact aggregation within a specified process \citep{KemenySnell1960,FeretEtAl2012,LarsenSkou1991}. Coarsest stable refinement from an arbitrary initial partition is established in partition-refinement theory and MDP model minimization \citep{PaigeTarjan1987,GivanDeanGreig2003}. State abstraction has been systematized by what it preserves \citep{LiWalshLittman2006}, maps between distinct decision processes are treated by homomorphism theory \citep{RavindranBarto2003}, and state abstractions have been explicitly transferred from source MDPs to target MDPs \citep{WalshLiLittman2006Transfer}. We therefore claim none of these constructions as new.
 
-The ecological gap is narrower. Managers often inherit a classification that already has an accepted interpretation and a monitoring infrastructure. After a declared structural change, the relevant question is not simply how to compute another efficient abstraction of the target. It is whether that inherited interface still supports the target actions, where it fails if it does not, and which distinctions a monitoring design must recover before the old decision rule can be trusted. This differs from targeted monitoring that begins with predefined states and asks which measured variables best discriminate them \citep{JonesEtAl2023}: here the first question is whether the predefined states themselves remain decision-sufficient. It also differs from value-of-information analysis, which asks whether reducing uncertainty is worth the cost given objectives, actions, and consequences \citep{CanessaEtAl2015}; our audit can identify a structurally missing distinction before uncertainty about that distinction is assigned a probability or a sampling design.
+The ecological gap is narrower but operationally important. Managers often inherit a classification that already has an accepted interpretation and a monitoring infrastructure. After a declared structural change, the relevant question is not simply how to compute another efficient abstraction of the target. It is whether that inherited interface still supports the target actions, where it fails if it does not, and whether the measurements available in practice can recover the missing distinction. This differs from targeted monitoring that begins with predefined states and asks which measured variables best discriminate them \citep{JonesEtAl2023}: here the first question is whether the predefined states themselves remain decision-sufficient. It also differs from value-of-information analysis, which asks whether reducing uncertainty is worth the cost given objectives, actions, and consequences \citep{CanessaEtAl2015}; our audit can identify a structurally missing distinction and test whether a candidate measurement library can express it before assigning uncertainty or sampling value.
 
-We organize these ingredients into a source-relative ecological audit. A source macro-law is carried to a target system through a declared relation between state spaces that need not coincide. The inherited target fibers are tested for equality of current output, legal-action rows, and successor labels. If they pass, the old state variable remains exact for the declared target interface. If they fail, a pair of states provides a local obstruction, and established coarsest-refinement machinery identifies the least exact split of the inherited classes. That split can be read as a monitoring requirement: candidate measurements must separate the state pairs that the old classification merges but the repaired interface distinguishes.
+We organize these ingredients into an ecological audit with a direct monitoring output. A source macro-law is carried to a target system through a declared relation between state spaces that need not coincide. The inherited target fibers are tested for equality of current output, legal-action rows, and successor labels. If they pass, the old state variable remains exact for the declared target interface. If they fail, a pair of states provides a local obstruction, and established coarsest-refinement machinery identifies the least exact split of the inherited classes. The central applied step is then exact: candidate measurements recover the repaired state if and only if they separate every obstruction pair. The same condition gives a certificate that a proposed measurement library is insufficient and, with measurement costs, defines the least-cost exact monitoring realization.
 
-We add two further pieces needed for ecological interpretation. First, we separate four consequences that should not be conflated: structural repair complexity, distribution-sensitive additional information, the cost of realizing the distinction with measurements, and decision regret. State-count defect alone is not an ecological effect size and does not determine management loss. Second, for systems connected by several declared replacement routes, we ask whether alternative histories induce the same terminal carried interface. History-sensitive behavioral equivalences are well established in formal models of concurrency \citep{MontanariPistore1997}; our narrower object is the externally declared replacement route and the source label map that it carries. We characterize when route identity can be forgotten and when at least one immutable context per distinct carried terminal map is necessary.
-
-The result is best viewed as a theory of ecological state representation for management under structural change. It does not optimize management policies, infer source--target correspondences, or estimate stochastic dynamics. Instead it audits a prerequisite for those tasks: whether the ecological state variable supplied to prediction and intervention still contains the distinctions that the target management problem can operationally expose.
+Three secondary results delimit what this repair does and does not mean. First, structural state-count defect is separated from distribution-sensitive label information and management regret. Second, a finite decision example shows that even one hidden distinction can reverse restoration priority. Third, when several declared replacement routes reach the same target system, historical context is retained only when the routes carry incompatible terminal meanings. The result is best viewed as a theory of ecological state representation and monitoring repair under structural change: before optimizing a policy or collecting more data, test whether the state variable supplied to that decision still contains, and can practically recover, the distinctions that the target intervention exposes.
 
 \section{Relation to existing theory and practice}
-Table~\ref{tab:boundaries} summarizes the main boundaries. The novelty claim is intentionally modest: established abstraction and refinement results are used directly; the contribution is their organization around an inherited ecological decision interface, the translation of failure into a monitoring requirement, and the route-dependent completion problem.
+Table~\ref{tab:boundaries} summarizes the main boundaries. The novelty claim is intentionally modest: established abstraction and refinement results are used directly; the contribution is their ecological organization around an inherited decision interface and, especially, the translation of structural failure into an exact monitoring-feasibility and monitoring-cost problem.
 
 \begin{table}[t]
 \centering
@@ -51,12 +49,12 @@ Literature & Established question & Role or boundary here \\
 \midrule
 Lumpability and bisimulation & Which states can be aggregated while preserving specified behavior? & Supplies exactness concepts for a declared system. \\
 Partition refinement / MDP minimization & What is the coarsest stable refinement of a given partition? & Supplies the repair construction; not claimed as new. \\
-State-abstraction transfer and homomorphisms & How can abstractions or dynamics-preserving maps be reused across decision processes? & Shows that source-to-target abstraction transfer itself is prior art; we audit an inherited ecological interface and treat failure as the object of interest. \\
+State-abstraction transfer and homomorphisms & How can abstractions or dynamics-preserving maps be reused across decision processes? & Shows that source-to-target abstraction transfer itself is prior art; we audit failure of an inherited ecological interface. \\
 Ecological transferability & When do ecological predictions generalize across settings? & Establishes the importance of transfer; our failure is structural rather than statistical. \\
-State-and-transition monitoring & Which variables and thresholds distinguish predefined ecological states and transitions? & We ask first whether the predefined states remain sufficient after the action repertoire or structure changes. \\
-Value of information & Is additional information worth collecting for a decision under uncertainty? & Operates downstream of our structural audit once candidate missing distinctions and decision consequences are defined. \\
-History-preserving formalisms & When must causal execution history be retained in behavioral equivalence? & Related history-sensitive machinery; our scoped result concerns externally declared replacement routes and carried terminal label maps. \\
-\textbf{Present framework} & \textbf{Can an inherited ecological state interface still support the target management problem?} & \textbf{Return pass/fail, a local witness, the least exact distinction, a monitoring target, and required route context.} \\
+State-and-transition monitoring & Which variables and thresholds distinguish predefined ecological states and transitions? & We ask first whether the predefined states remain sufficient, then derive what pairs any monitoring redesign must separate. \\
+Value of information & Is additional information worth collecting for a decision under uncertainty? & Operates downstream once missing distinctions, candidate measurements, costs, and consequences are defined. \\
+History-preserving formalisms & When must causal execution history be retained in behavioral equivalence? & Related history-sensitive machinery; our scoped result concerns declared replacement routes and carried terminal maps. \\
+\textbf{Present framework} & \textbf{Can an inherited ecological state interface still support the target management problem?} & \textbf{Return pass/fail, a local witness, an exact monitoring requirement, feasibility or impossibility, least monitoring cost, and required route context.} \\
 \bottomrule
 \end{tabular}
 \caption{Boundary between neighboring theories and the ecological decision-sufficiency audit developed here}
@@ -64,15 +62,15 @@ History-preserving formalisms & When must causal execution history be retained i
 \end{table}
 
 \subsection{Exact aggregation and refinement}
-Lumpability and behavioral equivalence provide exact standards for when a coarse variable factors the behavior of a fixed process \citep{KemenySnell1960,FeretEtAl2012,LarsenSkou1991}. The construction used below for repair is likewise established. The relational coarsest-partition problem accepts an arbitrary starting partition \citep{PaigeTarjan1987}, and MDP model minimization computes the coarsest homogeneous refinement of any partition in a stochastic setting that contains our deterministic case \citep{GivanDeanGreig2003}. Consequently, finite termination, coarseness, and uniqueness of that refinement are not Paper A discoveries.
+Lumpability and behavioral equivalence provide exact standards for when a coarse variable factors the behavior of a fixed process \citep{KemenySnell1960,FeretEtAl2012,LarsenSkou1991}. The construction used below for repair is likewise established. The relational coarsest-partition problem accepts an arbitrary starting partition \citep{PaigeTarjan1987}, and MDP model minimization computes the coarsest homogeneous refinement of any partition in a stochastic setting that contains our deterministic case \citep{GivanDeanGreig2003}. Consequently, finite termination, coarseness, and uniqueness of that refinement are not Paper A discoveries. We nevertheless give a self-contained finite specialization in the supplement so the manuscript has no hidden proof dependency.
 
 \subsection{Abstraction transfer between systems}
 Source-to-target reuse is also not new in itself. Homomorphism theory relates distinct decision processes under dynamics-preserving maps \citep{RavindranBarto2003}, and \citet{WalshLiLittman2006Transfer} explicitly develop an algorithm for transferring state abstractions learned from source MDPs to target MDPs. Their objective is efficient planning and learning in target environments under transferable abstraction structure. Our ecological question is different but narrower: a classification with an accepted source meaning is carried through a declared ecological correspondence, and we ask whether the target management repertoire falsifies that inherited merge. The correspondence need not be a valid homomorphism; detecting its failure with respect to the inherited interface is precisely the audit.
 
 \subsection{Ecological state models, monitoring, and decision analysis}
-State-and-transition models provide a natural applied setting because they connect ecological state labels to transitions, drivers, and management expectations. \citet{JonesEtAl2023} show how field data can validate expert-defined vegetation states and identify a small number of variables and thresholds for targeted monitoring. We address the complementary upstream problem: structural change may make two configurations within one inherited state respond differently to a target intervention, so the state definition itself must first be audited. Once a separating ecological distinction has been identified, methods such as those of \citet{JonesEtAl2023} can be used to find practical indicators and thresholds.
+State-and-transition models provide a natural applied setting because they connect ecological state labels to transitions, drivers, and management expectations. \citet{JonesEtAl2023} show how field data can validate expert-defined vegetation states and identify a small number of variables and thresholds for targeted monitoring. We address the complementary upstream problem: structural change may make two configurations within one inherited state respond differently to a target intervention, so the state definition itself must first be audited. Once the audit returns obstruction pairs, empirical indicator-selection methods can search for measurements and thresholds that separate precisely those required distinctions.
 
-Decision analysis addresses a different downstream question. Value-of-information methods quantify whether collecting additional data is worth its cost given uncertainty, objectives, actions, and consequences \citep{CanessaEtAl2015}. The present framework does not calculate VoI. It identifies when an inherited interface suppresses a distinction that makes action consequences nonuniform. That distinction can then become a target for measurement design and, where uncertainty matters, for a VoI calculation.
+Decision analysis addresses a downstream question. Value-of-information methods quantify whether collecting additional data is worth its cost given uncertainty, objectives, actions, and consequences \citep{CanessaEtAl2015}. The present framework does not calculate VoI. It first asks whether the current state representation can express the action consequence at all and whether the supplied candidate measurements can reconstruct the repaired state. If they can, their acquisition costs and uncertainties can then enter a VoI analysis.
 
 \subsection{Historical context}
 Ecological legacy effects motivate retaining disturbance, colonization, or management history, but retaining all history can make a state description unnecessarily large. Formal computer-science literatures likewise contain history-preserving equivalences that retain causal information about executions \citep{MontanariPistore1997}. We do not claim invention of history-sensitive state descriptions. Our scoped question is whether several declared structural-replacement routes carry the same source label assignment to a shared terminal system. If they do, route identity can be discarded for this inherited interface; if they do not, a route-free carried label does not exist.
@@ -95,120 +93,105 @@ R\subseteq (X_0\times G_0)\times (X_1\times G_1).
 When the relation is source-label consistent and covers the target, the source law induces a carried target classification $C=\pi_R$. The relation is treated as declared scientific input; this paper does not infer it from data.
 
 \section{Results}
-\subsection{Decision-sufficiency audit}
+
+\subsection{Audit the inherited state before redesigning monitoring}
 \begin{theorem}[Operational portability]
 For a finite exact source macro-law and a declared label-consistent structural-change relation, the carried target classification is exact if and only if current outputs, legal-action rows, and successor carried labels are constant inside every carried target fiber.
 \end{theorem}
 
-This criterion is the audit: it asks whether the old state variable still contains every distinction required by the declared target outputs and interventions. Failure is structural and therefore cannot be repaired merely by re-estimating parameters while keeping the same state partition.
+This criterion is the audit. It asks whether the old state variable still contains every distinction required by the declared target outputs and interventions. Failure is structural and therefore cannot be repaired merely by re-estimating parameters while keeping the same state partition.
 
 \begin{proposition}[Local obstruction]
 Failure of portability is witnessed by two target states in one inherited fiber that differ in current output, legal actions, or successor inherited labels under a declared action or finite legal future.
 \end{proposition}
 
-A witness is useful ecologically because it identifies a concrete contrast that the inherited state variable suppresses. If the difference is caused, for example, by substitute-pollinator access, soil condition, or disturbance legacy, candidate monitoring variables must be capable of separating the witness states before the inherited management rule can be restored.
+A witness identifies a concrete contrast that the inherited state variable suppresses. If the difference is caused, for example, by substitute-pollinator access, soil condition, or disturbance legacy, the monitoring question is no longer ``which variables best describe the system?'' but ``which measurements can distinguish every contrast that the target decision requires?''
 
-\subsection{Least exact distinction by established refinement}
 Let $Q^\ast$ denote the coarsest exact target partition refining the carried classification $C$.
 
 \begin{proposition}[Source-relative exact repair]
-Applying the established coarsest stable refinement construction to $C$ yields $Q^\ast$, the unique coarsest exact target partition that never merges states separated by the inherited classification.
+Applying the standard coarsest stable-refinement construction to $C$ yields $Q^\ast$, the unique coarsest exact target partition that never merges states separated by the inherited classification.
 \end{proposition}
 
-This proposition is an instantiation of established results \citep{PaigeTarjan1987,GivanDeanGreig2003}, not a new generic refinement theorem. Its ecological role is to define a canonical answer to a specific management question: which distinctions must be added while preserving every inherited merge that remains compatible with the target interface?
+This is a finite specialization of established partition-refinement results \citep{PaigeTarjan1987,GivanDeanGreig2003}, not a new generic refinement theorem. A complete specialization proof is given in the supplement; the citations establish prior-art status and algorithmic context.
 
-\subsection{Separate structural, informational, monitoring, and decision consequences}
-The repair has several consequences, but they should not be collapsed into one number.
-
-\begin{definition}[Structural transport defect]
-Let $C$ be the carried target classification and $Q^\ast$ its coarsest exact refinement. Define
+\subsection{Obstruction pairs give an exact monitoring criterion}
+Define the obstruction-pair set
 \[
-\Delta_{\#}=|Q^\ast|-|C|,
-\qquad
-\Delta_{K}=\log_2|Q^\ast|-\log_2|C|.
+E=\{(x,x'):C(x)=C(x'),\;Q^\ast(x)\ne Q^\ast(x')\}.
 \]
+Suppose a candidate monitoring library contains measurements $z_j:X\to Z_j$, $j\in J$. For a selected set $S\subseteq J$, write $z_S(x)=(z_j(x))_{j\in S}$.
+
+\begin{definition}[Exact monitoring realization]
+A selected measurement set $S$ realizes the repaired classification relative to $C$ when there exists a decoder $d_S$ such that
+\[
+Q^\ast(x)=d_S(C(x),z_S(x))
+\]
+for every target state $x$.
 \end{definition}
 
-$\Delta_{\#}$ records the increase in the number of operational states and $\Delta_K$ is a uniform code-length proxy. Neither quantity is, by itself, a monitoring cost, an ecological effect size, or a measure of management regret. In the verified accumulating family with $m$ independently exposed binary distinctions,
+\begin{proposition}[Monitoring realization criterion]
+A selected measurement set $S$ realizes $Q^\ast$ relative to $C$ if and only if every obstruction pair is separated by at least one selected measurement:
 \[
-|C|=2,\qquad |Q^\ast|=2^m+1,
-\]
-so $\Delta_{\#}=2^m-1$. This is a sharp finite witness about loss of compression, not a universal ecological scaling law.
-
-If a target-state distribution $\mu$ is available, the additional label information can be represented separately.
-
-\begin{definition}[Conditional repair information]
-Treat $C$ and $Q^\ast$ as the carried and repaired labels of a target microstate drawn from $\mu$. Define
-\[
-D_H(\mu)=H_{\mu}(Q^\ast\mid C).
-\]
-\end{definition}
-
-\begin{proposition}[Minimum conditional label information]
-For any exact target refinement $P$ of $C$,
-\[
-H_{\mu}(Q^\ast\mid C)\le H_{\mu}(P\mid C).
-\]
-If $k_c$ repaired blocks occur inside carried class $c$, then
-\[
-0\le D_H(\mu)\le \sum_c \mu(c)\log_2 k_c\le \log_2\max_c k_c.
+\forall (x,x')\in E\;\exists j\in S:
+\quad z_j(x)\ne z_j(x').
 \]
 \end{proposition}
 
-The result follows because every exact refinement of $C$ refines the coarsest exact repair $Q^\ast$. Unlike $\Delta_K$, $D_H$ depends on how frequently the target states are expected to occur.
+The condition is both necessary and sufficient, not merely heuristic. If a pair in $E$ survives all selected measurements, the same inherited label and measurement vector would have to decode to two different repaired states. Conversely, if every obstruction pair is separated, equality of $(C,z_S)$ can never join two different $Q^\ast$ classes, so the decoder is well defined. The full proof is given in the supplement.
 
-The abstract repair also induces a concrete monitoring-design problem. Let
+For each candidate measurement let
 \[
-E=\{(x,x'):C(x)=C(x'),\;Q^\ast(x)\ne Q^\ast(x')\}
+A_j=\{(x,x')\in E:z_j(x)\ne z_j(x')\}
 \]
-be the set of obstruction pairs. Suppose candidate field measurements $z_j$ have costs $c_j$.
+be the obstruction pairs that it separates.
 
-\begin{proposition}[Monitoring realization]
-A selected measurement set $S$ is sufficient to recover the repaired classification if and only if every pair in $E$ is separated by at least one $z_j$ with $j\in S$. Minimum-cost realization is therefore the weighted set-cover/test-cover problem
+\begin{corollary}[Monitoring feasibility and minimum cost]
+An exact realization exists within the supplied measurement library if and only if
 \[
-\min_{S}\sum_{j\in S}c_j
-\quad\text{subject to every pair in }E\text{ being separated.}
+\bigcup_{j\in J}A_j=E.
 \]
-\end{proposition}
+When it exists and measurement $j$ has acquisition cost $c_j$, the least-cost exact realization is
+\[
+\min_{S\subseteq J}\sum_{j\in S}c_j
+\quad\text{subject to}\quad
+\bigcup_{j\in S}A_j=E.
+\]
+\end{corollary}
 
-This does not claim a new set-cover algorithm. It translates the formal witness set into the measurement requirement that an ecological monitoring design must satisfy.
+Thus the audit can return three practically distinct outputs. If the inherited classification passes, monitoring need not be redesigned for the declared interface. If it fails but the candidate library covers $E$, the framework identifies a least-cost exact measurement subset. If some obstruction pair is outside $\cup_j A_j$, the library itself is structurally inadequate: no combination of the supplied measurements can reconstruct the repaired state exactly.
 
-Finally, the management consequence depends on utilities and state frequencies rather than partition size alone.
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{p{0.22\linewidth}p{0.31\linewidth}p{0.38\linewidth}}
+\toprule
+Audit outcome & Formal output & Ecological next action \\
+\midrule
+Inherited state remains exact & No obstruction pairs & Keep the state definition for the declared target interface; no structural monitoring repair is required. \\
+Inherited state fails; candidate library covers $E$ & Obstruction pairs plus one or more feasible measurement covers & Select a feasible or minimum-cost measurement set, then estimate thresholds, error rates, and sampling performance empirically. \\
+Inherited state fails; some pair is uncovered & Explicit uncovered obstruction pair & Expand the candidate measurements; no rearrangement of the current library can exactly recover the required state distinction. \\
+\bottomrule
+\end{tabular}
+\caption{Decision outputs of the audit-to-monitoring pipeline}
+\label{tab:audit-monitoring}
+\end{table}
 
-\begin{proposition}[No universal defect--regret ordering]
-Without assumptions on target-state probabilities and the scale of management consequences, structural defect $\Delta_{\#}$ has no nontrivial universal monotone relationship with decision regret.
-\end{proposition}
-
-Reward rescaling changes regret without changing any partition, while arbitrarily many repaired states can have arbitrarily small decision consequences when their utility differences are small. Structural defect should therefore be interpreted as representation complexity only. Decision regret and value of information are separate quantities.
-
-\subsection{Route coherence and minimum historical context}
-Consider a rooted directed acyclic graph of declared replacement relations. Every root-to-terminal route carries the source label map to the terminal system.
-
-\begin{theorem}[Route coherence]
-A single route-independent carried classification, repaired classification, and structural defect exist if and only if every root-to-terminal route induces the same terminal carried label map.
-\end{theorem}
-
-\begin{theorem}[Minimum carried-map context]
-When terminal carried maps disagree, one immutable context per distinct carried terminal map is necessary and sufficient to preserve all declared routes before exact refinement.
-\end{theorem}
-
-These results concern the semantics carried by externally declared replacement routes. They are not claims that history-sensitive equivalence is new in general \citep{MontanariPistore1997}. Their ecological interpretation is narrower: disturbance or management history should be retained only when alternative declared routes assign incompatible operational meanings to the same terminal configurations.
-
-\section{Worked ecological example: restoration priority after pollinator turnover}
-Consider two degraded sites, A and B, containing the same focal plant and showing the same coarse pollination output. Under the source monitoring and action repertoire, both are classified as ``pollination maintained,'' while a third state represents failure of pollination service. In the verified finite witness, the inherited target labels are $(0,0,1)$.
-
-Structural change alters the pollinator community. The original dominant pollinator is lost, but one target configuration retains access to a substitute guild whereas the other does not. Competitor removal is introduced as a target intervention that can open floral access around the focal plant. Under this new action, the two states carrying the same inherited label have different successors: Site A lacks the substitute response channel, whereas Site B retains it. The inherited classification is therefore not decision-sufficient for the new intervention.
-
-The local obstruction is exactly the A--B pair. Applying standard refinement to the inherited labels splits only that exposed fiber, changing $(0,0,1)$ to $(0,1,2)$. The structural defect is one macrostate. The ecological content of the repair is not ``add one arbitrary state'': it is ``record substitute-pollinator response capacity,'' because that is the distinction that explains the different action successors. Figure~\ref{fig:local-split} summarizes the audit-to-monitoring workflow.
+Figure~\ref{fig:local-split} summarizes this audit-to-monitoring logic in the worked plant--pollinator system.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.98\linewidth]{../artifacts/figure1_local_split.svg}
-\caption{Decision-sufficiency audit for the plant--pollinator example. Pollinator turnover leaves an inherited class in place, a target intervention exposes different successors within that class, and established refinement returns the least state distinction that a monitoring design must recover}
+\caption{Decision-sufficiency audit and monitoring repair. Structural change leaves an inherited class in place, a target intervention exposes different successors within that class, and the resulting obstruction identifies the state distinction that candidate monitoring variables must recover}
 \label{fig:local-split}
 \end{figure}
 
-To make the management consequence explicit without presenting invented values as data, we add an illustrative one-step decision layer. Let intervention success at Site $i$ have probability $p_i$, success have benefit $B$, and intervention cost be $c_i$. The repaired model prefers Site B exactly when
+\subsection{A missing state distinction can reverse restoration priority}
+Consider two degraded sites, A and B, containing the same focal plant and showing the same coarse pollination output. Under the source monitoring and action repertoire, both are classified as ``pollination maintained,'' while a third state represents failure of pollination service. In the verified finite witness, the inherited target labels are $(0,0,1)$.
+
+Structural change alters the pollinator community. The original dominant pollinator is lost, but one target configuration retains access to a substitute guild whereas the other does not. Competitor removal is introduced as a target intervention that can open floral access around the focal plant. Under this new action, the two states carrying the same inherited label have different successors: Site A lacks the substitute response channel, whereas Site B retains it. The inherited classification is therefore not decision-sufficient for the new intervention. Standard refinement splits only that exposed fiber, changing $(0,0,1)$ to $(0,1,2)$. The ecological interpretation of the split is ``record substitute-pollinator response capacity,'' not ``add one arbitrary state.''
+
+To make the management consequence explicit without presenting invented values as data, let intervention success at Site $i$ have probability $p_i$, success have benefit $B$, and intervention cost be $c_i$. The repaired model prefers Site B exactly when
 \[
 Bp_B-c_B>Bp_A-c_A,
 \qquad\text{or equivalently}\qquad
@@ -216,7 +199,7 @@ p_B-p_A>\frac{c_B-c_A}{B}.
 \]
 An inherited model that pools A and B assigns the same success probability to both and therefore chooses the cheaper site whenever $c_A<c_B$.
 
-For illustration, set $B=1$, $c_A=0.20$, $c_B=0.35$, $p_A=0.25$, and $p_B=0.80$. The inherited pooled probability is $\bar p=0.525$, giving expected net benefits $0.325$ for A and $0.175$ for B, so the inherited rule chooses A. The repaired model gives $0.05$ for A and $0.45$ for B, so it chooses B. Evaluated under the repaired consequences, using the inherited choice incurs one-step regret $0.40$. These numbers are illustrative, not empirical estimates; their purpose is to show which quantities a field application would need to estimate and the parameter region in which a structural split changes the management decision.
+For illustration, set $B=1$, $c_A=0.20$, $c_B=0.35$, $p_A=0.25$, and $p_B=0.80$. The inherited pooled probability is $\bar p=0.525$, giving expected net benefits $0.325$ for A and $0.175$ for B, so the inherited rule chooses A. The repaired model gives $0.05$ for A and $0.45$ for B, so it chooses B. Evaluated under the repaired consequences, using the inherited choice incurs one-step regret $0.40$. These numbers are illustrative, not empirical estimates; their purpose is to identify the quantities a field application would need to estimate and the parameter region in which a structural split changes management.
 
 \begin{table}[t]
 \centering
@@ -240,6 +223,19 @@ B & 0.525 & 0.80 & 0.35 & 0.175 & 0.45 \\
 \label{fig:decision-reversal}
 \end{figure}
 
+\subsection{Repair complexity, information, and decision loss are different quantities}
+The structural repair itself can be summarized by
+\[
+\Delta_{\#}=|Q^\ast|-|C|,
+\qquad
+\Delta_K=\log_2|Q^\ast|-\log_2|C|.
+\]
+These quantities describe loss of compression only. In the verified accumulating family with $m$ independently exposed binary distinctions,
+\[
+|C|=2,\qquad |Q^\ast|=2^m+1,
+\]
+so $\Delta_{\#}=2^m-1$. This is a sharp finite witness about structural representation complexity, not a universal ecological scaling law.
+
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.9\linewidth]{../artifacts/figure2_transport_defect.svg}
@@ -247,7 +243,67 @@ B & 0.525 & 0.80 & 0.35 & 0.175 & 0.45 \\
 \label{fig:defect}
 \end{figure}
 
-The same example also illustrates route dependence. Suppose a terminal community can be reached either by pollinator loss followed by substitute colonization or by habitat modification followed by loss of the original guild. If both declared routes carry the same terminal labels, route identity is unnecessary for this interface. If they carry incompatible labels, no route-free inherited state assignment exists and an immutable carried-map context must be retained.
+If a target-state distribution $\mu$ is supplied, let $C$ and $Q^\ast$ also denote the inherited and repaired labels of a target state drawn from $\mu$.
+
+\begin{definition}[Conditional repair information]
+Define
+\[
+D_H(\mu)=H_\mu(Q^\ast\mid C).
+\]
+\end{definition}
+
+\begin{proposition}[Minimum conditional label information]
+For any exact target refinement $P$ of $C$,
+\[
+H_\mu(Q^\ast\mid C)\le H_\mu(P\mid C).
+\]
+If $k_c$ repaired blocks occur inside carried class $c$, then
+\[
+0\le D_H(\mu)
+\le \sum_c \Pr_\mu(C=c)\log_2 k_c
+\le \log_2\max_c k_c.
+\]
+\end{proposition}
+
+This is an information-theoretic corollary of coarsest exact repair: unlike $\Delta_K$, it weights the extra state information by the supplied target-state distribution.
+
+To separate representation complexity from management consequence, let $U$ be a finite management-action set and $u(x,a)$ a payoff. For a state representation $P$, define the best value achievable by a decision rule that can use only $P$ as
+\[
+V_\mu(P;u)=
+\max_{\alpha:\operatorname{im}(P)\to U}
+\sum_x \mu(x)\,u(x,\alpha(P(x))).
+\]
+The regret of retaining the inherited state instead of the repaired state is
+\[
+\mathcal{R}_\mu(C,Q^\ast;u)
+=
+V_\mu(Q^\ast;u)-V_\mu(C;u).
+\]
+
+\begin{proposition}[No universal defect--regret ordering]
+\label{prop:defect-regret}
+For every integer $d\ge1$ and every real $r\ge0$, there exists a finite target operational system for which $Q^\ast$ is the coarsest exact repair of $C$ and
+\[
+|Q^\ast|-|C|=d,
+\qquad
+\mathcal{R}_\mu(C,Q^\ast;u)=r.
+\]
+\end{proposition}
+
+Hence state-count defect alone gives neither a nontrivial universal upper bound nor a positive universal lower bound on management regret and cannot universally rank ecological consequence. The construction is given in the supplement. This is why monitoring cost, conditional information, and decision loss are reported separately rather than treated as interpretations of $\Delta_{\#}$.
+
+\subsection{Historical context is retained only when routes change inherited meaning}
+Consider a rooted directed acyclic graph of declared replacement relations. Every root-to-terminal route carries the source label map to the terminal system.
+
+\begin{theorem}[Route coherence]
+A single route-independent carried classification, repaired classification, and structural defect exist if and only if every root-to-terminal route induces the same terminal carried label map.
+\end{theorem}
+
+\begin{theorem}[Minimum carried-map context]
+When terminal carried maps disagree, one immutable context per distinct carried terminal map is necessary and sufficient to preserve all declared routes before exact refinement.
+\end{theorem}
+
+These results concern the semantics carried by externally declared replacement routes. They are not claims that history-sensitive equivalence is new in general \citep{MontanariPistore1997}. Their ecological interpretation is narrower: disturbance or management history should be retained only when alternative declared routes assign incompatible operational meanings to the same terminal configurations.
 
 \begin{figure}[t]
 \centering
@@ -257,27 +313,29 @@ The same example also illustrates route dependence. Suppose a terminal community
 \end{figure}
 
 \section{Discussion}
-The main result is a change in where model transfer is audited. Ecological workflows commonly ask whether a model can be refitted, extrapolated, or updated after environmental change. Here the prior question is whether the state variable supplied to that workflow remains sufficient for the target decision. Structural change or a new intervention can expose a distinction that an inherited class was explicitly designed to ignore. When that happens, better parameter estimates within the old state representation do not solve the problem.
+The central result is not a new generic state-reduction algorithm. It is a change in where ecological model transfer is audited and what the audit returns. Ecological workflows commonly ask whether a model can be refitted, extrapolated, or updated after environmental change. Here the prior question is whether the state variable supplied to that workflow remains sufficient for the target intervention. Structural change can expose a distinction that an inherited class was designed to ignore. When that happens, better parameter estimates within the old state representation do not solve the problem.
 
-This perspective connects formal state abstraction to ecological monitoring without claiming that either literature begins here. Empirical state-and-transition work already shows how a small set of field variables can be selected to distinguish states and detect transitions \citep{JonesEtAl2023}. Our audit supplies a complementary trigger for redesign: if two configurations within one inherited state have different target action consequences, they must no longer be observationally interchangeable for that management problem. The obstruction pairs define what a candidate indicator set must separate. Ecological data are then needed to identify feasible indicators, estimate thresholds, and assess classification error.
+The strongest applied consequence is the monitoring-realization criterion. A failed state audit does not merely say that ``more monitoring'' is needed. It returns a finite set of pairs that must become distinguishable. Given a candidate measurement library, the theory then answers whether exact recovery is possible at all. An uncovered pair is an impossibility certificate for that library; if every pair is covered, weighted set cover gives the least-cost exact measurement subset. This turns the formal failure into a concrete design requirement while leaving indicator performance, detection error, thresholds, and sampling effort to empirical analysis.
 
-The distinction from value of information is similarly important. VoI asks whether learning about an uncertain state, parameter, or model will improve expected management outcomes enough to justify sampling \citep{CanessaEtAl2015}. Our audit asks whether the current state representation is structurally capable of expressing the action consequence in the first place. The two approaches are sequential rather than competing: structural audit can identify a missing distinction; monitoring design can propose measurements that resolve it; and VoI can then evaluate whether collecting those measurements is worth the cost under uncertainty.
+This relationship makes the boundary with existing targeted monitoring precise. \citet{JonesEtAl2023} begin with ecological states that are already specified and identify field variables and thresholds that discriminate them. Paper A asks an upstream question: after structural or intervention change, are those inherited states still valid for the management problem? Only if the answer is no does the framework generate a new set of distinctions that the subsequent monitoring design must resolve. The two approaches therefore compose naturally rather than compete.
 
-Separating structural defect from decision regret prevents an attractive but unsupported interpretation. A one-state split can be management-critical if it reverses a high-stakes intervention, while a large state-count expansion can be nearly irrelevant if the exposed distinctions are rare or have negligible consequences. $\Delta_{\#}$ and $\Delta_K$ therefore describe loss of compression, not ecological importance. Distribution-sensitive repair information, field measurement cost, and decision regret require additional assumptions and should be reported separately.
+The distinction from value of information is similarly sequential. VoI asks whether learning about an uncertain state, parameter, or model will improve expected management outcomes enough to justify sampling \citep{CanessaEtAl2015}. Our audit asks whether the current state representation is structurally capable of expressing the relevant action consequence and whether a proposed measurement library can reconstruct the necessary state. Once feasible measurements, their costs, uncertainty, and decision consequences are specified, VoI becomes the appropriate downstream tool.
 
-Historical context should be treated with the same economy. Ecology contains many legacy effects, but a model need not record a complete disturbance history simply because history can matter. The route-coherence criterion asks a more specific question: do alternative declared histories change the inherited operational meaning assigned to the present configuration? If not, history can be discarded for this decision interface. If so, the minimum completion retains only the distinct carried-map contexts required to make the present state unambiguous.
+Separating structural defect from decision regret prevents an attractive but unsupported interpretation. A one-state split can be management-critical if it reverses a high-stakes intervention, while a large state-count expansion can be nearly irrelevant if the exposed distinctions are rare or have negligible consequences. The stronger construction in Proposition~\ref{prop:defect-regret} shows that any positive defect can coexist with any nonnegative regret after suitable finite decision consequences are specified. $\Delta_{\#}$ and $\Delta_K$ therefore describe loss of compression, not ecological importance.
+
+Historical context should be treated with the same economy. Ecology contains many legacy effects, but a model need not record a complete disturbance history simply because history can matter. The route-coherence criterion asks a more specific question: do alternative declared histories change the inherited operational meaning assigned to the present configuration? If not, history can be discarded for this decision interface. If so, the completion retains only the distinct carried-map contexts required to make the present state unambiguous.
 
 \subsection{Scope and limitations}
 The framework is appropriate when investigators can declare a finite or finitely represented source system, a target system, the outputs and interventions that matter, and a defensible relation carrying source configurations to target configurations. Concrete uses could include auditing restoration-priority classes after interaction turnover, testing whether habitat or resilience categories remain decision-sufficient after disturbance, or checking whether an inherited community-state interface can support a newly available intervention.
 
-It should not be used as a substitute for estimating transition probabilities, detecting species, inferring causal effects, learning the source--target relation, optimizing a policy, or quantifying observation and model uncertainty. Exactness is a benchmark for isolating structural failure. Approximate or stochastic portability, imperfect detection, and uncertainty in the structural relation are extensions rather than results established here.
+It should not be used as a substitute for estimating transition probabilities, detecting species, inferring causal effects, learning the source--target relation, optimizing a policy, or quantifying observation and model uncertainty. Exact monitoring realization assumes the candidate measurements are deterministic functions of the target state. Imperfect detection, measurement error, stochastic transition dynamics, and uncertainty in the structural relation are extensions rather than results established here.
 
 The plant--pollinator case is a finite theoretical example. Its deterministic split is verified by the repository witnesses, and its probability/cost layer is an illustrative sensitivity calculation. It is not evidence that a particular plant, pollinator guild, or restoration program exhibits the stated probabilities or priority reversal.
 
-The central ecological implication is therefore simple: a management state is not permanently valid merely because its label remains interpretable. Its adequacy depends on the distinctions exposed by the current system, observation target, action repertoire, and management objective. When structural change makes an inherited state insufficient, the useful output is not another unconstrained classification but a diagnosis of the missing distinction and a principled target for monitoring repair.
+The central ecological implication is therefore specific: a management state is not permanently valid merely because its label remains interpretable. Its adequacy depends on the distinctions exposed by the current system and intervention repertoire. When structural change makes an inherited state insufficient, the next scientific question is whether available measurements can reconstruct the missing distinction. That converts state-classification failure into a falsifiable monitoring-design requirement rather than an invitation to collect more variables indiscriminately.
 
 \section{Methods and proof organization}
-The portability criterion follows by necessity and sufficiency of output, legal-row, and successor uniformity within carried fibers. Local obstruction is the corresponding finite counter-witness. The source-relative repair uses established monotone partition refinement \citep{PaigeTarjan1987,GivanDeanGreig2003}. The conditional-information inequality follows because every exact refinement of the carried classification refines $Q^\ast$. Monitoring realization is the covering problem over obstruction pairs. Non-monotonicity between structural defect and regret follows by changing utility scale without changing the partition. Route coherence is equality of complete terminal carried maps across declared routes; minimum context follows because distinct carried maps cannot share one immutable route-free label assignment. Detailed proof dependencies, finite witnesses, and reproducibility commands are provided in the supplementary manuscript and repository workflows.
+The portability criterion follows by necessity and sufficiency of output, legal-row, and successor uniformity within carried fibers. Local obstruction is the corresponding finite counter-witness. The source-relative repair uses the standard monotone partition-refinement construction \citep{PaigeTarjan1987,GivanDeanGreig2003}; the supplement defines its exact signature and gives the finite specialization proof. The monitoring-realization theorem is proved by equivalence between existence of a decoder from $(C,z_S)$ and pairwise separation of all obstruction pairs; the minimum-cost corollary is then weighted set cover. The conditional-information inequality follows from the fact that every exact refinement of $C$ refines $Q^\ast$. The defect--regret result is proved constructively for arbitrary defect $d\ge1$ and regret $r\ge0$. Route coherence is equality of complete terminal carried maps across declared routes; minimum context follows because distinct carried maps cannot share one immutable route-free label assignment. Detailed proofs, finite witnesses, and reproducibility commands are provided in the supplementary manuscript and repository workflows.
 
 \bibliographystyle{plainnat}
 \bibliography{references}
