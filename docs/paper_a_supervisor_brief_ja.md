@@ -2,11 +2,11 @@
 
 ## まず伝えたい結論
 
-Paper A は、当初の「新しい coarsest source-relative repair 定理」を主張する theorem-first 論文から、**構造変化後に既存の生態学的状態分類を管理判断へ再利用してよいかを監査し、失敗した場合に何を観測すべきかを特定する理論**へ全面的に組み替えた。
+Paper A は、当初の「新しい coarsest source-relative repair 定理」を主張する theorem-first 論文から、**構造変化後に既存の生態学的状態分類を管理判断へ再利用してよいかを監査し、失敗を exact monitoring repair の要件へ変換する理論**へ全面的に組み替えた。
 
 現在の中心問いは：
 
-> ある生態系管理で既に使われている状態分類は、種の入れ替わり・相互作用の再配線・生息地変化・新しい介入の導入後にも、管理判断に必要な情報を十分保持しているか。保持していないなら、何を追加して区別・観測すれば decision-sufficient な状態表現を回復できるか。
+> ある生態系管理で既に使われている状態分類は、種の入れ替わり・相互作用の再配線・生息地変化・新しい介入の導入後にも、管理判断に必要な情報を十分保持しているか。保持していないなら、現在のモニタリング変数で必要な区別を回復できるか。できるなら最小費用で何を測るべきか。できないなら、どの状態対が現在の観測系では区別不能なのか。
 
 ## 先行研究精査で撤回した新規性
 
@@ -24,78 +24,60 @@ Paper A は、当初の「新しい coarsest source-relative repair 定理」を
 
 したがって、**generic refinement、generic abstraction transfer、targeted monitoring、VoI、history-sensitive equivalence、set-cover 自体を新規とは主張しない**。
 
-## 現在主張する貢献
+## 現在の主結果
 
-1. **Decision-sufficiency audit**
-   - inherited state 内で target の output、実施可能 action、action 後の successor state が一様かを検査する。
-   - 一様なら旧分類をそのまま管理へ使える。
+### 1. Decision-sufficiency audit
 
-2. **Local obstruction**
-   - 旧分類が失敗するとき、「同じ旧stateなのにtarget actionへの応答が異なる」具体的な状態対を返す。
+inherited state 内で target の output、実施可能 action、action 後の successor state が一様かを検査する。一様なら旧分類をそのまま管理へ使える。
 
-3. **Monitoring realization criterion**
-   - candidate measurement `z_j` の集合 `S` が repaired state `Q*` を実現するとは、`C` と `z_S` から `Q*` を復元する decoder が存在することと定義した。
-   - これは、旧分類では同じだが `Q*` では異なる全 obstruction pair を、選択測定の少なくとも1つが分離することと必要十分。
-   - したがって最小費用monitoringは weighted set-cover になり、候補変数全体でも分離できない pair は **このmeasurement libraryでは修復不能**という明示的certificateになる。
+### 2. Local obstruction
 
-4. **repair の意味を分離**
-   - structural state-count defect
-   - distribution-sensitive conditional information
-   - monitoring realization cost
-   - decision regret / downstream VoI
-   - 「state が多く増えるほど生態学的影響が大きい」とは主張しない。
+旧分類が失敗するとき、「同じ旧stateなのにtarget actionへの応答が異なる」具体的な状態対を返す。standard refinement は、そのtarget interfaceで必要な least exact distinction を定める supporting machinery として使う。
 
-5. **route context**
-   - 異なる replacement route が同じ terminal state meaning を運ぶなら history は捨てる。
-   - incompatible な carried map を運ぶ場合だけ immutable context を残す。
+### 3. Exact monitoring realization — 現在の applied centerpiece
 
-## 指摘されていた未証明4点は現在どうなったか
+candidate measurement `z_j` の集合 `S` が repaired state `Q*` を実現するとは、
 
-### 1. Minimum conditional label information — 証明済み
+`Q*(x)=d_S(C(x),z_S(x))`
 
-任意の exact refinement `P` は coarsest exact repair `Q*` を refine するため、`Q*` は `P` の決定論的関数になる。条件付きentropyのchain ruleから
+を満たす decoder が存在することと定義した。
 
-`H(Q*|C) <= H(P|C)`
+これは、
 
-を証明し、各 inherited class 内の repaired block 数 `k_c` による上界も証明した。
+`E={(x,x'): C(x)=C(x'), Q*(x)!=Q*(x')}`
 
-### 2. Monitoring realization — 必要十分条件として証明済み
+の全 obstruction pair を、選択測定の少なくとも1つが分離することと必要十分。
 
-`Q*(x)=d_S(C(x),z_S(x))` を満たすdecoderの存在を定義し、
+この結果から3通りの実務出力が得られる。
 
-- decoderが存在するなら全 obstruction pair は選択測定で分離される
-- 全 obstruction pair が分離されるなら decoder を well-defined に構成できる
+1. inherited state が pass → 構造的monitoring redesignは不要。
+2. stateはfailするがcandidate libraryが全pairをcover → exact recovery可能。測定費用を与えれば minimum-cost exact subset を求められる。
+3. candidate library全体でもcoverできないpairがある → **現在のmonitoring libraryではdecision-sufficient stateを回復不能**。未被覆pairが明示的なimpossibility certificateになる。
 
-を両方向で証明した。
+つまり「もっとデータを取る」ではなく、**何を区別できなければいけないか／今の観測系でそれが可能か**を先に決める。
 
-さらに minimum-cost realization と infeasibility certificate を系として示した。**現在の生態学的中心結果はここ。**
+## replayで追加した monitoring witness
 
-### 3. No universal defect-regret ordering — 強い形で証明済み
+local witness は
 
-分類 `P` から選べる最適管理価値 `V_mu(P;u)` と
+- inherited labels `(0,0,1)`
+- repaired labels `(0,1,2)`
+- obstruction pair `(0,1)`
 
-`R_mu(C,Q*;u)=V_mu(Q*;u)-V_mu(C;u)`
+候補測定のillustrative libraryでは：
 
-を定義した。
+- `substitute_response_capacity` は `(0,1)` を分離
+- abundance proxy と soil-condition proxy は分離しない
 
-さらに、任意の整数 `d>=1` と任意の `r>=0` に対し、
+したがって：
 
-`|Q*|-|C|=d` かつ `regret=r`
+- full library：exact recovery feasible
+- minimum exact subset：`substitute_response_capacity`
+- illustrative acquisition cost：`1.0`
+- abundance + soil-condition だけのsublibrary：infeasible
+- uncovered pair `(0,1)` がそのcertificate
 
-となる有限 target system を構成した。したがって state-count defect だけでは regret の非自明な上限・正の下限・単調ランキングのいずれも与えられない。
-
-### 4. Source-relative exact repair — 外部定理への依存を解消
-
-Paige–Tarjan / Givan–Dean–Greig をブラックボックスとして proof に使う形をやめた。本稿の有限 setting について、output・legal action・successor block を含む refinement signature を明示し、
-
-1. refinement が有限回で停止すること
-2. fixed point が exact であること
-3. 任意の exact refinement が全 iteration を refine すること
-4. よって fixed point が unique coarsest exact refinement であること
-
-を自己完結に証明した。
-
-Paige–Tarjan / Givan–Dean–Greig は **「この一般構成は既知であり、本稿の数学的新規性ではない」ことを示す引用**としてのみ使う。
+これらのmeasurement value/costは実証値ではなく、monitoring theoremを再現する有限witness。
 
 ## 植物–送粉者例で何が起きるか
 
@@ -115,33 +97,41 @@ illustrative decision layer として：
 
 であり、実証推定値ではなく sensitivity example と明記している。
 
+## supporting results
+
+- **Minimum conditional label information**：任意のexact refinement `P` に対し `H(Q*|C) <= H(P|C)` を証明済み。
+- **No universal defect-regret ordering**：任意の `d>=1` と `r>=0` に対し defect=`d`, regret=`r` の有限exact-repair問題を構成できることを証明済み。
+- **Source-relative exact repair**：有限settingについて停止・fixed-point exactness・unique coarsenessを自己完結証明済み。先行研究はprior-art statusの引用。
+- **Route context**：alternative routes が同じterminal carried mapならhistory不要、異なる場合のみdistinct contextが必要。secondary closure resultとして扱う。
+
 ## 論文の構造的リスク
 
-proof gap はかなり閉じた。一方、**generic な数学的新規性を主張しない以上、採否は生態学的問題設定の一般性と重要性に強く依存する**という評価は変わらない。
+proof gap は閉じた。一方、**generic な数学的新規性を主張しない以上、採否は生態学的問題設定の一般性と重要性に強く依存する**という評価は変わらない。
 
-ただし現在は framing だけではない。Monitoring realization criterion が、audit failure を以下の実務出力へ変換する：
+ただし現在は framing だけではない。Paper A は、audit failure を
 
-- inherited state の pass/fail
-- failure を示す obstruction pair
-- candidate measurement library が repaired state を実現可能かの必要十分判定
-- 不可能な場合の explicit obstruction certificate
-- 可能な場合の minimum-cost measurement selection
+- pass/fail
+- obstruction pair
+- candidate monitoring library の exact feasibility / impossibility
+- uncovered-pair certificate
+- minimum-cost exact measurement selection
+- downstream management consequence
 
-Jones et al. (2023) は predefined state を区別する観測変数を選ぶ。本稿はその一段上流で、**predefined state 自体が新しい介入に対してまだ妥当かを検査し、失効したときに初めて区別すべきpairを生成する**。Canessa et al. (2015) の VoI はさらに下流で、その情報を取得する価値を評価する。
+へ変換する。
 
-したがって現在の最も防御可能なストーリーは：
+Jones et al. (2023) は predefined state を区別する観測変数・thresholdを選ぶ。本稿はその一段上流で、**predefined state 自体が新しい介入に対してまだ妥当かを検査し、失効したときに初めて「区別すべきpair」を生成する**。Canessa et al. (2015) の VoI はさらに下流で、その情報を取得する価値を評価する。
 
-`inherited management state -> structural audit -> obstruction -> monitoring feasibility/cost -> decision consequence`
+したがって現在の主線は：
 
-である。
+`inherited management state -> structural audit -> obstruction -> monitoring feasibility/impossibility -> minimum monitoring cost -> decision consequence`
 
 ## 現在の推奨
 
-Theoretical Ecology を第一候補のままにするが、本文では Monitoring realization を applied centerpiece にする。`coarsest refinement` や `transport defect` をheadlineに戻さない。
+Theoretical Ecology を第一候補のままにする。本文では Monitoring realization を applied centerpiece に固定し、`coarsest refinement`、`transport defect`、historyをheadlineへ戻さない。
 
 教員に本当に判断してほしいのは次の2点だけ：
 
-1. **この「既存の管理stateが構造変化後もdecision-sufficientかを監査し、失敗をmonitoring requirementへ変換する」という問いは、Theoretical Ecology で独立論文として十分一般的・重要か。**
+1. **この「既存の管理stateが構造変化後もdecision-sufficientかを監査し、失敗をexact monitoring requirementへ変換する」という問いは、Theoretical Ecology で独立論文として十分一般的・重要か。**
 2. **理論＋illustrative decision example で投稿し、実データによる検証を別稿にするか。それとも実証1例を今稿に必須と考えるか。**
 
 もし Theoretical Ecology が formal-methods 寄りすぎると判断する場合、Ecological Modelling を即時fallbackとする。
