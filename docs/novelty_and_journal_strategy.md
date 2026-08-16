@@ -2,13 +2,31 @@
 
 ## Current claim
 
-Paper A is **not** a new generic refinement theorem and is **not** novel merely because a state abstraction is transferred from a source to a target system.
+Paper A is **not** a new generic refinement theorem, **not** novel merely because a state abstraction is transferred from a source to a target system, and **not** an open-composition lower-bound theorem.
 
 The current publication claim is:
 
 > Given an ecological state classification that is already used for a source management problem, audit whether it remains decision-sufficient after declared structural change and a changed intervention repertoire. If it fails, identify the local hidden distinction, use established coarsest refinement to recover the least exact state repair, translate that split into a monitoring requirement, and determine whether replacement-route context must remain explicit.
 
 This is best described as a theory of ecological state representation for management under structural change.
+
+## Hard boundary against CCOC
+
+MLTR fixes one inherited source partition. Its admissible target solution must refine the carried source labels:
+
+\[
+\min_{q_T\text{ exact},\;q_T\succeq \operatorname{carry}(q_S)} |q_T|.
+\]
+
+CCOC asks a different quantified question: each closed grammar may have its own independently optimized exact interface, and the theorem compares those minima with the minimum exact interface under a jointly open grammar. Its headline is a cross-grammar lower bound such as
+
+\[
+\max_i K_i^*=O(1),\qquad K_O^*=\Omega(m).
+\]
+
+A target in MLTR may expose new legal actions or future words, but that is only an application instance of source-relative transport. **MLTR does not claim CCOC's independently optimized closed-vs-open interface separation, and CCOC does not own MLTR's inherited-law repair, transport defect, or history completion.**
+
+See `docs/ccoc_mltr_claim_firewall_2026-08-16.md`. The manuscript states this boundary in the related-work subsection on open-future interface lower bounds.
 
 ## Prior art that constrains the novelty claim
 
@@ -113,6 +131,8 @@ The manuscript now has a clearer monitoring-design bridge, but it still lacks mu
 ## Submission stop rule
 
 Do not expand the theorem inventory simply to make the paper look more mathematical. Add theory only if it closes a visible logical gap, changes the ecological conclusion, or survives a direct prior-art challenge.
+
+Write every open-grammar example as transport of one fixed inherited law. Do not import CCOC's separately optimized closed/open minima into this paper's claim hierarchy; that blurs the boundary the firewall document exists to protect.
 
 The remaining work is manuscript endgame:
 

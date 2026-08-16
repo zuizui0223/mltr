@@ -4,11 +4,25 @@
 
 **Working title:** Exact Ecological Macro-Laws under Structural Change: Portability, Minimal Repair, and Historical Context
 
-**Repository scope:** CCOC supplies the frozen open-composition theorem provenance; MLTR is the active manuscript and reproducibility repository. Open composition is presented only as a nested special case of structural change.
+**Repository scope:** MLTR is the active manuscript and reproducibility repository for **source-relative transport of one inherited macro-law**. CCOC is an adjacent theorem repository for a different cross-grammar lower-bound problem and is not an MLTR result source except for clearly attributed shared substrate or motivation.
 
-**Central question:** When does an ecological macro-law survive structural change, and, when it fails, what is the unique minimal exact repair?
+**Central question:** Given one already accepted ecological macro-law and a declared structural change, when does that inherited law remain exact, and, when it fails, what is the unique minimal exact repair constrained to preserve its inherited semantics?
 
 No new theorem family should be added during submission preparation.
+
+## Claim firewall against CCOC
+
+MLTR fixes \(q_S\) and solves
+
+\[
+\min_{q_T\text{ exact},\;q_T\succeq \operatorname{carry}(q_S)} |q_T|.
+\]
+
+CCOC instead compares independently optimized closed-grammar minima with the minimum exact interface under a jointly open grammar. Its cross-grammar lower bound and bounded-local sharpness family are **not** part of MLTR's four-result hierarchy.
+
+A target-only action or newly legal word may be used in MLTR because it can expose a split inside one inherited fiber. That is a transport/repair instance, not a claim that open composition itself is subsumed by MLTR.
+
+See `docs/ccoc_mltr_claim_firewall_2026-08-16.md`.
 
 ## Publication abstract
 
@@ -22,24 +36,26 @@ Ecological macrostates are routinely transported across altered communities and 
 
 ### Gap
 
-Coarse graining, lumpability, abstraction, and bisimulation provide mature languages for state aggregation. Transportability addresses whether conclusions transfer across environments. These literatures do not by themselves answer the paper's combined question: given an already accepted ecological macro-law and a declared structural change, when does that exact law remain valid, and if it does not, what is the unique coarsest exact repair constrained to preserve its source semantics?
+Coarse graining, lumpability, abstraction, and bisimulation provide mature languages for state aggregation. Transportability addresses whether conclusions transfer across environments. These literatures do not by themselves answer MLTR's constrained question: given an already accepted ecological macro-law and a declared structural change, when does that exact law remain valid, and if it does not, what is the unique coarsest exact repair constrained to preserve its source semantics?
+
+Do not broaden this gap statement into CCOC's different question about whether all closed futures can be individually easy to compress while the jointly open future requires a large minimum interface.
 
 ### Contribution hierarchy
 
 1. **Operational Portability Criterion.** The carried target partition is exact if and only if current outputs, legal-action rows, and action successors factor through the inherited labels.
-2. **Local Obstruction and Unique Coarsest Source-relative Repair.** A newly legal action or future word can witness failure inside one carried fiber; iterative operational refinement returns the unique coarsest exact partition refining the inherited labels.
-3. **Transport Defect.** The minimal repair burden is quantified by the increase in repaired state count or description length.
+2. **Local Obstruction and Unique Coarsest Source-relative Repair.** A target-legal action or future word can witness failure inside one carried fiber; iterative operational refinement returns the unique coarsest exact partition refining the inherited labels.
+3. **Transport Defect.** The minimal repair burden is quantified by the increase in repaired state count or description length relative to the inherited law.
 4. **History Coherence and Minimum History Completion.** Coherent replacement paths share one carried repair. Incoherent paths require exactly one immutable history mode per distinct carried terminal map before relative repair.
 
 ### Ecological conclusion
 
-The framework distinguishes two scientifically different causes of failed transfer: the old variable may remain valid, or structural change may expose an ecologically consequential distinction that must be added. The repair theorem identifies the least such addition under the declared operational model.
+The framework distinguishes scientifically different outcomes of model transfer: the inherited variable may remain valid, or structural change may expose an ecologically consequential distinction that must be added. The repair theorem identifies the least such addition under the declared operational model.
 
 ## Results spine
 
 ### Result 1 — Operational portability
 
-State one master theorem only. CCOC's grammar-aware interface conditions and MLTR's relation transport appear as ingredients or corollaries, not competing headline results.
+State one source-relative theorem only. Exact interface conditions are standard/foundational ingredients; the MLTR claim begins once source semantics are carried through a declared relation and tested in the target.
 
 **Reviewer-facing interpretation:** This is not merely a homomorphism restatement because the transported labels are inherited through a possibly non-nested state relation and are tested against the target's legal operational grammar.
 
@@ -47,9 +63,9 @@ State one master theorem only. CCOC's grammar-aware interface conditions and MLT
 
 ### Result 2 — Local obstruction and minimal repair
 
-Treat the local witness and the fixed-point refinement as one theorem package. The theorem must visibly contain existence, exactness, coarseness, and uniqueness relative to the carried labels.
+Treat the local witness and fixed-point refinement as one theorem package. The theorem must visibly contain existence, exactness, coarseness, and uniqueness relative to the carried labels.
 
-**Reviewer-facing interpretation:** Standard partition refinement is credited as machinery. Novelty lies in the source-relative transport problem, the operational obstruction, and the unique repair interpretation, not in claiming a new generic refinement algorithm.
+**Reviewer-facing interpretation:** Standard partition refinement is credited as machinery. Novelty lies in the source-relative transport problem and the unique repair interpretation, not in a new generic refinement algorithm or a CCOC-style open-interface lower bound.
 
 **Ecological payoff:** When transfer fails, the result identifies the minimum additional ecological distinction required rather than merely rejecting the old classification.
 
@@ -60,9 +76,9 @@ Define
 - `Delta_count = |Q_target_repaired| - |Q_source|`,
 - `Delta_bits = log2 |Q_target_repaired| - log2 |Q_source|`.
 
-Present the accumulating finite family as a sharp witness, with all scope assumptions in the proposition and figure caption. Do not promote the family to a separate theorem.
+Present any accumulating finite family only as a source-relative repair witness. Do not use CCOC's independently optimized closed/open interface gap as the definition or proof of MLTR transport defect.
 
-**Ecological payoff:** Defect separates mild structural change, which needs one extra state, from change that destroys most of the original compression.
+**Ecological payoff:** Defect separates mild structural change, which needs one extra state, from change that destroys most of the inherited compression.
 
 ### Result 4 — History coherence and minimum completion
 
@@ -90,7 +106,7 @@ Every main definition and result must appear in this single example. Avoid a sec
 
 ### What is new
 
-The paper supplies a finite, exact decision structure for inherited ecological macro-laws under structural change: unchanged portability, unique minimal repair, quantified repair burden, route-independent repair, or minimum history-aware completion.
+The paper supplies a finite, exact decision structure for one inherited ecological macro-law under structural change: unchanged portability, unique minimal repair, quantified repair burden, route-independent repair, or minimum history-aware completion.
 
 ### What is not claimed
 
@@ -98,14 +114,16 @@ The paper supplies a finite, exact decision structure for inherited ecological m
 - no empirical claim that a chosen ecological variable is exact;
 - no stochastic or approximate theorem beyond the declared finite deterministic setting;
 - no claim that partition refinement, bisimulation, or lumpability are new;
-- no claim that historical paths are identifiable from terminal observations.
+- no claim that historical paths are identifiable from terminal observations;
+- no claim that MLTR proves CCOC's closed-vs-open minimum-interface lower bound.
 
-### Relation to adjacent literatures
+### Relation to adjacent literatures and CCOC
 
 - **Coarse graining and lumpability:** provide exact aggregation criteria within a fixed system; this paper studies inherited aggregation across declared structural change.
 - **Abstraction and bisimulation:** provide behavioral equivalence machinery; this paper adds source-relative transport, unique constrained repair, and repair burden.
 - **Transportability:** studies transfer of causal or statistical conclusions; this paper gives an operational state-space criterion and exact repair for transported macro-laws.
 - **Ecological resilience and regime shifts:** motivate structural change but do not generally provide a unique minimal refinement of an inherited predictive variable.
+- **CCOC:** asks whether separately optimized closed-grammar interfaces can all be small while the jointly open grammar forces a large minimum exact interface. That quantifier structure and lower bound remain a separate theorem story.
 
 ### Limitations and next step
 
@@ -115,7 +133,7 @@ Approximate, stochastic, and data-estimated variants are important but belong to
 
 1. **Conceptual pipeline:** source exact macro-law → structural change → portability test → unchanged law or minimal repair.
 2. **Local obstruction and repair:** one inherited fiber split by a target-only action, with the unique coarsest repaired partition.
-3. **Transport defect:** verified accumulating witness, displaying repaired state count and defect against exposed distinctions.
+3. **Transport defect:** source-relative repaired state count and defect against exposed inherited distinctions.
 4. **History coherence:** coherent routes sharing one repair versus incoherent routes requiring minimum history modes.
 
 The ecological worked example should supply labels and interpretation for Figures 1, 2, and 4 rather than appearing as a disconnected fifth conceptual figure.
@@ -126,13 +144,17 @@ The ecological worked example should supply labels and interpretation for Figure
 
 **Answer:** Credit the standard fixed-point machinery explicitly. The contribution is the characterization of an inherited source-relative partition under non-nested structural transport, the local operational failure witness, the unique constrained repair, and its transport/history consequences.
 
+### Criticism: “Isn't this just CCOC under different notation?”
+
+**Answer:** No. CCOC has no fixed inherited source partition in its headline optimization; each closed grammar may choose a different optimal exact interface before comparison with the jointly open minimum. MLTR conditions all admissible target repairs on one carried source semantics. The two theorem statements have different quantifier order and different outputs.
+
 ### Criticism: “The framework is too abstract to be ecological.”
 
 **Answer:** The worked example must show a concrete conclusion unavailable before the theorem: whether an existing functional state remains usable after turnover and, if not, exactly which ecological distinction must be retained.
 
 ### Criticism: “The defect is a descriptive statistic rather than a theorem.”
 
-**Answer:** Present defect as a definition supported by the minimal-repair theorem and sharp finite families. Do not inflate it into an independent theorem claim.
+**Answer:** Present defect as a definition supported by the minimal-repair theorem and source-relative witness families. Do not inflate it into an independent theorem claim.
 
 ### Criticism: “History completion merely copies systems by path.”
 
@@ -146,20 +168,23 @@ The ecological worked example should supply labels and interpretation for Figure
 
 ### Main text
 
-- master portability theorem;
+- source-relative portability theorem;
 - local obstruction plus unique coarsest repair;
-- transport-defect definition with one sharp family;
+- transport-defect definition with one source-relative witness family;
 - path coherence plus minimum history completion;
 - one ecological example.
 
 ### Supplement
 
-- relay construction details;
 - implementation-level refinement lemmas;
-- alternative witness families;
+- alternative source-relative witness families;
 - extended replacement graphs;
-- deterministic replay and software details;
-- complete CCOC theorem registry and provenance.
+- deterministic replay and software details.
+
+### External/adjacent only
+
+- CCOC cross-grammar open-interface lower bounds;
+- CCOC relay sharpness constructions.
 
 ### Exclude
 
@@ -172,11 +197,11 @@ The ecological worked example should supply labels and interpretation for Figure
 
 Paper A is ready for journal selection only when:
 
-- the abstract and introduction name one central question;
+- the abstract and introduction name one source-relative central question;
 - the main text contains no more than four result packages;
 - existence, uniqueness, and source-relative minimality are visible in the repair theorem statement;
 - the worked ecological example uses every main definition;
-- open composition reads as a special case, not a paper nested inside the paper;
-- related work explicitly credits coarse graining, abstraction, bisimulation, and transportability;
-- all numerical figure labels come from the verified replay;
+- no sentence claims that CCOC's open-composition lower bound is an MLTR special case or MLTR result;
+- related work explicitly credits coarse graining, abstraction, bisimulation, transportability, and CCOC as an adjacent distinct problem;
+- all numerical figure labels come from verified MLTR replay;
 - the manuscript can be read without repository history or internal acronyms.

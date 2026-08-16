@@ -75,6 +75,9 @@ Decision analysis addresses a downstream question. Value-of-information methods 
 \subsection{Historical context}
 Ecological legacy effects motivate retaining disturbance, colonization, or management history, but retaining all history can make a state description unnecessarily large. Formal computer-science literatures likewise contain history-preserving equivalences that retain causal information about executions \citep{MontanariPistore1997}. We do not claim invention of history-sensitive state descriptions. Our scoped question is whether several declared structural-replacement routes carry the same source label assignment to a shared terminal system. If they do, route identity can be discarded for this inherited interface; if they do not, a route-free carried label does not exist.
 
+\subsection{Open-future interface lower bounds}
+One further boundary needs stating explicitly, because the two questions are easy to conflate. A neighboring problem asks whether each fixed closed future grammar may admit its own small optimal exact interface while the minimum exact interface for a jointly open future grammar is necessarily much larger. That question optimizes the closed interfaces independently, so no inherited partition is fixed anywhere in it. The audit developed here has the opposite constraint: one accepted source classification is fixed first, carried to the target, and every admissible repair must refine its inherited labels. A target grammar may enlarge and thereby expose an obstruction pair, but that is an instance of source-relative transport, not the independently optimized closed-versus-open separation. We do not claim that separation here.
+
 \section{Operational framework}
 A finite controlled ecological system is a tuple
 \[
@@ -90,7 +93,7 @@ Structural change from a source system $\mathcal{S}_0$ to a target system $\math
 \[
 R\subseteq (X_0\times G_0)\times (X_1\times G_1).
 \]
-When the relation is source-label consistent and covers the target, the source law induces a carried target classification $C=\pi_R$. The relation is treated as declared scientific input; this paper does not infer it from data.
+When the relation is source-label consistent and covers the target, the source law induces a carried target classification $C=\pi_R$. The relation is treated as declared scientific input; this paper does not infer it from data. The target may also enlarge the legal action grammar, so newly legal actions can expose distinctions inside an inherited fiber. Such enlargement enters here only as an instance of source-relative transport, with the inherited law fixed and constraining admissible repair; it is not the cross-grammar problem in which closed interfaces are optimized independently before comparison with a jointly open minimum.
 
 \section{Results}
 
