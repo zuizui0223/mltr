@@ -43,41 +43,56 @@ def _text(x: float, y: float, value: object, size: int = 15, anchor: str = "midd
 
 
 def render_local_split(report: dict[str, object]) -> str:
-    """Show the ecological pathway from structural change to a monitoring repair."""
+    """Show audit failure, exact monitoring feasibility, and the next action."""
     local = report["local_split"]
     carried = tuple(local["carried_labels"])
     repaired = tuple(local["repaired_labels"])
     body: list[str] = []
 
     boxes = [
-        (80, 30, "1. Structural change", "Dominant pollinator is lost", "community interaction structure changes", "box"),
-        (540, 30, "2. Inherited classification", "Sites A and B remain grouped", f"carried labels: {carried}", "decision"),
-        (540, 200, "3. New intervention", "Competitor removal becomes legal", "the action tests substitute-pollinator access", "box"),
-        (80, 200, "4. Decision-sufficiency failure", "Same inherited label", "but A and B have different intervention successors", "box"),
-        (80, 370, "5. Least exact distinction", f"standard refinement gives: {carried} → {repaired}", f"structural defect = {local['transport_defect_states']} macrostate", "box"),
-        (540, 370, "6. Monitoring implication", "Measure substitute-response capacity", "then reevaluate restoration priority", "decision"),
+        (70, 25, "1. Structural change", "Dominant pollinator is lost", "interaction structure changes", "box"),
+        (550, 25, "2. Inherited state", "Sites A and B remain grouped", f"carried labels: {carried}", "decision"),
+        (550, 175, "3. Target intervention", "Competitor removal becomes legal", "tests substitute-pollinator access", "box"),
+        (70, 175, "4. Local obstruction", "Same inherited label", "but A and B have different successors", "box"),
+        (70, 325, "5. Least exact distinction", f"standard refinement: {carried} → {repaired}", f"structural defect = {local['transport_defect_states']} macrostate", "box"),
+        (550, 325, "6. Candidate measurements", "Can the library separate every", "obstruction pair in the repaired state?", "decision"),
     ]
 
     for x, y, title, line1, line2, css_class in boxes:
-        body.append(f'<rect class="{css_class}" x="{x}" y="{y}" width="380" height="120" rx="12"/>')
-        body.append(_text(x + 190, y + 30, title, 16))
-        body.append(_text(x + 190, y + 65, line1, 14))
-        body.append(_text(x + 190, y + 90, line2, 13))
+        body.append(f'<rect class="{css_class}" x="{x}" y="{y}" width="400" height="115" rx="12"/>')
+        body.append(_text(x + 200, y + 28, title, 16))
+        body.append(_text(x + 200, y + 62, line1, 14))
+        body.append(_text(x + 200, y + 87, line2, 13))
 
     body.extend([
-        '<path class="arrow" d="M460 90 L530 90"/>',
-        '<path class="arrow" d="M730 150 L730 190"/>',
-        '<path class="arrow" d="M540 260 L470 260"/>',
-        '<path class="arrow" d="M270 320 L270 360"/>',
-        '<path class="arrow" d="M460 430 L530 430"/>',
+        '<path class="arrow" d="M470 82 L540 82"/>',
+        '<path class="arrow" d="M750 140 L750 165"/>',
+        '<path class="arrow" d="M550 232 L480 232"/>',
+        '<path class="arrow" d="M270 290 L270 315"/>',
+        '<path class="arrow" d="M470 382 L540 382"/>',
+        '<path class="arrow" d="M750 440 L750 474"/>',
     ])
 
-    body.append('<rect class="fiber" x="180" y="540" width="640" height="88" rx="12"/>')
-    body.append(_text(500, 569, "Management consequence", 16))
-    body.append(_text(500, 597, "The inherited state hides a difference that matters under the target intervention.", 14))
-    body.append(_text(500, 619, "The audit returns the least state distinction that a monitoring design must recover.", 13))
+    body.append('<path class="arrow" d="M750 474 C750 490 510 490 360 515"/>')
+    body.append('<path class="arrow" d="M750 474 C750 490 865 490 865 515"/>')
 
-    return _svg(1000, 660, "\n".join(body))
+    body.append('<rect class="decision" x="90" y="520" width="440" height="115" rx="12"/>')
+    body.append(_text(310, 548, "Library covers every obstruction pair", 15))
+    body.append(_text(310, 577, "Exact recovery is feasible", 14))
+    body.append(_text(310, 603, "choose a feasible / minimum-cost subset", 13))
+    body.append(_text(310, 625, "then estimate thresholds, errors, and decision value", 12))
+
+    body.append('<rect class="box" x="570" y="520" width="400" height="115" rx="12"/>')
+    body.append(_text(770, 548, "At least one pair is uncovered", 15))
+    body.append(_text(770, 577, "Exact recovery is impossible", 14))
+    body.append(_text(770, 603, "with the current measurement library", 13))
+    body.append(_text(770, 625, "expand measurements before reusing the state", 12))
+
+    body.append('<rect class="fiber" x="220" y="670" width="660" height="64" rx="12"/>')
+    body.append(_text(550, 695, "Ecological output: a falsifiable monitoring-repair requirement", 15))
+    body.append(_text(550, 718, "not an undirected request for more variables", 13))
+
+    return _svg(1040, 760, "\n".join(body))
 
 
 def render_defect_curve(report: dict[str, object]) -> str:
