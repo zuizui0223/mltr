@@ -3,7 +3,7 @@
 \subsection{Repository components}
 The executable audit, witness, and figure pipeline is separated from the manuscript text.
 \begin{itemize}
-\item \texttt{scripts/verify\_transport\_core.py} replays the finite transport, repair, route-coherence, and context witnesses.
+\item The transport-core verification script replays the finite transport, repair, route-coherence, and context witnesses.
 \item \texttt{scripts/verify\_submission\_story.py} builds the publication-facing schema-3 report, including the local audit, exact monitoring-feasibility witness, conditional repair information, illustrative decision reversal, structural witness family, and route-context results.
 \item \texttt{scripts/render\_submission\_figures.py} renders four submission figures directly from those verified report values.
 \item \texttt{artifacts/figure1\_local\_split.svg} records the decision-sufficiency audit and the feasible/infeasible monitoring-library branches.
@@ -31,7 +31,7 @@ The schema-3 submission report records, among other values,
 \item the single local obstruction pair $(0,1)$;
 \item an illustrative candidate measurement library in which \texttt{substitute\_response\_capacity} separates that obstruction whereas \texttt{flower\_abundance} and \texttt{soil\_condition} do not;
 \item feasibility of the full candidate library and minimum exact acquisition cost $1.0$ for the separating measurement in that illustrative library;
-\item an explicitly insufficient two-variable sublibrary using only the abundance and soil-condition proxies, for which obstruction pair $(0,1)$ remains uncovered and therefore certifies exact monitoring infeasibility;
+\item an insufficient two-proxy sublibrary that leaves obstruction pair $(0,1)$ uncovered, thereby certifying exact monitoring infeasibility;
 \item structural state-count defect $1$;
 \item uniform-distribution conditional repair information $2/3$ bit for that witness;
 \item the accumulating family $|Q^\ast|=2^m+1$;
