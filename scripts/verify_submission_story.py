@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import math
+from itertools import combinations
 from pathlib import Path
 
 from ext_transport.defect_witnesses import (
@@ -42,6 +43,76 @@ def _uniform_conditional_repair_information(
         conditional = tuple(value / len(members) for value in repaired_counts.values())
         total += (len(members) / count) * _entropy(conditional)
     return total
+
+
+def _monitoring_realization_example(
+    carried_labels: tuple[int, ...],
+    repaired_labels: tuple[int, ...],
+) -> dict[str, object]:
+    """Verify feasible, infeasible, and least-cost monitoring for the local split."""
+    if len(carried_labels) != len(repaired_labels):
+        raise ValueError("carried and repaired labels must have the same length")
+
+    obstruction_pairs = tuple(
+        (i, j)
+        for i in range(len(carried_labels))
+        for j in range(i + 1, len(carried_labels))
+        if carried_labels[i] == carried_labels[j] and repaired_labels[i] != repaired_labels[j]
+    )
+
+    library = {
+        "flower_abundance": {"values": (1, 1, 0), "cost": 0.25},
+        "soil_condition": {"values": (0, 0, 1), "cost": 0.50},
+        "substitute_response_capacity": {"values": (0, 1, 0), "cost": 1.00},
+    }
+
+    coverage: dict[str, tuple[tuple[int, int], ...]] = {}
+    for name, spec in library.items():
+        values = tuple(spec["values"])
+        coverage[name] = tuple(
+            pair for pair in obstruction_pairs if values[pair[0]] != values[pair[1]]
+        )
+
+    required = set(obstruction_pairs)
+    full_coverage = set().union(*(set(pairs) for pairs in coverage.values())) if coverage else set()
+    full_library_feasible = full_coverage == required
+
+    feasible_subsets: list[tuple[float, tuple[str, ...]]] = []
+    names = tuple(library)
+    for subset_size in range(len(names) + 1):
+        for subset in combinations(names, subset_size):
+            covered = set().union(*(set(coverage[name]) for name in subset)) if subset else set()
+            if covered == required:
+                total_cost = sum(float(library[name]["cost"]) for name in subset)
+                feasible_subsets.append((total_cost, subset))
+    if not feasible_subsets:
+        minimum_cost = None
+        minimum_cost_measurements: tuple[str, ...] = ()
+    else:
+        minimum_cost, minimum_cost_measurements = min(
+            feasible_subsets,
+            key=lambda item: (item[0], len(item[1]), item[1]),
+        )
+
+    insufficient_library = ("flower_abundance", "soil_condition")
+    insufficient_coverage = set().union(
+        *(set(coverage[name]) for name in insufficient_library)
+    )
+    uncovered_pairs = tuple(pair for pair in obstruction_pairs if pair not in insufficient_coverage)
+
+    return {
+        "obstruction_pairs": obstruction_pairs,
+        "candidate_library": library,
+        "coverage_by_measurement": coverage,
+        "full_library_feasible": full_library_feasible,
+        "minimum_cost_measurements": minimum_cost_measurements,
+        "minimum_cost": minimum_cost,
+        "insufficient_library": insufficient_library,
+        "uncovered_pairs": uncovered_pairs,
+        "interpretation": (
+            "illustrative exact monitoring library; measurement values and costs are not empirical estimates"
+        ),
+    }
 
 
 def _decision_reversal_example() -> dict[str, object]:
@@ -104,8 +175,11 @@ def build_report(max_module_count: int = 6) -> dict[str, object]:
     repaired = tuple(local.refinement.refined_labels)
 
     return {
-        "schema_version": 2,
-        "paper_claim": "audit whether an inherited ecological state classification remains decision-sufficient after declared structural change and identify the least distinction required when it does not",
+        "schema_version": 3,
+        "paper_claim": (
+            "audit whether an inherited ecological state classification remains decision-sufficient "
+            "after declared structural change and convert failure into an exact monitoring-repair requirement"
+        ),
         "local_split": {
             "carried_labels": carried,
             "repaired_labels": repaired,
@@ -117,6 +191,7 @@ def build_report(max_module_count: int = 6) -> dict[str, object]:
                 _uniform_conditional_repair_information(carried, repaired), 12
             ),
         },
+        "monitoring_realization": _monitoring_realization_example(carried, repaired),
         "decision_reversal": _decision_reversal_example(),
         "accumulating_defect": accumulation,
         "history": {
@@ -130,11 +205,26 @@ def build_report(max_module_count: int = 6) -> dict[str, object]:
             "history_aware_label_count": augmented.history_aware_macrostate_count,
         },
         "submission_interpretation": {
-            "headline_result": "ecological decision-sufficiency audit of an inherited state classification",
-            "repair_result": "established coarsest-refinement machinery returns the least exact distinction once the carried interface fails",
-            "measurement_result": "separating witnesses specify which distinctions candidate monitoring variables must resolve",
-            "decision_result": "structural repair complexity is distinct from decision regret; an illustrative pollinator example produces a priority reversal",
-            "closing_result": "path coherence yields one route-independent interface; incoherence requires minimum immutable carried-map context",
+            "headline_result": (
+                "ecological decision-sufficiency audit with exact monitoring feasibility, "
+                "impossibility certificates, and minimum-cost realization"
+            ),
+            "repair_result": (
+                "established coarsest-refinement machinery returns the least exact distinction "
+                "once the carried interface fails"
+            ),
+            "measurement_result": (
+                "candidate monitoring variables are sufficient exactly when they separate every "
+                "obstruction pair; uncovered pairs certify an inadequate measurement library"
+            ),
+            "decision_result": (
+                "structural repair complexity is distinct from decision regret; an illustrative "
+                "pollinator example produces a priority reversal"
+            ),
+            "closing_result": (
+                "path coherence yields one route-independent interface; incoherence requires "
+                "minimum immutable carried-map context"
+            ),
         },
     }
 
