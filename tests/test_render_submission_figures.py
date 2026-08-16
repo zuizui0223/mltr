@@ -23,8 +23,12 @@ def test_submission_figures_render_from_verified_report(tmp_path, monkeypatch):
     local_split = outputs[0].read_text(encoding="utf-8")
     assert "Least exact distinction" in local_split
     assert "structural defect = 1 macrostate" in local_split
-    assert "Monitoring implication" in local_split
-    assert "least state distinction" in local_split
+    assert "Candidate measurements" in local_split
+    assert "Library covers every obstruction pair" in local_split
+    assert "Exact recovery is feasible" in local_split
+    assert "At least one pair is uncovered" in local_split
+    assert "Exact recovery is impossible" in local_split
+    assert "falsifiable monitoring-repair requirement" in local_split
     defect = outputs[1].read_text(encoding="utf-8")
     assert "2^m + 1" in defect
     assert "not monitoring cost or regret" in defect
