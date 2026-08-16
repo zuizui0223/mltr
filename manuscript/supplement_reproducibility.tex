@@ -4,9 +4,9 @@
 The executable audit, witness, and figure pipeline is separated from the manuscript text.
 \begin{itemize}
 \item \texttt{scripts/verify\_transport\_core.py} replays the finite transport, repair, route-coherence, and context witnesses.
-\item \texttt{scripts/verify\_submission\_story.py} builds the publication-facing schema-2 report, including the local audit, conditional repair information, illustrative decision reversal, structural witness family, and route-context results.
+\item \texttt{scripts/verify\_submission\_story.py} builds the publication-facing schema-3 report, including the local audit, exact monitoring-feasibility witness, conditional repair information, illustrative decision reversal, structural witness family, and route-context results.
 \item \texttt{scripts/render\_submission\_figures.py} renders four submission figures directly from those verified report values.
-\item \texttt{artifacts/figure1\_local\_split.svg} records the decision-sufficiency audit and monitoring implication.
+\item \texttt{artifacts/figure1\_local\_split.svg} records the decision-sufficiency audit and the feasible/infeasible monitoring-library branches.
 \item \texttt{artifacts/figure2\_transport\_defect.svg} records the accumulating structural repair-complexity family.
 \item \texttt{artifacts/figure3\_history\_completion.svg} records route coherence and carried-map contexts.
 \item \texttt{artifacts/figure4\_decision\_reversal.svg} records the illustrative probability region in which repaired state information reverses the two-site restoration priority.
@@ -25,9 +25,13 @@ python scripts/render_submission_figures.py
 The manuscript workflow reads the figure references from the main \LaTeX{} source, converts every referenced generated SVG to PDF, and compiles both the main paper and this supplement with \texttt{latexmk}.
 
 \subsection{Submission-facing report values}
-The schema-2 submission report records, among other values,
+The schema-3 submission report records, among other values,
 \begin{itemize}
 \item inherited labels $(0,0,1)$ and repaired labels $(0,1,2)$ in the local witness;
+\item the single local obstruction pair $(0,1)$;
+\item an illustrative candidate measurement library in which \texttt{substitute\_response\_capacity} separates that obstruction whereas \texttt{flower\_abundance} and \texttt{soil\_condition} do not;
+\item feasibility of the full candidate library and minimum exact acquisition cost $1.0$ for the separating measurement in that illustrative library;
+\item an explicitly insufficient sublibrary containing only \texttt{flower\_abundance} and \texttt{soil\_condition}, for which obstruction pair $(0,1)$ remains uncovered and therefore certifies exact monitoring infeasibility;
 \item structural state-count defect $1$;
 \item uniform-distribution conditional repair information $2/3$ bit for that witness;
 \item the accumulating family $|Q^\ast|=2^m+1$;
@@ -35,13 +39,13 @@ The schema-2 submission report records, among other values,
 \item inherited choice A, repaired choice B, one-step regret $0.40$, and reversal threshold $p_B-p_A>0.15$ for those costs and benefit;
 \item two immutable carried-map contexts in the incoherent two-route witness.
 \end{itemize}
-The probability and cost values are constants in an illustrative sensitivity calculation. They are not empirical observations or fitted ecological estimates.
+The measurement values, measurement costs, probabilities, and intervention costs in these small replay examples are illustrative constants. They are not empirical observations or fitted ecological estimates.
 
 \subsection{Consistency principle}
-Numerical labels in the figures and manuscript-facing report are computed from the same verification functions rather than copied manually into plotting code. This prevents carried labels, repaired labels, structural defect values, conditional-information values, decision outputs, and route-context counts from silently drifting away from the executable examples.
+Numerical labels in the figures and manuscript-facing report are computed from the same verification functions rather than copied manually into plotting code. This prevents carried labels, repaired labels, obstruction pairs, monitoring coverage, structural defect values, conditional-information values, decision outputs, and route-context counts from silently drifting away from the executable examples.
 
 \subsection{Generated artifacts}
 Generated JSON reports, SVG figures, converted PDFs, and \LaTeX{} build products are intentionally ignored on ordinary working branches. GitHub Actions rebuilds them, and submission or release commits should archive the corresponding workflow artifacts separately so that the paper-facing outputs remain tied to a verified source revision.
 
 \subsection{Scope of the implementation}
-The core code verifies finite deterministic structural examples and exact refinement. The added probability/cost layer is a decision sensitivity calculation on top of the verified structural split, not a stochastic transport theorem. The implementation does not estimate source--target relations from observations, handle imperfect detection, infer ecological histories, optimize policies, or provide approximate/stochastic portability guarantees. These remain outside the claims of the present manuscript.
+The core code verifies finite deterministic structural examples, exact refinement, and deterministic exact monitoring realization over a supplied candidate measurement library. The probability/cost layer is a decision sensitivity calculation on top of the verified structural split, not a stochastic transport theorem. The implementation does not estimate source--target relations from observations, handle imperfect detection or measurement error, infer ecological histories, optimize policies, or provide approximate/stochastic portability guarantees. These remain outside the claims of the present manuscript.
