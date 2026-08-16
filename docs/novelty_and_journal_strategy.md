@@ -2,11 +2,29 @@
 
 ## Fixed claim
 
-**Exact Ecological Macro-Laws under Structural Change** is not presented as a new generic bisimulation, lumpability, or partition-refinement method. Its contribution is a source-relative transport problem:
+**Exact Ecological Macro-Laws under Structural Change** is not presented as a new generic bisimulation, lumpability, partition-refinement method, or open-composition lower-bound theorem. Its contribution is a source-relative transport problem:
 
 > Given an already accepted exact ecological macro-law and a declared structural change between possibly non-nested systems, determine whether the inherited law remains exact; if not, return the unique coarsest exact target law constrained to preserve every inherited merge that remains valid.
 
 The paper then quantifies the minimum repair burden and characterizes when several declared replacement histories admit one route-independent repair.
+
+## Hard boundary against CCOC
+
+MLTR fixes one inherited source partition. Its admissible target solution must refine the carried source labels:
+
+\[
+\min_{q_T\text{ exact},\;q_T\succeq \operatorname{carry}(q_S)} |q_T|.
+\]
+
+CCOC asks a different quantified question: each closed grammar may have its own independently optimized exact interface, and the theorem compares those minima with the minimum exact interface under a jointly open grammar. Its headline is a cross-grammar lower bound such as
+
+\[
+\max_i K_i^*=O(1),\qquad K_O^*=\Omega(m).
+\]
+
+A target in MLTR may expose new legal actions or future words, but that is only an application instance of source-relative transport. **MLTR does not claim CCOC's independently optimized closed-vs-open interface separation, and CCOC does not own MLTR's unique inherited-law repair, transport defect, or history completion.**
+
+See `docs/ccoc_mltr_claim_firewall_2026-08-16.md`.
 
 ## Nearest prior literatures and the boundary
 
@@ -32,7 +50,7 @@ Compositional verification, supervisory control, open systems, and modular abstr
 
 **Overlap:** environmental interaction can invalidate an abstraction; context matters.
 
-**Difference:** Paper A gives an explicit finite ecological decision structure for an inherited macro-law: unchanged portability, a local operational obstruction, unique least source-relative repair, repair defect, and minimum history completion. Open composition is only a special case of the more general source-target relation.
+**Difference:** Paper A fixes an inherited macro-law and asks whether that law survives a declared target change and, if not, how to repair it with minimum source-relative refinement. It does **not** ask how the globally minimum exact interface changes when one optimizes separately under several closed grammars and then opens the grammar; that is the CCOC problem.
 
 ### 4. Transportability and domain adaptation
 
@@ -40,7 +58,7 @@ Causal transportability and statistical domain adaptation ask whether effects or
 
 **Overlap:** transfer across changed environments.
 
-**Difference:** Paper A is not an estimation theorem and does not infer a transport relation. It studies exact operational closure of a declared macrostate interface under outputs, legal interventions, and successors, and returns a canonical structural repair when transfer fails.
+**Difference:** Paper A is not an estimation theorem and does not infer a transport relation. It studies exact operational closure of a declared inherited macrostate interface under outputs, legal interventions, and successors, and returns a canonical structural repair when transfer fails.
 
 ### 5. Ecological coarse variables, resilience classes, and model transfer
 
@@ -56,7 +74,7 @@ Use this wording in the abstract, introduction, cover letter, and reviewer respo
 
 > Existing lumpability, bisimulation, and partition-refinement theories characterize exact aggregation within a specified system. We address a different constrained problem: an accepted macro-law is transported through a declared structural change, and any repair must preserve its inherited semantics. We characterize unchanged portability, prove that failure has a finite operational witness, and obtain the unique coarsest exact target refinement of the carried labels. This source-relative minimality supports a transport-defect measure and a sharp characterization of when multiple replacement histories require explicit context.
 
-Avoid claims that partition refinement, bisimulation, quotient construction, or exact aggregation are new.
+Avoid claims that partition refinement, bisimulation, quotient construction, exact aggregation, or the closed-vs-open interface lower bound are MLTR novelties.
 
 ## The most vulnerable claims
 
@@ -64,6 +82,7 @@ Avoid claims that partition refinement, bisimulation, quotient construction, or 
 2. **“Transport defect” is a definition, not a standalone theorem.** Its value comes from being tied to the unique minimal repair and verified witness families.
 3. **“History completion” can look like copying the system by path.** The main result must emphasize the necessary-and-sufficient minimum: histories share a mode exactly when their complete carried terminal maps agree.
 4. **The ecological contribution is currently conceptual.** The plant-pollinator example must show a management conclusion that changes after a target-only intervention; otherwise editors may see computer-science formalism with ecological nouns.
+5. **CCOC overlap may blur the claim.** Every open-grammar example must be written as transport of one fixed inherited law; do not import CCOC's separately optimized closed/open minima into the MLTR theorem hierarchy.
 
 ## Required literature groups for the manuscript
 
@@ -112,9 +131,9 @@ Submit first to **Theoretical Ecology** after one ecological-strengthening revis
 
 ## Revision gate before submission
 
-- add a related-work section using the five boundaries above;
-- state the carried-label constraint in the main repair theorem;
-- add one table contrasting fixed-system aggregation, statistical transport, and source-relative repair;
+- keep the source-relative carried-label constraint visible in the main repair theorem;
+- add one table contrasting fixed-system aggregation, CCOC's cross-grammar lower-bound problem, statistical transport, and MLTR's source-relative repair;
+- remove language that treats CCOC's open-composition theorem as an MLTR result;
 - develop the plant-pollinator example into a complete decision workflow;
 - ensure every headline claim can be read without CCOC/MLTR terminology;
 - prepare a cover letter centered on the constrained transport problem, not on a new refinement algorithm.
