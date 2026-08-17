@@ -23,9 +23,11 @@ Let $E$ be any exact target partition with $E\preceq P_0$. Inductively, exactnes
 
 \subsection{History coherence and minimum completion}
 \begin{proof}[Proof of history coherence]
-If all root-to-terminal paths induce the same carried terminal map, the target receives one route-independent inherited partition; its repair and defect are consequently route independent. If two complete carried maps differ, some terminal configuration receives incompatible inherited labels, so no route-free carried partition can represent both histories.
+If all root-to-terminal paths induce the same carried terminal map, the target receives one route-independent inherited label assignment. Relative exact refinement depends only on that carried assignment and the terminal controlled system, so its repaired partition and defect are route independent.
+
+If two complete carried maps differ, some terminal configuration receives different inherited source labels under the two histories. Hence no single route-free carried label map can preserve both inherited assignments. This is a semantic incompatibility of the carried labels; it does not assert that the two unlabeled final repaired partitions must necessarily be different after refinement.
 \end{proof}
 
 \begin{proof}[Proof of minimum history completion]
-Group histories by equality of their complete carried terminal maps. One immutable mode for each equivalence class is sufficient because the carried map is then well defined within every mode and source-relative refinement can be applied. It is necessary because histories with different complete maps assign incompatible inherited semantics somewhere in the terminal system and therefore cannot share one immutable mode. The number of distinct carried maps is consequently the minimum exact history completion.
+Group histories by equality of their complete carried terminal maps. One immutable mode for each equivalence class is sufficient because the carried map is then well defined within every mode and source-relative refinement can be applied. It is necessary because histories with different complete maps assign incompatible inherited semantics somewhere in the terminal system and therefore cannot share one immutable mode while preserving those path-specific labels. The number of distinct carried maps is consequently the minimum exact history completion before relative refinement.
 \end{proof}
