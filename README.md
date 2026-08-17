@@ -16,6 +16,8 @@ The project develops finite theorems for **non-nested** system changes. It does 
 6. **Path-label coherence.** In a declared rooted replacement DAG, if every root-to-terminal history carries the same root macro labels to each terminal state, then the carried partition, its coarsest exact repair, and its transport defect are independent of replacement route.
 7. **Minimal history augmentation.** If declared histories carry different terminal label tuples, exactly one immutable history mode per distinct tuple is necessary and sufficient to preserve them all. Relative exact refinement on the history-sliced terminal system then gives the coarsest exact history-aware macro-law.
 
+The manuscript-facing hierarchy is narrower than this executable inventory: source-relative portability, local failure plus unique coarsest repair, transport defect, and route/history completion form one semantic-coherence story.
+
 ## Ecological reading
 
 - **Source stage:** an ecological community before turnover, extinction, colonization, habitat reconfiguration, or interaction rewiring.
@@ -28,8 +30,26 @@ The project develops finite theorems for **non-nested** system changes. It does 
 
 MLTR does not infer a replacement relation, replacement history, or action grammar from field data. These are assumptions of a finite mathematical model.
 
+## CREST role and development firewall
+
+At program level, MLTR is the **semantic-coherence audit** of Contract-Relative Ecological State Theory (CREST): it fixes one inherited source law and asks whether that meaning survives structural change and, if not, what least exact repair preserves as much inherited semantics as possible.
+
+The canonical four-audit synthesis is maintained in MRM at [Contract-Relative Ecological State Theory (CREST)](https://github.com/zuizui0223/mrm/blob/main/docs/contract_relative_ecological_state_theory.md).
+
+MLTR owns source-relative transport, minimal repair, transport defect, route coherence, and history completion. Route other central objects as follows:
+
+- independently optimized closed-vs-open future-interface lower bounds → **CCOC**;
+- unresolved candidate-mechanism disagreement and candidate-safe state → **MRM**;
+- finite/noisy evidence, monitoring feasibility, detection/failure architecture, calibration, or risk-limited reporting → **CED**.
+
+A monitoring layer may consume MLTR obstruction pairs as an **application or cross-contract adapter**, but generic measurement selection, set cover, detection risk, or evidential certification is not an MLTR headline theorem. A genuinely new MLTR×CED result would have to prove a new coupling rather than merely apply standard monitoring machinery after a semantic audit.
+
+Passing the MLTR audit does not imply that the repaired state is future-sufficient under every wider grammar, robust to retained mechanism uncertainty, or empirically resolved by available evidence.
+
 ## Start here
 
+- [CREST program synthesis](https://github.com/zuizui0223/mrm/blob/main/docs/contract_relative_ecological_state_theory.md) — canonical four-audit program map and cross-repository firewalls.
+- [CCOC/MLTR claim firewall](docs/ccoc_mltr_claim_firewall_2026-08-16.md) — exact quantifier boundary between open-future lower bounds and source-relative repair.
 - [Submission audit](docs/submission_audit.md) — claim hierarchy, theorem-to-figure map, and remaining pre-submission work.
 - [Paper architecture](docs/paper_architecture.md) — recommended central claim, theorem hierarchy, Results order, and figure plan.
 - [Working Results and Discussion](docs/paper_results_discussion.md) — manuscript-facing English draft for the theorem results and interpretation.
@@ -54,7 +74,7 @@ The last command writes `artifacts/transport_core_report.json`.
 
 This repository was initialized from the non-nested replacement branch (`EXT-1`–`EXT-4`) of the CCOC/RACH archive. `EXT` was the development name; **MLTR** is the publication-facing repository identity. The current Python package remains `ext_transport` for compatibility with the finite replay surface.
 
-CCOC remains the frozen provenance archive. MLTR is the active workspace for the separate replacement/rewiring theorem program.
+CCOC is both the historical provenance source for the migrated branch and the active independent CREST future-sufficiency layer. MLTR is the active workspace for the distinct source-relative replacement/rewiring theorem program.
 
 ## Scope
 
