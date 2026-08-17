@@ -30,7 +30,23 @@ The repository explicitly does **not** claim invention of:
 
 Those are established literatures and are credited in `manuscript/references.bib` and `docs/paper_a_reference_audit.md`.
 
-The contribution is instead the ecological organization of these ingredients around an inherited management interface: audit the old state variable after declared structural change, generate the exact distinctions that the target intervention exposes, determine whether a supplied measurement library can recover them, return an impossibility certificate when it cannot, and connect successful repair to management consequences.
+The contribution is instead the ecological organization of these ingredients around an inherited management interface: audit the old state variable after declared structural change, generate the exact distinctions that the target intervention exposes, and connect successful repair to management consequences.
+
+## CREST role and development firewall
+
+At program level, MLTR is the **semantic-coherence audit** of Contract-Relative Ecological State Theory (CREST): it fixes one inherited source law and asks whether that meaning survives structural change and, if not, what least exact repair preserves as much inherited semantics as possible.
+
+The canonical four-audit synthesis is maintained in MRM at [Contract-Relative Ecological State Theory (CREST)](https://github.com/zuizui0223/mrm/blob/main/docs/contract_relative_ecological_state_theory.md).
+
+MLTR owns source-relative transport, minimal repair, transport defect, route coherence, and history completion. Route other central objects as follows:
+
+- independently optimized closed-vs-open future-interface lower bounds → **CCOC**;
+- unresolved candidate-mechanism disagreement and candidate-safe state → **MRM**;
+- finite/noisy evidence, monitoring feasibility, detection/failure architecture, calibration, or risk-limited reporting → **CED**.
+
+A monitoring layer may consume MLTR obstruction pairs as an **application or cross-contract adapter**, but generic measurement selection, set cover, detection risk, or evidential certification is not an MLTR headline theorem. A genuinely new MLTR×CED result would have to prove a new coupling rather than merely apply standard monitoring machinery after a semantic audit.
+
+Passing the MLTR audit does not imply that the repaired state is future-sufficient under every wider grammar, robust to retained mechanism uncertainty, or empirically resolved by available evidence.
 
 ## Submission-facing results
 
@@ -64,6 +80,8 @@ Generated JSON reports, SVG figures, and LaTeX build products are ignored on wor
 ## Start here
 
 - [Paper A manuscript](manuscript/paper_a_main.tex) — current publication-facing draft.
+- [CREST program synthesis](https://github.com/zuizui0223/mrm/blob/main/docs/contract_relative_ecological_state_theory.md) — canonical four-audit program map and cross-repository firewalls.
+- [CCOC/MLTR claim firewall](docs/ccoc_mltr_claim_firewall_2026-08-16.md) — exact quantifier boundary between open-future lower bounds and source-relative repair.
 - [Paper A reference audit](docs/paper_a_reference_audit.md) — adversarial novelty boundary and citation guardrails.
 - [Submission audit](docs/submission_audit.md) — claim hierarchy and pre-submission work.
 - [Paper architecture](docs/paper_architecture.md) — monitoring-centered result hierarchy and figure plan.
