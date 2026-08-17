@@ -1,6 +1,6 @@
 # Master theorem proof package
 
-This document gives the formal proof structure for the combined structural-change manuscript.
+This document gives the formal proof structure for the structural-change manuscript.
 
 ## Theorem
 
@@ -10,7 +10,9 @@ Let a finite source controlled ecological system carry an exact source macro-law
 2. Failure has a finite within-fiber witness.
 3. Iterative refinement by output, legal row, and successor block terminates at the unique coarsest exact target partition refining the carried partition.
 4. Its state and bit increases are minimal among source-relative exact target descriptions.
-5. Across a rooted finite replacement graph, route-independent repair exists if and only if all root-to-terminal paths induce the same terminal carried map. Otherwise one history mode per distinct carried map is necessary and sufficient.
+5. Across a rooted finite replacement graph, if all root-to-terminal paths induce the same carried terminal label map, then the carried semantics, relative repair, and defect are route independent. If declared paths induce different carried maps, no single route-free carried label map can preserve all of those inherited source semantics; one history mode per distinct carried map is necessary and sufficient to represent them simultaneously before relative exact refinement.
+
+The last clause is a statement about preservation of inherited **label semantics**. It does not claim that two different carried maps must produce different unlabeled final repair partitions: distinct inherited assignments can in principle refine to the same final partition after all necessary splits are made.
 
 ## Proof 1: portability
 
@@ -22,7 +24,7 @@ If exactness fails, at least one quotient function is not representative-indepen
 
 ## Proof 3: coarsest repair
 
-Start from the carried partition. Repeatedly split blocks by output, legal-action row, and successor block under every shared legal action. Each step refines the previous partition. Finiteness guarantees stabilization.
+Start from the carried partition. Repeatedly split blocks by output, legal-action row, and successor block under every declared legal action. Each step refines the previous partition. Finiteness guarantees stabilization.
 
 The fixed point is exact by construction. Let `E` be any exact partition refining the carried partition. Inductively, `E` must refine every iteration because exactness forces every split introduced by the refinement operator. Therefore `E` refines the fixed point. The fixed point is consequently the unique coarsest exact refinement.
 
@@ -32,9 +34,11 @@ Every source-relative exact target partition refines the coarsest repair and the
 
 ## Proof 5: route coherence and history
 
-If all root-to-terminal paths induce the same carried terminal map, one route-free carried partition exists and the coarsest repair applies. If two paths induce different maps, some terminal configuration receives incompatible inherited labels, so no route-free source-relative assignment can preserve both.
+If all root-to-terminal paths induce the same carried terminal map, one route-free inherited label assignment exists. Relative exact refinement is a deterministic function of that carried assignment and the terminal controlled system, so the repaired partition and defect are route independent.
 
-Index the distinct carried maps by an immutable history variable. Each history slice now has a well-defined carried map and can be repaired. Fewer history modes would merge two distinct maps and recreate the incompatibility, so one mode per distinct map is necessary and sufficient.
+If two paths induce different carried maps, some terminal configuration receives different inherited source labels under those paths. Therefore no single route-free **carried label map** can preserve both inherited assignments. This is the obstruction that history augmentation repairs; it is not a proof that the two unlabeled repaired partitions must differ.
+
+Index the distinct carried maps by an immutable history variable. Each history slice now has a well-defined carried map and can be repaired. Fewer history modes would merge two distinct carried maps and require one mode to encode incompatible inherited labels somewhere on the terminal system. Thus one mode per distinct carried map is necessary and sufficient to preserve all declared path-specific semantics. Relative exact refinement of the history-sliced system then gives the coarsest exact interface compatible with those semantics.
 
 ## Novelty boundary
 
