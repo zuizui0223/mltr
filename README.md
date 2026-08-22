@@ -30,13 +30,25 @@ The manuscript-facing hierarchy is narrower than this executable inventory: sour
 
 MLTR does not infer a replacement relation, replacement history, or action grammar from field data. These are assumptions of a finite mathematical model.
 
-## CREST role and development firewall
+## CREST role: historical / semantic insufficiency
 
-At program level, MLTR is the **semantic-coherence audit** of Contract-Relative Ecological State Theory (CREST): it fixes one inherited source law and asks whether that meaning survives structural change and, if not, what least exact repair preserves as much inherited semantics as possible.
+The canonical synthesis lives in the dedicated [CREST repository](https://github.com/zuizui0223/crest), with the current hierarchy in the [trajectory-first program architecture](https://github.com/zuizui0223/crest/blob/main/docs/trajectory_first_program_architecture_2026-08-22.md).
 
-The canonical four-audit synthesis is maintained in MRM at [Contract-Relative Ecological State Theory (CREST)](https://github.com/zuizui0223/mrm/blob/main/docs/contract_relative_ecological_state_theory.md).
+CREST starts from temporally extended ecological worlds and asks whether a present snapshot is sufficient for a declared scientific state. Within that hierarchy, MLTR is the **historical / semantic obstruction theory**.
 
-MLTR owns source-relative transport, minimal repair, transport defect, route coherence, and history completion. Route other central objects as follows:
+Two target configurations can share the same current descriptor while differing in the inherited meaning carried from a source system or replacement history. MLTR asks whether that difference must be retained after structural change and, when the inherited merge fails, what least exact refinement repairs it.
+
+\[
+\boxed{
+\text{same present descriptor}
+\not\Rightarrow
+\text{same inherited operational state after replacement}.
+}
+\]
+
+MLTR therefore owns source-relative transport, minimal repair, transport defect, route coherence, and history completion. These results are one structural reason a present snapshot can fail to be a sufficient CREST state.
+
+Route other central objects as follows:
 
 - independently optimized closed-vs-open future-interface lower bounds → **CCOC**;
 - unresolved candidate-mechanism disagreement and candidate-safe state → **MRM**;
@@ -48,7 +60,8 @@ Passing the MLTR audit does not imply that the repaired state is future-sufficie
 
 ## Start here
 
-- [CREST program synthesis](https://github.com/zuizui0223/mrm/blob/main/docs/contract_relative_ecological_state_theory.md) — canonical four-audit program map and cross-repository firewalls.
+- [CREST trajectory-first architecture](https://github.com/zuizui0223/crest/blob/main/docs/trajectory_first_program_architecture_2026-08-22.md) — canonical program hierarchy and cross-repository routing.
+- [CREST philosophical statement](https://github.com/zuizui0223/crest/blob/main/docs/contract_relative_ecological_state_theory.md) — world-level state definition and finite-theory boundary.
 - [CCOC/MLTR claim firewall](docs/ccoc_mltr_claim_firewall_2026-08-16.md) — exact quantifier boundary between open-future lower bounds and source-relative repair.
 - [Submission audit](docs/submission_audit.md) — claim hierarchy, theorem-to-figure map, and remaining pre-submission work.
 - [Paper architecture](docs/paper_architecture.md) — recommended central claim, theorem hierarchy, Results order, and figure plan.
