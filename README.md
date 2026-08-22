@@ -32,17 +32,29 @@ Those are established literatures and are credited in `manuscript/references.bib
 
 The contribution is instead the ecological organization of these ingredients around an inherited management interface: audit the old state variable after declared structural change, generate the exact distinctions that the target intervention exposes, and connect successful repair to management consequences.
 
-## CREST role and development firewall
+## CREST role: historical / semantic insufficiency
 
-At program level, MLTR is the **semantic-coherence audit** of Contract-Relative Ecological State Theory (CREST): it fixes one inherited source law and asks whether that meaning survives structural change and, if not, what least exact repair preserves as much inherited semantics as possible.
+The canonical synthesis now lives in the dedicated [CREST repository](https://github.com/zuizui0223/crest), with the current hierarchy in the [trajectory-first program architecture](https://github.com/zuizui0223/crest/blob/main/docs/trajectory_first_program_architecture_2026-08-22.md).
 
-The canonical four-audit synthesis is maintained in MRM at [Contract-Relative Ecological State Theory (CREST)](https://github.com/zuizui0223/mrm/blob/main/docs/contract_relative_ecological_state_theory.md).
+CREST starts from temporally extended ecological worlds and asks whether a present snapshot is sufficient for a declared scientific state. Within that hierarchy, MLTR is the **historical / semantic obstruction theory**.
 
-MLTR owns source-relative transport, minimal repair, transport defect, route coherence, and history completion. Route other central objects as follows:
+Two target configurations can share the same current descriptor while differing in the inherited meaning carried from a source system or replacement history. MLTR asks whether that difference must be retained after structural change and, when the inherited merge fails, what least exact refinement repairs it.
+
+\[
+\boxed{
+\text{same present descriptor}
+\not\Rightarrow
+\text{same inherited operational state after replacement}.
+}
+\]
+
+MLTR therefore owns source-relative transport, minimal repair, transport defect, route coherence, and history completion. These results are one structural reason a present snapshot can fail to be a sufficient CREST state.
+
+Route other central objects as follows:
 
 - independently optimized closed-vs-open future-interface lower bounds → **CCOC**;
 - unresolved candidate-mechanism disagreement and candidate-safe state → **MRM**;
-- finite/noisy evidence, monitoring feasibility, detection/failure architecture, calibration, or risk-limited reporting → **CED**.
+- finite/noisy evidence, detection/failure architecture, calibration, or risk-limited reporting → **CED**.
 
 A monitoring layer may consume MLTR obstruction pairs as an **application or cross-contract adapter**, but generic measurement selection, set cover, detection risk, or evidential certification is not an MLTR headline theorem. A genuinely new MLTR×CED result would have to prove a new coupling rather than merely apply standard monitoring machinery after a semantic audit.
 
@@ -80,7 +92,8 @@ Generated JSON reports, SVG figures, and LaTeX build products are ignored on wor
 ## Start here
 
 - [Paper A manuscript](manuscript/paper_a_main.tex) — current publication-facing draft.
-- [CREST program synthesis](https://github.com/zuizui0223/mrm/blob/main/docs/contract_relative_ecological_state_theory.md) — canonical four-audit program map and cross-repository firewalls.
+- [CREST trajectory-first architecture](https://github.com/zuizui0223/crest/blob/main/docs/trajectory_first_program_architecture_2026-08-22.md) — canonical program hierarchy and cross-repository routing.
+- [CREST philosophical statement](https://github.com/zuizui0223/crest/blob/main/docs/contract_relative_ecological_state_theory.md) — world-level state definition and finite-theory boundary.
 - [CCOC/MLTR claim firewall](docs/ccoc_mltr_claim_firewall_2026-08-16.md) — exact quantifier boundary between open-future lower bounds and source-relative repair.
 - [Paper A reference audit](docs/paper_a_reference_audit.md) — adversarial novelty boundary and citation guardrails.
 - [Submission audit](docs/submission_audit.md) — claim hierarchy and pre-submission work.
