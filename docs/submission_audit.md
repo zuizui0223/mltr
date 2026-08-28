@@ -3,8 +3,8 @@
 ## Publication-facing identity
 
 - **Repository:** MLTR — Macro-Law Transport and Repair.
-- **Recommended article title:** *Exact Macro-Law Transport under Non-nested Ecological Replacement: Minimal Repair and Historical Context*.
-- **One-sentence thesis:** An inherited exact macro-law is not merely portable or nonportable after replacement: it can remain exact, require a uniquely minimal target refinement, remain route-independent under coherent histories, or require a minimum finite history context when carried labels conflict.
+- **Recommended article title:** *Do Ecological Macro-Laws Survive Structural Replacement? Route Coherence and Minimal Historical Completion*.
+- **One-sentence thesis:** An accepted exact macro-law has one route-independent terminal meaning exactly when complete carried maps agree across declared histories; otherwise one immutable mode per equality class of those maps is necessary and sufficient before unique coarsest exact repair.
 
 `EXT` is retained only as the historical development name and the compatibility
 package name `ext_transport`; it is not the public article identity.
@@ -13,15 +13,15 @@ package name `ext_transport`; it is not the public article identity.
 
 | Level | Formal result | Role in paper | Required wording boundary |
 |---|---|---|---|
-| I | exact relation transport and derived target labels | foundation | declared relation; no inferred ecological correspondence |
-| II | relative exact refinement and transport defect | headline theorem | minimum repair **relative to the carried source partition** |
-| III | accumulating binary defect family | sharp finite witness | global probe alphabet grows with the family parameter |
-| IV | path-label coherence | graph-level theorem | sufficient condition for route-independent carried semantics |
-| V | history augmentation | canonical completion proposition | minimum context for declared carried maps, not generic ecological memory |
+| I | exact relation transport and derived target labels | infrastructure | declared relation; no inferred ecological correspondence |
+| II | relative exact refinement and transport defect | infrastructure | unique coarsest exact repair **relative to the carried source partition** |
+| III | accumulating binary defect family | quantitative witness | global probe alphabet grows with the family parameter |
+| IV | path-label coherence | headline, positive branch | equality of complete carried maps gives one route-independent inherited law |
+| V | history augmentation | headline, failure completion | one mode per map-equality class is necessary and sufficient; not generic ecological memory |
 
-The manuscript should not present all five as equal discoveries. Result II is the
-main theorem. Result V closes the decision structure but is deliberately not the
-headline.
+The manuscript should not present all five as equal discoveries. Results IV--V
+form the headline package. Results I--III remain the dependency-ordered
+infrastructure and witnesses used to make that package exact and executable.
 
 ## Required formal proof package
 

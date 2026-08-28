@@ -2,11 +2,11 @@
 
 ## Fixed claim
 
-**Exact Ecological Macro-Laws under Structural Change** is not presented as a new generic bisimulation, lumpability, partition-refinement method, or open-composition lower-bound theorem. Its contribution is a source-relative transport problem:
+**Do Ecological Macro-Laws Survive Structural Replacement?** is not presented as a new generic bisimulation, lumpability, partition-refinement method, path-dependence principle, or open-composition lower-bound theorem. Its contribution is a source-relative route-coherence problem:
 
-> Given an already accepted exact ecological macro-law and a declared structural change between possibly non-nested systems, determine whether the inherited law remains exact; if not, return the unique coarsest exact target law constrained to preserve every inherited merge that remains valid.
+> Given an accepted exact ecological macro-law and several declared structural-replacement histories, determine whether they induce one terminal carried meaning; if not, characterize exactly which histories can share an immutable mode and then construct the unique coarsest exact history-aware interface.
 
-The paper then quantifies the minimum repair burden and characterizes when several declared replacement histories admit one route-independent repair.
+The necessary-and-sufficient headline is that histories share a mode exactly when their complete carried terminal maps agree. Exact portability, local obstruction, fixed-point repair, and transport defect are supporting infrastructure that makes the route-level statement operational.
 
 ## Hard boundary against CCOC
 
@@ -66,23 +66,24 @@ Ecology routinely uses functional groups, occupancy states, resilience categorie
 
 **Overlap:** ecological variables can fail after turnover or intervention.
 
-**Difference:** the present paper supplies a finite necessary-and-sufficient portability criterion and a unique minimal repair, rather than only showing that models may fail or refitting an unrelated target model.
+**Difference:** the present paper supplies a finite necessary-and-sufficient portability criterion and a unique coarsest exact repair constrained by carried labels, rather than only showing that models may fail or refitting an unrelated target model.
 
-## Defensible novelty statement
+## Defensible contribution statement
 
 Use this wording in the abstract, introduction, cover letter, and reviewer responses:
 
-> Existing lumpability, bisimulation, and partition-refinement theories characterize exact aggregation within a specified system. We address a different constrained problem: an accepted macro-law is transported through a declared structural change, and any repair must preserve its inherited semantics. We characterize unchanged portability, prove that failure has a finite operational witness, and obtain the unique coarsest exact target refinement of the carried labels. This source-relative minimality supports a transport-defect measure and a sharp characterization of when multiple replacement histories require explicit context.
+> Existing lumpability, bisimulation, and partition-refinement theories supply exactness and refinement machinery within specified systems. We use that machinery for a source-relative structural-replacement problem whose central output is historical: one route-independent carried law exists exactly when complete carried terminal maps agree, whereas disagreement requires one immutable mode per equality class of those maps. Route-specific portability tests and the unique coarsest exact repair of carried labels support this characterization.
 
-Avoid claims that partition refinement, bisimulation, quotient construction, exact aggregation, or the closed-vs-open interface lower bound are MLTR novelties.
+This is a defensible positioning statement, not evidence of literature-firstness. Avoid claims that partition refinement, bisimulation, quotient construction, exact aggregation, generic path dependence, history augmentation in general, or the closed-vs-open interface lower bound are MLTR novelties.
 
 ## The most vulnerable claims
 
-1. **“Unique coarsest repair” may look like ordinary coarsest bisimulation.** The theorem statement and proof must make the constraint `refines the carried source labels` visible in every clause.
-2. **“Transport defect” is a definition, not a standalone theorem.** Its value comes from being tied to the unique minimal repair and verified witness families.
-3. **“History completion” can look like copying the system by path.** The main result must emphasize the necessary-and-sufficient minimum: histories share a mode exactly when their complete carried terminal maps agree.
-4. **The ecological contribution is currently conceptual.** The plant-pollinator example must show a management conclusion that changes after a target-only intervention; otherwise editors may see computer-science formalism with ecological nouns.
-5. **CCOC overlap may blur the claim.** Every open-grammar example must be written as transport of one fixed inherited law; do not import CCOC's separately optimized closed/open minima into the MLTR theorem hierarchy.
+1. **“History completion” can look like copying the system by path.** The headline must state the necessary-and-sufficient quotient: histories share a mode exactly when their complete carried terminal maps agree, so raw path identity is not retained unless it changes the carried map.
+2. **Generic path dependence is established territory.** The manuscript may claim its exact source-relative characterization, but it must not claim literature-firstness without a dedicated source-verified audit.
+3. **“Unique coarsest exact repair” may look like ordinary coarsest bisimulation.** Treat fixed-point refinement as infrastructure and keep the constraint `refines the carried source labels` visible in every clause.
+4. **“Transport defect” is a definition, not a standalone theorem.** Its value comes from being tied to the unique coarsest exact repair and verified witness families.
+5. **The ecological contribution is currently conceptual.** The plant-pollinator example must show both a management conclusion that changes after a target-only intervention and the route-coherence decision; otherwise editors may see computer-science formalism with ecological nouns.
+6. **CCOC overlap may blur the claim.** Every open-grammar example must be written as transport of one fixed inherited law; do not import CCOC's separately optimized closed/open minima into the MLTR theorem hierarchy.
 
 ## Required literature groups for the manuscript
 
@@ -136,4 +137,4 @@ Submit first to **Theoretical Ecology** after one ecological-strengthening revis
 - remove language that treats CCOC's open-composition theorem as an MLTR result;
 - develop the plant-pollinator example into a complete decision workflow;
 - ensure every headline claim can be read without CCOC/MLTR terminology;
-- prepare a cover letter centered on the constrained transport problem, not on a new refinement algorithm.
+- prepare a cover letter centered on route coherence and necessary-and-sufficient history completion, with transport and refinement identified as supporting infrastructure.

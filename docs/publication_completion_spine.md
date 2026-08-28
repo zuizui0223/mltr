@@ -2,11 +2,11 @@
 
 ## Fixed identity
 
-**Working title:** Exact Ecological Macro-Laws under Structural Change: Portability, Minimal Repair, and Historical Context
+**Working title:** Do Ecological Macro-Laws Survive Structural Replacement? Route Coherence and Minimal Historical Completion
 
 **Repository scope:** MLTR is the active manuscript and reproducibility repository for **source-relative transport of one inherited macro-law**. CCOC is an adjacent theorem repository for a different cross-grammar lower-bound problem and is not an MLTR result source except for clearly attributed shared substrate or motivation.
 
-**Central question:** Given one already accepted ecological macro-law and a declared structural change, when does that inherited law remain exact, and, when it fails, what is the unique minimal exact repair constrained to preserve its inherited semantics?
+**Central question:** Given one accepted ecological macro-law and several declared structural-replacement histories, when do they preserve one terminal meaning, and what is the necessary-and-sufficient historical context when their complete carried maps disagree?
 
 No new theorem family should be added during submission preparation.
 
@@ -26,7 +26,7 @@ See `docs/ccoc_mltr_claim_firewall_2026-08-16.md`.
 
 ## Publication abstract
 
-Ecological prediction often reuses coarse state variables after turnover, rewiring, habitat replacement, or changes in the available interventions. Such transfer is valid only if the structural change does not expose distinctions suppressed by the inherited macro-law. We formulate finite operational models in which a source macro-law is carried to a target system through a declared state relation and prove an exact portability criterion based on outputs, legal actions, and successors. When portability fails, the failure has a local operational witness and the inherited labels admit a unique coarsest source-relative exact refinement, which we interpret as the minimal repair required for valid prediction. The increase in repaired states, or equivalently in description length, defines a transport defect. For systems connected by several replacement histories, path coherence is necessary and sufficient for one route-independent carried repair; otherwise the minimum exact completion retains one immutable context for each distinct carried terminal map. A finite plant–pollinator turnover example shows how a previously adequate functional classification can become invalid after a new management action is introduced and how the theorem identifies the least additional ecological distinction needed to restore exact prediction.
+An ecological macro-law accepted at one stage need not retain one route-independent meaning after structural replacement. We formulate finite operational models in which declared replacement histories carry a source law to a terminal system. A single carried terminal law exists exactly when the complete carried terminal label maps agree across histories. When they disagree, histories can share an immutable mode exactly when their complete carried maps are equal; consequently, one mode per distinct map is necessary and sufficient to preserve all declared inherited meanings. Relative exact refinement on these history slices then yields the unique coarsest exact history-aware interface. Exact portability, local failure witnesses, and source-relative fixed-point repair supply the supporting audit for each route. Standard exactness and partition refinement are therefore infrastructure, while the central result locates the precise boundary between route-free reuse and mandatory historical context.
 
 ## Introduction spine
 
@@ -42,10 +42,10 @@ Do not broaden this gap statement into CCOC's different question about whether a
 
 ### Contribution hierarchy
 
-1. **Operational Portability Criterion.** The carried target partition is exact if and only if current outputs, legal-action rows, and action successors factor through the inherited labels.
-2. **Local Obstruction and Unique Coarsest Source-relative Repair.** A target-legal action or future word can witness failure inside one carried fiber; iterative operational refinement returns the unique coarsest exact partition refining the inherited labels.
-3. **Transport Defect.** The minimal repair burden is quantified by the increase in repaired state count or description length relative to the inherited law.
-4. **History Coherence and Minimum History Completion.** Coherent replacement paths share one carried repair. Incoherent paths require exactly one immutable history mode per distinct carried terminal map before relative repair.
+1. **Route Coherence and Minimum History Completion (headline).** Complete carried terminal maps determine whether one inherited terminal law exists. Histories share a mode exactly when those maps agree; one mode per equality class is necessary and sufficient when they do not.
+2. **Operational Portability Criterion (infrastructure).** The carried target partition is exact if and only if current outputs, legal-action rows, and action successors factor through the inherited labels.
+3. **Local Obstruction and Unique Coarsest Source-relative Repair (infrastructure).** A target-legal action or future word can witness failure inside one carried fiber; iterative operational refinement returns the unique coarsest exact partition refining the inherited labels.
+4. **Transport Defect (quantitative witness).** The source-relative repair burden is quantified by the increase in repaired state count or description length relative to the inherited law.
 
 ### Ecological conclusion
 
@@ -53,7 +53,15 @@ The framework distinguishes scientifically different outcomes of model transfer:
 
 ## Results spine
 
-### Result 1 — Operational portability
+### Headline Result — History coherence and minimum completion
+
+Present path coherence as the graph-level characterization and minimum history completion as its canonical failure repair. The minimum number of modes is the number of distinct carried terminal maps.
+
+**Reviewer-facing interpretation:** This does not infer historical pathways or ecological memory from data. It characterizes the exact context needed when several declared histories induce different target semantics.
+
+**Ecological payoff:** It determines when one management model is valid regardless of replacement route and when path identity must remain part of the predictive state.
+
+### Supporting Result 1 — Operational portability
 
 State one source-relative theorem only. Exact interface conditions are standard/foundational ingredients; the MLTR claim begins once source semantics are carried through a declared relation and tested in the target.
 
@@ -61,7 +69,7 @@ State one source-relative theorem only. Exact interface conditions are standard/
 
 **Ecological payoff:** It gives an exact diagnostic for whether a macro-variable learned before structural change can still support every declared target prediction and intervention.
 
-### Result 2 — Local obstruction and minimal repair
+### Supporting Result 2 — Local obstruction and unique coarsest exact repair
 
 Treat the local witness and fixed-point refinement as one theorem package. The theorem must visibly contain existence, exactness, coarseness, and uniqueness relative to the carried labels.
 
@@ -69,7 +77,7 @@ Treat the local witness and fixed-point refinement as one theorem package. The t
 
 **Ecological payoff:** When transfer fails, the result identifies the minimum additional ecological distinction required rather than merely rejecting the old classification.
 
-### Result 3 — Transport defect
+### Supporting Result 3 — Transport defect
 
 Define
 
@@ -79,14 +87,6 @@ Define
 Present any accumulating finite family only as a source-relative repair witness. Do not use CCOC's independently optimized closed/open interface gap as the definition or proof of MLTR transport defect.
 
 **Ecological payoff:** Defect separates mild structural change, which needs one extra state, from change that destroys most of the inherited compression.
-
-### Result 4 — History coherence and minimum completion
-
-Present path coherence as the graph-level characterization and minimum history completion as its canonical failure repair. The minimum number of modes is the number of distinct carried terminal maps.
-
-**Reviewer-facing interpretation:** This does not infer historical pathways or ecological memory from data. It characterizes the exact context needed when several declared histories induce different target semantics.
-
-**Ecological payoff:** It determines when one management model is valid regardless of replacement route and when path identity must remain part of the predictive state.
 
 ## Worked ecological example
 
@@ -106,7 +106,7 @@ Every main definition and result must appear in this single example. Avoid a sec
 
 ### What is new
 
-The paper supplies a finite, exact decision structure for one inherited ecological macro-law under structural change: unchanged portability, unique minimal repair, quantified repair burden, route-independent repair, or minimum history-aware completion.
+The paper supplies an exact source-relative route boundary for one inherited ecological macro-law under structural replacement: equality of complete carried terminal maps gives one route-independent law, while their equality classes give the necessary-and-sufficient immutable history modes when route independence fails. Portability, unique coarsest exact repair, and defect are the supporting audit.
 
 ### What is not claimed
 
@@ -131,7 +131,7 @@ Approximate, stochastic, and data-estimated variants are important but belong to
 
 ## Figure plan
 
-1. **Conceptual pipeline:** source exact macro-law → structural change → portability test → unchanged law or minimal repair.
+1. **Conceptual pipeline:** declared replacement histories → compare complete carried terminal maps → one route-independent law or minimum history modes → unique coarsest exact repair.
 2. **Local obstruction and repair:** one inherited fiber split by a target-only action, with the unique coarsest repaired partition.
 3. **Transport defect:** source-relative repaired state count and defect against exposed inherited distinctions.
 4. **History coherence:** coherent routes sharing one repair versus incoherent routes requiring minimum history modes.

@@ -1,6 +1,6 @@
 # Submission figure specification
 
-## Figure 1 — portability failure and minimal repair
+## Figure 1 — supporting portability failure and unique coarsest exact repair
 
 Four aligned panels:
 
@@ -66,7 +66,7 @@ One compact table should compare:
 |---|---|---|
 | Does the inherited law transport? | within-fiber uniformity | yes/no |
 | Why does it fail? | local state/action pair | obstruction |
-| What is the least repair? | fixed-point refinement | coarsest exact partition |
+| What is the unique coarsest exact repair? | fixed-point refinement | coarsest exact partition |
 | How costly is repair? | state/bit defect | source-relative burden |
 | Is repair route independent? | equality of carried maps | one repair or history modes |
 

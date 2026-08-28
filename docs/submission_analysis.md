@@ -8,29 +8,40 @@ replacement paper.
 
 ## Central question
 
-> When ecological change exposes distinctions hidden by an inherited macro-law,
-> when does the law remain exact, and what is the uniquely minimal source-relative
-> repair when it does not?
+> When declared ecological replacement histories carry an accepted macro-law to
+> one terminal system, when do they preserve one route-independent meaning, and
+> what minimum immutable context is forced when their complete carried maps
+> disagree?
 
 ## Submission-facing result hierarchy
 
-### Result 1 — operational portability
+### Headline result — route coherence and history completion
+
+One route-independent inherited terminal law exists exactly when all declared
+histories induce the same complete carried terminal map. If their maps differ,
+two histories may share one immutable mode exactly when their maps agree. The
+minimum mode count is therefore the number of equality classes of complete
+carried maps before unique coarsest exact history-aware refinement.
+
+### Supporting result 1 — operational portability
 
 A carried macro partition remains exact exactly while current outputs, legal-action
 rows, and target successors remain uniform inside every carried fiber. Nested open
 composition and non-nested replacement are two ways the target operational model
 can differ from the source.
 
-### Result 2 — local obstruction and minimal repair
+### Supporting result 2 — local obstruction and unique coarsest exact repair
 
 A newly legal word or target-only action that distinguishes states inside one
 carried fiber is a finite obstruction to portability. Monotone
 output/legal-row/successor refinement gives the coarsest exact target partition that
 preserves every inherited merge still compatible with the target model.
 
-This is the headline theorem.
+This is the core supporting theorem. Standard refinement supplies the machinery;
+source-relative initialization makes it the canonical repair used by the
+headline route/history result.
 
-### Result 3 — transport defect
+### Supporting result 3 — transport defect
 
 The state-count and bit increases from the inherited source law to the repaired
 target law quantify the source-relative transport burden. The accumulating binary
@@ -44,12 +55,6 @@ transport defect states = 2^m - 1.
 
 This is a sharp witness for the declared growing probe repertoire, not an empirical
 growth law.
-
-### Result 4 — route coherence and history completion
-
-Two replacement histories that carry the same terminal labels yield one
-route-independent repair. If their carried maps differ, one immutable history mode
-per distinct map is necessary and sufficient before exact relative refinement.
 
 ## Added analysis
 

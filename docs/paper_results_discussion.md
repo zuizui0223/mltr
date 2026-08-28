@@ -9,23 +9,22 @@ Discussion paragraphs without changing the scope of the results.
 
 ### Overview
 
-We obtained a finite decision structure for the fate of an exact source
-macro-law after non-nested replacement. A source macro-law can be transported
-unchanged when a declared replacement relation preserves the required
-output/action/successor structure. If the transported labels remain meaningful
-but are no longer exact at the target, the target admits a unique coarsest repair
-that preserves the source provenance. When several replacement histories reach
-the same terminal stage, this repair is route independent exactly under a
-path-label coherence condition. If the condition fails, the distinct carried
-label maps determine the minimum finite history context required to represent
-all declared histories simultaneously.
+The headline result is a finite route boundary for an accepted source macro-law
+after non-nested replacement. Several declared histories support one
+route-independent terminal meaning exactly when their complete carried terminal
+maps agree. If the maps differ, histories can share one immutable mode exactly
+when their maps agree, so the number of distinct maps is the
+necessary-and-sufficient history-mode count. Route-specific portability and
+unique coarsest exact repair supply the supporting audit: they determine whether
+the carried labels are exact and which terminal distinctions must be restored
+within each resulting context.
 
 All results concern declared finite deterministic controlled systems with finite
 prefix-closed action grammars. In particular, a replacement relation, a set of
 allowed actions, and the relevant outputs are supplied as part of the model
 contract. The theorems do not infer these objects from observations.
 
-### Exact macro-law transport does not require nested state spaces
+### Infrastructure: exact macro-law transport does not require nested state spaces
 
 We first considered a source stage and a target stage whose raw state spaces need
 not be related by inclusion. Let a source exact projection map source product
@@ -61,7 +60,7 @@ portable when its availability and its target macro successor are uniform within
 each carried target fiber. This identifies the first boundary of portability:
 target novelty is compatible with transport only when it is macro-uniform.
 
-### Replacement failure has a canonical minimum repair
+### Infrastructure: replacement failure has a unique coarsest exact repair
 
 We then considered the case in which old actions are preserved but target-only
 actions, outputs, or successors distinguish states that inherit the same source
@@ -128,7 +127,7 @@ This is a sharp finite witness for relative repair accumulation. It does not
 assert that ecological systems have this exact architecture, and the family uses
 a global probe alphabet that grows with \(m\).
 
-### Coherent replacement histories yield route-independent repair
+### Headline result, positive branch: coherent histories yield one route-independent law
 
 A target stage can be reached through several declared histories. We represented
 such histories by root-to-terminal paths in a finite directed acyclic
@@ -179,7 +178,7 @@ The boundary witness deliberately does not certify the swapped edge as an
 edge-level exact transport relation; it isolates the additional graph-level
 condition required for route-independent carried semantics.
 
-### Path incoherence has a minimum finite history completion
+### Headline result, failure branch: path incoherence has a minimum finite history completion
 
 Finally, we asked what should be retained when different paths assign
 incompatible carried labels to the same terminal configuration. A history mode
@@ -199,7 +198,7 @@ This gives the raw history-context cost
 \Delta_H^K=\log_2|H_{\min}|.
 \]
 
-The result is a canonical completion proposition. Its role is not to claim that
+This is the failure branch of the headline result. Its role is not to claim that
 history is always ecologically important; it states exactly how much finite
 context is required to preserve a specified collection of incompatible carried
 maps.
@@ -236,12 +235,12 @@ represent all path-specific carried semantics.
 
 ### Replacement changes the question from prediction to portability
 
-The central implication of these results is that a macro-law should not be
-regarded as either universally valid or simply falsified by ecological
-replacement. Once a source law is exact for a declared model, replacement raises
-a more structured question: which parts of that law remain valid, which source
-merges must be split, and whether the answer depends on the path through which
-the new community was reached.
+The central implication is that acceptance at the source does not grant a
+route-free terminal meaning after ecological replacement. The complete carried
+terminal maps decide that question: one equality class yields one inherited law,
+whereas several classes require the same number of immutable modes. Portability
+and coarsest exact repair then determine which parts of each carried law remain
+operationally valid and which source merges must be split.
 
 This distinguishes two sources of post-replacement nonportability. The first is
 terminal and local. A new output distinction, target-only intervention, or
@@ -360,8 +359,10 @@ of repair trades off against that discrepancy.
 
 ### Concluding interpretation
 
-Ecological replacement need not erase the usefulness of a coarse law. It can
-leave the law unchanged, force a quantifiable refinement, preserve the same
-repair across alternative histories, or require a minimum history context before
-an exact law can be stated. The contribution of EXT is to make these outcomes
-finite, explicit, and distinguishable under one declared model contract.
+Ecological replacement need not erase the usefulness of a coarse law, but neither
+does prior acceptance guarantee that the law survives as one route-free object.
+Equality classes of complete carried terminal maps determine exactly which
+histories may share a mode; unique coarsest exact repair then retains only the
+terminal distinctions forced by the declared model. The contribution of MLTR is
+to make this route boundary and its supporting audit finite, explicit, and
+distinguishable under one declared contract.

@@ -40,6 +40,6 @@ If two paths induce different carried maps, some terminal configuration receives
 
 Index the distinct carried maps by an immutable history variable. Each history slice now has a well-defined carried map and can be repaired. Fewer history modes would merge two distinct carried maps and require one mode to encode incompatible inherited labels somewhere on the terminal system. Thus one mode per distinct carried map is necessary and sufficient to preserve all declared path-specific semantics. Relative exact refinement of the history-sliced system then gives the coarsest exact interface compatible with those semantics.
 
-## Novelty boundary
+## Contribution boundary
 
-The fixed-point machinery is classical. The manuscript contribution is the source-relative ecological portability problem, its finite operational obstruction, minimal repair burden, and minimum history completion.
+The fixed-point machinery is classical and functions as infrastructure. The manuscript's central contribution is the source-relative route boundary: complete carried terminal maps determine whether one inherited law is route independent, and their equality classes give the necessary-and-sufficient immutable history modes when it is not. The finite operational obstruction, unique coarsest exact repair, and transport defect make that boundary executable without claiming a new generic refinement algorithm or literature-firstness for path dependence.

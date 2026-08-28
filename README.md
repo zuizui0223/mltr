@@ -2,21 +2,26 @@
 
 MLTR is a theorem-first finite mathematical-ecology repository for one question:
 
-> When species turnover, extinction, recolonization, or interaction rewiring replaces one ecological system by another rather than merely adding modules, when can an exact macro-law be transported across the replacement—and, when it cannot, what is the minimal exact repair?
+> When species turnover, extinction, recolonization, or interaction rewiring replaces one ecological system by another, does an accepted macro-law retain one route-independent terminal meaning—and, when declared routes disagree, what is the minimum historical context required to preserve their inherited meanings exactly?
 
 The project develops finite theorems for **non-nested** system changes. It does not assume that the source state space embeds into the target state space.
 
-## Central results
+## Headline result
+
+1. **Route coherence.** An accepted source macro-law has one route-independent carried meaning at a terminal system exactly when all declared root-to-terminal histories induce the same complete carried terminal label map.
+2. **Minimum history completion.** When those maps disagree, histories can share an immutable mode exactly when their complete carried terminal maps agree. The necessary-and-sufficient mode count is therefore the number of equality classes of complete carried maps. Relative exact refinement on those history slices then gives the unique coarsest exact history-aware interface.
+
+Accepted macro-laws therefore need not survive structural replacement as route-free laws. The theorem retains path identity only to the extent forced by disagreement in inherited terminal semantics; it does not retain full histories by default.
+
+## Supporting transport and repair infrastructure
 
 1. **Replacement transport.** A total relation between two exact projected stages preserves one common macro-law when it preserves macro labels, current output, legal-action rows, and successors.
 2. **Derived target projection.** A source projection plus a total, target-fiber-label-consistent relation constructs the target projection; target labels need not be supplied in advance.
 3. **Conservative target-only actions.** A target may add an action only when its availability and macro successor are uniform inside each derived target macro fiber.
 4. **Fiber-split obstruction.** A word newly legal after replacement refutes one proposed carried merge if it yields different target traces from two states in that fiber.
-5. **Relative exact refinement and transport defect.** Starting from the carried target partition, finite output/legal-row/successor refinement constructs the coarsest exact target interface that preserves every carried merge possible. The extra target macrostates and bits quantify the minimum repair cost for that carried macro-law.
-6. **Path-label coherence.** In a declared rooted replacement DAG, if every root-to-terminal history carries the same root macro labels to each terminal state, then the carried partition, its coarsest exact repair, and its transport defect are independent of replacement route.
-7. **Minimal history augmentation.** If declared histories carry different terminal label tuples, exactly one immutable history mode per distinct tuple is necessary and sufficient to preserve them all. Relative exact refinement on the history-sliced terminal system then gives the coarsest exact history-aware macro-law.
+5. **Unique coarsest exact repair and transport defect.** Starting from the carried target partition, finite output/legal-row/successor refinement constructs the unique coarsest exact target interface that refines the carried labels. The extra target macrostates and bits quantify the source-relative repair burden.
 
-The manuscript-facing hierarchy is narrower than this executable inventory: source-relative portability, local failure plus unique coarsest repair, transport defect, and route/history completion form one semantic-coherence story.
+Exactness, lumpability-style closure, and fixed-point refinement are credited as infrastructure. The manuscript contribution is the source-relative structural-replacement problem and, centrally, its route-coherence boundary and necessary-and-sufficient history completion.
 
 ## Ecological reading
 
@@ -46,7 +51,7 @@ Two target configurations can share the same current descriptor while differing 
 }
 \]
 
-MLTR therefore owns source-relative transport, minimal repair, transport defect, route coherence, and history completion. These results are one structural reason a present snapshot can fail to be a sufficient CREST state.
+MLTR therefore owns route coherence, minimum history completion, source-relative transport, unique coarsest exact repair, and transport defect. These results are one structural reason a present snapshot can fail to be a sufficient CREST state.
 
 Route other central objects as follows:
 
@@ -63,13 +68,13 @@ Passing the MLTR audit does not imply that the repaired state is future-sufficie
 - [CREST trajectory-first architecture](https://github.com/zuizui0223/crest/blob/main/docs/trajectory_first_program_architecture_2026-08-22.md) — canonical program hierarchy and cross-repository routing.
 - [CREST philosophical statement](https://github.com/zuizui0223/crest/blob/main/docs/contract_relative_ecological_state_theory.md) — world-level state definition and finite-theory boundary.
 - [CCOC/MLTR claim firewall](docs/ccoc_mltr_claim_firewall_2026-08-16.md) — exact quantifier boundary between open-future lower bounds and source-relative repair.
+- [Path-label coherence theorem](docs/path_coherence.md) — route-independent carried labels and repair on replacement graphs.
+- [Minimal history augmentation theorem](docs/history_augmentation.md) — minimum path context and exact history-aware repair after route incoherence.
 - [Submission audit](docs/submission_audit.md) — claim hierarchy, theorem-to-figure map, and remaining pre-submission work.
 - [Paper architecture](docs/paper_architecture.md) — recommended central claim, theorem hierarchy, Results order, and figure plan.
 - [Working Results and Discussion](docs/paper_results_discussion.md) — manuscript-facing English draft for the theorem results and interpretation.
 - [Theorem program](docs/theorem_program.md) — definitions, theorem statements, non-claims, and paper direction.
 - [Transport defect theorem](docs/transport_defect.md) — the coarsest relative exact refinement and the accumulating binary family.
-- [Path-label coherence theorem](docs/path_coherence.md) — route-independent carried labels and repair on replacement graphs.
-- [Minimal history augmentation theorem](docs/history_augmentation.md) — minimum path context and exact history-aware repair after route incoherence.
 - [CCOC provenance](docs/rach_provenance.md) — exact source assets copied from the legacy branch and what was deliberately excluded.
 - [Reproducibility](docs/reproducibility.md) — tests, deterministic JSON replay, and GitHub Actions artifact.
 
