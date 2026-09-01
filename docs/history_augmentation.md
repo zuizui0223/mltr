@@ -1,5 +1,13 @@
 # Minimal history augmentation after path incoherence
 
+## Manuscript role
+
+This is the second half of the manuscript's headline result. It closes the
+route-coherence failure case with a necessary-and-sufficient minimum: two
+declared histories may share one immutable mode exactly when their complete
+carried terminal maps agree. The result retains equality classes of maps, not
+full paths by default.
+
 ## Question
 
 Path-label coherence makes a transported terminal macro-law independent of

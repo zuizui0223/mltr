@@ -19,6 +19,11 @@ problem
 \text{ target exact macro-law}.
 \]
 
+The theorem labels below remain in dependency order. The manuscript-facing
+claim order is different: Theorems F--G provide the headline route-coherence and
+minimum-history result, while Theorems A--E supply the exact transport and
+unique coarsest repair infrastructure needed to state that result precisely.
+
 ## Formal setup
 
 A stage is a finite deterministic output system together with a finite

@@ -1,26 +1,27 @@
-# EXT paper architecture: portable macro-laws under ecological replacement
+# MLTR paper architecture: route-coherent macro-laws under ecological replacement
 
 ## Recommended working title
 
-**Exact Macro-Law Transport through Ecological Replacement: Minimal Repair and Historical Context**
+**Do Ecological Macro-Laws Survive Structural Replacement? Route Coherence and Minimal Historical Completion**
 
 A shorter alternative is **Portable Macro-Laws after Ecological Replacement**.
 
-The first title is preferable while the paper remains theorem-first because it
-names the formal object (exact macro-law transport), the domain reading
-(ecological replacement), and the two nontrivial extensions (repair and history).
+The question title is preferable because it leads with the ecological conclusion
+and names the two distinctive outputs rather than the standard refinement
+machinery used to obtain them.
 
 ## One-sentence thesis
 
-> In declared finite ecological replacement models, an exact macro-law is not simply portable or nonportable: it can be transported unchanged, repaired by a uniquely minimal target refinement, made route independent by path-label coherence, or completed by a minimum finite history context when replacement histories carry incompatible terminal labels.
+> An accepted ecological macro-law need not survive structural replacement as one route-free law: declared histories share a terminal meaning exactly when their complete carried maps agree, and disagreement requires one immutable history mode per equality class of those maps before unique coarsest exact repair.
 
 ## What the paper should and should not claim
 
 ### Core claim
 
-The manuscript gives a finite structural theory for carrying an **already exact**
-macro-law across non-nested replacement relations and for diagnosing the minimum
-additional state distinction required when unchanged transport fails.
+The manuscript gives a finite structural theory for deciding whether an
+**already exact** macro-law retains one terminal meaning across non-nested
+replacement histories and for deriving the necessary-and-sufficient historical
+context when it does not.
 
 ### Do claim
 
@@ -49,72 +50,15 @@ additional state distinction required when unchanged transport fails.
 
 ## Contribution hierarchy
 
-The paper will be stronger if its results are not presented as seven equal
-"theorems." They form one escalating decision structure.
+The formal theorem labels remain in dependency order, but the reader-facing
+hierarchy begins with the historical result.
 
-### Result I — Exact transport across non-nested replacement
+### Headline package — route coherence and minimum historical completion
 
-**Role:** foundational transport result.
-
-A total relation preserves a common exact macro-law when it preserves output,
-legal-action rows, macro labels, and successors. Under target-fiber label
-consistency, target labels can be derived from the root/source projection rather
-than supplied in advance.
-
-**Paper status:** theorem-level result; needed to make all later repair claims
-about transported source semantics rather than an arbitrary target partition.
-
-### Result II — Canonical repair after target change
-
-**Role:** main mathematical contribution.
-
-Starting from carried target labels, output/legal-row/successor partition
-refinement returns the coarsest exact target interface that preserves every
-carried merge still possible. This defines the relative transport defect.
-
-\[
-\Delta_{\#}=|Q_T^{\min}|-|Q_S|,
-\qquad
-\Delta_K=\log_2|Q_T^{\min}|-\log_2|Q_S|.
-\]
-
-**Paper status:** headline theorem. It turns failed portability into a unique
-minimal repair problem, rather than an all-or-nothing failure statement.
-
-### Result III — Repair can accumulate sharply
-
-**Role:** quantitative witness.
-
-The binary target-only-probe family shows that independently newly addressable
-target distinctions can make the relative repair grow as
-
-\[
-|Q_T^{\min}|=2^m+1,
-\qquad
-\Delta_{\#}=2^m-1.
-\]
-
-**Paper status:** sharp finite family, not a claim that real ecological systems
-use a constant-size global action alphabet or have this exact growth rate.
-
-### Result IV — Coherent histories make repair route independent
-
-**Role:** graph-level extension.
-
-When every root-to-terminal path carries the same root macro labels to every
-terminal product state, the carried partition and its coarsest exact repair are
-independent of replacement route.
-
-**Paper status:** theorem-level result. It separates terminal-state dependence
-from replacement-history dependence.
-
-### Result V — Incoherent histories have a canonical finite completion
-
-**Role:** completion proposition, not the paper headline.
-
-If paths carry different terminal label tuples, the smallest immutable history
-context has one mode per distinct tuple. History-sliced relative refinement then
-constructs the coarsest exact history-aware interface.
+Every declared root-to-terminal path induces a complete carried terminal map
+\(c_p\). One route-independent inherited law exists exactly when these maps
+agree. When they do not, two paths can share one immutable history mode if and
+only if their maps agree, hence
 
 \[
 |H_{\min}|=|\{c_p\}|,
@@ -122,34 +66,57 @@ constructs the coarsest exact history-aware interface.
 \Delta_H^K=\log_2|H_{\min}|.
 \]
 
-**Paper status:** call this a proposition or canonical construction in the
-manuscript. Its importance is conceptual closure: it says precisely what must be
-added when route independence fails. Its proof should be short.
+History-sliced relative refinement then constructs the unique coarsest exact
+history-aware interface. This is the manuscript headline. Its importance is
+the necessary-and-sufficient minimum, not a generic claim that ecology is path
+dependent or a claim of literature-firstness.
+
+### Supporting infrastructure — route-specific portability and repair
+
+A total relation carries a common exact macro-law when output, legal-action
+rows, labels, and successors are preserved. When the carried partition fails,
+a finite local witness identifies the split and standard refinement initialized
+at the carried labels returns the unique coarsest exact target interface that
+preserves inherited semantics.
+
+This infrastructure defines the source-relative transport defect
+
+\[
+\Delta_{\#}=|Q_T^{\min}|-|Q_S|,
+\qquad
+\Delta_K=\log_2|Q_T^{\min}|-\log_2|Q_S|,
+\]
+
+and supports the accumulating binary witness. It is essential to the proof
+architecture but is not presented as a new generic exactness, lumpability, or
+partition-refinement result.
 
 ## Recommended manuscript structure
 
-1. **Introduction** — ecological replacement changes state spaces and future
-   intervention repertoires; existing coarse laws need a transfer criterion.
+1. **Introduction** — accepted laws may lose one terminal meaning across
+   replacement histories; state the route-coherence/history-minimum conclusion.
 2. **Finite replacement setting** — controlled systems, action grammars, exact
    macro projections, and total non-nested replacement relations.
-3. **Transport and derived target labels** — Results I and the conservative
-   target-only-action boundary.
-4. **Minimal repair and transport defect** — Result II, local split obstruction,
-   and Result III binary family.
-5. **Replacement histories** — Result IV, coherent diamond, and incoherent
-   boundary diamond.
-6. **Minimum history augmentation** — Result V and history-sliced exact repair.
-7. **Discussion** — what replacement changes in ecological macro-laws, what
-   history dependence means, and what an empirical extension would require.
+3. **Headline Results: replacement histories** — Result IV, coherent diamond,
+   incoherent boundary diamond, Result V, and minimum history augmentation.
+4. **Supporting Results: transport and derived target labels** — Result I and
+   the conservative target-only-action boundary.
+5. **Supporting Results: unique coarsest repair and transport defect** — Result
+   II, local split obstruction, and Result III binary family.
+6. **Worked ecological example** — connect the route decision and target repair
+   to one restoration-priority reversal.
+7. **Discussion** — lead with equality classes of complete carried maps, then
+   interpret the portability and repair infrastructure and empirical limits.
 
 The paper should not be divided by implementation modules. The reader should see
 one progression:
 
 ```text
-transport unchanged
-    → repair if target distinctions split carried fibers
-    → route-independent repair if path labels cohere
-    → minimum history context if they do not
+declared replacement histories
+    → compare complete carried terminal maps
+    → one route-independent law if maps agree
+    → one immutable mode per map class if they do not
+    → unique coarsest exact repair within the resulting context
 ```
 
 ## Results section posture
@@ -161,9 +128,10 @@ experiments.
 
 Useful opening sentence:
 
-> We obtained a finite decision structure for the fate of an exact source
-> macro-law after non-nested replacement: unchanged transport, canonical target
-> repair, route-independent repair, or minimum history-aware completion.
+> An accepted source macro-law has one route-independent terminal meaning
+> exactly when all declared histories induce the same complete carried map;
+> otherwise, equality classes of those maps are the necessary-and-sufficient
+> immutable history modes before unique coarsest exact repair.
 
 ## Figure and table plan
 

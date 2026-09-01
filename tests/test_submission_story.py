@@ -11,6 +11,22 @@ SCRIPT = ROOT / "scripts" / "verify_submission_story.py"
 def test_submission_story_replay_tracks_main_claims():
     report = runpy.run_path(str(SCRIPT))["build_report"](4)
     assert report["schema_version"] == 1
+    assert report["paper_claim"] == (
+        "one route-independent inherited law exists exactly when complete carried terminal maps agree; "
+        "otherwise exact preservation requires one immutable history mode per map-equality class"
+    )
+    assert report["submission_interpretation"]["headline_result"] == (
+        "route coherence and necessary-and-sufficient minimum history completion"
+    )
+    assert report["submission_interpretation"]["supporting_infrastructure"] == (
+        "route-specific portability and unique coarsest source-relative exact repair"
+    )
+    assert report["manuscript_result_order"] == (
+        "route_coherence_and_minimum_history_completion",
+        "operational_portability",
+        "local_obstruction_and_unique_coarsest_exact_repair",
+        "source_relative_transport_defect",
+    )
     assert report["local_split"] == {
         "carried_labels": (0, 0, 1),
         "repaired_labels": (0, 1, 2),

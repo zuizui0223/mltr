@@ -1,4 +1,4 @@
-"""Submission-facing structural-change analysis for the combined CCOC–MLTR paper."""
+"""Submission-facing route-coherence analysis for the MLTR paper."""
 
 from __future__ import annotations
 
@@ -43,7 +43,7 @@ def build_report(max_module_count: int = 6) -> dict[str, object]:
 
     return {
         "schema_version": 1,
-        "paper_claim": "structural change preserves an inherited macro-law exactly, forces a unique source-relative repair, or requires minimum history context",
+        "paper_claim": "one route-independent inherited law exists exactly when complete carried terminal maps agree; otherwise exact preservation requires one immutable history mode per map-equality class",
         "local_split": {
             "carried_labels": local.carried_labels,
             "repaired_labels": local.refinement.refined_labels,
@@ -64,10 +64,17 @@ def build_report(max_module_count: int = 6) -> dict[str, object]:
             "history_aware_label_count": augmented.history_aware_macrostate_count,
         },
         "submission_interpretation": {
-            "headline_result": "coarsest source-relative exact repair",
+            "headline_result": "route coherence and necessary-and-sufficient minimum history completion",
+            "supporting_infrastructure": "route-specific portability and unique coarsest source-relative exact repair",
             "quantitative_result": "transport defect grows with independently exposed target distinctions",
-            "closing_result": "path coherence yields one repair; incoherence has a minimum finite history completion",
+            "closing_result": "accepted macro-laws need not survive structural replacement as route-free laws",
         },
+        "manuscript_result_order": (
+            "route_coherence_and_minimum_history_completion",
+            "operational_portability",
+            "local_obstruction_and_unique_coarsest_exact_repair",
+            "source_relative_transport_defect",
+        ),
     }
 
 

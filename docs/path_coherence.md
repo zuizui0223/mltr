@@ -1,5 +1,13 @@
 # Path-label coherence: route-independent repair on replacement graphs
 
+## Manuscript role
+
+This is the first half of the manuscript's headline result. It identifies the
+exact equality condition under which an accepted source macro-law has one
+route-independent carried meaning at the terminal system. Fixed-system
+exactness and coarsest refinement are supporting infrastructure used after this
+semantic condition has been decided.
+
 ## Question
 
 The transport-defect theorem quantifies the minimum exact repair of a carried

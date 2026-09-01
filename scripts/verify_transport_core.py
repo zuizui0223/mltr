@@ -111,7 +111,7 @@ def build_report() -> dict[str, object]:
             "refined_labels": list(coherent_path.refinement.refined_labels),
             "defect_states": coherent_path.transport_defect_states,
             "defect_bits": coherent_path.transport_defect_bits,
-            "status": "one carried partition and one minimal repair across all declared routes",
+            "status": "one carried partition and one unique coarsest exact repair across all declared routes",
         },
         "path_incoherence_boundary": {
             "labels_by_path": [list(labels) for labels in incoherent_path.labels_by_path],
