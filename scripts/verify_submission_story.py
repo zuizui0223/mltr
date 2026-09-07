@@ -1,10 +1,11 @@
-"""Submission-facing route-coherence analysis for the MLTR paper."""
+"""Submission-facing decision-sufficiency and route-coherence analysis for Paper A."""
 
 from __future__ import annotations
 
 import json
 from pathlib import Path
 
+from ext_transport.compositional_transport import certify_carried_label_composition
 from ext_transport.defect_witnesses import (
     accumulating_transport_defect_witness,
     local_fiber_split_defect_witness,
@@ -41,9 +42,31 @@ def build_report(max_module_count: int = 6) -> dict[str, object]:
     incoherent = incoherent_label_diamond_witness()
     augmented = incoherent_history_augmentation_witness()
 
+    graph = coherent.graph
+    composition = certify_carried_label_composition(
+        source_projection=graph.root_projection,
+        intermediate_system=graph.stage_map["left"],
+        terminal_system=graph.stage_map["terminal"],
+        first_relation=graph.edges[0].relation,
+        second_relation=graph.edges[1].relation,
+    )
+
     return {
-        "schema_version": 1,
-        "paper_claim": "one route-independent inherited law exists exactly when complete carried terminal maps agree; otherwise exact preservation requires one immutable history mode per map-equality class",
+        "schema_version": 2,
+        "paper_claim": (
+            "an inherited ecological state is reusable only when its source meaning can be carried "
+            "consistently and remains sufficient for target outputs and actions; fixed-route carriage "
+            "composes, while genuinely different routes require history exactly when their complete "
+            "carried terminal maps differ"
+        ),
+        "carried_semantics": {
+            "direct_defined": composition.direct_defined,
+            "sequential_defined": composition.sequential_defined,
+            "commutes": composition.commutes,
+            "intermediate_labels": composition.intermediate_labels,
+            "direct_terminal_labels": composition.direct_terminal_labels,
+            "sequential_terminal_labels": composition.sequential_terminal_labels,
+        },
         "local_split": {
             "carried_labels": local.carried_labels,
             "repaired_labels": local.refinement.refined_labels,
@@ -51,6 +74,7 @@ def build_report(max_module_count: int = 6) -> dict[str, object]:
             "target_macrostates": local.target_macrostate_count,
             "transport_defect_states": local.transport_defect_states,
             "fiber_split_profile": local.refinement.fiber_split_profile,
+            "ecological_interpretation": "one missing target decision distinction to add to monitoring",
         },
         "accumulating_defect": accumulation,
         "history": {
@@ -64,16 +88,18 @@ def build_report(max_module_count: int = 6) -> dict[str, object]:
             "history_aware_label_count": augmented.history_aware_macrostate_count,
         },
         "submission_interpretation": {
-            "headline_result": "route coherence and necessary-and-sufficient minimum history completion",
-            "supporting_infrastructure": "route-specific portability and unique coarsest source-relative exact repair",
-            "quantitative_result": "transport defect grows with independently exposed target distinctions",
-            "closing_result": "accepted macro-laws need not survive structural replacement as route-free laws",
+            "headline_ecological_result": "decision-sufficiency audit for inherited ecological state variables after structural change",
+            "headline_formal_result": "carried-semantics composition, route coherence, and necessary-and-sufficient minimum history completion",
+            "established_infrastructure": "initial-partition exact refinement, finite split witnesses, and coarsest stable repair",
+            "diagnostic_quantity": "transport defect summarizes source-relative repair burden and is not a standalone novelty claim",
+            "closing_result": "history is retained only when it changes the carried operational meaning of the present terminal state",
         },
         "manuscript_result_order": (
+            "carried_semantics_and_fixed_route_composition",
             "route_coherence_and_minimum_history_completion",
-            "operational_portability",
-            "local_obstruction_and_unique_coarsest_exact_repair",
-            "source_relative_transport_defect",
+            "operational_decision_sufficiency",
+            "established_source_relative_exact_refinement",
+            "diagnostic_transport_defect",
         ),
     }
 
