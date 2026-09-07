@@ -19,7 +19,16 @@ def test_transport_core_replay_writes_the_expected_finite_report():
     )
     report = json.loads(completed.stdout)
     assert REPORT.is_file()
-    assert report["schema_version"] == 4
+    assert report["schema_version"] == 5
+    assert report["carried_semantics_composition"] == {
+        "direct_defined": True,
+        "sequential_defined": True,
+        "commutes": True,
+        "intermediate_labels": [0, 0, 1],
+        "direct_terminal_labels": [0, 0, 1],
+        "sequential_terminal_labels": [0, 0, 1],
+        "status": "one fixed replacement route has the same inherited meaning under direct and stepwise carriage",
+    }
     assert report["exact_replacement_transport"]["source_product_states"] == 3
     assert report["exact_replacement_transport"]["target_product_states"] == 2
     assert not report["exact_replacement_transport"]["source_to_target_injection"]
@@ -29,9 +38,11 @@ def test_transport_core_replay_writes_the_expected_finite_report():
     assert report["relative_exact_refinement"]["carried_labels"] == [0, 0, 1]
     assert report["relative_exact_refinement"]["refined_labels"] == [0, 1, 2]
     assert report["relative_exact_refinement"]["defect_states"] == 1
+    assert "established" in report["relative_exact_refinement"]["status"]
     assert report["accumulating_transport_defect"]["module_count"] == 4
     assert report["accumulating_transport_defect"]["target_macrostate_count"] == 17
     assert report["accumulating_transport_defect"]["defect_states"] == 15
+    assert "diagnostic" in report["accumulating_transport_defect"]["status"]
     assert report["path_coherent_transport"]["path_count"] == 2
     assert report["path_coherent_transport"]["labels_by_path"] == [[0, 0, 1], [0, 0, 1]]
     assert report["path_coherent_transport"]["refined_labels"] == [0, 1, 2]
