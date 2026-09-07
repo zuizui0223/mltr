@@ -1,4 +1,4 @@
-"""Write a deterministic replay report for the EXT theorem core."""
+"""Write a deterministic replay report for the MLTR finite theorem core."""
 
 from __future__ import annotations
 
@@ -8,6 +8,7 @@ import os
 import platform
 from pathlib import Path
 
+from ext_transport.compositional_transport import certify_carried_label_composition
 from ext_transport.defect_witnesses import (
     accumulating_transport_defect_witness,
     local_fiber_split_defect_witness,
@@ -39,6 +40,16 @@ def build_report() -> dict[str, object]:
     incoherent_path = incoherent_label_diamond_witness()
     coherent_history = coherent_history_augmentation_witness()
     incoherent_history = incoherent_history_augmentation_witness()
+
+    graph = coherent_path.graph
+    composition = certify_carried_label_composition(
+        source_projection=graph.root_projection,
+        intermediate_system=graph.stage_map["left"],
+        terminal_system=graph.stage_map["terminal"],
+        first_relation=graph.edges[0].relation,
+        second_relation=graph.edges[1].relation,
+    )
+
     certificates = (
         replacement,
         target_projection,
@@ -50,19 +61,29 @@ def build_report() -> dict[str, object]:
         incoherent_path,
         coherent_history,
         incoherent_history,
+        composition,
     )
     if not all(item.verify() for item in certificates):
-        raise AssertionError("one EXT finite witness failed verification")
+        raise AssertionError("one MLTR finite witness failed verification")
     transport = replacement.transports[0]
     return {
-        "schema_version": 4,
+        "schema_version": 5,
         "source": {
             "git_sha": os.environ.get("GITHUB_SHA", "local-unpinned"),
             "python": platform.python_version(),
         },
         "scope": {
-            "model_class": "declared finite deterministic controlled systems, finite prefix-closed grammars, finite replacement relations, rooted finite replacement DAGs, and immutable finite history slices",
-            "non_claim": "the replay does not infer ecological replacement histories, establish field turnover mechanisms, or prove transport, repair, coherence, or history augmentation for arbitrary stochastic systems",
+            "model_class": "declared finite deterministic controlled systems, finite prefix-closed grammars, finite total replacement relations, rooted finite replacement DAGs, and immutable finite history slices",
+            "non_claim": "the replay does not infer ecological replacement histories or relations, establish generic partition-refinement novelty, or prove transport, repair, coherence, or history augmentation for arbitrary stochastic systems",
+        },
+        "carried_semantics_composition": {
+            "direct_defined": composition.direct_defined,
+            "sequential_defined": composition.sequential_defined,
+            "commutes": composition.commutes,
+            "intermediate_labels": list(composition.intermediate_labels),
+            "direct_terminal_labels": list(composition.direct_terminal_labels),
+            "sequential_terminal_labels": list(composition.sequential_terminal_labels),
+            "status": "one fixed replacement route has the same inherited meaning under direct and stepwise carriage",
         },
         "exact_replacement_transport": {
             "source_product_states": transport.source.constrained_system.product_state_count,
@@ -83,7 +104,7 @@ def build_report() -> dict[str, object]:
             "future_word": list(obstruction.future_word),
             "left_source_index": obstruction.left_source_index,
             "right_source_index": obstruction.right_source_index,
-            "status": "the proposed carried merge is refuted",
+            "status": "the inherited state is not decision-sufficient under the target future",
         },
         "relative_exact_refinement": {
             "carried_labels": list(local_defect.carried_labels),
@@ -94,6 +115,7 @@ def build_report() -> dict[str, object]:
             "target_macrostate_count": local_defect.target_macrostate_count,
             "defect_states": local_defect.transport_defect_states,
             "defect_bits": local_defect.transport_defect_bits,
+            "status": "established exact-refinement machinery identifies the missing target decision distinction",
         },
         "accumulating_transport_defect": {
             "module_count": 4,
@@ -102,6 +124,7 @@ def build_report() -> dict[str, object]:
             "defect_states": accumulating_defect.transport_defect_states,
             "defect_bits": accumulating_defect.transport_defect_bits,
             "fiber_split_profile": list(accumulating_defect.refinement.fiber_split_profile),
+            "status": "diagnostic repair-burden witness, not a standalone novelty claim",
         },
         "path_coherent_transport": {
             "path_count": len(coherent_path.paths),
@@ -111,11 +134,11 @@ def build_report() -> dict[str, object]:
             "refined_labels": list(coherent_path.refinement.refined_labels),
             "defect_states": coherent_path.transport_defect_states,
             "defect_bits": coherent_path.transport_defect_bits,
-            "status": "one carried partition and one unique coarsest exact repair across all declared routes",
+            "status": "distinct declared routes carry one terminal inherited meaning",
         },
         "path_incoherence_boundary": {
             "labels_by_path": [list(labels) for labels in incoherent_path.labels_by_path],
-            "status": "different declared routes assign different root macro labels; coherence certificate is rejected",
+            "status": "different declared routes assign different inherited terminal meanings; route-free carriage is rejected",
         },
         "history_augmentation": {
             "coherent_mode_count": coherent_history.minimum_history_mode_count,
@@ -129,7 +152,7 @@ def build_report() -> dict[str, object]:
             "history_augmentation_bits": incoherent_history.history_augmentation_bits,
             "history_aware_defect_states": incoherent_history.history_aware_defect_states,
             "history_aware_defect_bits": incoherent_history.history_aware_defect_bits,
-            "status": "distinct carried label histories are minimally retained before exact history-aware refinement",
+            "status": "history is retained only by equality classes of complete carried terminal maps",
         },
     }
 
