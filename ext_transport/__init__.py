@@ -5,6 +5,13 @@ not re-export RACH's open-composition lower bound, identifiability companions,
 or experimental-design shelves.
 """
 
+from .compositional_transport import (
+    CarriedLabelCompositionCertificate,
+    CarriedLabelConflict,
+    carried_label_conflicts,
+    certify_carried_label_composition,
+    derive_carried_labels,
+)
 from .conservative import ConservativeTransportedSchemaCertificate, certify_conservative_transported_schema
 from .defect_witnesses import accumulating_transport_defect_witness, local_fiber_split_defect_witness
 from .finite import FiniteControlledOutputSystem, FinitePrefixGrammar, GrammarAwareControlledSystem
@@ -72,6 +79,8 @@ __all__ = [
     "RootedReplacementGraph",
     "PathCoherentTransportCertificate",
     "HistoryAugmentationCertificate",
+    "CarriedLabelConflict",
+    "CarriedLabelCompositionCertificate",
     "certify_transported_target_projection",
     "certify_transport_coherent_macro_law",
     "certify_conservative_transported_schema",
@@ -83,6 +92,9 @@ __all__ = [
     "path_carried_labels",
     "path_label_coherent",
     "certify_path_coherent_transport",
+    "carried_label_conflicts",
+    "derive_carried_labels",
+    "certify_carried_label_composition",
     "history_assignment_is_compatible",
     "minimum_history_mode_assignment",
     "history_augmented_terminal_system",
