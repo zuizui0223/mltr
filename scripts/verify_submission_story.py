@@ -54,8 +54,8 @@ def build_report(max_module_count: int = 6) -> dict[str, object]:
     return {
         "schema_version": 2,
         "paper_claim": (
-            "an inherited ecological state is reusable only when its source meaning can be carried "
-            "consistently and remains decision-sufficient for target outputs and actions; fixed-route carriage "
+            "decision-sufficiency audit: an inherited ecological state is reusable only when its source meaning can be carried "
+            "consistently and remains sufficient for target outputs and actions; fixed-route carriage "
             "composes, while genuinely different routes require history exactly when their complete "
             "carried terminal maps differ"
         ),
