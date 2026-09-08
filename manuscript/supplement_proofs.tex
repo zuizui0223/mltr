@@ -1,6 +1,6 @@
 \section{Proofs}
 
-This section records the proof architecture separately from the ecological narrative in the main text. The statements use the definitions in Supplementary Section~1 and preserve the source-relative constraint throughout.
+This section records the proof architecture separately from the ecological narrative in the main text. The statements use the definitions in Supplementary Section~1 and preserve the source-relative constraint throughout. Generic coarsest-partition and fixed-point refinement arguments are standard machinery; the source-relative contribution is located in the carriage, composition, route-coherence, and history contracts built around that machinery.
 
 \subsection{Operational portability}
 \begin{proof}[Proof of the operational portability theorem]
@@ -18,7 +18,22 @@ If portability fails, at least one factorization condition in the preceding proo
 \begin{proof}[Proof of the repair theorem]
 Initialize refinement with the carried partition $P_0=\pi_R$. At each step, split every block by the joint signature consisting of current output, legal-action row, and successor blocks under all declared actions. Because the target state set is finite, every nontrivial update strictly increases the number of blocks and the procedure terminates at a fixed point $P_*$. Fixed-point stability is exactly the operational exactness condition, so $P_*$ is exact.
 
-Let $E$ be any exact target partition with $E\preceq P_0$. Inductively, exactness forces $E$ to separate every signature difference used to construct $P_{k+1}$ from $P_k$. Hence $E\preceq P_k$ for every $k$, and therefore $E\preceq P_*$. Thus $P_*$ is coarser than every admissible exact repair and is unique.
+Let $E$ be any exact target partition with $E\preceq P_0$. Inductively, exactness forces $E$ to separate every signature difference used to construct $P_{k+1}$ from $P_k$. Hence $E\preceq P_k$ for every $k$, and therefore $E\preceq P_*$. Thus $P_*$ is coarser than every admissible exact repair and is unique. This is an application of established constrained partition-refinement machinery, not a claim of a new generic refinement theorem.
+\end{proof}
+
+\subsection{Compositional carried semantics}
+\begin{proof}[Proof of direct--sequential carried-label equivalence]
+Let $R\subseteq X_0\times X_1$ and $S\subseteq X_1\times X_2$ be declared relations that cover every state on both sides. A carried label map through a relation is defined exactly when each target state receives one inherited source-label value.
+
+First assume the sequential carries are defined. Take any $x_2\in X_2$ and source states $x_0,x'_0$ related to $x_2$ through $R;S$. Choose witnesses $x_1,x'_1$ with $x_0Rx_1Sx_2$ and $x'_0Rx'_1Sx_2$. The first carry gives $\pi_0(x_0)=\pi_R(x_1)$ and $\pi_0(x'_0)=\pi_R(x'_1)$. The second carry gives $\pi_R(x_1)=\pi_R(x'_1)$ because both intermediate states relate to $x_2$. Hence all source states reaching $x_2$ through the composite have one label, so direct carriage is defined, and its value equals the sequential value.
+
+Conversely assume direct carriage through $R;S$ is defined. If the first carry through $R$ were undefined, some $x_1$ would receive differently labelled source states $x_0,x'_0$. Coverage of the source side of $S$ supplies an $x_2$ with $x_1Sx_2$, so both differently labelled source states would reach the same $x_2$ through $R;S$, contradicting direct well-definedness. Thus the first carry is defined. If the second carry were undefined, some $x_2$ would receive intermediate states $x_1,x'_1$ with distinct carried labels. Coverage of the target side of $R$ supplies source states $x_0Rx_1$ and $x'_0Rx'_1$ carrying those distinct labels, again contradicting direct well-definedness of the composite. Therefore the second carry is also defined.
+
+The two constructions consequently agree pointwise:
+\[
+(\pi_0)_{R;S}=(\pi_R)_S.
+\]
+Repeated application gives the same result for any finite fixed route, independently of parenthesization. Different routes may still have different composite relations and different carried terminal maps; that remaining comparison is exactly the route-coherence problem.
 \end{proof}
 
 \subsection{History coherence and minimum completion}

@@ -4,204 +4,159 @@
 
 **Working title:** Do Ecological Macro-Laws Survive Structural Replacement? Route Coherence and Minimal Historical Completion
 
-**Repository scope:** MLTR is the active manuscript and reproducibility repository for **source-relative transport of one inherited macro-law**. CCOC is an adjacent theorem repository for a different cross-grammar lower-bound problem and is not an MLTR result source except for clearly attributed shared substrate or motivation.
+**Repository scope:** MLTR studies source-relative reuse of one accepted ecological state meaning after declared non-nested structural replacement. CCOC owns a different independently optimized cross-grammar interface problem.
 
-**Central question:** Given one accepted ecological macro-law and several declared structural-replacement histories, when do they preserve one terminal meaning, and what is the necessary-and-sufficient historical context when their complete carried maps disagree?
+**Central ecological question:** Given an accepted ecological state classification, does it remain a sufficient interface to the outputs and management actions that matter after structural change, and what ecological or historical information must be retained when it does not?
 
-No new theorem family should be added during submission preparation.
-
-## Claim firewall against CCOC
-
-MLTR fixes \(q_S\) and solves
+**Central formal sequence:**
 
 \[
-\min_{q_T\text{ exact},\;q_T\succeq \operatorname{carry}(q_S)} |q_T|.
+\text{carried-label consistency}
+\to
+\text{fixed-route composition}
+\to
+\text{route coherence}
+\to
+\text{minimum history completion}.
 \]
 
-CCOC instead compares independently optimized closed-grammar minima with the minimum exact interface under a jointly open grammar. Its cross-grammar lower bound and bounded-local sharpness family are **not** part of MLTR's four-result hierarchy.
+Standard exact refinement is applied only after that sequence has produced one inherited target labeling.
 
-A target-only action or newly legal word may be used in MLTR because it can expose a split inside one inherited fiber. That is a transport/repair instance, not a claim that open composition itself is subsumed by MLTR.
+## Correct novelty boundary
 
-See `docs/ccoc_mltr_claim_firewall_2026-08-16.md`.
+Do **not** claim novelty for:
 
-## Publication abstract
+- starting from an initial partition;
+- computing its coarsest stable/exact refinement;
+- finite fixed-point termination or uniqueness;
+- local block-split witnesses;
+- preserving user-specified distinctions in a reduction;
+- generic historical contingency;
+- block-count increase by itself.
 
-An ecological macro-law accepted at one stage need not retain one route-independent meaning after structural replacement. We formulate finite operational models in which declared replacement histories carry a source law to a terminal system. A single carried terminal law exists exactly when the complete carried terminal label maps agree across histories. When they disagree, histories can share an immutable mode exactly when their complete carried maps are equal; consequently, one mode per distinct map is necessary and sufficient to preserve all declared inherited meanings. Relative exact refinement on these history slices then yields the unique coarsest exact history-aware interface. Exact portability, local failure witnesses, and source-relative fixed-point repair supply the supporting audit for each route. Standard exactness and partition refinement are therefore infrastructure, while the central result locates the precise boundary between route-free reuse and mandatory historical context.
+These are established patterns in partition refinement, relational coarsest partition, abstract interpretation, biological model reduction, and ecology.
+
+Paper A instead contributes a source-relative ecological audit in which the target labeling itself must be inherited through declared replacement relations and may be inconsistent, compositional, or route dependent.
+
+## Publication abstract spine
+
+1. Ecological state variables are decision interfaces, not permanent natural kinds.
+2. Structural change or a changed intervention repertoire can make an inherited state decision-insufficient.
+3. A many-to-many replacement relation carries one inherited meaning only when every target state receives one source-label value.
+4. Direct and sequential carriage agree along a fixed total replacement chain.
+5. Different declared routes share one history-free terminal meaning exactly when their complete carried terminal maps agree.
+6. When those maps differ, one immutable mode per map-equality class is necessary and sufficient.
+7. Standard exact refinement then identifies the target distinction missing from the inherited decision interface.
+8. The plant--pollinator example converts that split into a monitoring target and a restoration-priority reversal.
+
+## Contribution hierarchy
+
+### 1. Carried semantics under structural replacement — formal foundation
+
+For a declared total many-to-many relation, one target state cannot inherit two different accepted source labels. This provides an explicit source-semantic conflict witness before any target exactness audit.
+
+### 2. Fixed-route compositionality — supporting formal result
+
+For consecutive total relations $R$ and $S$,
+
+\[
+(\pi_0)_{R;S}=(\pi_R)_S
+\]
+
+whenever carriage is defined, and direct carriage is defined iff sequential carriage is defined. Therefore subdivision of one route is not historical dependence.
+
+### 3. Route coherence and minimum history completion — headline formal package
+
+Different declared replacement routes support one inherited terminal law exactly when their complete carried terminal maps agree. When they disagree, histories share one immutable mode exactly by equality of those maps.
+
+### 4. Operational decision sufficiency — headline ecological interpretation
+
+An inherited target state remains usable only when target outputs, feasible management actions, and action-conditioned successor meanings factor through that state.
+
+### 5. Local obstruction and exact refinement — established infrastructure
+
+A separating pair shows what target distinction the old state variable suppresses. Established initial-partition refinement computes the coarsest exact repair relative to inherited labels. Its ecological role is to identify the information missing from monitoring, not to supply a new generic refinement theorem.
+
+### 6. Transport defect — diagnostic witness
+
+State-count or bit increase summarizes repair burden. It is useful for comparing mild versus extensive loss of inherited compression, but it is not a standalone novelty claim or empirical scaling law.
 
 ## Introduction spine
 
-### Problem
+1. State-and-transition and adaptive-management frameworks use compressed ecological states to organize action.
+2. Structural change can make an old state variable insufficient for a new management decision.
+3. Exact aggregation and coarsest refinement are already mature in lumpability, bisimulation, relational coarsest partition, and abstract interpretation.
+4. User-defined initial partitions are also already used in biological model reduction.
+5. Therefore the unresolved Paper A layer cannot be “preserve an initial partition and refine it.”
+6. The source-relative layer is how the inherited meaning reaches the target: label consistency, relation composition, route comparison, and historical completion.
+7. Once inherited semantics is fixed, standard refinement is interpreted as monitoring repair.
 
-Ecological macrostates are routinely transported across altered communities and management regimes. A guild label, occupancy class, resilience category, or functional state may be exact for the original system but cease to be exact after species turnover, interaction rewiring, or expansion of the intervention repertoire.
+## Results order
 
-### Gap
+1. carried semantics and fixed-route composition;
+2. route coherence and minimum history completion;
+3. operational decision-sufficiency criterion;
+4. local obstruction and established source-relative exact refinement;
+5. transport defect as a diagnostic witness.
 
-Coarse graining, lumpability, abstraction, and bisimulation provide mature languages for state aggregation. Transportability addresses whether conclusions transfer across environments. These literatures do not by themselves answer MLTR's constrained question: given an already accepted ecological macro-law and a declared structural change, when does that exact law remain valid, and if it does not, what is the unique coarsest exact repair constrained to preserve its source semantics?
-
-Do not broaden this gap statement into CCOC's different question about whether all closed futures can be individually easy to compress while the jointly open future requires a large minimum interface.
-
-### Contribution hierarchy
-
-1. **Route Coherence and Minimum History Completion (headline).** Complete carried terminal maps determine whether one inherited terminal law exists. Histories share a mode exactly when those maps agree; one mode per equality class is necessary and sufficient when they do not.
-2. **Operational Portability Criterion (infrastructure).** The carried target partition is exact if and only if current outputs, legal-action rows, and action successors factor through the inherited labels.
-3. **Local Obstruction and Unique Coarsest Source-relative Repair (infrastructure).** A target-legal action or future word can witness failure inside one carried fiber; iterative operational refinement returns the unique coarsest exact partition refining the inherited labels.
-4. **Transport Defect (quantitative witness).** The source-relative repair burden is quantified by the increase in repaired state count or description length relative to the inherited law.
-
-### Ecological conclusion
-
-The framework distinguishes scientifically different outcomes of model transfer: the inherited variable may remain valid, or structural change may expose an ecologically consequential distinction that must be added. The repair theorem identifies the least such addition under the declared operational model.
-
-## Results spine
-
-### Headline Result — History coherence and minimum completion
-
-Present path coherence as the graph-level characterization and minimum history completion as its canonical failure repair. The minimum number of modes is the number of distinct carried terminal maps.
-
-**Reviewer-facing interpretation:** This does not infer historical pathways or ecological memory from data. It characterizes the exact context needed when several declared histories induce different target semantics.
-
-**Ecological payoff:** It determines when one management model is valid regardless of replacement route and when path identity must remain part of the predictive state.
-
-### Supporting Result 1 — Operational portability
-
-State one source-relative theorem only. Exact interface conditions are standard/foundational ingredients; the MLTR claim begins once source semantics are carried through a declared relation and tested in the target.
-
-**Reviewer-facing interpretation:** This is not merely a homomorphism restatement because the transported labels are inherited through a possibly non-nested state relation and are tested against the target's legal operational grammar.
-
-**Ecological payoff:** It gives an exact diagnostic for whether a macro-variable learned before structural change can still support every declared target prediction and intervention.
-
-### Supporting Result 2 — Local obstruction and unique coarsest exact repair
-
-Treat the local witness and fixed-point refinement as one theorem package. The theorem must visibly contain existence, exactness, coarseness, and uniqueness relative to the carried labels.
-
-**Reviewer-facing interpretation:** Standard partition refinement is credited as machinery. Novelty lies in the source-relative transport problem and the unique repair interpretation, not in a new generic refinement algorithm or a CCOC-style open-interface lower bound.
-
-**Ecological payoff:** When transfer fails, the result identifies the minimum additional ecological distinction required rather than merely rejecting the old classification.
-
-### Supporting Result 3 — Transport defect
-
-Define
-
-- `Delta_count = |Q_target_repaired| - |Q_source|`,
-- `Delta_bits = log2 |Q_target_repaired| - log2 |Q_source|`.
-
-Present any accumulating finite family only as a source-relative repair witness. Do not use CCOC's independently optimized closed/open interface gap as the definition or proof of MLTR transport defect.
-
-**Ecological payoff:** Defect separates mild structural change, which needs one extra state, from change that destroys most of the inherited compression.
+Route coherence remains the headline theorem package even though composition appears earlier in proof dependency.
 
 ## Worked ecological example
 
-Use one finite plant–pollinator guild example throughout.
+Use one plant--pollinator restoration workflow throughout:
 
-1. The source system has an exact functional macro-law that merges two microstates with the same output and source-legal future.
-2. Structural turnover carries those labels to a target community.
-3. A target-only intervention, such as pollinator exclusion or competitor removal, gives different successors within one inherited fiber.
-4. The local obstruction rejects unchanged portability.
-5. Relative refinement splits exactly that fiber and no other.
-6. Transport defect reports the added state and bit burden.
-7. Two replacement paths are compared: one coherent pair sharing the repair and one incoherent pair requiring two history modes.
+1. Sites A and B share one inherited pollination state under the source action repertoire.
+2. Pollinator turnover changes interaction structure.
+3. Competitor removal becomes relevant in the target.
+4. Only one site has a substitute-pollinator response channel.
+5. The inherited state predicts a tie and chooses the cheaper Site A.
+6. The target obstruction shows divergent intervention responses.
+7. Standard exact refinement separates the inherited fiber.
+8. The ecological monitoring repair is substitute-response capacity.
+9. The management recommendation reverses to Site B.
+10. Alternative replacement routes are then compared: fixed-route subdivision is irrelevant by compositionality; distinct routes require history only if their complete carried maps differ.
 
-Every main definition and result must appear in this single example. Avoid a second unrelated example in the main text.
+The example must remain explicitly synthetic. It demonstrates the decision logic, not an empirical claim about a real pollination system.
 
-## Discussion spine
+## Reviewer firewall
 
-### What is new
+### “This is standard partition refinement.”
 
-The paper supplies an exact source-relative route boundary for one inherited ecological macro-law under structural replacement: equality of complete carried terminal maps gives one route-independent law, while their equality classes give the necessary-and-sufficient immutable history modes when route independence fails. Portability, unique coarsest exact repair, and defect are the supporting audit.
+Correct response: yes, the coarsest-refinement step is established machinery. Paper A begins earlier, with source-carried semantics through non-nested replacement relations, and ends later, with an ecological decision about whether to keep, repair, or history-augment an inherited state variable.
 
-### What is not claimed
+### “Preserving source semantics is just choosing an initial partition.”
 
-- no inference of the source–target relation from field data;
-- no empirical claim that a chosen ecological variable is exact;
-- no stochastic or approximate theorem beyond the declared finite deterministic setting;
-- no claim that partition refinement, bisimulation, or lumpability are new;
-- no claim that historical paths are identifiable from terminal observations;
-- no claim that MLTR proves CCOC's closed-vs-open minimum-interface lower bound.
+Correct response: user-specified initial partitions are established. MLTR's target initial labels are not simply chosen; they are induced by a source--target relation that may be many-to-many, inconsistent, compositional, or route dependent.
 
-### Relation to adjacent literatures and CCOC
+### “History completion is trivial copying by path.”
 
-- **Coarse graining and lumpability:** provide exact aggregation criteria within a fixed system; this paper studies inherited aggregation across declared structural change.
-- **Abstraction and bisimulation:** provide behavioral equivalence machinery; this paper adds source-relative transport, unique constrained repair, and repair burden.
-- **Transportability:** studies transfer of causal or statistical conclusions; this paper gives an operational state-space criterion and exact repair for transported macro-laws.
-- **Ecological resilience and regime shifts:** motivate structural change but do not generally provide a unique minimal refinement of an inherited predictive variable.
-- **CCOC:** asks whether separately optimized closed-grammar interfaces can all be small while the jointly open grammar forces a large minimum exact interface. That quantifier structure and lower bound remain a separate theorem story.
+Correct response: raw path identity is discarded. The minimum history state is the quotient of declared histories by equality of complete carried terminal maps.
 
-### Limitations and next step
+### “Why is this ecology?”
 
-Approximate, stochastic, and data-estimated variants are important but belong to future work unless supported by complete theorems. They should not be sketched as additional contribution families in the current manuscript.
+Correct response: the audit asks whether a state variable used for management remains sufficient after structural change and converts a failure witness into the ecological distinction that should be added to monitoring.
+
+### “Is transport defect a new information measure?”
+
+No. It is a source-relative diagnostic derived after established exact refinement.
 
 ## Figure plan
 
-1. **Conceptual pipeline:** declared replacement histories → compare complete carried terminal maps → one route-independent law or minimum history modes → unique coarsest exact repair.
-2. **Local obstruction and repair:** one inherited fiber split by a target-only action, with the unique coarsest repaired partition.
-3. **Transport defect:** source-relative repaired state count and defect against exposed inherited distinctions.
-4. **History coherence:** coherent routes sharing one repair versus incoherent routes requiring minimum history modes.
-
-The ecological worked example should supply labels and interpretation for Figures 1, 2, and 4 rather than appearing as a disconnected fifth conceptual figure.
-
-## Reviewer audit
-
-### Criticism: “This is standard bisimulation or partition refinement.”
-
-**Answer:** Credit the standard fixed-point machinery explicitly. The contribution is the characterization of an inherited source-relative partition under non-nested structural transport, the local operational failure witness, the unique constrained repair, and its transport/history consequences.
-
-### Criticism: “Isn't this just CCOC under different notation?”
-
-**Answer:** No. CCOC has no fixed inherited source partition in its headline optimization; each closed grammar may choose a different optimal exact interface before comparison with the jointly open minimum. MLTR conditions all admissible target repairs on one carried source semantics. The two theorem statements have different quantifier order and different outputs.
-
-### Criticism: “The framework is too abstract to be ecological.”
-
-**Answer:** The worked example must show a concrete conclusion unavailable before the theorem: whether an existing functional state remains usable after turnover and, if not, exactly which ecological distinction must be retained.
-
-### Criticism: “The defect is a descriptive statistic rather than a theorem.”
-
-**Answer:** Present defect as a definition supported by the minimal-repair theorem and source-relative witness families. Do not inflate it into an independent theorem claim.
-
-### Criticism: “History completion merely copies systems by path.”
-
-**Answer:** The nontrivial statement is minimality: paths may share a mode exactly when their complete carried terminal maps agree, so the number of distinct maps is necessary and sufficient.
-
-### Criticism: “Exact finite assumptions are unrealistic.”
-
-**Answer:** Position exactness as a benchmark that isolates structural failure from statistical estimation error. State empirical and approximate extensions as limitations, not implied results.
-
-## Demotion and deletion rules
-
-### Main text
-
-- source-relative portability theorem;
-- local obstruction plus unique coarsest repair;
-- transport-defect definition with one source-relative witness family;
-- path coherence plus minimum history completion;
-- one ecological example.
-
-### Supplement
-
-- implementation-level refinement lemmas;
-- alternative source-relative witness families;
-- extended replacement graphs;
-- deterministic replay and software details.
-
-### External/adjacent only
-
-- CCOC cross-grammar open-interface lower bounds;
-- CCOC relay sharpness constructions.
-
-### Exclude
-
-- finite evidence and imperfect-detection theory;
-- candidate-mechanism uncertainty;
-- unsupported approximate or stochastic repair;
-- new theorem families introduced only to increase result count.
+1. **Decision-sufficiency workflow:** inherited state → structural replacement → target action → local response split → monitoring repair / decision reversal.
+2. **Repair-burden witness:** finite diagnostic defect family, explicitly non-empirical.
+3. **Composition and history boundary:** one route direct = sequential; different routes either share a carried terminal map or require map-class history modes.
 
 ## Submission gate
 
-Paper A is ready for journal selection only when:
+Before freezing a submission SHA:
 
-- the abstract and introduction name one source-relative central question;
-- the main text contains no more than four result packages;
-- existence, uniqueness, and source-relative minimality are visible in the repair theorem statement;
-- the worked ecological example uses every main definition;
-- no sentence claims that CCOC's open-composition lower bound is an MLTR special case or MLTR result;
-- related work explicitly credits coarse graining, abstraction, bisimulation, transportability, and CCOC as an adjacent distinct problem;
-- all numerical figure labels come from verified MLTR replay;
-- the manuscript can be read without repository history or internal acronyms.
+- [x] main text explicitly credits initial-partition coarsest refinement as prior machinery;
+- [x] direct/sequential carried semantics is proved and executable;
+- [x] many-to-many inherited-label conflicts are explicit;
+- [x] worked example names the missing monitoring variable and decision reversal;
+- [x] README, novelty strategy, submission audit, and replay hierarchy use the same claim placement;
+- [ ] CI and transport-core reproducibility are green on the final head;
+- [ ] manuscript build is green and PDF is visually inspected;
+- [ ] final ecological bibliography pass is complete;
+- [ ] cover letter leads with decision sufficiency and route/history semantics;
+- [ ] immutable submission SHA and artifacts are archived.

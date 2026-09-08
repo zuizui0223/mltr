@@ -1,39 +1,42 @@
 # MLTR — Macro-Law Transport and Repair
 
-MLTR is a theorem-first finite mathematical-ecology repository for one question:
+MLTR is a theorem-first finite mathematical-ecology repository for one source-relative model-reuse question:
 
-> When species turnover, extinction, recolonization, or interaction rewiring replaces one ecological system by another, does an accepted macro-law retain one route-independent terminal meaning—and, when declared routes disagree, what is the minimum historical context required to preserve their inherited meanings exactly?
+> When structural replacement changes an ecological system, can an already accepted state classification be carried consistently and remain sufficient for the outputs and management actions that now matter—and, when different declared routes carry incompatible meanings, what is the minimum historical context required?
 
-The project develops finite theorems for **non-nested** system changes. It does not assume that the source state space embeds into the target state space.
+The project develops finite theorems for **non-nested** system changes. It does not assume that the source state space embeds into the target state space, and it does not infer the replacement relation from data.
 
 ## Headline result
 
-1. **Route coherence.** An accepted source macro-law has one route-independent carried meaning at a terminal system exactly when all declared root-to-terminal histories induce the same complete carried terminal label map.
-2. **Minimum history completion.** When those maps disagree, histories can share an immutable mode exactly when their complete carried terminal maps agree. The necessary-and-sufficient mode count is therefore the number of equality classes of complete carried maps. Relative exact refinement on those history slices then gives the unique coarsest exact history-aware interface.
+1. **Carried semantics.** A declared many-to-many replacement relation carries one inherited source label map exactly when no target state receives incompatible source labels.
+2. **Fixed-route composition.** For consecutive total relations `R` and `S`, direct carried semantics through `R;S` is defined iff sequential carriage through `R` and then `S` is defined; when defined, the two terminal maps are identical.
+3. **Route coherence.** An accepted source macro-law has one route-independent carried meaning at a terminal system exactly when all declared root-to-terminal histories induce the same complete carried terminal label map.
+4. **Minimum history completion.** When those maps disagree, histories can share an immutable mode exactly when their complete carried terminal maps agree. The necessary-and-sufficient mode count is therefore the number of equality classes of complete carried maps.
 
-Accepted macro-laws therefore need not survive structural replacement as route-free laws. The theorem retains path identity only to the extent forced by disagreement in inherited terminal semantics; it does not retain full histories by default.
+Thus stepwise representation of one fixed replacement route is not itself historical dependence. History is retained only when genuinely different declared routes change the inherited terminal meaning.
 
-## Supporting transport and repair infrastructure
+## Supporting decision-sufficiency and repair infrastructure
 
-1. **Replacement transport.** A total relation between two exact projected stages preserves one common macro-law when it preserves macro labels, current output, legal-action rows, and successors.
-2. **Derived target projection.** A source projection plus a total, target-fiber-label-consistent relation constructs the target projection; target labels need not be supplied in advance.
-3. **Conservative target-only actions.** A target may add an action only when its availability and macro successor are uniform inside each derived target macro fiber.
-4. **Fiber-split obstruction.** A word newly legal after replacement refutes one proposed carried merge if it yields different target traces from two states in that fiber.
-5. **Unique coarsest exact repair and transport defect.** Starting from the carried target partition, finite output/legal-row/successor refinement constructs the unique coarsest exact target interface that refines the carried labels. The extra target macrostates and bits quantify the source-relative repair burden.
+1. **Operational decision sufficiency.** Once a carried target labeling is defined, it remains exact only when current outputs, legal-action rows, and action-conditioned successor labels are constant inside every inherited fiber.
+2. **Fiber-split obstruction.** A newly legal action or future word can expose two configurations that share an inherited state but imply different target outcomes or successor meanings.
+3. **Established exact refinement.** Starting from the carried partition, standard finite partition-refinement machinery computes the unique coarsest exact target refinement compatible with those inherited labels. MLTR uses this result as infrastructure; it does not claim generic initial-partition coarsest refinement as new.
+4. **Transport defect.** Extra target macrostates or description bits summarize source-relative repair burden. The defect is a diagnostic quantity tied to the repaired interface, not a standalone novelty claim.
 
-Exactness, lumpability-style closure, and fixed-point refinement are credited as infrastructure. The manuscript contribution is the source-relative structural-replacement problem and, centrally, its route-coherence boundary and necessary-and-sufficient history completion.
+The manuscript contribution is therefore the ecological model-reuse audit built around source-carried meaning, decision sufficiency, route composition, route coherence, and minimum historical context. Lumpability, bisimulation, coarsest-partition refinement, and fixed-point construction are credited as established substrate.
 
 ## Ecological reading
 
 - **Source stage:** an ecological community before turnover, extinction, colonization, habitat reconfiguration, or interaction rewiring.
-- **Target stage:** the altered community, potentially with a different raw state space.
-- **Relation:** a declared correspondence between source and target finite configurations; it may be many-to-one or one-to-many.
-- **Macro-law:** a coarse ecological state description preserving all outputs and actions declared by the finite model contract.
-- **Transport defect:** the number of additional coarse ecological states required after replacement because newly possible interactions distinguish configurations that the old macro-law merged.
-- **Path-label coherence:** a condition ensuring that different declared replacement histories give one carried terminal macro-law rather than history-dependent labels.
-- **History augmentation:** the minimum finite context retaining only the path classes that carry genuinely different terminal macro labels.
+- **Target stage:** the altered community, potentially with a different raw state space and intervention repertoire.
+- **Relation:** a declared correspondence between source and target finite configurations; it may be many-to-one, one-to-many, or many-to-many.
+- **Carried-label conflict:** one target configuration is related to source configurations with different accepted ecological labels, so one inherited meaning is not defined there.
+- **Decision sufficiency:** configurations sharing one inherited state agree on the target outputs, feasible interventions, and action-conditioned successor meanings relevant to the declared management problem.
+- **Local obstruction:** a pair inside one inherited state that changes a target observation, action availability, or intervention response.
+- **Monitoring repair:** the ecological distinction corresponding to that obstruction; standard exact refinement retains only the distinctions required by the declared operational model.
+- **Path-label coherence:** different declared replacement histories give one carried terminal macro-law rather than history-dependent inherited labels.
+- **History augmentation:** the minimum finite context retaining only path classes that carry genuinely different terminal maps.
 
-MLTR does not infer a replacement relation, replacement history, or action grammar from field data. These are assumptions of a finite mathematical model.
+MLTR does not infer a replacement relation, replacement history, action grammar, or ecological state variable from field data. These are assumptions of the finite mathematical model; empirical relation inference and approximate validation belong to later application layers.
 
 ## CREST role: historical / semantic insufficiency
 
@@ -41,7 +44,7 @@ The canonical synthesis lives in the dedicated [CREST repository](https://github
 
 CREST starts from temporally extended ecological worlds and asks whether a present snapshot is sufficient for a declared scientific state. Within that hierarchy, MLTR is the **historical / semantic obstruction theory**.
 
-Two target configurations can share the same current descriptor while differing in the inherited meaning carried from a source system or replacement history. MLTR asks whether that difference must be retained after structural change and, when the inherited merge fails, what least exact refinement repairs it.
+Two target configurations can share the same current descriptor while differing in the inherited meaning carried from a source system or replacement history. MLTR asks whether that inherited meaning is well defined, whether it composes consistently through replacement stages, whether the present state remains sufficient for target management, and whether alternative routes force historical context.
 
 \[
 \boxed{
@@ -51,7 +54,7 @@ Two target configurations can share the same current descriptor while differing 
 }
 \]
 
-MLTR therefore owns route coherence, minimum history completion, source-relative transport, unique coarsest exact repair, and transport defect. These results are one structural reason a present snapshot can fail to be a sufficient CREST state.
+MLTR therefore owns the source-carriage, route-composition, route-coherence, and minimum-history questions. It uses established exact-refinement machinery after the inherited target semantics have been fixed.
 
 Route other central objects as follows:
 
@@ -68,15 +71,12 @@ Passing the MLTR audit does not imply that the repaired state is future-sufficie
 - [CREST trajectory-first architecture](https://github.com/zuizui0223/crest/blob/main/docs/trajectory_first_program_architecture_2026-08-22.md) — canonical program hierarchy and cross-repository routing.
 - [CREST philosophical statement](https://github.com/zuizui0223/crest/blob/main/docs/contract_relative_ecological_state_theory.md) — world-level state definition and finite-theory boundary.
 - [CCOC/MLTR claim firewall](docs/ccoc_mltr_claim_firewall_2026-08-16.md) — exact quantifier boundary between open-future lower bounds and source-relative repair.
-- [Path-label coherence theorem](docs/path_coherence.md) — route-independent carried labels and repair on replacement graphs.
-- [Minimal history augmentation theorem](docs/history_augmentation.md) — minimum path context and exact history-aware repair after route incoherence.
-- [Submission audit](docs/submission_audit.md) — claim hierarchy, theorem-to-figure map, and remaining pre-submission work.
-- [Paper architecture](docs/paper_architecture.md) — recommended central claim, theorem hierarchy, Results order, and figure plan.
-- [Working Results and Discussion](docs/paper_results_discussion.md) — manuscript-facing English draft for the theorem results and interpretation.
-- [Theorem program](docs/theorem_program.md) — definitions, theorem statements, non-claims, and paper direction.
-- [Transport defect theorem](docs/transport_defect.md) — the coarsest relative exact refinement and the accumulating binary family.
-- [CCOC provenance](docs/rach_provenance.md) — exact source assets copied from the legacy branch and what was deliberately excluded.
-- [Reproducibility](docs/reproducibility.md) — tests, deterministic JSON replay, and GitHub Actions artifact.
+- [Carried-label composition theorem](docs/carried_label_composition.md) — many-to-many inheritance conflicts and direct = sequential carried semantics.
+- [Path-label coherence theorem](docs/path_coherence.md) — route-independent carried labels and target audit on replacement graphs.
+- [Minimal history augmentation theorem](docs/history_augmentation.md) — minimum path context after route incoherence.
+- [Novelty and journal strategy](docs/novelty_and_journal_strategy.md) — prior-art boundary and revised Paper A contribution hierarchy.
+- [Submission audit](docs/submission_audit.md) — theorem-to-figure map and remaining pre-submission work.
+- [Reproducibility](docs/reproducibility.md) — tests, deterministic JSON replay, and GitHub Actions artifacts.
 
 ## Run
 
@@ -84,9 +84,10 @@ Passing the MLTR audit does not imply that the repaired state is future-sufficie
 python -m pip install -e '.[dev]'
 pytest
 python scripts/verify_transport_core.py --write-report
+python scripts/verify_submission_story.py
 ```
 
-The last command writes `artifacts/transport_core_report.json`.
+The replay commands write deterministic reports under `artifacts/`.
 
 ## Provenance and status
 
