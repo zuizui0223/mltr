@@ -243,7 +243,13 @@ def analyse_zip(path: Path, n_permutations: int = 0):
             if digest(genotype) != expected:
                 raise ValueError(f"source file digest mismatch: {file_name}")
             loci, order, pop = parse(genotype)
-            expected_codes = set(regions) | {past} | set(ex_codes)
+            # Historical locality comparator L6 (1995–2011) remains in QC
+            # but is intentionally excluded from 2019–2020 regional tests.
+            historical_comparators = {"Ljaponica": {"L6"}}
+            expected_codes = (
+                set(regions) | {past} | set(ex_codes)
+                | historical_comparators.get(species, set())
+            )
             # The readme and file-code crosswalk is frozen before response testing;
             # never take POP order as time, conservation or geography.
             if set(order) != expected_codes or any(
