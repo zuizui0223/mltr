@@ -1,6 +1,6 @@
 # Next experimental-source gate: haploblock state vs fitness across clover common gardens
 
-**Status 2026-11-19:** analysis protocol and *synthetic-only* implementation complete; original row-level **DatasetA_commongarden.csv is not yet in the analysis environment**. Thus no new fit, coefficient, prediction gain, significance test or species-genomics generalization is claimed.
+**Status 2026-11-19 (source received after protocol freeze):** the original v20250829 Dryad ZIP was supplied and verified. The fixed model comparison was executed on 470 individuals (472 raw minus two conflicting duplicated `.bam` rows), 93 origin populations and four gardens. The **primary M1−M0 out-of-population predictive increment is negative and NOT SUPPORTED**. [Full real-data audit and sensitivities](clover_haploblock_fitness_holdout_result_2026-11-19.md) · [frozen aggregate metrics JSON](results/clover_haploblock_fitness_holdout_2026-11-19.json). No new causal conclusion or exact MLTR finite theorem claim is made.
 
 ## Published empirical source and novelty firewall
 
@@ -32,13 +32,17 @@ This is a **predictive sufficiency** question concerning matched genotype × env
 
 **Independence and causal limitations:** an origin-population holdout tests transfer to *previously unsampled populations within these four existing garden settings*; it does **not** test entirely new gardens, manipulate haploblocks genetically, control all population ancestry or exclude batch effects. The original authors have already investigated selection; this additional test is predictive rather than a new causal demonstration.
 
-## Source/implementation gates
+## Source/implementation gates (historical freeze and current result)
 
-1. **S0 — source identity confirmed:** DOI and README column names/four gardens/fitness variables checked from publisher and original paper. The exact source file hash is **pending** until `DatasetA_commongarden.csv` is available.
-2. **S1 — source QC not run:** confirm SHA-256, number of rows, unique `.bam` IDs, exact genotype coding, complete-case numbers, missingness by garden, population disjointness, positivity of both survival outcome classes in train folds.
-3. **S2 — synthetic-only code checked:** [source-locked analysis template](../scripts/analyze_clover_haploblock_fitness.py) and [tests](../tests/test_clover_haploblock_fitness.py). This does not imply any real-data prediction.
-4. **S3 — real held-out prediction pending:** apply frozen M0/M1/M2 comparisons only after S1. Preserve all negative/sensitive and unevaluable outcomes.
-5. **S4 — MLTR interpretation pending:** even a positive M1−M0 outcome is not automatically an exact `carried-label` conflict, replacement history mode, or MLTR finite-model theorem validation. Those require explicit total source–target relations, declared actions and the relevant outputs.
+The following model and response contracts were fixed **before the uploaded row-level file was opened**. Their substantive contents (primary `FloweredFull`, M0/M1/M2, origin-population GroupKFold, C=1, conditional bootstrap and positive threshold) remain unchanged.
+
+1. **S0 source identity: PASS.** Original ZIP SHA-256 `dc8fa8378176a063db4367e2fc4dd75914758a7246010e67b7ff7957e5632eb8`; original CSV SHA-256 `cbd9691e4b07a48e97619385bedc9f9a45fb02164d4ce08c1a99c9af7df054d4`; README SHA-256 `72b966bbd7326a36cac14294c91dc15f3e4878e6ff7ae4c4289a3da531a83131`.
+2. **S1 schema + source QC: PASS WITH EXCLUSION.** Original CSV labels use lowercase `hb7a1` etc. rather than display-name capitals. A `.bam` ID occurs twice with contradictory `hb9`/`hb13`; both rows are excluded from the primary fit. Complete case: 470 of 472 plants, all 93 source populations and four gardens.
+3. **S2 reproducibility: synthetic-only CI tests plus an independent original-source local fit.** The source parser and five-fold group holdout were repaired only for observed capitalization/duplicate-ID source contract, never for outcome direction.
+4. **S3 original-source primary outcome: NOT SUPPORTED.** M0 heldout log loss 0.628916, M1 0.637734, M2 0.647986. Mean M1−M0 predictive logscore −0.008818 nats/individual; equal-population mean −0.010128, conditional bootstrap interval [−0.018486, −0.002030]; only one of four gardens positive. Duplicate alternatives do not reverse the direction.
+5. **S4 MLTR formal decision-sufficiency: NOT ESTIMATED.** Genomic prediction failure does not establish or refute any exact source-carriage, history-completion or future-interface theorem, nor imply a causal null effect of structural variation.
+
+The exact source-derived results and limitations are in [the auditable results document](clover_haploblock_fitness_holdout_result_2026-11-19.md). The uploaded individual genotype/fitness CSV is intentionally not copied into GitHub.
 
 ## Execution
 
@@ -47,7 +51,7 @@ For an authorized original Dryad file downloaded locally (do **not** commit samp
 ```bash
 python -m pip install numpy scikit-learn
 python scripts/analyze_clover_haploblock_fitness.py \
-  --input /path/to/DatasetA_commongarden.csv \
+  --zip /path/to/doi_10_5061_dryad_dfn2z3593__v20250829.zip \
   --out artifacts/clover_haploblock_out_of_population.json
 ```
 
