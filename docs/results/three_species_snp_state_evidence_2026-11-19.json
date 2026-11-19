@@ -1,0 +1,137 @@
+{
+  "schema_version": "1.0",
+  "date": "2026-11-19",
+  "source": {
+    "doi": "10.5061/dryad.tb2rbp03j",
+    "zip_sha256": "e81efee9bfe1f1176609bbcd3a1f23f9be63c698e614db09884676684ceb9b8c",
+    "version": "v20220815",
+    "marker_type": "MIG-seq biallelic SNPs",
+    "study_count": 1,
+    "species_count": 3
+  },
+  "evidence_class": "OBSERVATIONAL_POPULATION_GENOMIC_ASSOCIATION_NOT_MLTR_INTERVENTION_VALIDATION",
+  "methods": {
+    "fst": "ratio of locus sums with Hudson diploid sampling correction; min 4 called individuals per population per locus",
+    "genotype_prediction": "leave one individual out; region-specific vs pooled-species SNP allele frequency, Beta(alpha,alpha) smoothing; 3 other called regional individuals and 10 other total",
+    "permutation": "999 individual-level label permutations conditional on observed genotype/missingness; region group sizes preserved; exploratory, not causal"
+  },
+  "species": {
+    "Cirsium_maritimum": {
+      "samples_all": 50,
+      "snp_loci": 281,
+      "populations_all": 7,
+      "contemporary_region_groups": 4,
+      "contemporary_individuals": 32,
+      "regional_pairs": 6,
+      "regional_fst_min": 0.599234,
+      "regional_fst_max": 0.778703,
+      "genomic_loo_alpha_0_5": {
+        "nats_per_allele": 0.2183047,
+        "bits_per_allele": 0.3149471,
+        "positive_heldout_individuals": 32,
+        "heldout_individuals": 32,
+        "genotypes_evaluated": 6177
+      },
+      "genomic_loo_alpha_2": {
+        "nats_per_allele": 0.1524206
+      },
+      "conditional_label_permutation": {
+        "n": 999,
+        "n_ge_observed": 0,
+        "one_sided_p": 0.001
+      },
+      "historical": {
+        "source": "C1-1 2007",
+        "current": "C1-2 2019",
+        "past_n": 2,
+        "current_n": 8,
+        "past_observed_not_current": 20,
+        "past_only_one_individual": 19,
+        "detected_in_any_exsitu": 6
+      }
+    },
+    "Linaria_japonica": {
+      "samples_all": 56,
+      "snp_loci": 379,
+      "populations_all": 9,
+      "contemporary_region_groups": 6,
+      "contemporary_individuals": 42,
+      "regional_pairs": 15,
+      "excluded_source_group": "L6 1995-2011, 4 specimens, low call completeness",
+      "regional_fst_min": 0.322992,
+      "regional_fst_max": 0.737273,
+      "genomic_loo_alpha_0_5": {
+        "nats_per_allele": 0.104657,
+        "bits_per_allele": 0.1509881,
+        "positive_heldout_individuals": 42,
+        "heldout_individuals": 42,
+        "genotypes_evaluated": 12327
+      },
+      "genomic_loo_alpha_2": {
+        "nats_per_allele": 0.0337162,
+        "positive_heldout_individuals": 32,
+        "heldout_individuals": 42,
+        "negative_region_group_mean": "L7"
+      },
+      "conditional_label_permutation": {
+        "n": 999,
+        "n_ge_observed": 0,
+        "one_sided_p": 0.001
+      },
+      "historical": {
+        "source": "L1-1 1988-2006",
+        "current": "L1-2 2020",
+        "past_n": 4,
+        "current_n": 4,
+        "past_observed_not_current": 80,
+        "excluded_uncallable_current": 16,
+        "past_only_one_individual": 60,
+        "detected_in_any_exsitu": 31
+      }
+    },
+    "Suaeda_glauca": {
+      "samples_all": 45,
+      "snp_loci": 138,
+      "populations_all": 6,
+      "contemporary_region_groups": 3,
+      "contemporary_individuals": 24,
+      "regional_pairs": 3,
+      "regional_fst_min": 0.472935,
+      "regional_fst_max": 0.741571,
+      "genomic_loo_alpha_0_5": {
+        "nats_per_allele": 0.2094481,
+        "bits_per_allele": 0.3021697,
+        "positive_heldout_individuals": 24,
+        "heldout_individuals": 24,
+        "genotypes_evaluated": 2620
+      },
+      "genomic_loo_alpha_2": {
+        "nats_per_allele": 0.1550502
+      },
+      "conditional_label_permutation": {
+        "n": 999,
+        "n_ge_observed": 0,
+        "one_sided_p": 0.001
+      },
+      "historical": {
+        "source": "S1-1 1998-2007",
+        "current": "S1-2 2019",
+        "past_n": 5,
+        "current_n": 8,
+        "past_observed_not_current": 18,
+        "past_only_one_individual": 17,
+        "detected_in_any_exsitu": 3,
+        "fully_called_loci_in_all_past_current": 3
+      }
+    }
+  },
+  "limitations": [
+    "The three species share one study and assay pipeline; results do not show universality across laboratories or biomes",
+    "Only reduced-representation SNPs are assessed, not whole genomes",
+    "Held-out outcomes are genotype calls, not fitness, adaptation, population growth or intervention response",
+    "Historical allele absence is observed non-detection and is affected by sampling size and missingness",
+    "Permutation P values assume individual-level label exchangeability and are post-outcome exploratory",
+    "Genomic LOO bits per allele are predictive logscore units, not the exact CCOC response-interface memory bound",
+    "No MLTR total replacement relations or action-conditioned response tables were empirically identified"
+  ]
+}
