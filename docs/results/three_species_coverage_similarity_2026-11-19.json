@@ -1,0 +1,86 @@
+{
+  "date": "2026-11-19",
+  "source_doi": "10.5061/dryad.tb2rbp03j",
+  "source_zip_sha256": "e81efee9bfe1f1176609bbcd3a1f23f9be63c698e614db09884676684ceb9b8c",
+  "status": "EXPLORATORY_OBSERVED_GENOTYPE_ONLY",
+  "fit_scope": "within previously sampled geographic groups; individually held-out allelic copies conditional on retained SNPs",
+  "source_processing": "old-only historical loci removed in original paper; historical allele loss cannot be reconstructed",
+  "test_design": "same SNPs for region and pooled species; every region >=75% call rate; >95% within-region genotype identity over >=60 shared called SNPs removed from BOTH training models",
+  "species": [
+    {
+      "species": "Cirsium maritimum",
+      "n": 32,
+      "snps": 281,
+      "panel75": 71,
+      "raw": 0.2183047,
+      "at75": 0.2175963,
+      "highPairs": 18,
+      "ibsWithin": 0.8835775,
+      "ibsBetween": 0.6334434,
+      "missingness": 0.0228762,
+      "guard95": {
+        "full": 0.2151427,
+        "eval": 28,
+        "pos": 28,
+        "at75": 0.2184786
+      },
+      "guard98": {
+        "full": 0.2194757,
+        "eval": 32
+      }
+    },
+    {
+      "species": "Linaria japonica",
+      "n": 42,
+      "snps": 379,
+      "panel75": 98,
+      "raw": 0.104657,
+      "at75": 0.0946244,
+      "highPairs": 58,
+      "ibsWithin": 0.8943529,
+      "ibsBetween": 0.7443437,
+      "missingness": 0.0293084,
+      "guard95": {
+        "full": 0.0656346,
+        "eval": 24,
+        "pos": 23,
+        "at75": 0.0631359,
+        "pos75": 22
+      },
+      "guard98": {
+        "full": 0.079381,
+        "eval": 35
+      }
+    },
+    {
+      "species": "Suaeda glauca",
+      "n": 24,
+      "snps": 138,
+      "panel75": 80,
+      "raw": 0.2094481,
+      "at75": 0.2642634,
+      "highPairs": 19,
+      "ibsWithin": 0.883056,
+      "ibsBetween": 0.5937422,
+      "missingness": 0.0018021,
+      "guard95": {
+        "full": 0.2154878,
+        "eval": 21,
+        "pos": 21,
+        "at75": 0.2702425
+      },
+      "guard98": {
+        "full": 0.2136856,
+        "eval": 24
+      }
+    }
+  ],
+  "limitations": [
+    "near-identical genotypes do not prove kinship or technical duplicates",
+    "removal of similar training genotypes leaves a selected evaluable subset, especially Linaria",
+    "source populations and sequencing batch cannot be experimentally separated",
+    "not an unseen-region prediction, whole-genome result, or intervention/fitness model",
+    "SNPs and same-study species are not independent biological replications",
+    "analysis is post-outcome exploratory"
+  ]
+}
