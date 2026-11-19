@@ -26,7 +26,7 @@ spec.loader.exec_module(module)
 class CloverHaploblockTests(unittest.TestCase):
     def write_example(self, path):
         rng = random.Random(20261119)
-        gardens = ("Toronto", "Montpellier", "Lafayette", "Uppsula")
+        gardens = ("Toronto", "Montpellier", "Lafayette", "Uppsala")
         with path.open("w", newline="", encoding="utf-8") as handle:
             writer = csv.DictWriter(handle, fieldnames=module.REQUIRED)
             writer.writeheader()
@@ -76,7 +76,7 @@ class CloverHaploblockTests(unittest.TestCase):
             original = Path(temp) / "DatasetA_commongarden.csv"
             self.write_example(original)
             rows = list(csv.DictReader(original.open(newline="")))
-            rows[0]["Hb7a1"] = "999"
+            rows[0]["hb7a1"] = "999"
             with original.open("w", newline="") as handle:
                 writer = csv.DictWriter(handle, fieldnames=module.REQUIRED)
                 writer.writeheader()
@@ -95,8 +95,33 @@ class CloverHaploblockTests(unittest.TestCase):
                 writer = csv.DictWriter(handle, fieldnames=module.REQUIRED)
                 writer.writeheader()
                 writer.writerows(rows)
+            selected, quality = module.read_source(original)
+            # Both records that reuse a .bam identifier are removed. Their
+            # identity cannot be resolved from otherwise conflicting data.
+            self.assertEqual(len(selected), 478)
+            self.assertEqual(quality["reused_bam_identifiers"], 1)
+            self.assertEqual(
+                quality["exclusion_counts"]["conflicting_or_reused_bam_id_rows"], 2
+            )
+
+    def test_original_zip_hash_gate_rejects_unverified_archive(self):
+        with tempfile.TemporaryDirectory() as temp:
+            fake = Path(temp) / "untrusted.zip"
+            fake.write_bytes(b"not the pinned source")
             with self.assertRaises(ValueError):
-                module.read_source(original)
+                module.source_data(fake, is_zip=True)
+
+    def test_observed_lowercase_source_columns_and_primary_status(self):
+        with tempfile.TemporaryDirectory() as temp:
+            original = Path(temp) / "DatasetA_commongarden.csv"
+            self.write_example(original)
+            selected, quality = module.read_source(original)
+            self.assertEqual(tuple(module.HAPS),
+                ("hb7a1", "hb7a2", "hb7b", "hb9", "hb13"))
+            self.assertEqual(len(selected), 480)
+            result = module.analyse(original)
+            self.assertIn("primary_evaluation_gate", result)
+            self.assertTrue(result["source"]["csv_sha256"])
 
 
 if __name__ == "__main__":
