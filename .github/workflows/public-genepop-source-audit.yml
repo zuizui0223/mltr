@@ -1,0 +1,37 @@
+name: Public Cirsium Genepop source audit
+
+on:
+  pull_request:
+    paths:
+      - "scripts/audit_genepop_cmaritimum.py"
+      - "tests/test_genepop_cmaritimum_audit.py"
+      - ".github/workflows/public-genepop-source-audit.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify strict parser on synthetic-only fixture
+        run: python -m unittest discover -s tests -p "test_genepop_cmaritimum_audit.py" -v
+      - name: Download and QC exact public Dryad source (no imputed history)
+        run: |
+          python scripts/audit_genepop_cmaritimum.py \
+            --from-dryad \
+            --out artifacts/genepop_cmaritimum_source_qc.json
+      - name: Preserve only results/provenance (never raw genotypes)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: public-cmaritimum-qc
+          path: artifacts/genepop_cmaritimum_source_qc.json
+          if-no-files-found: warn
+          retention-days: 30
