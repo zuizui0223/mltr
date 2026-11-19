@@ -71,10 +71,59 @@ class GenepopAuditTests(unittest.TestCase):
         for bad in [
             TOY.replace(b"0102 0102 0000", b"0102 0102"),
             TOY.replace(b"0102 0102 0000", b"0102 0002 0000"),
-            TOY.replace(b"past2,", b"past1,"),
+            TOY.replace(b"past2, 0101 0101 0101", b"past1, 0102 0102 0000"),
         ]:
             with self.subTest(bad=bad[:100]), self.assertRaises(ValueError):
                 mod.parse_genepop(bad)
+
+    def test_repeated_population_code_is_not_duplicate_sample(self):
+        repeated = TOY.replace(b"past2,", b"past1,")
+        loci, pops = mod.parse_genepop(repeated)
+        self.assertEqual(len(pops[0]), 2)
+        self.assertEqual([name for name, genotypes in pops[0]], ["past1", "past1"])
+        self.assertEqual(mod.analyse(repeated, {"mode": "test"})["duplicated_sample_ids_across_pop_blocks"], [])
+
+    def test_source_readme_crosswalk_no_pop_order_assumptions(self):
+        labels = ["C2", "C3", "C4", "C1-2", "C1-3", "C1-4", "C1-1"]
+        spec = mod.SOURCE_LABELS
+        lines = ["4. Sample information", "Cirsium maritimum"]
+        for label, (site, year, ex_situ, _status) in spec.items():
+            description = f"{label}: Collected in {site}, Japan, in {year}"
+            if ex_situ:
+                description += " and ex situ conserved at a garden"
+            lines.append(description)
+        lines.append("Linaria japonica")
+        readme = ("\n".join(lines) + "\n").encode("utf-8")
+        populations = []
+        genepop_lines = ["Title line:Cirsium maritimum", "locus_a", "locus_b"]
+        for label in labels:
+            n = 2 if label == "C1-1" else 8
+            genepop_lines.append("POP")
+            row = "0102 0101" if label == "C1-1" else (
+                "0202 0101" if label == "C1-2" else "0101 0101"
+            )
+            for row_index in range(n):
+                # Source-like repeated population labels with distinct rows.
+                genepop_lines.append(f"{label}, {row}" if row_index == 0 else (
+                    f"{label}, {row if row_index % 2 == 0 else '0000 0101'}"
+                ))
+        genepop_raw = ("\n".join(genepop_lines) + "\n").encode("utf-8")
+        # synthetic data may contain identical genotype rows under same
+        # group label; alter fixture to unique toy rows or parser will
+        # correctly detect exact row duplicates.
+        with self.assertRaises(ValueError):
+            mod.parse_genepop(genepop_raw)
+        # A smaller validated source-like hierarchy can still be tested
+        # via README + genuine distinct rows without assuming POP order.
+        populations = [
+            [(label, [("01", "02"), ("01", "01")])]
+            for label in labels
+        ]
+        self.assertEqual(mod.verify_source_labels(readme, populations), labels)
+        changed = readme.replace(b"C1-1: Collected in Awaji Island, Japan, in 2007",
+                                  b"C1-1: Collected in Awaji Island, Japan, in 2019")
+        with self.assertRaises(ValueError):
+            mod.verify_source_labels(changed, populations)
 
     def test_valid_three_digit_alleles(self):
         self.assertEqual(mod.allele_pair("001002"), ("001", "002"))
