@@ -31,15 +31,83 @@ def sha256(raw: bytes) -> str:
     return hashlib.sha256(raw).hexdigest()
 
 
-def fetch_dryad() -> tuple[bytes, bytes | None, dict[str, Any]]:
-    """Public dataset ZIP, no auth or unknown mirror. Fail closed on errors."""
+def _fetch_bounded(url: str, maximum: int) -> bytes:
     req = urllib.request.Request(
-        API_ZIP, headers={"User-Agent": "MLTR-Genepop-audit/0.1 (research)"}
+        url, headers={"User-Agent": "MLTR-Genepop-audit/0.2 (research)"}
     )
     with urllib.request.urlopen(req, timeout=45) as response:
-        raw = response.read(MAX_ZIP_BYTES + 1)
-    if len(raw) > MAX_ZIP_BYTES:
-        raise ValueError("Dryad ZIP exceeds bounded maximum size")
+        raw = response.read(maximum + 1)
+    if len(raw) > maximum:
+        raise ValueError("download exceeds bounded maximum size")
+    return raw
+
+
+def _fetch_public_file_streams() -> tuple[bytes, bytes | None, dict[str, Any]]:
+    """Fallback for a published dataset when the ZIP endpoint requires auth.
+
+    The file list is discovered through Dryad's public metadata API, never from
+    guessed IDs or a search-index snippet. A source checksum is honored if present.
+    """
+    root = "https://datadryad.org"
+    dataset_api = root + "/api/v2/datasets/doi%3A10.5061%2Fdryad.tb2rbp03j"
+    dataset = json.loads(_fetch_bounded(dataset_api, 200_000))
+    if dataset.get("identifier") != "doi:" + DOI:
+        raise ValueError("Dryad dataset metadata DOI mismatch")
+    versions_href = dataset.get("_links", {}).get("stash:version", {}).get("href")
+    if not isinstance(versions_href, str):
+        raise ValueError("no pinned latest published version URL in metadata")
+    version_path = re.fullmatch(r"/api/v2/versions/([0-9]+)", versions_href)
+    if version_path is None:
+        raise ValueError("unsafe/unexpected Dryad latest version URL")
+    version_id = int(version_path.group(1))
+    listing_url = f"{root}/api/v2/versions/{version_id}/files?per_page=100"
+    listing = json.loads(_fetch_bounded(listing_url, 200_000))
+    files = listing.get("_embedded", {}).get("stash:files", [])
+    if not isinstance(files, list) or len(files) >= 100:
+        raise ValueError("file listing empty/ambiguous or truncated")
+    def find_exact(basename: str) -> dict[str, Any] | None:
+        hits = [f for f in files if Path(str(f.get("path", ""))).name == basename]
+        if len(hits) > 1:
+            raise ValueError("multiple source files with identical basename")
+        return hits[0] if hits else None
+    focal = find_exact(TARGET)
+    if focal is None:
+        raise ValueError("source Genepop absent in pinned version file list")
+    readme_record = find_exact("README.txt")
+    def download(record: dict[str, Any], max_size: int) -> bytes:
+        fid = int(record["id"])
+        if fid <= 0:
+            raise ValueError("invalid Dryad file ID")
+        raw = _fetch_bounded(f"{root}/downloads/file_stream/{fid}", max_size)
+        size = record.get("size")
+        if size is not None and int(size) != len(raw):
+            raise ValueError("Dryad file size did not match metadata")
+        digest = record.get("digest")
+        digest_type = str(record.get("digestType", "")).lower().replace("-", "")
+        if digest and digest_type in ("md5", "sha256"):
+            if hashlib.new(digest_type, raw).hexdigest().lower() != str(digest).lower():
+                raise ValueError("Dryad file digest mismatch")
+        return raw
+    genotype = download(focal, 3_000_000)
+    readme = download(readme_record, 300_000) if readme_record else None
+    return genotype, readme, {
+        "mode": "dryad_public_file_stream",
+        "doi": DOI,
+        "dataset_api": dataset_api,
+        "version_id": version_id,
+        "genepop_file_id": int(focal["id"]),
+        "readme_file_id": int(readme_record["id"]) if readme_record else None,
+    }
+
+
+def fetch_dryad() -> tuple[bytes, bytes | None, dict[str, Any]]:
+    """Try official ZIP once, then the published file metadata/stream path on 401."""
+    try:
+        raw = _fetch_bounded(API_ZIP, MAX_ZIP_BYTES)
+    except urllib.error.HTTPError as error:
+        if error.code not in (401, 403):
+            raise
+        return _fetch_public_file_streams()
     with zipfile.ZipFile(io.BytesIO(raw)) as archive:
         matches = [n for n in archive.namelist() if Path(n).name == TARGET]
         readmes = [n for n in archive.namelist() if Path(n).name == "README.txt"]
