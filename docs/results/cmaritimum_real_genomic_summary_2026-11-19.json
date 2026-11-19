@@ -1,0 +1,418 @@
+{
+  "MLTR_status": "NO_ACTION_RESPONSE_OR_VERIFIED_REPLACEMENT_RELATION_NO_EMPIRICAL_DECISION_SUFFICIENCY_CLAIM",
+  "analysis_status": "REAL_REDUCED_REPRESENTATION_SNP_SOURCE_QC_COMPLETE_NO_FUNCTIONAL_RESPONSE",
+  "genetic_differentiation": {
+    "allele_frequency_missingness": "exclude genotype missing, no imputation",
+    "interpretation_limit": "locus-bootstrap intervals conditional on SNP data; not region-level intervals or adaptation evidence",
+    "locus_bootstrap_replicates": 1500,
+    "locus_bootstrap_rng": "numpy Generator PCG64 seed=20261119",
+    "method": "Hudson_type_ratio_of_sum_SNP_corrected_for_sampling_on_allele_copies",
+    "min_called_individuals_each_group": 4,
+    "pairwise": [
+      {
+        "fst": 0.7787,
+        "individual_leave1_each_range": [
+          0.7494,
+          0.7926
+        ],
+        "locus_bootstrap_95ci": [
+          0.7172,
+          0.8286
+        ],
+        "locus_threshold": 4,
+        "n_loci": 197,
+        "pops": [
+          "C1-2",
+          "C2"
+        ]
+      },
+      {
+        "fst": 0.6911,
+        "individual_leave1_each_range": [
+          0.6454,
+          0.7068
+        ],
+        "locus_bootstrap_95ci": [
+          0.6348,
+          0.7408
+        ],
+        "locus_threshold": 4,
+        "n_loci": 214,
+        "pops": [
+          "C1-2",
+          "C3"
+        ]
+      },
+      {
+        "fst": 0.6111,
+        "individual_leave1_each_range": [
+          0.5794,
+          0.6597
+        ],
+        "locus_bootstrap_95ci": [
+          0.5309,
+          0.6782
+        ],
+        "locus_threshold": 4,
+        "n_loci": 218,
+        "pops": [
+          "C1-2",
+          "C4"
+        ]
+      },
+      {
+        "fst": 0.1527,
+        "individual_leave1_each_range": [
+          0.0916,
+          0.1802
+        ],
+        "locus_bootstrap_95ci": [
+          0.0905,
+          0.2271
+        ],
+        "locus_threshold": 4,
+        "n_loci": 236,
+        "pops": [
+          "C1-2",
+          "C1-3"
+        ]
+      },
+      {
+        "fst": 0.0662,
+        "individual_leave1_each_range": [
+          -0.0065,
+          0.1057
+        ],
+        "locus_bootstrap_95ci": [
+          0.0238,
+          0.111
+        ],
+        "locus_threshold": 4,
+        "n_loci": 170,
+        "pops": [
+          "C1-2",
+          "C1-4"
+        ]
+      },
+      {
+        "fst": 0.5992,
+        "individual_leave1_each_range": [
+          0.5755,
+          0.6175
+        ],
+        "locus_bootstrap_95ci": [
+          0.5111,
+          0.6723
+        ],
+        "locus_threshold": 4,
+        "n_loci": 212,
+        "pops": [
+          "C2",
+          "C3"
+        ]
+      },
+      {
+        "fst": 0.747,
+        "individual_leave1_each_range": [
+          0.73,
+          0.781
+        ],
+        "locus_bootstrap_95ci": [
+          0.6722,
+          0.8046
+        ],
+        "locus_threshold": 4,
+        "n_loci": 203,
+        "pops": [
+          "C2",
+          "C4"
+        ]
+      },
+      {
+        "fst": 0.8441,
+        "individual_leave1_each_range": [
+          0.8349,
+          0.8657
+        ],
+        "locus_bootstrap_95ci": [
+          0.7954,
+          0.883
+        ],
+        "locus_threshold": 4,
+        "n_loci": 220,
+        "pops": [
+          "C2",
+          "C1-3"
+        ]
+      },
+      {
+        "fst": 0.7139,
+        "individual_leave1_each_range": [
+          0.6859,
+          0.7368
+        ],
+        "locus_bootstrap_95ci": [
+          0.6309,
+          0.7809
+        ],
+        "locus_threshold": 4,
+        "n_loci": 148,
+        "pops": [
+          "C2",
+          "C1-4"
+        ]
+      },
+      {
+        "fst": 0.6245,
+        "individual_leave1_each_range": [
+          0.5937,
+          0.653
+        ],
+        "locus_bootstrap_95ci": [
+          0.5555,
+          0.6865
+        ],
+        "locus_threshold": 4,
+        "n_loci": 224,
+        "pops": [
+          "C3",
+          "C4"
+        ]
+      },
+      {
+        "fst": 0.7623,
+        "individual_leave1_each_range": [
+          0.7551,
+          0.7821
+        ],
+        "locus_bootstrap_95ci": [
+          0.717,
+          0.8048
+        ],
+        "locus_threshold": 4,
+        "n_loci": 238,
+        "pops": [
+          "C3",
+          "C1-3"
+        ]
+      },
+      {
+        "fst": 0.5893,
+        "individual_leave1_each_range": [
+          0.541,
+          0.6044
+        ],
+        "locus_bootstrap_95ci": [
+          0.5191,
+          0.6536
+        ],
+        "locus_threshold": 4,
+        "n_loci": 158,
+        "pops": [
+          "C3",
+          "C1-4"
+        ]
+      },
+      {
+        "fst": 0.7183,
+        "individual_leave1_each_range": [
+          0.7134,
+          0.7444
+        ],
+        "locus_bootstrap_95ci": [
+          0.6533,
+          0.7751
+        ],
+        "locus_threshold": 4,
+        "n_loci": 242,
+        "pops": [
+          "C4",
+          "C1-3"
+        ]
+      },
+      {
+        "fst": 0.5034,
+        "individual_leave1_each_range": [
+          0.4847,
+          0.5614
+        ],
+        "locus_bootstrap_95ci": [
+          0.403,
+          0.597
+        ],
+        "locus_threshold": 4,
+        "n_loci": 164,
+        "pops": [
+          "C4",
+          "C1-4"
+        ]
+      },
+      {
+        "fst": 0.2848,
+        "individual_leave1_each_range": [
+          0.232,
+          0.3243
+        ],
+        "locus_bootstrap_95ci": [
+          0.2004,
+          0.3622
+        ],
+        "locus_threshold": 4,
+        "n_loci": 176,
+        "pops": [
+          "C1-3",
+          "C1-4"
+        ]
+      }
+    ]
+  },
+  "historic_2007_vs_current_2019": {
+    "all_ten_old_current_called_loci": 10,
+    "current_alleles_at_loci_all_missing_old": 6,
+    "current_alleles_undetected_old_at_historic_callable_loci": 63,
+    "current_sample_n": 8,
+    "observed_past_alleles_not_observed_current_at_callable_loci": 20,
+    "old_not_current_alleles_absent_from_both_ex_situ_samples": 14,
+    "old_not_current_alleles_present_in_C1_3_ex_situ": 5,
+    "old_not_current_alleles_present_in_C1_4_ex_situ": 4,
+    "old_not_current_alleles_present_in_both_ex_situ": 3,
+    "old_not_current_alleles_present_in_either_ex_situ": 6,
+    "old_not_current_alleles_single_historic_carrier": 19,
+    "old_two_full_called_loci": 80,
+    "past_not_current_alleles_by_min_current_called": {
+      "1": 20,
+      "2": 19,
+      "4": 14,
+      "6": 10,
+      "8": 2
+    },
+    "past_sample_n": 2
+  },
+  "paired_n2_sensitivity": {
+    "current_greater": 2,
+    "current_smaller": 22,
+    "equal": 4,
+    "fully_called_loci_range": [
+      19,
+      60
+    ],
+    "mean_current_minus_past_allelic_richness_per_jointly_called_locus": -0.07047398,
+    "n_current_pairs": 28,
+    "status": "NONINDEPENDENT_DESCRIPTIVE_ONLY"
+  },
+  "populations": [
+    {
+      "area": "Shizuoka",
+      "call_rate": 0.69439502,
+      "called_genotypes": 1561,
+      "code": "C2",
+      "collection_year": 2019,
+      "n_individuals": 8,
+      "observed_heterozygosity": 0.04740551,
+      "polymorphic_loci_in_retained_panel": 33,
+      "pop_index": 1,
+      "possible_genotypes": 2248,
+      "status": "regional_2019"
+    },
+    {
+      "area": "Mie",
+      "call_rate": 0.75978648,
+      "called_genotypes": 1708,
+      "code": "C3",
+      "collection_year": 2019,
+      "n_individuals": 8,
+      "observed_heterozygosity": 0.12822014,
+      "polymorphic_loci_in_retained_panel": 98,
+      "pop_index": 2,
+      "possible_genotypes": 2248,
+      "status": "regional_2019"
+    },
+    {
+      "area": "Wakayama",
+      "call_rate": 0.73176157,
+      "called_genotypes": 1645,
+      "code": "C4",
+      "collection_year": 2019,
+      "n_individuals": 8,
+      "observed_heterozygosity": 0.09300912,
+      "polymorphic_loci_in_retained_panel": 77,
+      "pop_index": 3,
+      "possible_genotypes": 2248,
+      "status": "regional_2019"
+    },
+    {
+      "area": "Awaji Island, Hyogo",
+      "call_rate": 0.70240214,
+      "called_genotypes": 1579,
+      "code": "C1-2",
+      "collection_year": 2019,
+      "n_individuals": 8,
+      "observed_heterozygosity": 0.11336289,
+      "polymorphic_loci_in_retained_panel": 83,
+      "pop_index": 4,
+      "possible_genotypes": 2248,
+      "status": "current_wild"
+    },
+    {
+      "area": "Awaji origin; Sanda ex-situ",
+      "call_rate": 0.85053381,
+      "called_genotypes": 1912,
+      "code": "C1-3",
+      "collection_year": 2000,
+      "n_individuals": 8,
+      "observed_heterozygosity": 0.06694561,
+      "polymorphic_loci_in_retained_panel": 48,
+      "pop_index": 5,
+      "possible_genotypes": 2248,
+      "status": "ex_situ"
+    },
+    {
+      "area": "Awaji origin; Himeji ex-situ",
+      "call_rate": 0.55115658,
+      "called_genotypes": 1239,
+      "code": "C1-4",
+      "collection_year": 2014,
+      "n_individuals": 8,
+      "observed_heterozygosity": 0.11622276,
+      "polymorphic_loci_in_retained_panel": 89,
+      "pop_index": 6,
+      "possible_genotypes": 2248,
+      "status": "ex_situ"
+    },
+    {
+      "area": "Awaji Island, Hyogo",
+      "call_rate": 0.63523132,
+      "called_genotypes": 357,
+      "code": "C1-1",
+      "collection_year": 2007,
+      "n_individuals": 2,
+      "observed_heterozygosity": 0.10364146,
+      "polymorphic_loci_in_retained_panel": 38,
+      "pop_index": 7,
+      "possible_genotypes": 562,
+      "status": "historic_wild"
+    }
+  ],
+  "source": {
+    "called_genotype_cells": 10001,
+    "data_date": "2022-08-15",
+    "expected_pop_order": [
+      "C2",
+      "C3",
+      "C4",
+      "C1-2",
+      "C1-3",
+      "C1-4",
+      "C1-1"
+    ],
+    "genepop_sha256": "ecf44241752d8844e35d9cbdc4fa2d57d8aadbc3f2e1f0f17f77c4a4283fcd9e",
+    "n_individuals": 50,
+    "n_loci": 281,
+    "n_populations": 7,
+    "raw_genotypes_not_redistributed": true,
+    "readme_sample_codes_validated": true,
+    "readme_sha256": "51e373dd9df6c20d8efc370ebb3beca2f55739c179c96dee5885a5e28c917627",
+    "total_genotype_cells": 14050,
+    "zip_sha256": "e81efee9bfe1f1176609bbcd3a1f23f9be63c698e614db09884676684ceb9b8c"
+  }
+}
