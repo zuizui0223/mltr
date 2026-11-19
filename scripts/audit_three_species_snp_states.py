@@ -216,8 +216,8 @@ def permutation_check(populations, groups, n=999, seed=20424117):
     return {
         "observed_nats_per_allele": observed,
         "null_mean": round(sum(null) / n, 7),
-        "null_95_percentile": sorted(null)[int(0.025 * (n - 1))], 
-        "null_975_percentile": sorted(null)[int(0.975 * (n - 1))],
+        "null_q025": round(sorted(null)[int(0.025 * (n - 1))], 7), 
+        "null_q975": round(sorted(null)[int(0.975 * (n - 1))], 7),
         "n_permutations": n, "random_seed": seed,
         "n_randomized_labels_ge_observed": exceeds,
         "one_sided_conditional_randomization_p": round((exceeds + 1) / (n + 1), 6),
