@@ -110,9 +110,9 @@ class GenepopAuditTests(unittest.TestCase):
         }
         listing = {
             "_embedded": {"stash:files": [
-                {"path": mod.TARGET, "id": 104, "size": len(TOY),
+                {"path": mod.TARGET, "_links": {"self": {"href": "/api/v2/files/104"}}, "size": len(TOY),
                  "digest": hashlib.sha256(TOY).hexdigest(), "digestType": "sha-256"},
-                {"path": "README.txt", "id": 105, "size": 4},
+                {"path": "README.txt", "_links": {"self": {"href": "/api/v2/files/105"}}, "size": 4},
             ]}
         }
         def public_get(url, _max):
