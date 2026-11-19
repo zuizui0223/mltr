@@ -13,6 +13,7 @@ import hashlib
 import io
 import json
 import re
+import random
 import sys
 import urllib.request
 import zipfile
@@ -338,6 +339,89 @@ def verify_source_labels(
     return labels
 
 
+
+def _fst_components(
+    pop_a: list[tuple[str, list[tuple[str, str] | None]]],
+    pop_b: list[tuple[str, list[tuple[str, str] | None]]],
+    n_loci: int,
+    min_called: int = 4,
+) -> tuple[list[float], list[float]]:
+    """Pooled Hudson-type SNP Fst components, diploid unphased allele copies."""
+    numerator: list[float] = []
+    denominator: list[float] = []
+    for index in range(n_loci):
+        called_a = [genotype[index] for _, genotype in pop_a if genotype[index] is not None]
+        called_b = [genotype[index] for _, genotype in pop_b if genotype[index] is not None]
+        n_a, n_b = len(called_a), len(called_b)
+        if n_a < min_called or n_b < min_called:
+            continue
+        p_a = sum(pair.count("02") for pair in called_a) / (2 * n_a)
+        p_b = sum(pair.count("02") for pair in called_b) / (2 * n_b)
+        numer = (p_a - p_b)**2 - p_a*(1-p_a)/(2*n_a-1) - p_b*(1-p_b)/(2*n_b-1)
+        denom = p_a*(1-p_b) + p_b*(1-p_a)
+        numerator.append(numer)
+        denominator.append(denom)
+    return numerator, denominator
+
+
+def _linear_quantile(sorted_values: list[float], fraction: float) -> float:
+    pos = (len(sorted_values)-1)*fraction
+    lo = int(pos)
+    hi = min(lo + 1, len(sorted_values)-1)
+    return sorted_values[lo] + (pos-lo)*(sorted_values[hi]-sorted_values[lo])
+
+
+def pairwise_hudson(
+    pop_a: list[tuple[str, list[tuple[str, str] | None]]],
+    pop_b: list[tuple[str, list[tuple[str, str] | None]]],
+    n_loci: int,
+    min_called: int = 4,
+    bootstrap_loci: int = 1500,
+    seed: int = 20261119,
+) -> dict[str, Any]:
+    """Conditional locus-bootstrap; not spatial replication nor adaptation proof."""
+    a, b = _fst_components(pop_a, pop_b, n_loci, min_called)
+    if not b or sum(b) <= 0:
+        raise ValueError("no informative loci for pairwise differentiation")
+    estimate = sum(a)/sum(b)
+    rng = random.Random(seed)
+    sampled = []
+    for _ in range(bootstrap_loci):
+        indices = [rng.randrange(len(a)) for _ in range(len(a))]
+        denom = sum(b[k] for k in indices)
+        if denom > 0:
+            sampled.append(sum(a[k] for k in indices)/denom)
+    if len(sampled) < bootstrap_loci // 2:
+        raise ValueError("bootstrap undefined for too many locus resamples")
+    sampled.sort()
+    min_individual = 4
+    loo = []
+    if len(pop_a) >= 8 and len(pop_b) >= 8:
+        for omitted_a in range(len(pop_a)):
+            remaining_a = pop_a[:omitted_a] + pop_a[omitted_a+1:]
+            for omitted_b in range(len(pop_b)):
+                remaining_b = pop_b[:omitted_b] + pop_b[omitted_b+1:]
+                aa, bb = _fst_components(remaining_a, remaining_b, n_loci, min_called)
+                if bb and sum(bb) > 0:
+                    loo.append(sum(aa)/sum(bb))
+    result = {
+        "fst": round(estimate, 8),
+        "n_loci_pass_minimum_coverage": len(a),
+        "min_called_individuals_per_population_per_locus": min_called,
+        "locus_bootstrap_95ci_conditional": [
+            round(_linear_quantile(sampled, 0.025), 8),
+            round(_linear_quantile(sampled, 0.975), 8),
+        ],
+        "n_locus_bootstrap_replicates": bootstrap_loci,
+        "locus_bootstrap_seed": seed,
+        "leave_one_individual_each_population_fst_range": (
+            [round(min(loo), 8), round(max(loo), 8)] if loo else None
+        ),
+        "label": "DESCRIPTIVE_POOLED_HUDSON_FST",
+    }
+    return result
+
+
 def source_verified_analysis(raw: bytes, readme: bytes, provenance: dict[str, Any]) -> dict:
     """Descriptive genomic inventory; source history from verified README only."""
     loci, populations = parse_genepop(raw)
@@ -452,6 +536,24 @@ def source_verified_analysis(raw: bytes, readme: bytes, provenance: dict[str, An
         "n_current_pair_less_diverse": sum(delta < 0 for delta in paired_deltas),
         "n_equal": sum(delta == 0 for delta in paired_deltas),
         "status": "DESCRIPTIVE_SENSITIVITY_NOT_INDEPENDENT_STATISTICAL_REPLICATES",
+    }
+    target_groups = ["C1-2", "C2", "C3", "C4", "C1-3", "C1-4"]
+    contrasts = []
+    for a_index, group_a in enumerate(target_groups):
+        for group_b in target_groups[a_index+1:]:
+            summary = pairwise_hudson(
+                populations[labels.index(group_a)],
+                populations[labels.index(group_b)],
+                len(loci), min_called=4,
+            )
+            contrasts.append({"group_a": group_a, "group_b": group_b, **summary})
+    report["pairwise_genomic_differentiation"] = {
+        "estimator": "ratio_of_locus_sums_Hudson_type_unphased_diploid",
+        "interpretation": (
+            "SNP-locus conditional uncertainty only; no sampled-region independence, "
+            "causal adaptation, action response or MLTR semantic transport inferred"
+        ),
+        "pairs": contrasts,
     }
     report["status"] = "REAL_SOURCE_QC_COMPLETE_RESPONSE_LINK_MISSING"
     report["limitations"].extend([
