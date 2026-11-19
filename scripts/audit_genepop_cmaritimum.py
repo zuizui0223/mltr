@@ -180,12 +180,10 @@ def parse_genepop(raw: bytes) -> tuple[list[str], list[list[tuple[str, list[tupl
         tokens = genotypes.split()
         if not name or len(tokens) != len(loci):
             raise ValueError(f"sample/locus mismatch at {lineno}: {name!r}, {len(tokens)} != {len(loci)}")
+        # Dryad C. maritimum uses a repeated *population* code for each row.
+        # Even identical full genotypes cannot be declared duplicate individuals
+        # without independent specimen identifiers: retain every original row.
         parsed = [allele_pair(token) for token in tokens]
-        # Dryad C. maritimum uses a repeated *population* code for every
-        # individual row, not a unique individual identifier.
-        if any(name == other_name and parsed == other_g
-               for other_name, other_g in populations[-1]):
-            raise ValueError(f"identical sample-label/genotype row within POP: {name!r}")
         populations[-1].append((name, parsed))
     if not loci or len(set(loci)) != len(loci) or not populations or not populations[-1]:
         raise ValueError("no loci, duplicate locus names, or empty populations")
@@ -262,6 +260,12 @@ def analyse(
         "n_populations": len(populations),
         "n_individuals": sum(map(len, populations)),
         "duplicated_sample_ids_across_pop_blocks": duplicates,
+        "identical_full_genotype_rows_within_pop_blocks": [
+            {"pop_index": i, "repeated_genotype_rows": (
+                len(pop) - len({tuple(genotype) for _label, genotype in pop})
+            )}
+            for i, pop in enumerate(populations, 1)
+        ],
         "populations": outputs,
         "historical_observed_allele_comparison": None,
         "limitations": [
