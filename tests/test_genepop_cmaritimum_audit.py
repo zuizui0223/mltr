@@ -100,6 +100,45 @@ class GenepopAuditTests(unittest.TestCase):
         self.assertEqual(readme, b"Synthetic test provenance")
         self.assertEqual(provenance["doi"], mod.DOI)
 
+    def test_public_metadata_file_stream_fallback(self):
+        import hashlib
+        import urllib.error
+
+        dataset = {
+            "identifier": "doi:" + mod.DOI,
+            "_links": {"stash:version": {"href": "/api/v2/versions/813"}},
+        }
+        listing = {
+            "_embedded": {"stash:files": [
+                {"path": mod.TARGET, "id": 104, "size": len(TOY),
+                 "digest": hashlib.sha256(TOY).hexdigest(), "digestType": "sha-256"},
+                {"path": "README.txt", "id": 105, "size": 4},
+            ]}
+        }
+        def public_get(url, _max):
+            if url == mod.API_ZIP:
+                raise urllib.error.HTTPError(url, 401, "Auth required", None, None)
+            if url.endswith("/datasets/doi%3A10.5061%2Fdryad.tb2rbp03j"):
+                return json.dumps(dataset).encode("utf-8")
+            if "/versions/813/files" in url:
+                return json.dumps(listing).encode("utf-8")
+            if url.endswith("/file_stream/104"):
+                return TOY
+            if url.endswith("/file_stream/105"):
+                return b"README"
+            raise AssertionError(f"unreviewed URL: {url}")
+        # README length mismatch deliberately asserted: no response is accepted silently.
+        with patch.object(mod, "_fetch_bounded", side_effect=public_get):
+            with self.assertRaises(ValueError):
+                mod.fetch_dryad()
+        listing["_embedded"]["stash:files"][1]["size"] = 6
+        with patch.object(mod, "_fetch_bounded", side_effect=public_get):
+            raw, readme, provenance = mod.fetch_dryad()
+        self.assertEqual(raw, TOY)
+        self.assertEqual(readme, b"README")
+        self.assertEqual(provenance["version_id"], 813)
+        self.assertEqual(provenance["genepop_file_id"], 104)
+
     def test_cli_emits_audited_json(self):
         with tempfile.TemporaryDirectory() as tmp:
             raw = Path(tmp) / "original.gen"
