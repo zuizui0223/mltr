@@ -92,3 +92,7 @@ python scripts/analyze_clover_haploblock_fitness.py \
 ```
 
 The exact old source-frozen model, group folds, L2 penalty and failure criteria have not been changed in response to the observed outcome. The only implementation changes reflect observed **source schema capitalization, exact ZIP checksums and conflicting duplicated file ID**; these are auditable source-repair rules. This note does not revise canonical Paper A, theorems, or infer an empirically measured MLTR history mode.
+
+## Post-result split-sensitivity addendum (2026-11-19)
+
+A separate [origin-population split-stability audit](clover_group_split_stability_2026-11-19.md) reproduced the frozen five-fold M1−M0 value (−0.00881793 nats/plant), then repeated 100 overlapping 80/20 origin-population holdouts with the **same predictors and fitting settings**. The contrast was negative in **83/100** splits and positive in **17/100**, with mean −0.00762423 nats/plant. These post-result splits are not independent biological replications or a new confidence interval. The previously declared 470-plant five-fold negative test remains the primary result, and the reason for the predictive failure remains unresolved.
