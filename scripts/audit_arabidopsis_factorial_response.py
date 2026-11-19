@@ -112,7 +112,7 @@ def parse_source(raw: bytes, exact_source: bool = True):
     }
 
 
-def train_models(train, k_accession=10.0, k_action=10.0):
+def train_models(train, k_accession=10.0, k_action=10.0, center_action=False):
     if k_accession <= 0 or k_action <= 0:
         raise ValueError("shrinkage pseudocounts must be positive")
     action_y = defaultdict(list)
@@ -132,6 +132,19 @@ def train_models(train, k_accession=10.0, k_action=10.0):
         cells[key].append(row["value"]-mu[row["action"]]-acc[row["accession"]])
     cell = {key: sum(values)/(len(values)+k_action)
             for key,values in cells.items()}
+    if center_action:
+        # Post-result sensitivity: remove the part of P2 that can merely
+        # compensate for over-shrinkage of P1's accession main effect.
+        # Training-count weighted action offsets then sum to zero per genotype.
+        for genotype in acc:
+            matches=[(key, len(vals)) for key,vals in cells.items()
+                     if key[0] == genotype]
+            n=sum(nrows for _key,nrows in matches)
+            if n <= 0:
+                raise ValueError("no within-genotype actions to center")
+            average=sum(cell[key]*nrows for key,nrows in matches)/n
+            for key,_nrows in matches:
+                cell[key]-=average
     return mu,acc,cell
 
 
@@ -153,7 +166,8 @@ def quantile(values, q):
     return v[low]*(1-(p-low))+v[high]*(p-low)
 
 
-def score_folds(records, k_accession=10.0, k_action=10.0, bootstrap=2000):
+def score_folds(records, k_accession=10.0, k_action=10.0,
+                bootstrap=2000, center_action=False):
     predictions=[]
     folds=[]
     for rack in ("1","2","3","4","5"):
@@ -161,7 +175,8 @@ def score_folds(records, k_accession=10.0, k_action=10.0, bootstrap=2000):
         holdout=[row for row in records if row["replicate"] == rack]
         if not holdout or not training:
             raise ValueError("empty source holdout")
-        model=train_models(training,k_accession,k_action)
+        model=train_models(training,k_accession,k_action,
+                           center_action=center_action)
         fold_sums=Counter()
         for row in holdout:
             p=predict_one(row,model)
@@ -215,6 +230,7 @@ def score_folds(records, k_accession=10.0, k_action=10.0, bootstrap=2000):
             "P1":"P0+shrunken accession residual",
             "P2":"P1+shrunken accession×full-action-cell residual",
             "k_accession":k_accession,"k_action":k_action,
+            "center_action_effects":center_action,
             "test":"leave-one-rack-out, five folds",
         },
         "n_tested":len(predictions),"n_accessions":len(acc_deltas),
@@ -247,6 +263,9 @@ def analyse(raw:bytes):
     return {
         "source":provenance,"qc":qc,
         "primary":score_folds(records,10,10),
+        "post_result_centered_action_only_sensitivity": score_folds(
+            records,10,10,center_action=True
+        ),
         "sensitivity_fixed_before_outcome":{
             "k_5":score_folds(records,5,5,bootstrap=250),
             "k_20":score_folds(records,20,20,bootstrap=250),
@@ -256,6 +275,8 @@ def analyse(raw:bytes):
         },
         "status":"EDUCATIONAL_MIRROR_ONLY_NOT_AUTHENTICATED_2019_DRYAD_GENOMIC_STATE",
         "limits":[
+            "The centered-action-only diagnostic was added after seeing the original P2 prediction. "
+            "It is a post-result parametric sensitivity, not a new confirmatory gate.",
             "The 2019 paper states 38 accessions and 760 individuals for the drought experiment, "
             "but this teaching mirror has 44 accession codes and 879 source records.",
             "Only accession identifiers, not genotypes/SNPs or origin ancestry, were observed.",
