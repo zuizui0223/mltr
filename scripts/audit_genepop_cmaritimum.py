@@ -74,10 +74,25 @@ def _fetch_public_file_streams() -> tuple[bytes, bytes | None, dict[str, Any]]:
     if focal is None:
         raise ValueError("source Genepop absent in pinned version file list")
     readme_record = find_exact("README.txt")
+    def file_id(record: dict[str, Any]) -> int:
+        """File listings may expose the ID through their HAL self link, not id."""
+        if "id" in record:
+            fid = int(record["id"])
+            if fid > 0:
+                return fid
+        links = record.get("_links", {})
+        for key in ("self", "stash:download"):
+            href = links.get(key, {}).get("href", "")
+            match = re.fullmatch(
+                r"(?:https://datadryad\.org)?/api/v2/files/([0-9]+)(?:/download)?",
+                href,
+            )
+            if match and int(match.group(1)) > 0:
+                return int(match.group(1))
+        raise ValueError("Dryad file lacks valid ID/self link; cannot fetch")
+
     def download(record: dict[str, Any], max_size: int) -> bytes:
-        fid = int(record["id"])
-        if fid <= 0:
-            raise ValueError("invalid Dryad file ID")
+        fid = file_id(record)
         raw = _fetch_bounded(f"{root}/downloads/file_stream/{fid}", max_size)
         size = record.get("size")
         if size is not None and int(size) != len(raw):
@@ -95,8 +110,8 @@ def _fetch_public_file_streams() -> tuple[bytes, bytes | None, dict[str, Any]]:
         "doi": DOI,
         "dataset_api": dataset_api,
         "version_id": version_id,
-        "genepop_file_id": int(focal["id"]),
-        "readme_file_id": int(readme_record["id"]) if readme_record else None,
+        "genepop_file_id": file_id(focal),
+        "readme_file_id": file_id(readme_record) if readme_record else None,
     }
 
 
