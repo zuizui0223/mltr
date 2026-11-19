@@ -178,9 +178,29 @@ def evaluate(records):
 def analyse(path:Path):
     records,quality = read_source(path)
     scores,contrasts,folds = evaluate(records)
+    primary = contrasts["M1_minus_M0"]
+    eligible = all(n >= 10 for n in quality["gardens"].values())
+    primary_pass = (
+        eligible
+        and primary["population_equal_weight_gain_nats"] > 0
+        and primary["conditional_population_bootstrap_ci_95"][0] > 0
+        and sum(value > 0 for value in primary["garden_mean_gains"].values()) >= 3
+    )
+    verdict = (
+        "EXPLORATORY_PREDICTIVE_INCREMENT_SUPPORTED_IN_OBSERVED_GARDENS"
+        if primary_pass else "PRIMARY_PREDICTIVE_INCREMENT_NOT_SUPPORTED_OR_UNEVALUABLE"
+    )
     return {
         "source":{"doi":DOI, "file":path.name, "sha256":hashlib.sha256(path.read_bytes()).hexdigest()},
         "status":"OUT_OF_POPULATION_GENOTYPE_FITNESS_PREDICTION_NOT_CAUSAL_MLTR",
+        "primary_evaluation_gate": {
+            "status": verdict,
+            "min_complete_case_each_garden": 10,
+            "require_positive_equal_population_mean": True,
+            "require_population_bootstrap_95ci_lower_above_zero": True,
+            "require_positive_garden_mean_count_at_least": 3,
+            "scope": "exploratory out-of-origin-population prediction in four existing gardens; not adaptation causality"
+        },
         "primary_outcome":"FloweredFull (survival to flowering)",
         "M0":"garden + source latitude/longitude",
         "M1":"M0 + five haploblock genotypes",
