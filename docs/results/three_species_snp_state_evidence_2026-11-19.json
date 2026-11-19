@@ -129,6 +129,7 @@
     "The three species share one study and assay pipeline; results do not show universality across laboratories or biomes",
     "Only reduced-representation SNPs are assessed, not whole genomes",
     "Held-out outcomes are genotype calls, not fitness, adaptation, population growth or intervention response",
+    "The Dryad README states that loci observed only in historical specimens were manually removed as possible contamination before this archived SNP panel was produced; historical allele non-detection is conditional on this ascertainment.",
     "Historical allele absence is observed non-detection and is affected by sampling size and missingness",
     "Permutation P values assume individual-level label exchangeability and are post-outcome exploratory",
     "Genomic LOO bits per allele are predictive logscore units, not the exact CCOC response-interface memory bound",
