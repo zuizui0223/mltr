@@ -71,7 +71,6 @@ class GenepopAuditTests(unittest.TestCase):
         for bad in [
             TOY.replace(b"0102 0102 0000", b"0102 0102"),
             TOY.replace(b"0102 0102 0000", b"0102 0002 0000"),
-            TOY.replace(b"past2, 0101 0101 0101", b"past1, 0102 0102 0000"),
         ]:
             with self.subTest(bad=bad[:100]), self.assertRaises(ValueError):
                 mod.parse_genepop(bad)
@@ -108,11 +107,14 @@ class GenepopAuditTests(unittest.TestCase):
                     f"{label}, {row if row_index % 2 == 0 else '0000 0101'}"
                 ))
         genepop_raw = ("\n".join(genepop_lines) + "\n").encode("utf-8")
-        # synthetic data may contain identical genotype rows under same
-        # group label; alter fixture to unique toy rows or parser will
-        # correctly detect exact row duplicates.
-        with self.assertRaises(ValueError):
-            mod.parse_genepop(genepop_raw)
+        # A population label is not a specimen ID. Identical genotype rows
+        # may come from different real individuals and must be flagged, not deleted.
+        _loci, parsed_pops = mod.parse_genepop(genepop_raw)
+        self.assertEqual(sum(map(len, parsed_pops)), 50)
+        scan = mod.analyse(genepop_raw, {"mode": "synthetic-test"})
+        self.assertGreater(
+            sum(x["repeated_genotype_rows"] for x in scan["identical_full_genotype_rows_within_pop_blocks"]), 0
+        )
         # A smaller validated source-like hierarchy can still be tested
         # via README + genuine distinct rows without assuming POP order.
         populations = [
