@@ -44,7 +44,7 @@ def fake_records():
 class SplitStabilityTests(unittest.TestCase):
     def test_same_origin_population_never_enters_both_sides(self):
         records = fake_records()
-        with self.assertRaisesRegex(ValueError, "origin population leakage"):
+        with self.assertRaisesRegex(ValueError, "same origin population in training and test"):
             audit.heldout_contrast(records, np.array([0, 1, 2]), np.array([3, 4]))
 
     def test_reference_and_random_splits_are_deterministic(self):
