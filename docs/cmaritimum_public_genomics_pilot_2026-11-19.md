@@ -39,14 +39,14 @@ Initial GitHub Actions run **44475698404**:
 - Dryad /api/v2/datasets/{doi}/download returned **HTTP 401 Unauthorized**.
 - Thus no real genetic rows or alleles were measured in this run, and no real-data artifact was produced.
 
-A single bounded alternative via the published Dryad metadata, the exact pinned version/file IDs, and public file-stream URLs has been added. The fallback checks DOI, size and provided digest before parsing. If access still requires authentication, the original 73.09 KB Genepop source must be obtained via a lawful user-facing download; do not treat a file listing as genotype access.
+The bounded alternative was executed and the public metadata/version file listing **was accessible**. An initial parser assumption about absent numeric file IDs was corrected by reading the Dryad HAL self link. The source retry run **44476940036** then passed **9 synthetic tests** but the public file-stream request returned **HTTP 403 Forbidden**. No real genotype matrix was accessed and no source-derived statistic or artifact was produced. **No further automatic download retries are warranted**; provide the original 73.09-KB Genepop file from the official Dryad landing page and use the offline input path. Checksums will be calculated on receipt.
 
 ## No claim inflation: promotion criteria
 
 | Gate | Status | What is required |
 | --- | --- | --- |
 | S0: published DOI/file identity | PASS | Exact cited source |
-| S1: real file bytes and parsing | PENDING | Original SHA-256 and validated individual/locus totals |
+| S1: real file bytes and parsing | BLOCKED: API 401 / stream 403 | Original SHA-256 and validated individual/locus totals |
 | S2: population-group crosswalk | PENDING | README-backed labels and missingness by group |
 | S3: group genotype contrast | NOT RUN | Comparable coverage, uncertainty and detected-allele caveats |
 | S4: MLTR genomic response sufficiency | NOT IDENTIFIABLE | Linked fitness/action outcomes and held-out genotype-response predictions |
