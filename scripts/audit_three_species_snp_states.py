@@ -190,7 +190,42 @@ def loo_score(populations, labels, alpha=0.5, min_other=3):
     }
 
 
-def analyse_zip(path: Path):
+
+def permutation_check(populations, groups, n=999, seed=20424117):
+    """Conditional label permutation, NOT exchangeability-proof or causal evidence.
+
+    Shuffles whole individual group labels preserving group size and exact SNP
+    missingness patterns. The available-locus subset may vary by permutation.
+    """
+    if n < 1:
+        raise ValueError("permutation count must be positive")
+    pooled = [row for group in groups for row in populations[group]]
+    labels = [group for group in groups for _ in populations[group]]
+    observed = loo_score(populations, groups)["mean_gain_nats_per_allele"]
+    rng = random.Random(seed)
+    null = []
+    for _ in range(n):
+        shuffle = list(labels)
+        rng.shuffle(shuffle)
+        shuffled = {label: [] for label in groups}
+        for row, label in zip(pooled, shuffle):
+            shuffled[label].append(row)
+        stat = loo_score(shuffled, groups)["mean_gain_nats_per_allele"]
+        null.append(stat)
+    exceeds = sum(x >= observed for x in null)
+    return {
+        "observed_nats_per_allele": observed,
+        "null_mean": round(sum(null) / n, 7),
+        "null_95_percentile": sorted(null)[int(0.025 * (n - 1))], 
+        "null_975_percentile": sorted(null)[int(0.975 * (n - 1))],
+        "n_permutations": n, "random_seed": seed,
+        "n_randomized_labels_ge_observed": exceeds,
+        "one_sided_conditional_randomization_p": round((exceeds + 1) / (n + 1), 6),
+        "claim": "geographic label association with observed SNP calls, not independent ecological or adaptive replication",
+    }
+
+
+def analyse_zip(path: Path, n_permutations: int = 0):
     raw = path.read_bytes()
     if len(raw) > 5_000_000 or digest(raw) != ZIP_SHA:
         raise ValueError("Dryad source archive is not the pinned v20220815 ZIP")
@@ -238,6 +273,10 @@ def analyse_zip(path: Path):
                     "reproductive performance, adaptation or MLTR action response."
                 ),
             }
+            if n_permutations:
+                result["conditional_population_label_permutations"] = permutation_check(
+                    pop, regions, n=n_permutations
+                )
             output["species"][species] = result
     return output
 
@@ -246,8 +285,12 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--zip", required=True, type=Path, help="original Dryad v20220815 zip")
     parser.add_argument("--out", type=Path, required=True, help="aggregated JSON output")
+    parser.add_argument("--permutations", type=int, default=0,
+                        help="optional conditional label shuffle, e.g. 999; no ecological causality inference")
     args = parser.parse_args()
-    report = analyse_zip(args.zip)
+    if args.permutations < 0 or args.permutations > 9999:
+        raise ValueError("permutations outside bounded interval 0..9999")
+    report = analyse_zip(args.zip, n_permutations=args.permutations)
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     for name, result in report["species"].items():
