@@ -1,0 +1,158 @@
+{
+  "schema_version": "1.0",
+  "analysis_date": "2026-11-19",
+  "source": {
+    "doi": "10.5061/dryad.dfn2z3593",
+    "version": "v20250829",
+    "archive_file": "doi_10_5061_dryad_dfn2z3593__v20250829.zip",
+    "zip_bytes": 45396,
+    "zip_sha256": "dc8fa8378176a063db4367e2fc4dd75914758a7246010e67b7ff7957e5632eb8",
+    "csv_file": "DatasetA_commongarden.csv",
+    "csv_bytes": 41152,
+    "csv_sha256": "cbd9691e4b07a48e97619385bedc9f9a45fb02164d4ce08c1a99c9af7df054d4",
+    "readme_file": "README.md",
+    "readme_sha256": "72b966bbd7326a36cac14294c91dc15f3e4878e6ff7ae4c4289a3da531a83131",
+    "raw_rows": 472
+  },
+  "primary_qc": {
+    "n_included": 470,
+    "n_excluded_conflicting_duplicate_id_rows": 2,
+    "n_conflicting_ids": 1,
+    "discordant_fields": [
+      "hb9",
+      "hb13"
+    ],
+    "n_origin_populations": 93,
+    "n_field_gardens": 4,
+    "outcome": "FloweredFull",
+    "n_flowered": 240,
+    "n_did_not_flower": 230,
+    "garden_counts": [
+      {
+        "garden": "Lafayette",
+        "n": 80,
+        "flowered": 22
+      },
+      {
+        "garden": "Montpellier",
+        "n": 98,
+        "flowered": 79
+      },
+      {
+        "garden": "Toronto",
+        "n": 217,
+        "flowered": 115
+      },
+      {
+        "garden": "Uppsala",
+        "n": 75,
+        "flowered": 24
+      }
+    ],
+    "genotype_column_names": [
+      "hb7a1",
+      "hb7a2",
+      "hb7b",
+      "hb9",
+      "hb13"
+    ],
+    "encoding": "0/0.5/1",
+    "missing_primary_fields_in_470": 0
+  },
+  "predeclared_protocol": {
+    "folds": 5,
+    "group": "Population",
+    "held_out": "entire origin population",
+    "training_only_coordinate_standardization": true,
+    "fit": "L2 logistic C=1.0 lbfgs",
+    "models": {
+      "M0": "Garden+origin latitude+longitude",
+      "M1": "M0+five haploblock dosages",
+      "M2": "M1+haploblock by garden interaction (exploratory)"
+    },
+    "primary_contrast": "M1 minus M0 out-of-origin-population per-individual log score",
+    "pass_gate": "population-weighted mean >0; conditional 2000-bootstrap lower 95% bound >0; >=3/4 gardens positive; >=10 complete-case samples per garden"
+  },
+  "primary_result": {
+    "status": "PRIMARY_PREDICTIVE_INCREMENT_NOT_SUPPORTED",
+    "M0": {
+      "log_loss": 0.6289157609,
+      "brier": 0.2194765592
+    },
+    "M1": {
+      "log_loss": 0.6377336881,
+      "brier": 0.2237357425
+    },
+    "M2_exploratory": {
+      "log_loss": 0.6479864347,
+      "brier": 0.2284014902
+    },
+    "M1_minus_M0": {
+      "individual_mean_nats": -0.0088179272,
+      "equal_population_mean_nats": -0.0101281764,
+      "conditional_population_bootstrap_ci95": [
+        -0.0184858679,
+        -0.0020301811
+      ],
+      "garden_mean_nats": {
+        "Lafayette": -0.0080113013,
+        "Montpellier": 0.003322597,
+        "Toronto": -0.0169916743,
+        "Uppsala": -0.0018925715
+      },
+      "positive_garden_count": 1
+    },
+    "M2_minus_M0": {
+      "individual_mean_nats": -0.0190706738,
+      "equal_population_mean_nats": -0.0185378197,
+      "conditional_population_bootstrap_ci95": [
+        -0.0308152363,
+        -0.0067366154
+      ]
+    }
+  },
+  "duplicate_sensitivities": [
+    {
+      "policy": "exclude both (primary)",
+      "n": 470,
+      "M1_minus_M0_individual_nats": -0.0088179272,
+      "M1_minus_M0_pop_equal_nats": -0.0101281764,
+      "ci95": [
+        -0.0184858679,
+        -0.0020301811
+      ],
+      "gate_supported": false
+    },
+    {
+      "policy": "keep first only",
+      "n": 471,
+      "M1_minus_M0_individual_nats": -0.0068724483,
+      "M1_minus_M0_pop_equal_nats": -0.0068802771,
+      "ci95": [
+        -0.0147772356,
+        0.0010166763
+      ],
+      "gate_supported": false
+    },
+    {
+      "policy": "keep second only",
+      "n": 471,
+      "M1_minus_M0_individual_nats": -0.0069847332,
+      "M1_minus_M0_pop_equal_nats": -0.0070176651,
+      "ci95": [
+        -0.0147480917,
+        0.0006679718
+      ],
+      "gate_supported": false
+    }
+  ],
+  "boundaries": [
+    "negative result for fixed predictive comparison, not evidence that a causal genetic fitness effect is zero",
+    "earlier haploblock-fitness associations were published before this analysis",
+    "four previously observed common gardens; new origin populations within those gardens only",
+    "no source-target relation and action-conditioned transition tables; not a test of exact MLTR theorem",
+    "bootstrap intervals condition on out-of-fold predictions and do not refit models",
+    "near rare haploblock categories and imbalanced garden outcome rates may affect transportability, untested as cause",
+    "user-provided raw CSV and unique individual identifiers are not redistributed"
+  ]
+}
