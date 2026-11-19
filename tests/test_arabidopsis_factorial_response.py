@@ -74,6 +74,29 @@ class FactorialResponseTests(unittest.TestCase):
         self.assertTrue(math.isfinite(report["mean_gain_P2_minus_P1"]))
         self.assertEqual(len(report["accession_resampled_conditional_95_interval"]),2)
 
+    def test_centered_action_offsets_cannot_redefine_genotype_intercept(self):
+        records,_=m.parse_source(toy_csv(),exact_source=False)
+        training=[row for row in records if row["replicate"] != "5"]
+        _mu,base,cell=m.train_models(
+            training,k_accession=1,k_action=1,center_action=True
+        )
+        for genotype in ("A","B","C"):
+            sum_weighted=0.0
+            n=0
+            for action in m.ALLOWED_ACTIONS:
+                count=sum(row["accession"] == genotype and row["action"] == action
+                          for row in training)
+                sum_weighted+=count*cell[(genotype,action)]
+                n+=count
+            self.assertGreater(n,0)
+            self.assertAlmostEqual(sum_weighted/n,0.0,places=12)
+        observed=m.score_folds(
+            records,k_accession=1,k_action=1,bootstrap=100,
+            center_action=True
+        )
+        self.assertTrue(observed["model_specification"]["center_action_effects"])
+        self.assertGreater(observed["mean_gain_P2_minus_P1"],0)
+
     def test_unsupported_genotype_not_silently_predicted(self):
         records,_=m.parse_source(toy_csv(),exact_source=False)
         fit=m.train_models(records[:40])
