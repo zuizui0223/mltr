@@ -247,7 +247,7 @@ def analyse(
     for i, pop in enumerate(populations, 1):
         for sample_id, _ in pop:
             seen.setdefault(sample_id, []).append(i)
-    duplicates = sorted(sample_id for sample_id, blocks in seen.items() if len(blocks) > 1)
+    duplicates = sorted(sample_id for sample_id, blocks in seen.items() if len(set(blocks)) > 1)
     outputs = []
     for i, prof in enumerate(profs, 1):
         row = {key: value for key, value in prof.items() if not key.startswith("_")}
