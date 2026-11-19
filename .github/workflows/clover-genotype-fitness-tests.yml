@@ -7,6 +7,8 @@ on:
       - "tests/test_clover_haploblock_fitness.py"
       - "scripts/audit_clover_endpoint_integrity.py"
       - "tests/test_clover_endpoint_integrity.py"
+      - "scripts/audit_clover_group_split_stability.py"
+      - "tests/test_clover_group_split_stability.py"
       - ".github/workflows/clover-genotype-fitness-tests.yml"
   workflow_dispatch:
 

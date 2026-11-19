@@ -1,0 +1,76 @@
+{
+  "source": {
+    "doi": "10.5061/dryad.dfn2z3593",
+    "version": "v20250829",
+    "zip_sha256": "dc8fa8378176a063db4367e2fc4dd75914758a7246010e67b7ff7957e5632eb8",
+    "csv_sha256": "cbd9691e4b07a48e97619385bedc9f9a45fb02164d4ce08c1a99c9af7df054d4"
+  },
+  "analysis_date": "2026-11-19",
+  "status": "EXPLORATORY_POST_RESULT_GROUP_SPLIT_SENSITIVITY_NOT_NEW_MLTR_VALIDATION",
+  "source_admission": {
+    "raw_rows": 472,
+    "retained_rows": 470,
+    "conflicting_duplicate_identifier_rows_excluded": 2,
+    "origin_populations": 93,
+    "gardens": {
+      "Lafayette": 80,
+      "Montpellier": 98,
+      "Toronto": 217,
+      "Uppsala": 75
+    }
+  },
+  "locked_models": {
+    "M0": "Garden + origin latitude + origin longitude",
+    "M1": "M0 + five structural-variant haploblocks",
+    "model": "LogisticRegression L2 C=1 lbfgs max_iter=2000; training-only geographic standardization",
+    "outcome": "FloweredFull",
+    "metric": "M1 minus M0 held-out average log-likelihood in nats per individual"
+  },
+  "original_fixed_fivefold": {
+    "n_folds": 5,
+    "weighted_M1_minus_M0_nats_per_plant": -0.00881793,
+    "fold_gains_nats_per_plant": [
+      -0.01007398,
+      -0.00138181,
+      -0.0065145,
+      -0.00610494,
+      -0.0200144
+    ],
+    "heldout_groups_disjoint": true
+  },
+  "randomized_group_shuffle": {
+    "n_repeats": 100,
+    "random_seed": 20261119,
+    "test_fraction_origin_groups": 0.2,
+    "mean_heldout_individuals": 94.8,
+    "mean_heldout_origin_populations": 19,
+    "individual_mean_gain_nats": {
+      "mean": -0.00762423,
+      "median": -0.00576346,
+      "q025": -0.03147811,
+      "q975": 0.00316532,
+      "min": -0.04004835,
+      "max": 0.00557424
+    },
+    "origin_population_equal_gain_nats": {
+      "mean": -0.00760919,
+      "median": -0.00555959,
+      "q025": -0.03113804,
+      "q975": 0.00474356,
+      "min": -0.05198501,
+      "max": 0.00652236
+    },
+    "n_negative_splits": 83,
+    "n_positive_splits": 17,
+    "n_at_least_three_positive_gardens": 12,
+    "inference": "All random splits reuse the same plants; these are descriptive partition-stability diagnostics. Percentiles are NOT a sampling-confidence interval and 83/100 is NOT a p value."
+  },
+  "outcome_interpretation": "The frozen 5-fold negative M1-M0 fitness prediction remains the primary result. Direction is usually negative but can turn positive for some training/test population assignments. No new independent garden/lineage replication or MLTR exact action-conditioned law is established.",
+  "constraints": [
+    "Only original 470 observations, not a new cohort",
+    "All comparisons use identical model and features without outcome-driven tuning",
+    "Repeated holdouts overlap; no independent replicates",
+    "The original paper already reports haploblock genotype-fitness associations",
+    "No raw genotypes or specimen IDs are redistributed"
+  ]
+}
