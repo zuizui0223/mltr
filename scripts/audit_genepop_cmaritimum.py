@@ -366,7 +366,10 @@ def source_verified_analysis(raw: bytes, readme: bytes, provenance: dict[str, An
     ex2000 = observed("C1-3")
     ex2014 = observed("C1-4")
     old_not_current = old - current
-    only_at_current = current - old
+    only_at_current = {(locus, allele) for locus, allele in current - old
+                       if profs["C1-1"]["locus_call_counts"][locus] > 0}
+    current_when_old_locus_uncalled = {(locus, allele) for locus, allele in current - old
+                                      if profs["C1-1"]["locus_call_counts"][locus] == 0}
     old_called = profs["C1-1"]["locus_call_counts"]
     current_called = profs["C1-2"]["locus_call_counts"]
     if any(current_called[locus] == 0 for locus, allele in old_not_current):
@@ -385,12 +388,22 @@ def source_verified_analysis(raw: bytes, readme: bytes, provenance: dict[str, An
     current_all_called = {
         locus for locus in loci if current_called[locus] == len(populations[labels.index("C1-2")])
     }
+    historic = populations[labels.index("C1-1")]
+    locus_index = {name: i for i, name in enumerate(loci)}
+    n_old_singletons = sum(
+        sum(pair is not None and allele in pair
+            for _name, genotype in historic
+            for pair in [genotype[locus_index[locus]]]) == 1
+        for locus, allele in old_not_current
+    )
     report["observed_allele_contrasts"] = {
         "comparison": "C1-1 2007 Awaji wild vs C1-2 2019 Awaji wild",
         "past_sample_n": len(populations[labels.index("C1-1")]),
         "current_sample_n": len(populations[labels.index("C1-2")]),
         "past_alleles_not_observed_current": len(old_not_current),
-        "current_alleles_not_observed_past": len(only_at_current),
+        "past_not_current_alleles_seen_in_one_past_individual": n_old_singletons,
+        "current_alleles_not_observed_past_at_callable_loci": len(only_at_current),
+        "current_alleles_at_loci_uncalled_in_past": len(current_when_old_locus_uncalled),
         "past_not_current_observed_in_ex_situ_2000_C1-3": len(old_not_current & ex2000),
         "past_not_current_observed_in_ex_situ_2014_C1-4": len(old_not_current & ex2014),
         "past_not_current_observed_in_any_ex_situ": len(old_not_current & (ex2000 | ex2014)),
