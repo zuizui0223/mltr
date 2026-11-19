@@ -125,6 +125,52 @@ class GenepopAuditTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             mod.verify_source_labels(changed, populations)
 
+    def test_source_verified_real_format_analog_50_rows(self):
+        expected = mod.SOURCE_LABELS
+        labels = ["C2", "C3", "C4", "C1-2", "C1-3", "C1-4", "C1-1"]
+        readme_lines = ["4. Sample information", "Cirsium maritimum"]
+        for label, (site, year, ex_situ, _status) in expected.items():
+            line = f"{label}: Collected in {site}, Japan, in {year}"
+            if ex_situ:
+                line += " and ex situ conserved at a garden"
+            readme_lines.append(line)
+        readme_lines.append("Linaria japonica")
+        readme = ("\n".join(readme_lines) + "\n").encode("utf-8")
+        loci = ["a", "b", "c"]
+        genotype_lines = ["Title line:Cirsium maritimum"] + loci
+        base_codes = ["0101", "0102", "0202", "0000"]
+        for label in labels:
+            n = 2 if label == "C1-1" else 8
+            genotype_lines.append("POP")
+            for i in range(n):
+                first = ("0202" if label == "C1-2" else
+                         "0102" if label == "C1-1" and i == 1 else "0101")
+                genotype_lines.append(
+                    f"{label}, {first} {base_codes[i%4]} {base_codes[i//4]}"
+                )
+        raw = ("\n".join(genotype_lines) + "\n").encode("utf-8")
+        report = mod.source_verified_analysis(raw, readme, {"mode": "synthetic-test"})
+        self.assertEqual(report["status"], "REAL_SOURCE_QC_COMPLETE_RESPONSE_LINK_MISSING")
+        self.assertEqual((report["n_loci"], report["n_populations"], report["n_individuals"]), (3, 7, 50))
+        self.assertEqual([x["sample_code"] for x in report["source_crosswalk"]], labels)
+        self.assertEqual(report["observed_allele_contrasts"]["past_alleles_not_observed_current"], 1)
+        self.assertEqual(report["observed_allele_contrasts"]["past_not_current_alleles_seen_in_one_past_individual"], 0)
+        self.assertEqual(report["observed_allele_contrasts"]["past_not_current_observed_in_any_ex_situ"], 1)
+        self.assertEqual(report["sample_size_and_missingness_sensitivity"]["n_comparisons_nonindependent"], 28)
+        self.assertEqual(len(report["pairwise_genomic_differentiation"]["pairs"]), 15)
+        self.assertTrue(all("fst" in item for item in report["pairwise_genomic_differentiation"]["pairs"]))
+        self.assertFalse(report["duplicated_sample_ids_across_pop_blocks"])
+
+    def test_hudson_fixed_opposite_and_identical_groups(self):
+        a = [("x", [("01", "01"), ("01", "02")]) for _ in range(8)]
+        b = [("x", [("02", "02"), ("01", "02")]) for _ in range(8)]
+        result = mod.pairwise_hudson(a, b, 2, bootstrap_loci=50)
+        self.assertGreater(result["fst"], 0.0)
+        self.assertEqual(result["n_loci_pass_minimum_coverage"], 2)
+        same = mod.pairwise_hudson(a, a, 2, bootstrap_loci=50)
+        self.assertLess(same["fst"], 0.0)  # finite-sample correction
+        self.assertGreaterEqual(len(result["leave_one_individual_each_population_fst_range"]), 2)
+
     def test_valid_three_digit_alleles(self):
         self.assertEqual(mod.allele_pair("001002"), ("001", "002"))
         self.assertIsNone(mod.allele_pair("000000"))
