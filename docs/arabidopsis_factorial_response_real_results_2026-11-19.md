@@ -74,4 +74,11 @@ Run without committing the original educational plant-level file:
 
     python scripts/audit_arabidopsis_factorial_response.py --from-public-github --out artifacts/arabidopsis_factorial_response_summary.json
 
-An original-paper exact reproduction should use the *published* [Dryad full_data_drought.csv](https://doi.org/10.5061/dryad.334765v) plus its genotype×watering seed-per-fruit table, **not infer seed output from fruit counts alone**.
+## 2026-11-20 original published-source restriction audit
+
+The source file 'full_data_drought.csv' was subsequently supplied by the user and directly read, with 760 rows from exactly 38 accessions in the complete four-action × five-rack design, plus one fruit missing value. All **759 valid original records** match the **759 shared 10-field records** in the 44-accession/879-record teaching mirror, which additionally contains six accessions (120 records). These are nested samples, not independent biological replications.
+
+The original 38-accession, 759-valid-fruit restriction retains a P2−P1 **+0.18812556** reduction in five-rack-held-out MSE (five folds positive), down from +0.20429876 in the teaching mirror. However, a *post-result action-centered* P2 contrast yields only **+0.04684215**, with conditional 38-accession bootstrap interval **[−0.00154727,+0.09465540]** and one negative heldout rack. Original 38-accession treatment-choice gain is also **NOT SUPPORTED**: 14 changes across 189 complete panels, mean utility −0.05755883 (conditional interval crosses zero). See [complete original-source result](arabidopsis_original_dryad_38_reanalysis_2026-11-20.md).
+
+The seed-per-fruit Dryad table still has not been directly read, so none of these quantities should be described as total lifetime seed fitness. The 38-accession original is **not** a new independent study for meta-analysis or a molecular-genomics test.
+
