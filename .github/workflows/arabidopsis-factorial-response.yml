@@ -7,6 +7,8 @@ on:
       - "tests/test_arabidopsis_factorial_response.py"
       - "scripts/audit_arabidopsis_action_decision_value.py"
       - "tests/test_arabidopsis_action_decision_value.py"
+      - "scripts/audit_arabidopsis_action_decision_value.py"
+      - "tests/test_arabidopsis_action_decision_value.py"
       - ".github/workflows/arabidopsis-factorial-response.yml"
   workflow_dispatch:
 
@@ -30,6 +32,11 @@ jobs:
             --from-public-github \
             --out artifacts/arabidopsis_factorial_response_summary.json
       - name: Evaluate predeclared heldout action-choice utility (teaching mirror only)
+        run: |
+          python scripts/audit_arabidopsis_action_decision_value.py \
+            --from-public-github \
+            --out artifacts/arabidopsis_action_choice_value.json
+      - name: Verify held-out action choice against original source panels
         run: |
           python scripts/audit_arabidopsis_action_decision_value.py \
             --from-public-github \
