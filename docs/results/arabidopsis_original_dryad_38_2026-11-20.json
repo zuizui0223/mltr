@@ -38,7 +38,13 @@
     "additional_course_records": 120,
     "original_canonical_10_fields_sha256": "d84f3b4a78c1d65860c9d9f5b14afbd09b05a16f734bae6237f34d6e3767fe8f",
     "matched_fingerprint_fnv64": "e1d4fedfdfdb3a4f",
-    "verified_nested_source_not_independent_replication": true
+    "verified_nested_source_not_independent_replication": true,
+    "course_matched_subset_canonical_10_fields_sha256": "d84f3b4a78c1d65860c9d9f5b14afbd09b05a16f734bae6237f34d6e3767fe8f",
+    "cryptographic_sha256_match_759_records": true,
+    "comparison_sources": [
+      "user-uploaded original 38-accession CSV",
+      "public GitHub 44-accession teaching CSV"
+    ]
   },
   "prediction_heldout_rack": {
     "outcome": "sqrt observed fruit count",
