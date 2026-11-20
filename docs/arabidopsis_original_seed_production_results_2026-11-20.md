@@ -37,7 +37,7 @@ Reused the earlier frozen model class, using each of five whole rack blocks as h
 
 **Primary P2c over P1 MSE reduction: +11,472.300.** Conditional 33-accession bootstrap interval (2,000 resamples of already held-out predictions) approximately **[+3,369,+20,154]**, and the accession-equal mean gain is +11,473.47. Fold-specific reductions are +24,431.08, +5,102.93, +17,113.35, +10,743.31 and **−116.97** (rack 5). Action-specific gains: dry-live **−1,219.10**; dry-sterile +1,884.41; wet-live +33,732.93; wet-sterile +11,491.07.
 
-**Predefined strict predictive gate: NOT SUPPORTED**, because 1/5 rack folds and 1/4 actions are negative even though the overall mean and conditional bootstrap lower bound are positive. Treat the fitted-model mean improvement as an observation, not a uniform response law.
+**Predefined strict predictive gate: NOT SUPPORTED**, because 1/5 rack folds is negative even though the overall mean and conditional bootstrap lower bound are positive. The negative dry-live action is an additional sensitivity warning, but the frozen gate permits one of the four actions to be negative. Treat the fitted-model mean improvement as an observation, not a uniform response law.
 
 The uncentered P2u gain (+20,199.07) would pass the numerical gate (5/5 positive), but it is not a pure accession×action response estimand: P2u can adjust accession-wide means. Do not promote this easier model as a stronger mechanistic result.
 
