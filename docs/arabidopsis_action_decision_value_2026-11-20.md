@@ -55,6 +55,12 @@ GitHub Actions run **44678800488** passed the source-locked teaching-data audit 
 
 No raw specimen records, lineage response vectors or source CSV are committed to GitHub. Paper A and all mathematical theorems remain unchanged.
 
-## Original-data admission still blocked
+## 2026-11-20 original 38-accession source admission: resolved for fruit outcomes
 
-The actual related 2019 Dryad dataset [10.5061/dryad.334765v](https://doi.org/10.5061/dryad.334765v) publicly lists full_data_drought.csv (21.39 KB), seed.count.drought.csv (519 B) and analysis code. These **file bytes** have not been successfully accessed in this execution environment. A DOI landing page is not equivalent to opening original records. A publication-grade replication would first check original sample IDs, excluded genotypes, treatments, and fruit-to-seed conversion rather than silently relabel this education-source analysis as original-paper reanalysis.
+The user supplied the 21,391-byte original published-file-name CSV 'full_data_drought.csv' (SHA-256 13ca229e6c97ee1a6d0333e4d32a66dabbf30a99e824a14c6f32bacad23067e3). It has **38 accessions × 4 actions × 5 racks = 760 designed cells** and one missing fruit count, yielding 759 fruit observations.
+
+An exact 10-common-column row-content crosswalk established that the former teaching-mirror records comprise **all 759 observed original rows + 120 rows from six additional accession codes**; the original missing-fruit row is not in the course file. The two analyses are therefore **nested samples, not independent empirical replication**.
+
+The original **189 complete accession×rack action panels** yield 14 action changes and mean P2−P0 sqrt-fruit utility **−0.05755883** with a conditional accession-cluster interval **[−0.14624606,+0.03777653]**. The fixed decision-gain gate remains NOT SUPPORTED. See [full original-source analysis](arabidopsis_original_dryad_38_reanalysis_2026-11-20.md) and [aggregate result](results/arabidopsis_original_dryad_38_2026-11-20.json). No original plant-level data are committed.
+
+The published Dryad [10.5061/dryad.334765v](https://doi.org/10.5061/dryad.334765v) additionally lists seed.count.drought.csv (519 bytes), which has **not** been supplied/read; lifetime seed production is therefore NOT estimated. The supplied file's schema, published size and design agree with the original source but its byte hash has not been independently reproduced from a direct Dryad download.
