@@ -7,6 +7,8 @@ on:
       - "tests/test_arabidopsis_factorial_response.py"
       - "scripts/audit_arabidopsis_action_decision_value.py"
       - "tests/test_arabidopsis_action_decision_value.py"
+      - "scripts/audit_arabidopsis_original_dryad_38.py"
+      - "tests/test_arabidopsis_original_dryad_38.py"
       - ".github/workflows/arabidopsis-factorial-response.yml"
   workflow_dispatch:
 
