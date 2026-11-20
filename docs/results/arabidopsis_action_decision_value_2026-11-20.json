@@ -1,0 +1,131 @@
+{
+  "schema_version": "1.0",
+  "audit_date": "2026-11-20",
+  "source": {
+    "doi_related_paper": "10.1111/jeb.13426",
+    "doi_original_unopened": "10.5061/dryad.334765v",
+    "course_csv": "https://github.com/UofTCoders/rcourse/blob/master/data/Fitzpatrick_2018.csv",
+    "course_git_blob_sha1": "8a79d0a5aa9e21854a556cd63c4afc5af6199b1c",
+    "course_sha256": "5872c228388bd6422458fa6f65a15e59e0ea283973ead376f5d3f7cd47ee485c",
+    "course_rows": 879,
+    "accessions": 44,
+    "replicate_racks": 5,
+    "original_publication_identity_verified": false,
+    "molecular_genotypes_observed": false
+  },
+  "frozen_design": {
+    "purpose": "Estimate realized out-of-rack fruit utility from choosing a treatment by known accession-specific action predictions rather than pooled action average",
+    "choices": [
+      "D|L",
+      "D|S",
+      "W|L",
+      "W|S"
+    ],
+    "action_cost_assumption": "equal costs, laboratory retrospective only",
+    "utility": "sqrt(observed fruits), measured in different plants by action",
+    "source_model_baseline": "P0 and P1 choose the same action (P1 only adds accession intercept)",
+    "fine_model": "P2 adds accession × action shrunken residual (k=10)",
+    "holdout": "five leave-one-rack-out fits, 4 training racks, single full matched action panel per accession heldout rack",
+    "eligibility": "exactly one observed plant per treatment for each heldout accession×rack, determined before looking at outcomes",
+    "positive_gate": "mean gain>0; conditional accession-bootstrap lower 95%>0; gain strictly positive in >=3/5 racks",
+    "post_result_extension": true
+  },
+  "source_eligibility": {
+    "nominal_panels": 220,
+    "complete_panels": 218,
+    "excluded_panels": 2,
+    "excluded_source_rows": 7,
+    "admitted_source_rows": 872,
+    "excluded_rack": "5",
+    "invalid_panel_row_counts": [
+      3,
+      4
+    ]
+  },
+  "prediction_result_from_previous_audit": {
+    "P0_mse": 4.22075635,
+    "P1_mse": 2.37533698,
+    "P2_mse": 2.17103823,
+    "P2_over_P1_mse_reduction": 0.20429876,
+    "status": "P2_EXPLORATORY_PREDICTION_GAIN_IN_KNOWN_ACCESSIONS"
+  },
+  "new_decision_result": {
+    "status": "DECISION_VALUE_NOT_SUPPORTED_UNDER_FROZEN_GATE",
+    "n_panels": 218,
+    "n_action_changes": 16,
+    "fraction_action_changes": 0.0733945,
+    "coarse_chosen_action": {
+      "W|S": 218
+    },
+    "fine_chosen_action": {
+      "W|L": 16,
+      "W|S": 202
+    },
+    "mean_gain_sqrt_fruit": -0.05560812,
+    "equal_accession_mean_gain": -0.0551026,
+    "accession_cluster_bootstrap": {
+      "resamples": 2000,
+      "seed": 20261120,
+      "conditional_95ci": [
+        -0.13353002,
+        0.02219335
+      ],
+      "clusters": 44,
+      "positive": 2,
+      "negative": 6,
+      "zero": 36
+    },
+    "by_heldout_rack": [
+      {
+        "rack": "1",
+        "complete_panels": 44,
+        "gain": 0.0116726,
+        "changed_actions": 3
+      },
+      {
+        "rack": "2",
+        "complete_panels": 44,
+        "gain": -0.01878826,
+        "changed_actions": 3
+      },
+      {
+        "rack": "3",
+        "complete_panels": 44,
+        "gain": -0.04575282,
+        "changed_actions": 1
+      },
+      {
+        "rack": "4",
+        "complete_panels": 44,
+        "gain": -0.01817027,
+        "changed_actions": 2
+      },
+      {
+        "rack": "5",
+        "complete_panels": 42,
+        "gain": -0.2142111,
+        "changed_actions": 7
+      }
+    ],
+    "racks_with_positive_gain": 1
+  },
+  "reproducibility": {
+    "github_workflow_run_id": 44678800488,
+    "python_test_count": 14,
+    "source_locked_ci": "success",
+    "independent_js_recalculation": "218 panels, 16 decision changes, -0.0556081241346519 sqrt-fruit units",
+    "script": "scripts/audit_arabidopsis_action_decision_value.py",
+    "protocol": "docs/arabidopsis_action_decision_protocol_2026-11-20.md"
+  },
+  "limitations": [
+    "Published experiment original Dryad 38/760 and course 44/879 remain unmatched",
+    "Accession is nominal genotype identity only; no molecular genotypes, whole genome or measured genetic causality",
+    "Four actions have assumed equal cost in simulation; costs not measured",
+    "Each action outcome measured in a different randomized plant, not individual treatment counterfactuals",
+    "Panel exclusions are for experimental layout only; main inferential sample is a selected 218 of 220 panels",
+    "Conditional bootstrap interval covers zero; cannot claim harmful decision effect",
+    "Positive prediction does not guarantee positive decision value",
+    "No source–target replacement map, history mode, or exact MLTR decision sufficiency tested",
+    "No raw source data or specimen response table committed"
+  ]
+}

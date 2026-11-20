@@ -5,6 +5,8 @@ on:
     paths:
       - "scripts/audit_arabidopsis_factorial_response.py"
       - "tests/test_arabidopsis_factorial_response.py"
+      - "scripts/audit_arabidopsis_action_decision_value.py"
+      - "tests/test_arabidopsis_action_decision_value.py"
       - ".github/workflows/arabidopsis-factorial-response.yml"
   workflow_dispatch:
 
@@ -21,17 +23,24 @@ jobs:
         with:
           python-version: "3.11"
       - name: Verify code and source-integrity invariants on synthetic-only data
-        run: python -m unittest discover -s tests -p "test_arabidopsis_factorial_response.py" -v
+        run: python -m unittest discover -s tests -p "test_arabidopsis_*.py" -v
       - name: Fetch Git-blob-locked teaching CSV and audit accession-action predictions
         run: |
           python scripts/audit_arabidopsis_factorial_response.py \
             --from-public-github \
             --out artifacts/arabidopsis_factorial_response_summary.json
+      - name: Verify held-out action choice against original source panels
+        run: |
+          python scripts/audit_arabidopsis_action_decision_value.py \
+            --from-public-github \
+            --out artifacts/arabidopsis_action_choice_value.json
       - name: Upload aggregate-only audit report (not specimen data)
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: arabidopsis-public-factorial-aggregate
-          path: artifacts/arabidopsis_factorial_response_summary.json
+          path: |
+            artifacts/arabidopsis_factorial_response_summary.json
+            artifacts/arabidopsis_action_choice_value.json
           if-no-files-found: warn
           retention-days: 30
