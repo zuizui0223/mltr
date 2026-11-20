@@ -176,6 +176,14 @@ def analyse(fruit_bytes:bytes, seed_bytes:bytes, bootstrap:int=2000):
     policy=evaluate_policy(records,bootstrap_draws=bootstrap)
     if policy["n_panels"]!=164 or policy["n_design_excluded_panels"]!=1:
         raise ValueError("policy panel count changed, cannot claim matched action value")
+    # The previous fruit-choice function is reused unchanged for decisions,
+    # but every predicted/observed value here is RAW ESTIMATED SEEDS.
+    # Rename original fruit-scale JSON keys to prevent unit misinterpretation.
+    policy["mean_gain_estimated_seeds_per_panel"] = policy.pop(
+        "mean_gain_sqrt_fruit_per_panel"
+    )
+    for rack in policy["by_heldout_rack"]:
+        rack["mean_gain_estimated_seeds"] = rack.pop("mean_gain_sqrt_fruit")
     policy["fixed_protocol"]["value"] = (
         "estimated raw seeds = fruit * genotype-and-watering mean seeds per fruit"
     )
@@ -238,7 +246,7 @@ def main():
         "n_accessions":report["cohort"]["n_complete_seed_accessions"],
         "raw_seeds_model_gain":report["primary_seed_output_model"]["mean_gain_P2_minus_P1"],
         "raw_seeds_model_gate":report["primary_seed_output_model"]["positive_gate"],
-        "decision_gain_estimated_seeds":report["raw_estimated_seed_action_decision"]["mean_gain_sqrt_fruit_per_panel"],
+        "decision_gain_estimated_seeds":report["raw_estimated_seed_action_decision"]["mean_gain_estimated_seeds_per_panel"],
         "decision_gate":report["raw_estimated_seed_action_decision"]["status"],
         "n_complete_action_panels":report["raw_estimated_seed_action_decision"]["n_panels"],
     },sort_keys=True))
