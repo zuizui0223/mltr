@@ -1,0 +1,220 @@
+{
+  "schema_version": "1.0",
+  "analysis_date": "2026-11-20",
+  "scope": "original published 2019 drought experiment as user-supplied full_data_drought.csv; original 38 accession subset of 44 accession teaching mirror, NOT independent biological replication",
+  "source": {
+    "related_dryad_doi": "10.5061/dryad.334765v",
+    "related_paper_doi": "10.1111/jeb.13426",
+    "file_name": "full_data_drought.csv",
+    "bytes": 21391,
+    "user_uploaded_sha256": "13ca229e6c97ee1a6d0333e4d32a66dabbf30a99e824a14c6f32bacad23067e3",
+    "independent_dryad_download_hash_verified": false,
+    "source_row_count": 760,
+    "valid_fruit_observations": 759,
+    "missing_fruit_observations": 1,
+    "accessions": 38,
+    "rack_n_design": {
+      "1": 152,
+      "2": 152,
+      "3": 152,
+      "4": 152,
+      "5": 152
+    },
+    "source_seed_stock_counts": {
+      "ut": 620,
+      "abrc": 140
+    },
+    "design": "complete 38 accession x 4 water-microbe action x 5 rack; one fruit missing",
+    "molecular_genotypes_present": false
+  },
+  "educational_course_crosswalk": {
+    "source": "https://github.com/UofTCoders/rcourse/blob/master/data/Fitzpatrick_2018.csv",
+    "source_git_blob_sha1": "8a79d0a5aa9e21854a556cd63c4afc5af6199b1c",
+    "course_n_records": 879,
+    "course_n_accessions": 44,
+    "matched_valid_original_10_field_records": 759,
+    "excluded_one_missing_original_fruit": 1,
+    "additional_course_accessions": 6,
+    "additional_course_records": 120,
+    "original_canonical_10_fields_sha256": "d84f3b4a78c1d65860c9d9f5b14afbd09b05a16f734bae6237f34d6e3767fe8f",
+    "matched_fingerprint_fnv64": "e1d4fedfdfdb3a4f",
+    "verified_nested_source_not_independent_replication": true,
+    "course_matched_subset_canonical_10_fields_sha256": "d84f3b4a78c1d65860c9d9f5b14afbd09b05a16f734bae6237f34d6e3767fe8f",
+    "cryptographic_sha256_match_759_records": true,
+    "comparison_sources": [
+      "user-uploaded original 38-accession CSV",
+      "public GitHub 44-accession teaching CSV"
+    ]
+  },
+  "prediction_heldout_rack": {
+    "outcome": "sqrt observed fruit count",
+    "rack_folds": 5,
+    "pseudocounts": {
+      "accession": 10,
+      "action": 10
+    },
+    "models": {
+      "P0": "water x microbe group mean",
+      "P1": "P0 + shrunken accession intercept",
+      "P2": "P1 + shrunken accession x action residual"
+    },
+    "observations_tested": 759,
+    "heldout_mse": {
+      "P0": 4.16846716,
+      "P1": 2.36159502,
+      "P2": 2.17346946
+    },
+    "gain_P1_P0": 1.80687214,
+    "gain_P2_P1": 0.18812556,
+    "accession_equal_gain_P2_P1": 0.18799502,
+    "fixed_prediction_accession_cluster_bootstrap_ci95": [
+      0.10873305,
+      0.27793677
+    ],
+    "positive_accessions": 27,
+    "total_accessions": 38,
+    "heldout_rack_gains": [
+      {
+        "rack": "1",
+        "tested": 152,
+        "gain": 0.26063949
+      },
+      {
+        "rack": "2",
+        "tested": 152,
+        "gain": 0.13095965
+      },
+      {
+        "rack": "3",
+        "tested": 152,
+        "gain": 0.24101439
+      },
+      {
+        "rack": "4",
+        "tested": 152,
+        "gain": 0.13887652
+      },
+      {
+        "rack": "5",
+        "tested": 151,
+        "gain": 0.16901203
+      }
+    ],
+    "action_gains": {
+      "D|L": 0.05224809,
+      "D|S": 0.10317372,
+      "W|L": 0.31638066,
+      "W|S": 0.28118959
+    },
+    "interpretation": "positive held-out fitted predictive increment under frozen P0/P1/P2; prior published lineage GxE prior art"
+  },
+  "post_result_centered_action_only": {
+    "status": "gain smaller and no robust positive conditional interval",
+    "P2_centered_heldout_mse": 2.31475287,
+    "gain_P2centered_P1": 0.04684215,
+    "accession_equal_gain": 0.04693515,
+    "fixed_prediction_accession_bootstrap_ci95": [
+      -0.00154727,
+      0.0946554
+    ],
+    "positive_accessions": 21,
+    "negative_fold_count": 1,
+    "heldout_rack_gains": [
+      0.10417172,
+      -0.00090776,
+      0.07643077,
+      0.04770316,
+      0.00654776
+    ],
+    "action_gains": {
+      "D|L": -0.04518962,
+      "D|S": 0.00397557,
+      "W|L": 0.12717025,
+      "W|S": 0.10170112
+    },
+    "post_result_reparameterization": true
+  },
+  "shrinkage_pseudocount_sensitivity": {
+    "k5_gain_P2_P1": 0.10535385,
+    "k20_gain_P2_P1": 0.23157557,
+    "role": "fixed parameter options from previous educational analysis, not selected for positive effect"
+  },
+  "action_decision": {
+    "status": "DECISION_VALUE_NOT_SUPPORTED_UNDER_FIXED_EQUAL_COST_FOUR_ACTION_GATE",
+    "alternatives": [
+      "D|L",
+      "D|S",
+      "W|L",
+      "W|S"
+    ],
+    "utility": "sqrt observed fruits on different plants in each accession x rack panel",
+    "nominal_panels": 190,
+    "complete_panels": 189,
+    "incomplete_panels": 1,
+    "observed_fruit_rows_omitted_due_to_incomplete_panel": 3,
+    "measured_rows_in_matched_panels": 756,
+    "p0_action_choices": {
+      "W|S": 189
+    },
+    "p2_action_choices": {
+      "W|S": 175,
+      "W|L": 14
+    },
+    "n_changed_actions": 14,
+    "fraction_changed": 0.07407407,
+    "mean_gain_sqrt_fruit": -0.05755883,
+    "accession_equal_gain": -0.05725589,
+    "conditional_accession_cluster_bootstrap_ci95": [
+      -0.14624606,
+      0.03777653
+    ],
+    "positive_accessions": 1,
+    "negative_accessions": 6,
+    "ties": 31,
+    "rack_values": [
+      {
+        "rack": "1",
+        "panels": 38,
+        "gain": 0.00508507,
+        "n_changes": 4
+      },
+      {
+        "rack": "2",
+        "panels": 38,
+        "gain": -0.04220546,
+        "n_changes": 2
+      },
+      {
+        "rack": "3",
+        "panels": 38,
+        "gain": -0.05297695,
+        "n_changes": 1
+      },
+      {
+        "rack": "4",
+        "panels": 38,
+        "gain": -0.02103926,
+        "n_changes": 2
+      },
+      {
+        "rack": "5",
+        "panels": 37,
+        "gain": -0.17987643,
+        "n_changes": 5
+      }
+    ],
+    "racks_positive": 1,
+    "measured_costs_available": false
+  },
+  "scientific_boundaries": [
+    "38 original accession records are a strict measured-data subset of 44 teaching-mirror accessions and cannot be counted as independent external replication",
+    "One fruit value is missing; no imputation; panel with three measured actions is excluded by design",
+    "Accession code is not a molecular genotype or genomic variant",
+    "No whole-genome action responses or novel biological GxE mechanism identified",
+    "Centered action-specific parameterization is post-result sensitivity with interval including zero",
+    "Policy value interval includes zero and uses assumed equal intervention costs",
+    "Treatments were observed in different plants, not one individual's counterfactual outcomes",
+    "Only one fixed experimental location and 5 racks; no new-origin-accession or novel-environment transport",
+    "Formal MLTR source-target total replacement relation, carried-label path coherence and exact decision-sufficiency theorem remain untested"
+  ]
+}

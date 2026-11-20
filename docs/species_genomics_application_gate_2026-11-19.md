@@ -54,6 +54,14 @@ The exact original CSV has 472 records, with one reused .bam ID appearing on two
 
 **Interpretation:** population geography can predict genotypes (the three coastal-species pilot), while these five clover genomic features **do not improve the specified held-out fitness prediction** under these four gardens and this frozen model. This does **not** mean structural variants have no biological fitness effect, nor does it establish exact MLTR decision sufficiency. Details: [source-audited real result](clover_haploblock_fitness_holdout_result_2026-11-19.md) and [machine-readable estimate contract](results/clover_haploblock_fitness_holdout_2026-11-19.json).
 
+## 2026-11-20 original Dryad Arabidopsis restriction and operational choice
+
+- The uploaded original [Fitzpatrick et al. Dryad 10.5061/dryad.334765v](https://doi.org/10.5061/dryad.334765v) 'full_data_drought.csv' contains 760 rows, 38 accessions and one missing fruit. The teaching mirror consists of **the same 759 fruit-observed original rows plus 120 observations of six additional accession codes**, not a second independent study.
+- Under the earlier frozen P0/P1/P2 source-relative five-rack prediction comparison, P2 over P1 retains a **+0.188126** MSE reduction (all five rack folds positive) on original 38 accession fruit observations. After eliminating an accession-wide P2 intercept adjustment, the post-result action-only increment is weaker (+0.046842; conditional 38-accession interval crosses zero). No sequence-level genome features were measured.
+- For the experimental four-choice action policy evaluated on 189 complete accession×rack panels, P2 changes the pooled action in 14 panels but has **no supported positive policy value**: mean −0.057559 sqrt-fruit units, conditional interval [−0.146246,+0.037777], only 1/5 racks positive.
+- This reinforces the strict logical separation of **state heterogeneity, fitted-response predictive accuracy, and realized decision value**. It does **not** prove the exact MLTR decision-sufficiency or source–target replacement-history theorem. [Full original-source analysis](arabidopsis_original_dryad_38_reanalysis_2026-11-20.md) · [source-hash-locked aggregate results](results/arabidopsis_original_dryad_38_2026-11-20.json).
+
+
 ## Decision
 
 **Current status: regional genome-state compression is empirically informative in the three coastal species, while the separate clover **out-of-origin-population fitness predictive increment was NOT SUPPORTED** under the frozen garden/geography baseline. Exact MLTR decision-sufficiency and historical transport are still **NOT TESTED** because declared finite source-target relations and the required action-conditioned law are absent. Keep the negative result and do not optimize further variants of the same clover data after seeing the outcome.**
