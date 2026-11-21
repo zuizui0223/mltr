@@ -1,0 +1,476 @@
+{
+  "cohort": {
+    "n_accessions_original": 38,
+    "n_complete_seed_accessions": 33,
+    "n_design_rows_complete_accessions": 660,
+    "n_dropped_design_rows_from_incomplete_seed_accessions": 100,
+    "n_dropped_seed_incomplete_accessions": 5,
+    "n_joint_observed": 659,
+    "n_missing_joint_action_records": 1,
+    "n_original_fruit_missing_in_complete_cohort": 1,
+    "n_potential_four_action_panels": 165,
+    "selection_caveat": "incomplete seed-factor groups have high zero-fruit prevalence",
+    "zero_fruit_in_complete_accessions": 52,
+    "zero_fruit_in_excluded_accessions": 64
+  },
+  "inferential_limits": [
+    "Predefined exploratory source analysis, original published paper already described genotype-by-treatment fitness response",
+    "All seed-output measurements are estimated as fruits x genotype-and-watering mean seed/fruit",
+    "Seed-per-fruit lookup was estimated in same experiment, and per-rack calibration samples are unavailable; complete independence across held-out racks is not established",
+    "The 33-accession complete water-pair cohort is not representative of all 38, as missing factors track many zero-fruit groups",
+    "Within-accession action centering isolates relative treatment variation from accession mean repair",
+    "No plant-level directly observed seeds, new experiment, molecular genome, causal genotype perturbation, cost-aware field policy, or exact MLTR formal theorem test"
+  ],
+  "legacy_uncentered_seed_output_model": {
+    "accession_equal_gain_P2_minus_P1": 20182.03249499,
+    "accession_resampled_conditional_95_interval": [
+      11835.42491595,
+      29460.16568292
+    ],
+    "action_specific_gain_P2_minus_P1": {
+      "D|L": 796.96077314,
+      "D|S": 2245.12308224,
+      "W|L": 50970.53846116,
+      "W|S": 26823.81495936
+    },
+    "caveat": "Conditional bootstrap of accession means after fixed heldout predictions; not external validation or a theorem proof",
+    "folds": [
+      {
+        "MSE_P0": 466985.80813923,
+        "MSE_P1": 338173.02609052,
+        "MSE_P2": 302449.17030581,
+        "P1_minus_P0_gain": 128812.7820487,
+        "P2_minus_P1_gain": 35723.85578471,
+        "n": 132,
+        "rack_held_out": "1"
+      },
+      {
+        "MSE_P0": 531073.57487233,
+        "MSE_P1": 391942.33659689,
+        "MSE_P2": 373251.72378037,
+        "P1_minus_P0_gain": 139131.23827544,
+        "P2_minus_P1_gain": 18690.61281653,
+        "n": 132,
+        "rack_held_out": "2"
+      },
+      {
+        "MSE_P0": 333028.16063478,
+        "MSE_P1": 208998.56107489,
+        "MSE_P2": 181626.06326159,
+        "P1_minus_P0_gain": 124029.59955989,
+        "P2_minus_P1_gain": 27372.4978133,
+        "n": 132,
+        "rack_held_out": "3"
+      },
+      {
+        "MSE_P0": 329829.68076202,
+        "MSE_P1": 229078.93832246,
+        "MSE_P2": 213133.30387396,
+        "P1_minus_P0_gain": 100750.74243956,
+        "P2_minus_P1_gain": 15945.6344485,
+        "n": 132,
+        "rack_held_out": "4"
+      },
+      {
+        "MSE_P0": 272643.61053578,
+        "MSE_P1": 180901.15627915,
+        "MSE_P2": 177767.6828315,
+        "P1_minus_P0_gain": 91742.45425663,
+        "P2_minus_P1_gain": 3133.47344764,
+        "n": 131,
+        "rack_held_out": "5"
+      }
+    ],
+    "heldout_mse": {
+      "P0": 386885.26039771,
+      "P1": 269953.73181754,
+      "P2": 249754.65998816
+    },
+    "mean_gain_P1_minus_P0": 116931.52858017,
+    "mean_gain_P2_minus_P1": 20199.07182938,
+    "model_specification": {
+      "P0": "water\u00d7microbe pooled action mean",
+      "P1": "P0+shrunken accession residual",
+      "P2": "P1+shrunken accession\u00d7full-action-cell residual",
+      "center_action_effects": false,
+      "k_accession": 10.0,
+      "k_action": 10.0,
+      "outcome": "raw_estimated_seed_count",
+      "test": "leave-one-rack-out, five folds"
+    },
+    "n_accessions": 33,
+    "n_positive_accessions": 26,
+    "n_positive_contexts": 4,
+    "n_positive_folds": 5,
+    "n_tested": 659,
+    "positive_gate": "EXPLORATORY_ACCESSION_ACTION_GAIN_SUPPORTED",
+    "scientific_scope": "fixed seed calibration derived within source experiment"
+  },
+  "primary_seed_output_model": {
+    "accession_equal_gain_P2_minus_P1": 11473.47070288,
+    "accession_resampled_conditional_95_interval": [
+      3369.25562535,
+      20154.48933222
+    ],
+    "action_specific_gain_P2_minus_P1": {
+      "D|L": -1219.09642044,
+      "D|S": 1884.40760495,
+      "W|L": 33732.9348371,
+      "W|S": 11491.06784238
+    },
+    "caveat": "Conditional bootstrap of accession means after fixed heldout predictions; not external validation or a theorem proof",
+    "folds": [
+      {
+        "MSE_P0": 466985.80813923,
+        "MSE_P1": 338173.02609052,
+        "MSE_P2": 313741.94858823,
+        "P1_minus_P0_gain": 128812.7820487,
+        "P2_minus_P1_gain": 24431.07750229,
+        "n": 132,
+        "rack_held_out": "1"
+      },
+      {
+        "MSE_P0": 531073.57487233,
+        "MSE_P1": 391942.33659689,
+        "MSE_P2": 386839.40359167,
+        "P1_minus_P0_gain": 139131.23827544,
+        "P2_minus_P1_gain": 5102.93300523,
+        "n": 132,
+        "rack_held_out": "2"
+      },
+      {
+        "MSE_P0": 333028.16063478,
+        "MSE_P1": 208998.56107489,
+        "MSE_P2": 191885.20651987,
+        "P1_minus_P0_gain": 124029.59955989,
+        "P2_minus_P1_gain": 17113.35455502,
+        "n": 132,
+        "rack_held_out": "3"
+      },
+      {
+        "MSE_P0": 329829.68076202,
+        "MSE_P1": 229078.93832246,
+        "MSE_P2": 218335.62879397,
+        "P1_minus_P0_gain": 100750.74243956,
+        "P2_minus_P1_gain": 10743.3095285,
+        "n": 132,
+        "rack_held_out": "4"
+      },
+      {
+        "MSE_P0": 272643.61053578,
+        "MSE_P1": 180901.15627915,
+        "MSE_P2": 181018.12823564,
+        "P1_minus_P0_gain": 91742.45425663,
+        "P2_minus_P1_gain": -116.97195649,
+        "n": 131,
+        "rack_held_out": "5"
+      }
+    ],
+    "heldout_mse": {
+      "P0": 386885.26039771,
+      "P1": 269953.73181754,
+      "P2": 258481.43178762
+    },
+    "mean_gain_P1_minus_P0": 116931.52858017,
+    "mean_gain_P2_minus_P1": 11472.30002992,
+    "model_specification": {
+      "P0": "water\u00d7microbe pooled action mean",
+      "P1": "P0+shrunken accession residual",
+      "P2": "P1+shrunken accession\u00d7full-action-cell residual",
+      "center_action_effects": true,
+      "k_accession": 10.0,
+      "k_action": 10.0,
+      "outcome": "raw_estimated_seed_count",
+      "test": "leave-one-rack-out, five folds"
+    },
+    "n_accessions": 33,
+    "n_positive_accessions": 22,
+    "n_positive_contexts": 3,
+    "n_positive_folds": 4,
+    "n_tested": 659,
+    "positive_gate": "ACCESSION_ACTION_GAIN_NOT_SUPPORTED_UNDER_FROZEN_GATE",
+    "scientific_scope": "fixed seed calibration derived within source experiment"
+  },
+  "raw_estimated_seed_action_decision": {
+    "accession_cluster_uncertainty": {
+      "conditional_95ci": [
+        -77.81764394,
+        102.64908939
+      ],
+      "draws": 2000,
+      "mean_equal_accession": 5.60739394,
+      "n_accession_clusters": 33,
+      "n_negative_accessions": 6,
+      "n_positive_accessions": 3,
+      "n_zero_accessions": 24,
+      "seed": 20261120
+    },
+    "action_mix": {
+      "P0|W|S": 164,
+      "P2|W|L": 23,
+      "P2|W|S": 141,
+      "changed": 23
+    },
+    "by_heldout_rack": [
+      {
+        "complete_panels": 33,
+        "heldout_rack": "1",
+        "mean_gain_estimated_seeds": 54.01212121,
+        "n_changed_actions": 2
+      },
+      {
+        "complete_panels": 33,
+        "heldout_rack": "2",
+        "mean_gain_estimated_seeds": -79.95757576,
+        "n_changed_actions": 6
+      },
+      {
+        "complete_panels": 33,
+        "heldout_rack": "3",
+        "mean_gain_estimated_seeds": 100.48030303,
+        "n_changed_actions": 5
+      },
+      {
+        "complete_panels": 33,
+        "heldout_rack": "4",
+        "mean_gain_estimated_seeds": 22.01727273,
+        "n_changed_actions": 6
+      },
+      {
+        "complete_panels": 32,
+        "heldout_rack": "5",
+        "mean_gain_estimated_seeds": -70.65625,
+        "n_changed_actions": 4
+      }
+    ],
+    "design_exclusions_by_rack": {
+      "5": 1
+    },
+    "fixed_protocol": {
+      "alternatives": [
+        "D|L",
+        "D|S",
+        "W|L",
+        "W|S"
+      ],
+      "comparison": "P2 accession\u00d7action choice minus P0/P1 coarse choice",
+      "experimental_costs": "assumed equal for retrospective check; not real management",
+      "fine_model": "P2 with zero-centered accession x action residual; ranking identical to uncentered P2 for any given accession",
+      "gate": "mean gain positive; conditional accession bootstrap lower>0; >=3 of 5 racks positive",
+      "holdout": "leave-one-rack-out; full four-action accession\u00d7rack panels only",
+      "pseudocount": 10,
+      "value": "estimated raw seeds = fruit * genotype-and-watering mean seeds per fruit"
+    },
+    "fraction_action_changes": 0.1402439,
+    "interpretive_limits": [
+      "Average seed-per-fruit calibration was estimated within the same biological experiment, not separately by held-out rack",
+      "These are estimated seeds, not direct plant-specific seed counts",
+      "Four action outcomes are from different plants within each accession x rack",
+      "Calibration availability selects 33/38 accessions and omits many zero-fruit plants",
+      "Real irrigation or soil sterilization costs were not measured",
+      "Genetic accession identity is nominal, not a measured SNP or molecular variant",
+      "Exact MLTR source-target replacement and history theorems not evaluated"
+    ],
+    "mean_gain_estimated_seeds_per_panel": 5.64158537,
+    "mean_regret_P2": 300.18920732,
+    "mean_regret_baseline_P0": 305.83079268,
+    "n_action_changes": 23,
+    "n_design_excluded_panels": 1,
+    "n_panels": 164,
+    "n_source_rows_excluded_by_design": 3,
+    "n_source_rows_in_complete_panels": 656,
+    "status": "DECISION_VALUE_NOT_SUPPORTED_UNDER_FROZEN_GATE"
+  },
+  "same_33_accessions_sqrt_fruit_sensitivity": {
+    "accession_equal_gain_P2_minus_P1": 0.0413151,
+    "accession_resampled_conditional_95_interval": [
+      -0.00671095,
+      0.09615656
+    ],
+    "action_specific_gain_P2_minus_P1": {
+      "D|L": -0.03037278,
+      "D|S": 0.03279905,
+      "W|L": 0.07035211,
+      "W|S": 0.09255576
+    },
+    "caveat": "Conditional bootstrap of accession means after fixed heldout predictions; not external validation or a theorem proof",
+    "folds": [
+      {
+        "MSE_P0": 3.35959377,
+        "MSE_P1": 2.54849807,
+        "MSE_P2": 2.43514276,
+        "P1_minus_P0_gain": 0.8110957,
+        "P2_minus_P1_gain": 0.11335532,
+        "n": 132,
+        "rack_held_out": "1"
+      },
+      {
+        "MSE_P0": 3.0968814,
+        "MSE_P1": 2.16177796,
+        "MSE_P2": 2.18047866,
+        "P1_minus_P0_gain": 0.93510344,
+        "P2_minus_P1_gain": -0.0187007,
+        "n": 132,
+        "rack_held_out": "2"
+      },
+      {
+        "MSE_P0": 3.24084107,
+        "MSE_P1": 2.24820931,
+        "MSE_P2": 2.15471167,
+        "P1_minus_P0_gain": 0.99263176,
+        "P2_minus_P1_gain": 0.09349764,
+        "n": 132,
+        "rack_held_out": "3"
+      },
+      {
+        "MSE_P0": 2.9629427,
+        "MSE_P1": 2.14094248,
+        "MSE_P2": 2.11128436,
+        "P1_minus_P0_gain": 0.82200022,
+        "P2_minus_P1_gain": 0.02965812,
+        "n": 132,
+        "rack_held_out": "4"
+      },
+      {
+        "MSE_P0": 3.27966378,
+        "MSE_P1": 2.16505106,
+        "MSE_P2": 2.17698536,
+        "P1_minus_P0_gain": 1.11461272,
+        "P2_minus_P1_gain": -0.0119343,
+        "n": 131,
+        "rack_held_out": "5"
+      }
+    ],
+    "heldout_mse": {
+      "P0": 3.18784543,
+      "P1": 2.25302908,
+      "P2": 2.21177327
+    },
+    "mean_gain_P1_minus_P0": 0.93481635,
+    "mean_gain_P2_minus_P1": 0.04125581,
+    "model_specification": {
+      "P0": "water\u00d7microbe pooled action mean",
+      "P1": "P0+shrunken accession residual",
+      "P2": "P1+shrunken accession\u00d7full-action-cell residual",
+      "center_action_effects": true,
+      "k_accession": 10.0,
+      "k_action": 10.0,
+      "outcome": "sqrt_fruit",
+      "test": "leave-one-rack-out, five folds"
+    },
+    "n_accessions": 33,
+    "n_positive_accessions": 17,
+    "n_positive_contexts": 3,
+    "n_positive_folds": 3,
+    "n_tested": 659,
+    "positive_gate": "ACCESSION_ACTION_GAIN_NOT_SUPPORTED_UNDER_FROZEN_GATE",
+    "scientific_scope": "fruit-only same accessions and same observed original records"
+  },
+  "source": {
+    "dataset_doi": "10.5061/dryad.334765v",
+    "fruit": {
+      "n_design": 760,
+      "source_status": "user-supplied original file, hash-pinned"
+    },
+    "fruit_csv_sha256": "13ca229e6c97ee1a6d0333e4d32a66dabbf30a99e824a14c6f32bacad23067e3",
+    "paper_doi": "10.1111/jeb.13426",
+    "seed": {
+      "both_missing": 3,
+      "both_observed": 33,
+      "bytes": 519,
+      "drought_observed": 35,
+      "filename": "seed.count.drought.csv",
+      "n_genotypes": 38,
+      "seed_units": "genotype x watering mean seeds per fruit (not plant-specific)",
+      "sha256": "e85b41b6da29d8d505e01d0d3213d7a38f7a2e62fdb78071c70bbf6a8d31351d",
+      "wet_observed": 33
+    },
+    "seed_csv_sha256": "e85b41b6da29d8d505e01d0d3213d7a38f7a2e62fdb78071c70bbf6a8d31351d"
+  },
+  "sqrt_seed_output_scale_sensitivity": {
+    "accession_equal_gain_P2_minus_P1": 2.30505979,
+    "accession_resampled_conditional_95_interval": [
+      0.44583184,
+      4.38812014
+    ],
+    "action_specific_gain_P2_minus_P1": {
+      "D|L": -0.88179542,
+      "D|S": 0.4170798,
+      "W|L": 6.87136555,
+      "W|S": 2.79434655
+    },
+    "caveat": "Conditional bootstrap of accession means after fixed heldout predictions; not external validation or a theorem proof",
+    "folds": [
+      {
+        "MSE_P0": 150.28216596,
+        "MSE_P1": 103.19867387,
+        "MSE_P2": 97.95002139,
+        "P1_minus_P0_gain": 47.08349208,
+        "P2_minus_P1_gain": 5.24865248,
+        "n": 132,
+        "rack_held_out": "1"
+      },
+      {
+        "MSE_P0": 142.84107337,
+        "MSE_P1": 90.14810942,
+        "MSE_P2": 90.1475827,
+        "P1_minus_P0_gain": 52.69296395,
+        "P2_minus_P1_gain": 0.00052672,
+        "n": 132,
+        "rack_held_out": "2"
+      },
+      {
+        "MSE_P0": 142.95724647,
+        "MSE_P1": 88.60003152,
+        "MSE_P2": 84.97977729,
+        "P1_minus_P0_gain": 54.35721495,
+        "P2_minus_P1_gain": 3.62025423,
+        "n": 132,
+        "rack_held_out": "3"
+      },
+      {
+        "MSE_P0": 131.18020669,
+        "MSE_P1": 86.17299158,
+        "MSE_P2": 83.7114573,
+        "P1_minus_P0_gain": 45.00721511,
+        "P2_minus_P1_gain": 2.46153428,
+        "n": 132,
+        "rack_held_out": "4"
+      },
+      {
+        "MSE_P0": 140.56469593,
+        "MSE_P1": 85.23352516,
+        "MSE_P2": 85.08327833,
+        "P1_minus_P0_gain": 55.33117076,
+        "P2_minus_P1_gain": 0.15024683,
+        "n": 131,
+        "rack_held_out": "5"
+      }
+    ],
+    "heldout_mse": {
+      "P0": 141.56659571,
+      "P1": 90.67891691,
+      "P2": 88.37941755
+    },
+    "mean_gain_P1_minus_P0": 50.88767881,
+    "mean_gain_P2_minus_P1": 2.29949935,
+    "model_specification": {
+      "P0": "water\u00d7microbe pooled action mean",
+      "P1": "P0+shrunken accession residual",
+      "P2": "P1+shrunken accession\u00d7full-action-cell residual",
+      "center_action_effects": true,
+      "k_accession": 10.0,
+      "k_action": 10.0,
+      "outcome": "sqrt_estimated_seed_count",
+      "test": "leave-one-rack-out, five folds"
+    },
+    "n_accessions": 33,
+    "n_positive_accessions": 19,
+    "n_positive_contexts": 3,
+    "n_positive_folds": 5,
+    "n_tested": 659,
+    "positive_gate": "EXPLORATORY_ACCESSION_ACTION_GAIN_SUPPORTED",
+    "scientific_scope": "fixed seed calibration derived within source experiment"
+  },
+  "status": "ESTIMATED_SEED_FITNESS_RESPONSE_AND_DECISION_AUDIT_CONDITIONAL_SOURCE_CALIBRATION"
+}
