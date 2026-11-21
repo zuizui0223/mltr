@@ -1,6 +1,6 @@
 # Original Arabidopsis drought study: estimated lifetime seeds and treatment choice
 
-**Analysis date:** 2026-11-20. **Result: predictive improvement is scale- and fold-dependent; operational treatment-choice value NOT SUPPORTED.** The exact sources were supplied by the user as two independent CSV files from the same Fitzpatrick et al. (2019) drought experiment. This is a post-result phenotypic extension, **not a new ecological field experiment, a genomic-sequence analysis, or an empirical MLTR finite-theorem proof**.
+**Analysis date:** 2026-11-20; replay and reporting clarification: 2026-11-21. **Result: predictive improvement is scale- and fold-dependent; operational treatment-choice value NOT SUPPORTED.** The user supplied two separate CSV files from the same Fitzpatrick et al. (2019) drought experiment. This is a post-result phenotypic extension, **not a new ecological field experiment, a genomic-sequence analysis, or an empirical MLTR finite-theorem proof**.
 
 ## Source and biological units
 
@@ -23,6 +23,8 @@ All **38 source accession IDs join one-to-one** with exactly one seed-calibratio
 
 Reused the earlier frozen model class, using each of five whole rack blocks as holdout, train-only accession/treatment means and fixed pseudocounts k_accession=k_action=10. All models predict **raw estimated seeds per plant**, and mean squared errors are in **estimated seeds squared**.
 
+All 33 retained accession IDs are represented in both the training and held-out racks. This tests conditional prediction for known accessions in held-out experimental blocks; it does not test prediction for unseen genotypes, populations or lineages.
+
 - P0: training mean estimated seed output for each water×microbe treatment.
 - P1: P0 plus shrunken accession-wide mean residual.
 - **P2c (primary): P1 plus accession×treatment residuals centered to zero mean within an accession using the training cell frequencies.** This isolates relative treatment response from mere repair of an over-shrunken P1 baseline.
@@ -35,7 +37,7 @@ Reused the earlier frozen model class, using each of five whole rack blocks as h
 | **P2c** | **258,481.432** |
 | P2u (legacy, not pure treatment response) | 249,754.660 |
 
-**Primary P2c over P1 MSE reduction: +11,472.300.** Conditional 33-accession bootstrap interval (2,000 resamples of already held-out predictions) approximately **[+3,369,+20,154]**, and the accession-equal mean gain is +11,473.47. Fold-specific reductions are +24,431.08, +5,102.93, +17,113.35, +10,743.31 and **−116.97** (rack 5). Action-specific gains: dry-live **−1,219.10**; dry-sterile +1,884.41; wet-live +33,732.93; wet-sterile +11,491.07.
+**Primary P2c over P1 pooled MSE reduction: +11,472.300 estimated-seeds-squared units.** The equal-accession mean gain is +11,473.47; its conditional 95% bootstrap interval, obtained from 2,000 resamples of accession-level mean gains with the held-out predictions fixed, is approximately **[+3,369,+20,154]**. The interval targets the equal-accession average, not exactly the pooled 659-observation average. Fold-specific reductions are +24,431.08, +5,102.93, +17,113.35, +10,743.31 and **−116.97** (rack 5). Action-specific gains: dry-live **−1,219.10**; dry-sterile +1,884.41; wet-live +33,732.93; wet-sterile +11,491.07.
 
 **Predefined strict predictive gate: NOT SUPPORTED**, because 1/5 rack folds is negative even though the overall mean and conditional bootstrap lower bound are positive. The negative dry-live action is an additional sensitivity warning, but the frozen gate permits one of the four actions to be negative. Treat the fitted-model mean improvement as an observation, not a uniform response law.
 
@@ -43,11 +45,13 @@ The uncentered P2u gain (+20,199.07) would pass the numerical gate (5/5 positive
 
 ## Prespecified scale/support sensitivity (not independent data)
 
-| Same 33 accessions/659 plants | P1 MSE | Centered P2 MSE | P2−P1 improvement | Interpretation |
+| Same 33 accessions/659 plants | P1 MSE | Centered P2 MSE | MSE(P1) − MSE(P2c) | Interpretation |
 | --- | ---: | ---: | ---: | --- |
 | Raw estimated seeds | 269,953.732 | 258,481.432 | **+11,472.300** | 4/5 racks positive; strict gate fails |
 | Sqrt(estimated seeds) | 90.679 | 88.379 | **+2.2995** | 5/5 racks positive; conditional 95% interval about [+0.446,+4.388] |
 | Sqrt(fruit counts) | 2.2530 | 2.2118 | **+0.04126** | 3/5 racks positive; conditional interval about [−0.0067,+0.0962] |
+
+The sensitivity intervals also target equal-accession averages: +2.30505979 for sqrt estimated seeds and +0.04131510 for sqrt fruit. The improvement column reports pooled observation averages. All intervals hold fitted predictions and supplied seed factors fixed; model-refitting and seed-calibration uncertainty are not included. Overlapping training sets across folds also mean that the five fold results are not independent replications.
 
 The sqrt-seed comparison meets the *exploratory* numerical prediction gate on its own score scale. However, the outcome was **constructed using accession×watering mean-seed factors** from the same experiment, and thus contains genetic-identity/treatment structure by construction. The more modest same-individual fruit result weakens the case that this improvement is an independent *fruit-response* signal. No molecular genotype effects or new causal ecological mechanism are identified.
 
@@ -58,7 +62,7 @@ Before outcome-value comparison, choices were specified as exactly four laborato
 - From 33×5 = **165** nominal accession×rack four-action panels, one panel was incomplete due to the original single missing fruit outcome. Thus **164 complete panels / 656 source fruit outcomes** were used in the choice comparison; the three observed rows in that incomplete panel are not evaluated as four-action options.
 - P0/P1 chooses **well-watered + sterile microbes (W|S)** for all 164 complete panels.
 - P2c instead chooses **well-watered + live microbes (W|L)** in **23/164 (14.0%)** panels; W|S is retained in 141.
-- **Mean realized P2c choice − P0 choice: +5.6416 estimated seeds per panel.** Accession-equal mean +5.6074. Conditional 2,000-resample accession-cluster bootstrap 95% interval **[−77.82,+102.65]**.
+- **Mean realized P2c choice − P0 choice: +5.6416 estimated seeds per complete panel.** The equal-accession mean is +5.6074; its conditional 2,000-resample bootstrap 95% interval is **[−77.82,+102.65]**, with the fitted policies and supplied seed factors held fixed. This is not an interval for the pooled 164-panel mean and does not include policy-refitting or calibration uncertainty.
 - Mean choice gains by held-out rack: **+54.01, −79.96, +100.48, +22.02, −70.66** estimated seeds; only 3/5 racks positive. Across 33 accessions, 3 are positive, 6 negative, 24 ties.
 
 **The predefined decision-value positive gate FAILS** because the conditional interval includes zero, despite a slightly positive point estimate. The data do not support claims that genotype-specific treatment selection either reliably improves or reliably harms seed production. Experimental irrigation and sterilization costs have not been measured, so these are not deployable conservation/management recommendations.
@@ -79,3 +83,5 @@ The exact source-hash-locked offline entrypoint is [scripts/audit_arabidopsis_or
     python scripts/audit_arabidopsis_original_seed_fitness.py --fruit /path/to/full_data_drought.csv --seed /path/to/seed.count.drought.csv --out artifacts/arabidopsis_original_seed_estimates.json
 
 See [structured source-backed results](results/arabidopsis_original_seed_production_2026-11-20.json) and [six synthetic-only data-quality/model tests](../tests/test_arabidopsis_original_seed_fitness.py). No changes to Paper A's canonical manuscript or finite mathematical theorems.
+
+On 2026-11-21 the unchanged production entrypoint from commit `18ad4873780013b5fd283e615c596b38a108ed76` was run locally on both exact original CSVs. The [replay and claim audit](arabidopsis_seed_replay_and_claim_audit_2026-11-21.md) records 337 field comparisons against the committed summary and earlier independent calculation, all within an absolute tolerance of 1e-8, plus 26 passing existing synthetic tests. This closes the local production-replay gap; it does not imply that GitHub Actions processed the noncommitted originals or that a new biological sample was collected.

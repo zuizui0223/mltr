@@ -2,6 +2,8 @@
 
 **Status:** cross-repository evidence audit and prospective test protocol; **not** a theorem, genomic confirmation of MLTR, or a modification to the canonical Paper A manuscript.
 
+**Current empirical synthesis updated 2026-11-21:** the original Arabidopsis estimated-seed extension and unchanged-code replay are included below. Its known-accession rack holdouts are a different validation question from the out-of-lineage genomic-response proposal.
+
 ## Question
 
 Under what conditions does a species name, current phenotype or genomic cluster cease to be a sufficient interface for the evolutionary / intervention response that the analysis asks it to predict? This is an empirical *application question* for the existing formal contracts; taxonomy disagreement or phylogenetic structure alone does not certify an MLTR obstruction.
@@ -62,6 +64,24 @@ The exact original CSV has 472 records, with one reused .bam ID appearing on two
 - This reinforces the strict logical separation of **state heterogeneity, fitted-response predictive accuracy, and realized decision value**. It does **not** prove the exact MLTR decision-sufficiency or source–target replacement-history theorem. [Full original-source analysis](arabidopsis_original_dryad_38_reanalysis_2026-11-20.md) · [source-hash-locked aggregate results](results/arabidopsis_original_dryad_38_2026-11-20.json).
 
 
-## Decision
+## Estimated lifetime-seed extension of the same Arabidopsis experiment
 
-**Current status: regional genome-state compression is empirically informative in the three coastal species, while the separate clover **out-of-origin-population fitness predictive increment was NOT SUPPORTED** under the frozen garden/geography baseline. Exact MLTR decision-sufficiency and historical transport are still **NOT TESTED** because declared finite source-target relations and the required action-conditioned law are absent. Keep the negative result and do not optimize further variants of the same clover data after seeing the outcome.**
+The separately supplied seed-per-fruit table permits reconstructed seed output for **33 accessions with both watering calibrations: 659 observed outputs and 164 complete four-action panels**. The same accession IDs occur in training and held-out racks. These are known-accession block predictions within the original study, not independent biological replication, an unseen-lineage test or a genomic assay.
+
+Centered P2 reduces pooled raw estimated-seed MSE by **+11,472.300**, but the frozen primary predictive gate **fails** because one rack has negative gain. The equal-accession mean is +11,473.47, with conditional bootstrap interval [+3,369.26,+20,154.49]; that interval does not override the fold criterion. The sqrt-seed sensitivity passes its exploratory numerical gate, while the matched33 sqrt-fruit sensitivity does not. The sensitivity result cannot replace the raw-seed primary.
+
+The mean realized action-choice difference is **+5.6416 estimated seeds per complete panel**. The equal-accession mean is +5.6074, with conditional interval **[−77.82,+102.65]**; treatment-choice benefit and harm remain unsupported. These intervals hold predictions or policies and calibration factors fixed. Seed factors are averages from the same experiment; rack-separated calibration observations and calibration uncertainty are unavailable. The five excluded accessions are enriched in zero-fruit observations, so the retained cohort cannot stand for all 38 accessions. [Full results](arabidopsis_original_seed_production_results_2026-11-20.md).
+
+The 2026-11-21 [production replay](arabidopsis_seed_replay_and_claim_audit_2026-11-21.md) reproduces the archived estimates to reported numerical precision using the unchanged merged code and exact source hashes. This adds computational verification, not independent evidence about biological effects or treatment value.
+
+## Current decision — 2026-11-21
+
+| Evidence question | Current permitted conclusion |
+| --- | --- |
+| Does the coastal genomic sample retain geographic/state structure? | The earlier source audits support sample-level genomic structure; comparable treatment/fitness outcomes are absent. |
+| Do the five clover haploblocks improve the frozen out-of-origin-population fitness prediction? | **Not supported** under the specified garden/geography baseline. Preserve this result without tuning further variants to obtain a positive outcome. |
+| Does finer Arabidopsis accession×action response improve prediction? | Pooled fitted errors can improve, but the **primary centered raw estimated-seed gate fails**; the exploratory sensitivity is scale-dependent and conditional on in-study calibration. |
+| Does accession-specific Arabidopsis treatment selection improve realized output? | **Not supported** for the evaluated fruit or estimated-seed policies. The seed analysis also does not establish harm. |
+| Has exact MLTR decision sufficiency or historical transport been tested? | **Not tested**: declared finite source–target relations and the required action-conditioned law are absent. The Arabidopsis extension does not satisfy the proposed out-of-lineage genomic-response test. |
+
+The empirical distinction is between evidence for biological state structure, performance of a specified predictor and value of a specified action rule. They require separate observations and comparisons; a positive result for one does not authorize the other claims. This synthesis preserves the frozen models, thresholds and biological conclusions.
