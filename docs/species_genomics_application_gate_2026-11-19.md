@@ -82,6 +82,10 @@ Primary MSE is **0.716511** for the training-mean predictor, **0.699939** for qu
 
 The targets are image/calibration-derived published summaries. Repeated physical-pot keys have differing harvest-image records; no silent deduplication or independent plant-level reconstruction was performed. Resampling holds published targets and fitted predictors fixed. The primary is within-panel accession prediction, not an unseen biological population or new-environment test. No action policy or exact MLTR source–target relation was evaluated. [Frozen protocol](exposito_genomic_prediction_protocol_2026-11-22.md) · [aggregate results](results/exposito_genomic_prediction_2026-11-22.json).
 
+### Post-result Exposito loss-concentration check (2026-11-22)
+
+A [source-blob-locked accounting audit](exposito_context_leverage_audit_2026-11-22.md) decomposes the **unchanged** M0−M1 out-of-fold mean-squared-error gains across the eight original experimental contexts. A single context, Madrid × low rainfall × high-density plants (\`mlp\`), contributes **89.86%** (accession holdout) and **93.53%** (geographic-cell holdout) of the small positive *signed pooled gain*, versus **59.25%** and **58.84%** of the respective baseline M0 loss. Deleting \`mlp\` only from the **score accounting** (not refitting) leaves seven-context mean gains of **+0.000677** and **+0.000269** (0.208% and 0.081% of respective M0 losses). This is a **post-result scale/context leverage diagnosis**, not evidence of a genetically mediated drought×competition mechanism or a revised confirmatory test. The original frozen benchmark remains **NOT SUPPORTED**. No experimental action-value policy was evaluated.
+
 ## Current decision — 2026-11-22
 
 | Evidence question | Current permitted conclusion |
