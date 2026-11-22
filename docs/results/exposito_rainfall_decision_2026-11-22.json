@@ -1,0 +1,771 @@
+{
+  "geographic_sensitivity": {
+    "M1_minus_M0_mean_realized_estimated_fitness": -11.486228555521263,
+    "conditional_interval": {
+      "ci95": [
+        -555.6043111855241,
+        447.4709031603203
+      ],
+      "conditioning": "fixed source observations, nested model fits and allocations",
+      "draws": 2000,
+      "mean": -11.486228555521263,
+      "resampling_clusters": 65,
+      "seed": 20261124,
+      "unit": "five_degree_origin_cell"
+    },
+    "folds": [
+      {
+        "M1_minus_M0_mean_policy_value": 57.69640824099339,
+        "fold": 1,
+        "heldout_accessions": 103,
+        "heldout_ids_sha256": "ef19b4a0b3e70260e6711b76a688342ec15d15fe41a557b3580c6ee14b798cbf",
+        "n_changed_accession_stratum_decisions": 48,
+        "selected_lambdas": {
+          "M0": 0.1,
+          "M1": 0.1
+        },
+        "strata": [
+          {
+            "density": "single",
+            "high_rainfall_quota": 26,
+            "mean_M1_minus_M0_fitness": 240.75958839227835,
+            "mean_realized_ID_baseline_fitness": 5009.554614307179,
+            "mean_realized_M0_estimated_fitness": 5263.504910310067,
+            "mean_realized_M1_estimated_fitness": 5504.264498702345,
+            "n_changed_accession_rainfall_decisions": 12,
+            "n_heldout_accessions": 103,
+            "site": "Madrid",
+            "stratum": "mi"
+          },
+          {
+            "density": "high",
+            "high_rainfall_quota": 26,
+            "mean_M1_minus_M0_fitness": -3.642012880755121,
+            "mean_realized_ID_baseline_fitness": 167.09318238642396,
+            "mean_realized_M0_estimated_fitness": 171.4422220951079,
+            "mean_realized_M1_estimated_fitness": 167.80020921435278,
+            "n_changed_accession_rainfall_decisions": 20,
+            "n_heldout_accessions": 103,
+            "site": "Madrid",
+            "stratum": "mp"
+          },
+          {
+            "density": "single",
+            "high_rainfall_quota": 26,
+            "mean_M1_minus_M0_fitness": -5.33463372481485,
+            "mean_realized_ID_baseline_fitness": 3939.1756280363497,
+            "mean_realized_M0_estimated_fitness": 4045.672174579473,
+            "mean_realized_M1_estimated_fitness": 4040.337540854658,
+            "n_changed_accession_rainfall_decisions": 6,
+            "n_heldout_accessions": 103,
+            "site": "Tuebingen",
+            "stratum": "ti"
+          },
+          {
+            "density": "high",
+            "high_rainfall_quota": 26,
+            "mean_M1_minus_M0_fitness": -0.9973088227346376,
+            "mean_realized_ID_baseline_fitness": 127.26738310036409,
+            "mean_realized_M0_estimated_fitness": 147.4486087319606,
+            "mean_realized_M1_estimated_fitness": 146.45129990922598,
+            "n_changed_accession_rainfall_decisions": 10,
+            "n_heldout_accessions": 103,
+            "site": "Tuebingen",
+            "stratum": "tp"
+          }
+        ],
+        "train_accessions": 411,
+        "train_ids_sha256": "40bb8e15ab0c0302ee7204c7e718aa16727834862a385ea829abe01124c6fbf4"
+      },
+      {
+        "M1_minus_M0_mean_policy_value": -0.013599166949837335,
+        "fold": 2,
+        "heldout_accessions": 103,
+        "heldout_ids_sha256": "62ca51ccc1f5b511277182219bf2a34420295353b40a9ae45d877b2ad5ff43a2",
+        "n_changed_accession_stratum_decisions": 2,
+        "selected_lambdas": {
+          "M0": 0.1,
+          "M1": 0.1
+        },
+        "strata": [
+          {
+            "density": "single",
+            "high_rainfall_quota": 26,
+            "mean_M1_minus_M0_fitness": 0,
+            "mean_realized_ID_baseline_fitness": 4652.914814086651,
+            "mean_realized_M0_estimated_fitness": 5402.728748822895,
+            "mean_realized_M1_estimated_fitness": 5402.728748822895,
+            "n_changed_accession_rainfall_decisions": 0,
+            "n_heldout_accessions": 103,
+            "site": "Madrid",
+            "stratum": "mi"
+          },
+          {
+            "density": "high",
+            "high_rainfall_quota": 26,
+            "mean_M1_minus_M0_fitness": -0.05439666779934934,
+            "mean_realized_ID_baseline_fitness": 175.5968704579072,
+            "mean_realized_M0_estimated_fitness": 193.2898674176699,
+            "mean_realized_M1_estimated_fitness": 193.23547074987056,
+            "n_changed_accession_rainfall_decisions": 2,
+            "n_heldout_accessions": 103,
+            "site": "Madrid",
+            "stratum": "mp"
+          },
+          {
+            "density": "single",
+            "high_rainfall_quota": 26,
+            "mean_M1_minus_M0_fitness": 0,
+            "mean_realized_ID_baseline_fitness": 3457.978891105814,
+            "mean_realized_M0_estimated_fitness": 4189.935465720931,
+            "mean_realized_M1_estimated_fitness": 4189.935465720931,
+            "n_changed_accession_rainfall_decisions": 0,
+            "n_heldout_accessions": 103,
+            "site": "Tuebingen",
+            "stratum": "ti"
+          },
+          {
+            "density": "high",
+            "high_rainfall_quota": 26,
+            "mean_M1_minus_M0_fitness": 0,
+            "mean_realized_ID_baseline_fitness": 114.08398776229396,
+            "mean_realized_M0_estimated_fitness": 134.11297508745415,
+            "mean_realized_M1_estimated_fitness": 134.11297508745415,
+            "n_changed_accession_rainfall_decisions": 0,
+            "n_heldout_accessions": 103,
+            "site": "Tuebingen",
+            "stratum": "tp"
+          }
+        ],
+        "train_accessions": 411,
+        "train_ids_sha256": "c0496a76c45e27b159b4b6b460930b341f02ebb0037dfdb3071d7aaa7b5e82a6"
+      },
+      {
+        "M1_minus_M0_mean_policy_value": -40.91624963236662,
+        "fold": 3,
+        "heldout_accessions": 103,
+        "heldout_ids_sha256": "b6177d1af34d884b356d4392ed20c55b190e2d9c6c16caa8c123cef5aa459b7c",
+        "n_changed_accession_stratum_decisions": 36,
+        "selected_lambdas": {
+          "M0": 1,
+          "M1": 0.1
+        },
+        "strata": [
+          {
+            "density": "single",
+            "high_rainfall_quota": 26,
+            "mean_M1_minus_M0_fitness": -66.42638744478879,
+            "mean_realized_ID_baseline_fitness": 5408.717592718535,
+            "mean_realized_M0_estimated_fitness": 5341.035905324816,
+            "mean_realized_M1_estimated_fitness": 5274.609517880026,
+            "n_changed_accession_rainfall_decisions": 10,
+            "n_heldout_accessions": 103,
+            "site": "Madrid",
+            "stratum": "mi"
+          },
+          {
+            "density": "high",
+            "high_rainfall_quota": 26,
+            "mean_M1_minus_M0_fitness": -11.049713144886736,
+            "mean_realized_ID_baseline_fitness": 188.3078286751348,
+            "mean_realized_M0_estimated_fitness": 201.59120050641312,
+            "mean_realized_M1_estimated_fitness": 190.5414873615264,
+            "n_changed_accession_rainfall_decisions": 10,
+            "n_heldout_accessions": 103,
+            "site": "Madrid",
+            "stratum": "mp"
+          },
+          {
+            "density": "single",
+            "high_rainfall_quota": 26,
+            "mean_M1_minus_M0_fitness": -90.40646049508773,
+            "mean_realized_ID_baseline_fitness": 4014.8110959631113,
+            "mean_realized_M0_estimated_fitness": 4202.627308218562,
+            "mean_realized_M1_estimated_fitness": 4112.2208477234735,
+            "n_changed_accession_rainfall_decisions": 14,
+            "n_heldout_accessions": 103,
+            "site": "Tuebingen",
+            "stratum": "ti"
+          },
+          {
+            "density": "high",
+            "high_rainfall_quota": 26,
+            "mean_M1_minus_M0_fitness": 4.217562555296652,
+            "mean_realized_ID_baseline_fitness": 141.74628061345427,
+            "mean_realized_M0_estimated_fitness": 152.56127816914392,
+            "mean_realized_M1_estimated_fitness": 156.77884072444056,
+            "n_changed_accession_rainfall_decisions": 2,
+            "n_heldout_accessions": 103,
+            "site": "Tuebingen",
+            "stratum": "tp"
+          }
+        ],
+        "train_accessions": 411,
+        "train_ids_sha256": "8152784038fdee226f4f8946503d29521538da08ce424d532643ad076789b0be"
+      },
+      {
+        "M1_minus_M0_mean_policy_value": -4.864810197787291,
+        "fold": 4,
+        "heldout_accessions": 103,
+        "heldout_ids_sha256": "a8107d8f78fad6c42cb19ea59da5610b290fa4c0f8919eb186819eb84b79517c",
+        "n_changed_accession_stratum_decisions": 10,
+        "selected_lambdas": {
+          "M0": 1,
+          "M1": 0.1
+        },
+        "strata": [
+          {
+            "density": "single",
+            "high_rainfall_quota": 26,
+            "mean_M1_minus_M0_fitness": -18.70789013700907,
+            "mean_realized_ID_baseline_fitness": 5107.2409896048075,
+            "mean_realized_M0_estimated_fitness": 5869.319798276353,
+            "mean_realized_M1_estimated_fitness": 5850.611908139344,
+            "n_changed_accession_rainfall_decisions": 6,
+            "n_heldout_accessions": 103,
+            "site": "Madrid",
+            "stratum": "mi"
+          },
+          {
+            "density": "high",
+            "high_rainfall_quota": 26,
+            "mean_M1_minus_M0_fitness": -0.7513506541400918,
+            "mean_realized_ID_baseline_fitness": 184.70270677282093,
+            "mean_realized_M0_estimated_fitness": 199.9268595064001,
+            "mean_realized_M1_estimated_fitness": 199.17550885225998,
+            "n_changed_accession_rainfall_decisions": 4,
+            "n_heldout_accessions": 103,
+            "site": "Madrid",
+            "stratum": "mp"
+          },
+          {
+            "density": "single",
+            "high_rainfall_quota": 26,
+            "mean_M1_minus_M0_fitness": 0,
+            "mean_realized_ID_baseline_fitness": 3838.971128622226,
+            "mean_realized_M0_estimated_fitness": 4139.807365427935,
+            "mean_realized_M1_estimated_fitness": 4139.807365427935,
+            "n_changed_accession_rainfall_decisions": 0,
+            "n_heldout_accessions": 103,
+            "site": "Tuebingen",
+            "stratum": "ti"
+          },
+          {
+            "density": "high",
+            "high_rainfall_quota": 26,
+            "mean_M1_minus_M0_fitness": 0,
+            "mean_realized_ID_baseline_fitness": 133.2325952356665,
+            "mean_realized_M0_estimated_fitness": 145.73037368017185,
+            "mean_realized_M1_estimated_fitness": 145.73037368017185,
+            "n_changed_accession_rainfall_decisions": 0,
+            "n_heldout_accessions": 103,
+            "site": "Tuebingen",
+            "stratum": "tp"
+          }
+        ],
+        "train_accessions": 411,
+        "train_ids_sha256": "659145315582adcae9569a0fa26cb7cfbe9762f85885d2c7ee084f0fa0c23fc7"
+      },
+      {
+        "M1_minus_M0_mean_policy_value": -69.90001617312323,
+        "fold": 5,
+        "heldout_accessions": 102,
+        "heldout_ids_sha256": "1aef8ae67b657d8c6397d4dd965be59c5fb62e30f57d62f63e6ff8cb110baa88",
+        "n_changed_accession_stratum_decisions": 118,
+        "selected_lambdas": {
+          "M0": 0.1,
+          "M1": 0.01
+        },
+        "strata": [
+          {
+            "density": "single",
+            "high_rainfall_quota": 26,
+            "mean_M1_minus_M0_fitness": -452.2370383423885,
+            "mean_realized_ID_baseline_fitness": 5215.933733040688,
+            "mean_realized_M0_estimated_fitness": 5613.545715986295,
+            "mean_realized_M1_estimated_fitness": 5161.308677643908,
+            "n_changed_accession_rainfall_decisions": 48,
+            "n_heldout_accessions": 102,
+            "site": "Madrid",
+            "stratum": "mi"
+          },
+          {
+            "density": "high",
+            "high_rainfall_quota": 26,
+            "mean_M1_minus_M0_fitness": -12.40084937057733,
+            "mean_realized_ID_baseline_fitness": 199.12968961553915,
+            "mean_realized_M0_estimated_fitness": 205.4706267340032,
+            "mean_realized_M1_estimated_fitness": 193.06977736342589,
+            "n_changed_accession_rainfall_decisions": 40,
+            "n_heldout_accessions": 102,
+            "site": "Madrid",
+            "stratum": "mp"
+          },
+          {
+            "density": "single",
+            "high_rainfall_quota": 26,
+            "mean_M1_minus_M0_fitness": 186.7638886806143,
+            "mean_realized_ID_baseline_fitness": 4280.168983866451,
+            "mean_realized_M0_estimated_fitness": 4329.603608854516,
+            "mean_realized_M1_estimated_fitness": 4516.3674975351305,
+            "n_changed_accession_rainfall_decisions": 16,
+            "n_heldout_accessions": 102,
+            "site": "Tuebingen",
+            "stratum": "ti"
+          },
+          {
+            "density": "high",
+            "high_rainfall_quota": 26,
+            "mean_M1_minus_M0_fitness": -1.7260656601416078,
+            "mean_realized_ID_baseline_fitness": 124.3748227497347,
+            "mean_realized_M0_estimated_fitness": 151.32590225263073,
+            "mean_realized_M1_estimated_fitness": 149.59983659248908,
+            "n_changed_accession_rainfall_decisions": 14,
+            "n_heldout_accessions": 102,
+            "site": "Tuebingen",
+            "stratum": "tp"
+          }
+        ],
+        "train_accessions": 412,
+        "train_ids_sha256": "6307ce8f1e945332b27c3262494ead010272e8a91070acd110311a0dcb0aafc1"
+      }
+    ],
+    "fraction_changed_decisions": 0.10408560311284047,
+    "meaning": "retrospective equal-quota treatment choice using four site/density strata and published aggregated fitness per planted seed",
+    "n_accessions": 514,
+    "n_changed_accession_stratum_decisions": 214,
+    "n_positive_outer_folds": 1,
+    "n_positive_strata": 2,
+    "n_site_density_decisions": 2056,
+    "n_strata": 4,
+    "numerical_gate": {
+      "conditions": {
+        "at_least_four_of_five_outer_folds_positive": false,
+        "at_least_one_changed_action": true,
+        "at_least_three_of_four_fixed_strata_positive": false,
+        "conditional_interval_lower_positive": false,
+        "overall_gain_positive": false
+      },
+      "passed": false,
+      "role": "sensitivity_only"
+    },
+    "raw_fitness_prediction_mse_diagnostic": {
+      "M0": 2894280.887444006,
+      "M1": 2874933.8652585237
+    },
+    "site_density_gains": {
+      "mi": -58.55792003393789,
+      "mp": -5.566393756030661,
+      "ti": 17.876622452865167,
+      "tp": 0.30277711501837185
+    },
+    "split": "geographic"
+  },
+  "interpretation_limits": [
+    "Prediction results from the original frozen M0/M1 model without outcome-dependent alterations.",
+    "Experimental high/low precipitation is simulated as a hypothetical scarce water-budget intervention.",
+    "No observed water-treatment cost or feasible field conservation policy.",
+    "Published accession×context summaries of estimated fitness; not independently observed potential outcomes for single plants.",
+    "Source genotype-distance object may capture ancestry and finer geographic structure.",
+    "Bootstrap conditions on original measurements, preprocessing, selected fits and fixed allocations.",
+    "No new experimental replication, causal genome effect or exact MLTR carried-history theorem test.",
+    "Original genome-kernel prediction increment remained unsupported by its frozen gate."
+  ],
+  "primary": {
+    "M1_minus_M0_mean_realized_estimated_fitness": 14.61317328008671,
+    "conditional_interval": {
+      "ci95": [
+        -105.05504566078166,
+        134.4934082142811
+      ],
+      "conditioning": "fixed source observations, nested model fits and allocations",
+      "draws": 2000,
+      "mean": 14.61317328008671,
+      "resampling_clusters": 514,
+      "seed": 20261124,
+      "unit": "accession"
+    },
+    "folds": [
+      {
+        "M1_minus_M0_mean_policy_value": -2.72239193735207,
+        "fold": 1,
+        "heldout_accessions": 103,
+        "heldout_ids_sha256": "53021a74b7e5161c7525fc0bfae97f60744d5205ae65b456fa0aed89d75d239b",
+        "n_changed_accession_stratum_decisions": 38,
+        "selected_lambdas": {
+          "M0": 0.1,
+          "M1": 0.1
+        },
+        "strata": [
+          {
+            "density": "single",
+            "high_rainfall_quota": 26,
+            "mean_M1_minus_M0_fitness": 17.29356380767411,
+            "mean_realized_ID_baseline_fitness": 5333.52981932664,
+            "mean_realized_M0_estimated_fitness": 5666.798272811272,
+            "mean_realized_M1_estimated_fitness": 5684.091836618945,
+            "n_changed_accession_rainfall_decisions": 6,
+            "n_heldout_accessions": 103,
+            "site": "Madrid",
+            "stratum": "mi"
+          },
+          {
+            "density": "high",
+            "high_rainfall_quota": 26,
+            "mean_M1_minus_M0_fitness": -5.673345976963274,
+            "mean_realized_ID_baseline_fitness": 192.53190244151565,
+            "mean_realized_M0_estimated_fitness": 184.83879883211975,
+            "mean_realized_M1_estimated_fitness": 179.16545285515645,
+            "n_changed_accession_rainfall_decisions": 18,
+            "n_heldout_accessions": 103,
+            "site": "Madrid",
+            "stratum": "mp"
+          },
+          {
+            "density": "single",
+            "high_rainfall_quota": 26,
+            "mean_M1_minus_M0_fitness": -21.09333563384089,
+            "mean_realized_ID_baseline_fitness": 3618.7788108860964,
+            "mean_realized_M0_estimated_fitness": 4232.5774773172625,
+            "mean_realized_M1_estimated_fitness": 4211.4841416834215,
+            "n_changed_accession_rainfall_decisions": 10,
+            "n_heldout_accessions": 103,
+            "site": "Tuebingen",
+            "stratum": "ti"
+          },
+          {
+            "density": "high",
+            "high_rainfall_quota": 26,
+            "mean_M1_minus_M0_fitness": -1.4164499462783104,
+            "mean_realized_ID_baseline_fitness": 120.97794986216289,
+            "mean_realized_M0_estimated_fitness": 153.02383727254195,
+            "mean_realized_M1_estimated_fitness": 151.60738732626368,
+            "n_changed_accession_rainfall_decisions": 4,
+            "n_heldout_accessions": 103,
+            "site": "Tuebingen",
+            "stratum": "tp"
+          }
+        ],
+        "train_accessions": 411,
+        "train_ids_sha256": "74883a617fc0706745ced94df7cb89dbc2fb11e043ade96888370bac0fb509be"
+      },
+      {
+        "M1_minus_M0_mean_policy_value": 25.7990846400364,
+        "fold": 2,
+        "heldout_accessions": 103,
+        "heldout_ids_sha256": "5c126faa32f2c809568607691ab392cb44c030f5ea272a4ff8b46a6e79af0db2",
+        "n_changed_accession_stratum_decisions": 20,
+        "selected_lambdas": {
+          "M0": 1,
+          "M1": 0.1
+        },
+        "strata": [
+          {
+            "density": "single",
+            "high_rainfall_quota": 26,
+            "mean_M1_minus_M0_fitness": 27.79005155547813,
+            "mean_realized_ID_baseline_fitness": 5464.133364757733,
+            "mean_realized_M0_estimated_fitness": 5468.8536631493635,
+            "mean_realized_M1_estimated_fitness": 5496.643714704841,
+            "n_changed_accession_rainfall_decisions": 4,
+            "n_heldout_accessions": 103,
+            "site": "Madrid",
+            "stratum": "mi"
+          },
+          {
+            "density": "high",
+            "high_rainfall_quota": 26,
+            "mean_M1_minus_M0_fitness": -1.4969351108198454,
+            "mean_realized_ID_baseline_fitness": 179.46354653727073,
+            "mean_realized_M0_estimated_fitness": 190.9489495209331,
+            "mean_realized_M1_estimated_fitness": 189.45201441011324,
+            "n_changed_accession_rainfall_decisions": 4,
+            "n_heldout_accessions": 103,
+            "site": "Madrid",
+            "stratum": "mp"
+          },
+          {
+            "density": "single",
+            "high_rainfall_quota": 26,
+            "mean_M1_minus_M0_fitness": 71.23187190585955,
+            "mean_realized_ID_baseline_fitness": 3849.5077872973466,
+            "mean_realized_M0_estimated_fitness": 4294.520763659905,
+            "mean_realized_M1_estimated_fitness": 4365.752635565765,
+            "n_changed_accession_rainfall_decisions": 8,
+            "n_heldout_accessions": 103,
+            "site": "Tuebingen",
+            "stratum": "ti"
+          },
+          {
+            "density": "high",
+            "high_rainfall_quota": 26,
+            "mean_M1_minus_M0_fitness": 5.671350209627835,
+            "mean_realized_ID_baseline_fitness": 126.73128308731125,
+            "mean_realized_M0_estimated_fitness": 141.27503988530012,
+            "mean_realized_M1_estimated_fitness": 146.94639009492798,
+            "n_changed_accession_rainfall_decisions": 4,
+            "n_heldout_accessions": 103,
+            "site": "Tuebingen",
+            "stratum": "tp"
+          }
+        ],
+        "train_accessions": 411,
+        "train_ids_sha256": "4dc6a820cdf618140a1c087f90766f60c30ce1a6ceb07d272f22624a14343876"
+      },
+      {
+        "M1_minus_M0_mean_policy_value": 24.328143939286676,
+        "fold": 3,
+        "heldout_accessions": 103,
+        "heldout_ids_sha256": "f2811903cb2b8f8984f2de837ead1f26c1afffcfd8c08aed520ff2726990c4ff",
+        "n_changed_accession_stratum_decisions": 26,
+        "selected_lambdas": {
+          "M0": 1,
+          "M1": 0.1
+        },
+        "strata": [
+          {
+            "density": "single",
+            "high_rainfall_quota": 26,
+            "mean_M1_minus_M0_fitness": 3.8366981539983347,
+            "mean_realized_ID_baseline_fitness": 5003.888146181763,
+            "mean_realized_M0_estimated_fitness": 5152.954276229785,
+            "mean_realized_M1_estimated_fitness": 5156.790974383783,
+            "n_changed_accession_rainfall_decisions": 6,
+            "n_heldout_accessions": 103,
+            "site": "Madrid",
+            "stratum": "mi"
+          },
+          {
+            "density": "high",
+            "high_rainfall_quota": 26,
+            "mean_M1_minus_M0_fitness": 1.434239434002163,
+            "mean_realized_ID_baseline_fitness": 189.35008626499987,
+            "mean_realized_M0_estimated_fitness": 197.97259643742717,
+            "mean_realized_M1_estimated_fitness": 199.40683587142937,
+            "n_changed_accession_rainfall_decisions": 12,
+            "n_heldout_accessions": 103,
+            "site": "Madrid",
+            "stratum": "mp"
+          },
+          {
+            "density": "single",
+            "high_rainfall_quota": 26,
+            "mean_M1_minus_M0_fitness": 88.38547512926496,
+            "mean_realized_ID_baseline_fitness": 3938.8962493184818,
+            "mean_realized_M0_estimated_fitness": 3913.353095604715,
+            "mean_realized_M1_estimated_fitness": 4001.73857073398,
+            "n_changed_accession_rainfall_decisions": 2,
+            "n_heldout_accessions": 103,
+            "site": "Tuebingen",
+            "stratum": "ti"
+          },
+          {
+            "density": "high",
+            "high_rainfall_quota": 26,
+            "mean_M1_minus_M0_fitness": 3.6561630398813376,
+            "mean_realized_ID_baseline_fitness": 120.42518069198567,
+            "mean_realized_M0_estimated_fitness": 138.26294583789718,
+            "mean_realized_M1_estimated_fitness": 141.9191088777785,
+            "n_changed_accession_rainfall_decisions": 6,
+            "n_heldout_accessions": 103,
+            "site": "Tuebingen",
+            "stratum": "tp"
+          }
+        ],
+        "train_accessions": 411,
+        "train_ids_sha256": "d2a3850a43497afcd3c86012a89778d2a52942d7a3b5b302b7583b4270205428"
+      },
+      {
+        "M1_minus_M0_mean_policy_value": 37.44828042840795,
+        "fold": 4,
+        "heldout_accessions": 103,
+        "heldout_ids_sha256": "c45950962ab94f48c29f15a1d87b128e918b6f41178e9183260223ef3de45fd1",
+        "n_changed_accession_stratum_decisions": 32,
+        "selected_lambdas": {
+          "M0": 0.1,
+          "M1": 0.1
+        },
+        "strata": [
+          {
+            "density": "single",
+            "high_rainfall_quota": 26,
+            "mean_M1_minus_M0_fitness": 88.19951764135524,
+            "mean_realized_ID_baseline_fitness": 5093.1242245135,
+            "mean_realized_M0_estimated_fitness": 5445.010088277162,
+            "mean_realized_M1_estimated_fitness": 5533.209605918517,
+            "n_changed_accession_rainfall_decisions": 4,
+            "n_heldout_accessions": 103,
+            "site": "Madrid",
+            "stratum": "mi"
+          },
+          {
+            "density": "high",
+            "high_rainfall_quota": 26,
+            "mean_M1_minus_M0_fitness": -2.855430675577193,
+            "mean_realized_ID_baseline_fitness": 171.99785970177993,
+            "mean_realized_M0_estimated_fitness": 214.99353700674754,
+            "mean_realized_M1_estimated_fitness": 212.13810633117038,
+            "n_changed_accession_rainfall_decisions": 18,
+            "n_heldout_accessions": 103,
+            "site": "Madrid",
+            "stratum": "mp"
+          },
+          {
+            "density": "single",
+            "high_rainfall_quota": 26,
+            "mean_M1_minus_M0_fitness": 58.61394268673183,
+            "mean_realized_ID_baseline_fitness": 4161.596504493239,
+            "mean_realized_M0_estimated_fitness": 4350.061402071313,
+            "mean_realized_M1_estimated_fitness": 4408.675344758046,
+            "n_changed_accession_rainfall_decisions": 6,
+            "n_heldout_accessions": 103,
+            "site": "Tuebingen",
+            "stratum": "ti"
+          },
+          {
+            "density": "high",
+            "high_rainfall_quota": 26,
+            "mean_M1_minus_M0_fitness": 5.835092061121899,
+            "mean_realized_ID_baseline_fitness": 133.99490947830097,
+            "mean_realized_M0_estimated_fitness": 144.95024699149405,
+            "mean_realized_M1_estimated_fitness": 150.78533905261597,
+            "n_changed_accession_rainfall_decisions": 4,
+            "n_heldout_accessions": 103,
+            "site": "Tuebingen",
+            "stratum": "tp"
+          }
+        ],
+        "train_accessions": 411,
+        "train_ids_sha256": "110619eecde8d1f38723fdf6854b703b74ea5fda4688a5605a49be06cefeb3a6"
+      },
+      {
+        "M1_minus_M0_mean_policy_value": -12.046078355729971,
+        "fold": 5,
+        "heldout_accessions": 102,
+        "heldout_ids_sha256": "bc04641726f7971c1594506dc2efb8a0c5db00f8efa573c14792bbdf00e42645",
+        "n_changed_accession_stratum_decisions": 66,
+        "selected_lambdas": {
+          "M0": 0.1,
+          "M1": 0.01
+        },
+        "strata": [
+          {
+            "density": "single",
+            "high_rainfall_quota": 26,
+            "mean_M1_minus_M0_fitness": -142.15665978879647,
+            "mean_realized_ID_baseline_fitness": 4823.971551329225,
+            "mean_realized_M0_estimated_fitness": 5082.192482263504,
+            "mean_realized_M1_estimated_fitness": 4940.035822474707,
+            "n_changed_accession_rainfall_decisions": 16,
+            "n_heldout_accessions": 102,
+            "site": "Madrid",
+            "stratum": "mi"
+          },
+          {
+            "density": "high",
+            "high_rainfall_quota": 26,
+            "mean_M1_minus_M0_fitness": -0.6623036240577339,
+            "mean_realized_ID_baseline_fitness": 169.25007502009802,
+            "mean_realized_M0_estimated_fitness": 167.0348752486329,
+            "mean_realized_M1_estimated_fitness": 166.37257162457513,
+            "n_changed_accession_rainfall_decisions": 16,
+            "n_heldout_accessions": 102,
+            "site": "Madrid",
+            "stratum": "mp"
+          },
+          {
+            "density": "single",
+            "high_rainfall_quota": 26,
+            "mean_M1_minus_M0_fitness": 97.60170120704912,
+            "mean_realized_ID_baseline_fitness": 3580.7141820465495,
+            "mean_realized_M0_estimated_fitness": 4044.1382874018436,
+            "mean_realized_M1_estimated_fitness": 4141.739988608893,
+            "n_changed_accession_rainfall_decisions": 18,
+            "n_heldout_accessions": 102,
+            "site": "Tuebingen",
+            "stratum": "ti"
+          },
+          {
+            "density": "high",
+            "high_rainfall_quota": 26,
+            "mean_M1_minus_M0_fitness": -2.96705121711484,
+            "mean_realized_ID_baseline_fitness": 129.9773483421024,
+            "mean_realized_M0_estimated_fitness": 148.43923263896514,
+            "mean_realized_M1_estimated_fitness": 145.47218142185028,
+            "n_changed_accession_rainfall_decisions": 16,
+            "n_heldout_accessions": 102,
+            "site": "Tuebingen",
+            "stratum": "tp"
+          }
+        ],
+        "train_accessions": 412,
+        "train_ids_sha256": "a974ba4bbc2e98813048c940db97dbcbdb1b462de7d8ded08b0f9010602c9468"
+      }
+    ],
+    "fraction_changed_decisions": 0.08852140077821012,
+    "meaning": "retrospective equal-quota treatment choice using four site/density strata and published aggregated fitness per planted seed",
+    "n_accessions": 514,
+    "n_changed_accession_stratum_decisions": 182,
+    "n_positive_outer_folds": 3,
+    "n_positive_strata": 2,
+    "n_site_density_decisions": 2056,
+    "n_strata": 4,
+    "numerical_gate": {
+      "conditions": {
+        "at_least_four_of_five_outer_folds_positive": false,
+        "at_least_one_changed_action": true,
+        "at_least_three_of_four_fixed_strata_positive": false,
+        "conditional_interval_lower_positive": false,
+        "overall_gain_positive": true
+      },
+      "passed": false,
+      "role": "primary"
+    },
+    "raw_fitness_prediction_mse_diagnostic": {
+      "M0": 2852275.1161116357,
+      "M1": 2853138.0735934447
+    },
+    "site_density_gains": {
+      "mi": -0.7327562045353077,
+      "mp": -1.853067353264162,
+      "ti": 58.87272917156536,
+      "tp": 2.1657875065809735
+    },
+    "split": "accession"
+  },
+  "provenance": {
+    "analysis_script_sha256": "51f4d8cdb8512d261e00238c061c6bc4fec87003c45d25e00811a32fec478200",
+    "cohort_ids_sha256": "781bdddcae7dd562802f76c1dea824e74a8ae2d62148bb015ceff441b017fb19",
+    "prepared_npz_sha256": "cf0838bb2e026a9cc571d61a3cb7db8da0a7a26310c791ce3e3f22f103a928c5",
+    "protocol_git_blob_sha1": "9d315bc5b0317d7d2ec0b950bd9697f33c3eb774",
+    "source_audit_sha256": "b872fe5183b0ba5a98b79e448484cdd2cf770e8a007f05641e85c3afa4ea0876",
+    "source_files": [
+      {
+        "bytes": 3725000,
+        "name": "S_DATASETS.xlsx",
+        "sha256": "032045433e3ace035977c11ff5d0ae8731335e8210c6cee14d64575ae0bebd05",
+        "url": "https://ndownloader.figshare.com/files/17131214"
+      },
+      {
+        "bytes": 8947948,
+        "name": "ibs1001g.rda",
+        "sha256": "906724ce620a30a8c199ade07c5ffaa27aa7b1a91e8229f63b27e882547a70ad",
+        "url": "https://raw.githubusercontent.com/MoisesExpositoAlonso/dryAR/ddf703c91a01a990b8041f0aea9c94de119cd60b/data-cleaning/ibs1001g.rda"
+      }
+    ]
+  },
+  "settings": {
+    "bootstrap_draws": 2000,
+    "bootstrap_seed": 20261124,
+    "budget_fraction": 0.25,
+    "budget_per_outer_fold_and_site_density": "ceil(0.25 * heldout accessions)",
+    "decision": "high vs low rainfall in fixed site × planting density",
+    "heldout_unit": "entire accession, all eight experimental contexts",
+    "post_result_followup": true,
+    "source_experiment_replicated": false,
+    "train_relative_predictions_denormalized": true,
+    "units": "published estimated fitness per planted seed, unstandardized"
+  },
+  "status": "POST_RESULT_EXPLORATORY_RAINFALL_POLICY_VALUE",
+  "study_doi": "10.1038/s41586-019-1520-9"
+}
