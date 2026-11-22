@@ -116,7 +116,7 @@ class RainfallChoiceTests(unittest.TestCase):
         self.assertTrue(np.array_equal(v,np.zeros((4,4))))
 
     def test_predicted_policy_never_sees_heldout_fitness(self):
-        source=toy_arrays()
+        source=toy_arrays(514)
         cohort_sha=hashlib.sha256(("\n".join(source["ids"])+"\n").encode()).hexdigest()
         log=[]
         with mock.patch.object(m,"COHORT_IDS_SHA256",cohort_sha):
@@ -129,7 +129,7 @@ class RainfallChoiceTests(unittest.TestCase):
         self.assertEqual(len(result["folds"]),5)
 
     def test_geographic_folds_keep_cells_together_and_mask_outcomes(self):
-        source=toy_arrays(25)
+        source=toy_arrays(514)
         cohort_sha=hashlib.sha256(("\n".join(source["ids"])+"\n").encode()).hexdigest()
         log=[]
         with mock.patch.object(m,"COHORT_IDS_SHA256",cohort_sha):
