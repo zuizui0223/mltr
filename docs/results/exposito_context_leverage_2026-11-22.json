@@ -1,0 +1,227 @@
+{
+  "status": "POST_HOC_CONTEXT_LEVERAGE_ACCOUNTING_NOT_CONFIRMATORY",
+  "frozen_production_model_unchanged": true,
+  "source_study": "10.1038/s41586-019-1520-9",
+  "main_context": "mlp",
+  "context_labels": [
+    "mhi",
+    "mhp",
+    "mli",
+    "mlp",
+    "thi",
+    "thp",
+    "tli",
+    "tlp"
+  ],
+  "modes": {
+    "primary": {
+      "split": "accession",
+      "n_accessions": 514,
+      "n_contexts": 8,
+      "recorded_primary_stability_gate_passed": false,
+      "focal_context": "mlp",
+      "focal_description": "Madrid; low rainfall; high-density/population planting",
+      "pooled_mse": {
+        "M0": 0.6999385520403133,
+        "M1": 0.6941010976537846
+      },
+      "pooled_gain_M0_minus_M1": 0.005837454386528718,
+      "focal_context_gain": 0.04196315538415041,
+      "focal_context_pooled_gain_contribution": 0.005245394423018801,
+      "focal_share_of_signed_pooled_gain_percent": 89.85756591304195,
+      "focal_share_of_M0_pooled_loss_percent": 59.24687354237424,
+      "other_seven_contexts": {
+        "mean_M0_mse": 0.3259963922727585,
+        "mean_M1_mse": 0.32531975231446125,
+        "mean_gain": 0.0006766399582972538,
+        "M0_relative_error_reduction_percent": 0.20756056641605858
+      },
+      "n_positive_contexts": 5,
+      "equal_context_mean_of_percent_M0_reductions": 0.471282859521528,
+      "contributions_by_context": {
+        "mhi": {
+          "gain": -0.00021893932951146805,
+          "pooled_gain_contribution": -0.000027367416188933506,
+          "M0_mse": 0.05308398299744367,
+          "M1_mse": 0.05330292232695514,
+          "M0_relative_error_reduction_percent": -0.4124395291174955
+        },
+        "mhp": {
+          "gain": -0.00007442955770339821,
+          "pooled_gain_contribution": -0.000009303694712924776,
+          "M0_mse": 0.07357923901763119,
+          "M1_mse": 0.07365366857533459,
+          "M0_relative_error_reduction_percent": -0.10115565028548781
+        },
+        "mli": {
+          "gain": 0.003796456344572041,
+          "pooled_gain_contribution": 0.00047455704307150515,
+          "M0_mse": 1.0729829314264532,
+          "M1_mse": 1.0691864750818811,
+          "M0_relative_error_reduction_percent": 0.35382262227833644
+        },
+        "mlp": {
+          "gain": 0.04196315538415041,
+          "pooled_gain_contribution": 0.005245394423018801,
+          "M0_mse": 3.317533670413198,
+          "M1_mse": 3.2755705150290475,
+          "M0_relative_error_reduction_percent": 1.2648901127482426
+        },
+        "thi": {
+          "gain": 0.0004898821213753998,
+          "pooled_gain_contribution": 0.00006123526517192498,
+          "M0_mse": 0.05183204426934879,
+          "M1_mse": 0.05134216214797339,
+          "M0_relative_error_reduction_percent": 0.9451337069201702
+        },
+        "thp": {
+          "gain": 0.0019282626577862144,
+          "pooled_gain_contribution": 0.0002410328322232768,
+          "M0_mse": 0.12113934532398868,
+          "M1_mse": 0.11921108266620246,
+          "M0_relative_error_reduction_percent": 1.5917723945337925
+        },
+        "tli": {
+          "gain": 0.0011750077772930967,
+          "pooled_gain_contribution": 0.00014687597216163709,
+          "M0_mse": 0.2434665206996398,
+          "M1_mse": 0.2422915129223467,
+          "M0_relative_error_reduction_percent": 0.48261575099382237
+        },
+        "tlp": {
+          "gain": -0.002359760305730707,
+          "pooled_gain_contribution": -0.0002949700382163384,
+          "M0_mse": 0.6658906821748044,
+          "M1_mse": 0.6682504424805351,
+          "M0_relative_error_reduction_percent": -0.3543765318991566
+        }
+      },
+      "delete_one_context_from_existing_score_without_refitting": {
+        "mhi": 0.006702653488820437,
+        "mhp": 0.006682009235704998,
+        "mli": 0.0061290255353799354,
+        "mlp": 0.0006766399582973112,
+        "thi": 0.006601393281550884,
+        "thp": 0.00639591034777791,
+        "tli": 0.006503518187848356,
+        "tlp": 0.007008485056851756
+      },
+      "frozen_conditional_interval_for_original_pooled_gain": [
+        -0.003921185953775492,
+        0.01638341947668843
+      ],
+      "scope": "Post-result arithmetic accounting ONLY, not new heldout predictions, inference on context effects, or a new confidence interval."
+    },
+    "geographic_sensitivity": {
+      "split": "geographic",
+      "n_accessions": 514,
+      "n_contexts": 8,
+      "recorded_primary_stability_gate_passed": false,
+      "focal_context": "mlp",
+      "focal_description": "Madrid; low rainfall; high-density/population planting",
+      "pooled_mse": {
+        "M0": 0.7031492341206113,
+        "M1": 0.6995101279881281
+      },
+      "pooled_gain_M0_minus_M1": 0.003639106132483194,
+      "focal_context_gain": 0.027227960511447158,
+      "focal_context_pooled_gain_contribution": 0.0034034950639308947,
+      "focal_share_of_signed_pooled_gain_percent": 93.52557853564092,
+      "focal_share_of_M0_pooled_loss_percent": 58.84031669626501,
+      "other_seven_contexts": {
+        "mean_M0_mse": 0.3307588547619219,
+        "mean_M1_mse": 0.3304895849692907,
+        "mean_gain": 0.0002692697926311993,
+        "M0_relative_error_reduction_percent": 0.08140970037673458
+      },
+      "n_positive_contexts": 5,
+      "equal_context_mean_of_percent_M0_reductions": 0.6597595985743321,
+      "contributions_by_context": {
+        "mhi": {
+          "gain": 0.00033078684247907914,
+          "pooled_gain_contribution": 0.00004134835530988489,
+          "M0_mse": 0.0532586389161037,
+          "M1_mse": 0.05292785207362462,
+          "M0_relative_error_reduction_percent": 0.621095186078929
+        },
+        "mhp": {
+          "gain": 0.0005291596397972026,
+          "pooled_gain_contribution": 0.00006614495497465032,
+          "M0_mse": 0.07319968974331714,
+          "M1_mse": 0.07267053010351994,
+          "M0_relative_error_reduction_percent": 0.7228987467744191
+        },
+        "mli": {
+          "gain": -0.0002318242160126438,
+          "pooled_gain_contribution": -0.000028978027001580475,
+          "M0_mse": 1.0742829474764561,
+          "M1_mse": 1.0745147716924688,
+          "M0_relative_error_reduction_percent": -0.02157943738725541
+        },
+        "mlp": {
+          "gain": 0.027227960511447158,
+          "pooled_gain_contribution": 0.0034034950639308947,
+          "M0_mse": 3.309881889631437,
+          "M1_mse": 3.2826539291199897,
+          "M0_relative_error_reduction_percent": 0.8226263479896878
+        },
+        "thi": {
+          "gain": 0.0006927563583013774,
+          "pooled_gain_contribution": 0.00008659454478767217,
+          "M0_mse": 0.053996541105728074,
+          "M1_mse": 0.0533037847474267,
+          "M0_relative_error_reduction_percent": 1.2829643234830985
+        },
+        "thp": {
+          "gain": 0.0030739294288392727,
+          "pooled_gain_contribution": 0.0003842411786049091,
+          "M0_mse": 0.13030684686143432,
+          "M1_mse": 0.12723291743259504,
+          "M0_relative_error_reduction_percent": 2.358993025215342
+        },
+        "tli": {
+          "gain": -0.0005598123550819567,
+          "pooled_gain_contribution": -0.00006997654438524459,
+          "M0_mse": 0.2536398079297503,
+          "M1_mse": 0.2541996202848323,
+          "M0_relative_error_reduction_percent": -0.22071155141270485
+        },
+        "tlp": {
+          "gain": -0.001950107149904623,
+          "pooled_gain_contribution": -0.00024376339373807787,
+          "M0_mse": 0.6766275113006632,
+          "M1_mse": 0.6785776184505679,
+          "M0_relative_error_reduction_percent": -0.28820985214686046
+        }
+      },
+      "delete_one_context_from_existing_score_without_refitting": {
+        "mhi": 0.0041117231739122555,
+        "mhp": 0.004083384202866809,
+        "mli": 0.0041920961822682155,
+        "mlp": 0.0002692697926311012,
+        "thi": 0.004060013243080499,
+        "thp": 0.003719845661575085,
+        "tli": 0.004238951630706689,
+        "tlp": 0.0044375651728242125
+      },
+      "frozen_conditional_interval_for_original_pooled_gain": [
+        -0.0034422937816106954,
+        0.011120237499747545
+      ],
+      "scope": "Post-result arithmetic accounting ONLY, not new heldout predictions, inference on context effects, or a new confidence interval."
+    }
+  },
+  "interpretation_limits": [
+    "Focal mlp was singled out after inspecting previously reported gains.",
+    "Signed share of net gain is not fraction of explained biological variation.",
+    "The mlp context also accounts for a large share of M0 prediction loss.",
+    "Leave-one-context figures delete a context only from fixed prediction scores; nothing was refitted or tuned and they have no new uncertainty intervals.",
+    "Mean context-specific percent reductions use different M0 denominators and are an exploratory alternative summary, not the frozen primary estimand.",
+    "No positive MLTR state-sufficiency, causal genome, or treatment-choice inference."
+  ],
+  "source": {
+    "path_in_repository": "docs/results/exposito_genomic_prediction_2026-11-22.json",
+    "git_blob_sha1": "68cef71c368a17ef63fac066f0260f289fe99bc0",
+    "sha256": "aa14ea30825c2dac0ffc070b88a8a2ccb49cb4b4e4fc2c1e5cfa9545df810f43"
+  }
+}
