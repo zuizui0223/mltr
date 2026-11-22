@@ -1,0 +1,169 @@
+{
+  "status": "PASS",
+  "purpose": "Independent computational verification, not biological replication",
+  "absolute_tolerance": 1e-12,
+  "relative_tolerance": 0,
+  "numeric_fields_compared": 452,
+  "exact_checks_compared": 170,
+  "maximum_absolute_error": 4.440892098500626e-16,
+  "numeric_comparison_categories": {
+    "source_size": {
+      "count": 2,
+      "maximum_absolute_error": 0.0,
+      "worst_field": null
+    },
+    "counts": {
+      "count": 86,
+      "maximum_absolute_error": 0.0,
+      "worst_field": null
+    },
+    "pooled_losses": {
+      "count": 6,
+      "maximum_absolute_error": 1.1102230246251565e-16,
+      "worst_field": "geographic.M1"
+    },
+    "context_losses": {
+      "count": 48,
+      "maximum_absolute_error": 4.440892098500626e-16,
+      "worst_field": "geographic.mlp.M1"
+    },
+    "site_losses": {
+      "count": 12,
+      "maximum_absolute_error": 0.0,
+      "worst_field": null
+    },
+    "gains": {
+      "count": 24,
+      "maximum_absolute_error": 2.498001805406602e-16,
+      "worst_field": "primary.pooled"
+    },
+    "bootstrap": {
+      "count": 14,
+      "maximum_absolute_error": 2.498001805406602e-16,
+      "worst_field": "primary.point"
+    },
+    "selected_lambdas": {
+      "count": 20,
+      "maximum_absolute_error": 0.0,
+      "worst_field": null
+    },
+    "inner_tuning_scores": {
+      "count": 80,
+      "maximum_absolute_error": 2.220446049250313e-16,
+      "worst_field": "primary.fold4.M1.10.0"
+    },
+    "training_denominators": {
+      "count": 80,
+      "maximum_absolute_error": 0.0,
+      "worst_field": null
+    },
+    "fold_losses": {
+      "count": 30,
+      "maximum_absolute_error": 2.220446049250313e-16,
+      "worst_field": "primary.fold2.M0"
+    },
+    "fold_gains": {
+      "count": 10,
+      "maximum_absolute_error": 2.697495005143935e-16,
+      "worst_field": "geographic.fold1"
+    },
+    "group_overlap": {
+      "count": 30,
+      "maximum_absolute_error": 0.0,
+      "worst_field": null
+    },
+    "kernel_diagnostics": {
+      "count": 10,
+      "maximum_absolute_error": 0.0,
+      "worst_field": null
+    }
+  },
+  "exact_comparison_categories": {
+    "provenance": 11,
+    "portability": 2,
+    "arrays": 11,
+    "sources": 6,
+    "fingerprints": 126,
+    "gate": 14
+  },
+  "failed_checks": [],
+  "array_semantics": {
+    "ids": {
+      "exactly_equal": true,
+      "shape": [
+        514
+      ],
+      "dtype": "<U5",
+      "array_bytes_sha256": "3c4ee2273125730eb5184488cd8371e4bdd93f9ebdf91c8c0e7b8018c625c964"
+    },
+    "distance": {
+      "exactly_equal": true,
+      "shape": [
+        514,
+        514
+      ],
+      "dtype": "float64",
+      "array_bytes_sha256": "ef85fc0987ac462ba2ecd2e1403d5aaf5dcf14e043bd5cc3bd3ea1dcc2588da2"
+    },
+    "coords": {
+      "exactly_equal": true,
+      "shape": [
+        514,
+        2
+      ],
+      "dtype": "float64",
+      "array_bytes_sha256": "30dce12988bcd93bad06eadb9679d07a2566217b3a09c29f45bb100301ecab80"
+    },
+    "fitness": {
+      "exactly_equal": true,
+      "shape": [
+        514,
+        8
+      ],
+      "dtype": "float64",
+      "array_bytes_sha256": "835907620f45dc328757e9079bafe1a518d18727e2383295122f42ed5adb10a7"
+    },
+    "contexts": {
+      "exactly_equal": true,
+      "shape": [
+        8
+      ],
+      "dtype": "<U3",
+      "array_bytes_sha256": "a08aa4e449c2409b6c7afdc7eb2bda204569d66aa8626b2303fbaa90f81ae883"
+    }
+  },
+  "input_npz_bytes_differ_but_arrays_identical": true,
+  "portable_numeric_results_identical_to_preinspection_replay": true,
+  "gate_comparisons": {
+    "primary": {
+      "independent_passed": false,
+      "production_passed": false,
+      "role": "primary"
+    },
+    "geographic": {
+      "independent_passed": false,
+      "production_passed": false,
+      "role": "sensitivity_only"
+    }
+  },
+  "provenance": {
+    "protocol_sha256": "9dec1cdbe003cd4d586ad1bc122e261b61761b5b25aa8366452601ddc3b0b1f6",
+    "production_report_sha256": "aa14ea30825c2dac0ffc070b88a8a2ccb49cb4b4e4fc2c1e5cfa9545df810f43",
+    "independent_report_sha256": "b3f180e93dd9088f49c17dc9fe1b477d416006137e794fd1925b66f776113d2d",
+    "original_preinspection_report_sha256": "fddf8227f6934b67e6fef43a94ca9e2ad607929c2a3b41c17505095fcc16e148",
+    "original_preinspection_script_sha256": "de8a7dfb9ad07385daad896e46c85a565e583fe98179c866c99197d7a9a37ab5",
+    "portable_replay_script_sha256": "9b8eefc4989025d27a7652c821e122657f5af5de7790de510641f6bfd6ee3319",
+    "comparison_script_sha256": "29b775f9f9762aaab086f28fafbc50a029bc41062a8d6514e171d08e75c17d88",
+    "source_sha256": {
+      "S_DATASETS.xlsx": "032045433e3ace035977c11ff5d0ae8731335e8210c6cee14d64575ae0bebd05",
+      "ibs1001g.rda": "906724ce620a30a8c199ade07c5ffaa27aa7b1a91e8229f63b27e882547a70ad"
+    }
+  },
+  "review_notes": [
+    "Production imports were not used by either replay or this comparison.",
+    "The original replay completed before production-code inspection; its script and aggregate are unchanged.",
+    "Portable changes affect required CLI paths, two accepted NPZ serializations, and recorded actual input digest only; all 13 non-main function ASTs are unchanged.",
+    "Production provenance pinning is delegated to source preparation; exact original source bytes, audit bindings and frozen protocol hash are independently verified here.",
+    "Only the primary numerical gate determines the benchmark verdict; the geographic gate display is sensitivity_only."
+  ]
+}

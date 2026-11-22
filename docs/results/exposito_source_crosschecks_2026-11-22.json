@@ -1,0 +1,243 @@
+{
+  "audit_date": "2026-11-22",
+  "kind": "source_crosschecks_only_not_independent_biological_replication",
+  "canonical_input_sha256": {
+    "S_DATASETS.xlsx": "032045433e3ace035977c11ff5d0ae8731335e8210c6cee14d64575ae0bebd05",
+    "ibs1001g.rda": "906724ce620a30a8c199ade07c5ffaa27aa7b1a91e8229f63b27e882547a70ad"
+  },
+  "cohort_counts": {
+    "final_D2": 517,
+    "complete_eight_context_D4": 516,
+    "D2_IBS_intersection": 515,
+    "prepared_accessions": 514,
+    "prepared_response_cells": 4112,
+    "portal_crosswalk_accessions": 512
+  },
+  "distance_qc": {
+    "R_object": "kkk",
+    "original_shape": [
+      1135,
+      1135
+    ],
+    "row_column_ID_order_identical": true,
+    "all_finite": true,
+    "symmetric": true,
+    "diagonal_zero": true,
+    "min": 0.0,
+    "max": 0.110852,
+    "D1_Q_geneticdist_flags_reproduced": 1135,
+    "D1_Q_geneticdist_threshold": 0.01,
+    "exact_variant_list_and_distance_generation_formula_archived_here": false
+  },
+  "prepared_offdiagonal_zero_pairs": 0,
+  "target_crosswalk": [
+    {
+      "context": "mhi",
+      "phenotype_id": 518,
+      "n": 512,
+      "D4_units_per_AraPheno_unit": 16750.84826021512,
+      "max_absolute_difference_after_context_scaling": 5.2760573687749e-10,
+      "differences_above_1e_8": 0,
+      "zero_status_mismatches": 0,
+      "normalize_by_current_512_mean_max_abs_difference": 0.0013310453542314526
+    },
+    {
+      "context": "mhp",
+      "phenotype_id": 519,
+      "n": 512,
+      "D4_units_per_AraPheno_unit": 713.2089423779676,
+      "max_absolute_difference_after_context_scaling": 5.380194068038691e-10,
+      "differences_above_1e_8": 0,
+      "zero_status_mismatches": 0,
+      "normalize_by_current_512_mean_max_abs_difference": 0.0015826277911905606
+    },
+    {
+      "context": "mli",
+      "phenotype_id": 520,
+      "n": 512,
+      "D4_units_per_AraPheno_unit": 1329.4700590147058,
+      "max_absolute_difference_after_context_scaling": 5.090413646158254e-10,
+      "differences_above_1e_8": 0,
+      "zero_status_mismatches": 0,
+      "normalize_by_current_512_mean_max_abs_difference": 0.009066423507388066
+    },
+    {
+      "context": "mlp",
+      "phenotype_id": 521,
+      "n": 512,
+      "D4_units_per_AraPheno_unit": 12.62482075131833,
+      "max_absolute_difference_after_context_scaling": 4.003087639148362e-09,
+      "differences_above_1e_8": 0,
+      "zero_status_mismatches": 0,
+      "normalize_by_current_512_mean_max_abs_difference": 0.06486023044529254
+    },
+    {
+      "context": "thi",
+      "phenotype_id": 522,
+      "n": 512,
+      "D4_units_per_AraPheno_unit": 9722.215689855599,
+      "max_absolute_difference_after_context_scaling": 5.006199899071362e-10,
+      "differences_above_1e_8": 0,
+      "zero_status_mismatches": 0,
+      "normalize_by_current_512_mean_max_abs_difference": 0.0019305466397581128
+    },
+    {
+      "context": "thp",
+      "phenotype_id": 523,
+      "n": 512,
+      "D4_units_per_AraPheno_unit": 394.88855483946537,
+      "max_absolute_difference_after_context_scaling": 5.159024318857064e-10,
+      "differences_above_1e_8": 0,
+      "zero_status_mismatches": 0,
+      "normalize_by_current_512_mean_max_abs_difference": 0.0015451613041825851
+    },
+    {
+      "context": "tli",
+      "phenotype_id": 524,
+      "n": 512,
+      "D4_units_per_AraPheno_unit": 2115.7730772142827,
+      "max_absolute_difference_after_context_scaling": 5.28186161474764e-10,
+      "differences_above_1e_8": 0,
+      "zero_status_mismatches": 0,
+      "normalize_by_current_512_mean_max_abs_difference": 0.002124514900128105
+    },
+    {
+      "context": "tlp",
+      "phenotype_id": 525,
+      "n": 512,
+      "D4_units_per_AraPheno_unit": 48.135614577547614,
+      "max_absolute_difference_after_context_scaling": 5.020761584262345e-10,
+      "differences_above_1e_8": 0,
+      "zero_status_mismatches": 0,
+      "normalize_by_current_512_mean_max_abs_difference": 0.005076290640555037
+    }
+  ],
+  "coordinate_mismatches_live_portal_vs_canonical": 4,
+  "coordinate_source_selected": "final D2 in exact final workbook; equals archived accession TSV",
+  "replicate_source_limit": {
+    "records": 23154,
+    "unique_physical_pot_keys": 22779,
+    "identical_duplicate_groups": 0,
+    "conflicting_duplicate_groups": 360,
+    "extra_records": 375,
+    "conflicting_columns": {
+      "Inflorescence_size": 360,
+      "Fruits": 360,
+      "Seeds": 360,
+      "Infloresncence_byind": 360,
+      "Fruits_byind": 360,
+      "Seeds_byind": 360,
+      "Fitness": 360,
+      "Survival_num": 174
+    },
+    "legacy_image_record_crosscheck": {
+      "repeated_pot_groups": 360,
+      "distinct_image_paths": 360,
+      "distinct_label_dates": 252
+    },
+    "deduplication_performed": false
+  },
+  "source_fitness_curation": {
+    "code": "gen_field_summarized.R sets nonmissing Fitness<1 to1 and NA to0",
+    "final_D3_zero_count": 9431,
+    "final_D3_positive_below_1_count": 0,
+    "final_D3_exact_1_count": 1,
+    "final_D3_negative_count": 0,
+    "new_correction_performed": false
+  },
+  "D3_to_D4": {
+    "source_comparison": "Arithmetic mean of published D3 Fitness vs final D4 Fitness",
+    "contexts_compared": 4135,
+    "max_abs_difference": 4.729372449219227e-11,
+    "differences_over_1e_8": 0,
+    "all_context_keys_match": true,
+    "no_deduplication": true
+  },
+  "supporting_sources": [
+    {
+      "file": "field_accessions.tsv",
+      "source_url": "https://raw.githubusercontent.com/MoisesExpositoAlonso/dryAR/ddf703c91a01a990b8041f0aea9c94de119cd60b/tables/517g_accessions_field.tsv",
+      "bytes": 14801,
+      "sha256": "a3f372c486cc4676f5639b0eaca2daeb54b82d775cdaa304cfcd3aaea6de4d65"
+    },
+    {
+      "file": "gen_field_summarized.R",
+      "source_url": "https://raw.githubusercontent.com/MoisesExpositoAlonso/dryAR/ddf703c91a01a990b8041f0aea9c94de119cd60b/data-cleaning/gen_field_summarized.R",
+      "bytes": 5812,
+      "sha256": "d68ffb689eaa4c408458ead09810b3c0c1371e5f5e98962558c849b73c696e60"
+    },
+    {
+      "file": "REPLICATE_ORIGINAL_1001DOWNSAMPLING.R",
+      "source_url": "https://raw.githubusercontent.com/MoisesExpositoAlonso/dryAR/ddf703c91a01a990b8041f0aea9c94de119cd60b/data-cleaning/REPLICATE_ORIGINAL_1001DOWNSAMPLING.R",
+      "bytes": 7988,
+      "sha256": "67d70aa78a92cdb49c421266bfa1a81d6ca25ecc5190778e65f5d2904217bba4"
+    },
+    {
+      "file": "arapheno_rFitness_518.csv",
+      "source_url": "https://arapheno.1001genomes.org/rest/phenotype/518/values.csv",
+      "bytes": 36564,
+      "sha256": "d15c544845395c964ae1e17fc7759ddd69e041d7cd1ede3c1dbdd2a15fb48765"
+    },
+    {
+      "file": "arapheno_rFitness_519.csv",
+      "source_url": "https://arapheno.1001genomes.org/rest/phenotype/519/values.csv",
+      "bytes": 36591,
+      "sha256": "3bf732c8de1c14d0ffb9c26933fa78d8b6d450b2fc7ad3c8de71aa60a2ae5212"
+    },
+    {
+      "file": "arapheno_rFitness_520.csv",
+      "source_url": "https://arapheno.1001genomes.org/rest/phenotype/520/values.csv",
+      "bytes": 35886,
+      "sha256": "56091882f37789da2a3165b15af555d62f59a5e258e08af4edd4dd532d57bbf3"
+    },
+    {
+      "file": "arapheno_rFitness_521.csv",
+      "source_url": "https://arapheno.1001genomes.org/rest/phenotype/521/values.csv",
+      "bytes": 34048,
+      "sha256": "a0d32c3fead925e0d23e605f253fb6a939fcce8e45be1f71ff3f42e7e170a96e"
+    },
+    {
+      "file": "arapheno_rFitness_522.csv",
+      "source_url": "https://arapheno.1001genomes.org/rest/phenotype/522/values.csv",
+      "bytes": 36591,
+      "sha256": "519210b0e9b7b1b390bd97f5a20b5444412a40dbc5da3a93d72b31ae8f60ff11"
+    },
+    {
+      "file": "arapheno_rFitness_523.csv",
+      "source_url": "https://arapheno.1001genomes.org/rest/phenotype/523/values.csv",
+      "bytes": 36576,
+      "sha256": "4c46a94fbb53e3bce21234a53f9db26e9ab5db9d7c87fcff1548ecec57ffd387"
+    },
+    {
+      "file": "arapheno_rFitness_524.csv",
+      "source_url": "https://arapheno.1001genomes.org/rest/phenotype/524/values.csv",
+      "bytes": 36479,
+      "sha256": "97a61072b53a4945327fcd933e8ffe9baf3f0be028d251ce98ba5d8c7139fbee"
+    },
+    {
+      "file": "arapheno_rFitness_525.csv",
+      "source_url": "https://arapheno.1001genomes.org/rest/phenotype/525/values.csv",
+      "bytes": 35858,
+      "sha256": "100e1684f7ff1154bdce6fa5ad34bbc84f1b1c18b436ffd386c1eca57be3296a"
+    },
+    {
+      "file": "field.c.rda",
+      "source_url": "https://raw.githubusercontent.com/MoisesExpositoAlonso/dryAR/ddf703c91a01a990b8041f0aea9c94de119cd60b/data/field.c.rda",
+      "bytes": 1102646,
+      "sha256": "dd17ead658d7daa0d0b1ee9aae63761c5bd3a62d338df105fce28851c50a047c"
+    },
+    {
+      "file": "harvestraw_relabeled.csv",
+      "source_url": "https://raw.githubusercontent.com/MoisesExpositoAlonso/dryAR/ddf703c91a01a990b8041f0aea9c94de119cd60b/data-raw/harvestraw_relabeled.csv",
+      "bytes": 233889,
+      "sha256": "77a0dd8b8441d947f9de99eb7f16420447b127b54b7642c654bc14eb1ef0008f"
+    }
+  ],
+  "claim_limits": [
+    "Known contexts, new-accession prediction; no new-site/year or operational-policy claim",
+    "Response is image/calibration-derived and curated, not direct seed counts",
+    "All contexts belonging to an accession must stay in the same fold",
+    "The distance matrix is not a standardized covariance or an exact whole-genome sequence representation",
+    "The published accession averages retain unresolved multiple harvest records under some physical-pot keys"
+  ]
+}

@@ -1,0 +1,1469 @@
+{
+  "study_doi": "10.1038/s41586-019-1520-9",
+  "estimand": "conditional prediction of published accession-context fitness summaries",
+  "target": "final D4 Fitness divided by each fit's training-context arithmetic mean",
+  "provenance": {
+    "prepared_npz_sha256": "cf0838bb2e026a9cc571d61a3cb7db8da0a7a26310c791ce3e3f22f103a928c5",
+    "source_audit_sha256": "6acb3549d36a7023c241893d8cae36df283021d78ae9472d69bbea4daf1e8d33",
+    "protocol_sha256": "9dec1cdbe003cd4d586ad1bc122e261b61761b5b25aa8366452601ddc3b0b1f6",
+    "analysis_script_sha256": "401de3200ff1ec1a70403cb352d3005eea642abbfb6a66196eeaf51f464e0356",
+    "source_files": [
+      {
+        "name": "S_DATASETS.xlsx",
+        "bytes": 3725000,
+        "sha256": "032045433e3ace035977c11ff5d0ae8731335e8210c6cee14d64575ae0bebd05",
+        "url": "https://ndownloader.figshare.com/files/17131214"
+      },
+      {
+        "name": "ibs1001g.rda",
+        "bytes": 8947948,
+        "sha256": "906724ce620a30a8c199ade07c5ffaa27aa7b1a91e8229f63b27e882547a70ad",
+        "url": "https://raw.githubusercontent.com/MoisesExpositoAlonso/dryAR/ddf703c91a01a990b8041f0aea9c94de119cd60b/data-cleaning/ibs1001g.rda"
+      }
+    ]
+  },
+  "runtime": {
+    "python": "3.12.14",
+    "numpy": "2.3.5"
+  },
+  "settings": {
+    "outer_folds": 5,
+    "inner_folds": 3,
+    "lambdas": [
+      0.01,
+      0.1,
+      1.0,
+      10.0
+    ],
+    "primary_split_seed": 20261122,
+    "bootstrap_seed": 20261123,
+    "bootstrap_draws": 2000,
+    "contexts": [
+      "mhi",
+      "mhp",
+      "mli",
+      "mlp",
+      "thi",
+      "thp",
+      "tli",
+      "tlp"
+    ],
+    "inner_loss_weighting": "equal validation accession by context, pooled across folds",
+    "bootstrap_quantile_method": "linear"
+  },
+  "primary": {
+    "split": "accession",
+    "accessions": 514,
+    "response_cells": 4112,
+    "geographic_cells": 65,
+    "cohort_ids_sha256": "781bdddcae7dd562802f76c1dea824e74a8ae2d62148bb015ceff441b017fb19",
+    "fold_assignment_sha256": "5a9a0db6be41dbc78d2ecac94de4aacfc23013a2db13447c65bfc20cbb5608af",
+    "models": {
+      "Mean": {
+        "mse": 0.7165113735698759,
+        "context_mse": {
+          "mhi": 0.05411823761727292,
+          "mhp": 0.07332686516318772,
+          "mli": 1.0987212523336425,
+          "mlp": 3.397304607480419,
+          "thi": 0.053857910141257334,
+          "thp": 0.12748716256088868,
+          "tli": 0.2510717420211832,
+          "tlp": 0.6762032112411557
+        },
+        "site_mse": {
+          "Madrid": 1.1558677406486308,
+          "Tuebingen": 0.2771550064911212
+        }
+      },
+      "M0": {
+        "mse": 0.6999385520403133,
+        "context_mse": {
+          "mhi": 0.05308398299744367,
+          "mhp": 0.07357923901763119,
+          "mli": 1.0729829314264532,
+          "mlp": 3.317533670413198,
+          "thi": 0.05183204426934879,
+          "thp": 0.12113934532398868,
+          "tli": 0.2434665206996398,
+          "tlp": 0.6658906821748044
+        },
+        "site_mse": {
+          "Madrid": 1.1292949559636813,
+          "Tuebingen": 0.2705821481169455
+        }
+      },
+      "M1": {
+        "mse": 0.6941010976537846,
+        "context_mse": {
+          "mhi": 0.05330292232695514,
+          "mhp": 0.07365366857533459,
+          "mli": 1.0691864750818811,
+          "mlp": 3.2755705150290475,
+          "thi": 0.05134216214797339,
+          "thp": 0.11921108266620246,
+          "tli": 0.2422915129223467,
+          "tlp": 0.6682504424805351
+        },
+        "site_mse": {
+          "Madrid": 1.1179283952533043,
+          "Tuebingen": 0.27027380005426443
+        }
+      }
+    },
+    "folds": [
+      {
+        "fold": 1,
+        "train_accessions": 411,
+        "heldout_accessions": 103,
+        "train_geographic_cells": 61,
+        "heldout_geographic_cells": 32,
+        "geographic_cell_overlap": 28,
+        "train_ids_sha256": "74883a617fc0706745ced94df7cb89dbc2fb11e043ade96888370bac0fb509be",
+        "heldout_ids_sha256": "53021a74b7e5161c7525fc0bfae97f60744d5205ae65b456fa0aed89d75d239b",
+        "training_context_means": {
+          "mhi": 16680.907806858024,
+          "mhp": 710.3585257266927,
+          "mli": 1312.2800963233087,
+          "mlp": 12.244505395404166,
+          "thi": 9682.106873506067,
+          "thp": 388.38373660669475,
+          "tli": 2154.4672176296663,
+          "tlp": 49.65702960943093
+        },
+        "selected_lambdas": {
+          "M0": 0.1,
+          "M1": 0.1
+        },
+        "inner_mse": {
+          "M0": {
+            "0.01": 0.740640000341584,
+            "0.1": 0.7084630172649219,
+            "1.0": 0.7134205233361833,
+            "10.0": 0.7207639126934755
+          },
+          "M1": {
+            "0.01": 0.7183298987392868,
+            "0.1": 0.7032631896549277,
+            "1.0": 0.7161805380106189,
+            "10.0": 0.7212407936118207
+          }
+        },
+        "inner_folds": [
+          {
+            "train_accessions": 274,
+            "heldout_accessions": 137,
+            "train_ids_sha256": "ff94b5c682556c8955a3872be8014c668d8fce7e06dc1095ce7f3ffe480b22bf",
+            "heldout_ids_sha256": "e95ea04b164e0abe1371ef9fa8324085da39c4ef7c660f989cba4d24a4df0426",
+            "group_overlap": 27,
+            "kernel_diagnostics": {
+              "tau": 0.0728457,
+              "geographic_component_scale": 5.0,
+              "genetic_component_scale": 0.6328204782751233,
+              "combined_component_scale": 2.0,
+              "genetic_kernel_psd": {
+                "minimum_eigenvalue": 7.034612500848343e-15,
+                "largest_eigenvalue": 9.40215536920049,
+                "negative_eigenvalue_tolerance": 9.40215536920049e-08
+              },
+              "M0_mean_training_diagonal": 1.0,
+              "M1_mean_training_diagonal": 1.0
+            }
+          },
+          {
+            "train_accessions": 274,
+            "heldout_accessions": 137,
+            "train_ids_sha256": "9eb34fa38dd9f4c5e3570301eb0a690ccfbd4642ef08e107b3ac8fc1bd0ec158",
+            "heldout_ids_sha256": "ee209f99f1af238a6a7d725bef18ed71f0164dd67a93b91dc72b04b8ec860415",
+            "group_overlap": 28,
+            "kernel_diagnostics": {
+              "tau": 0.0717373,
+              "geographic_component_scale": 5.0000000000000036,
+              "genetic_component_scale": 0.6336867473109095,
+              "combined_component_scale": 2.0,
+              "genetic_kernel_psd": {
+                "minimum_eigenvalue": -2.8643754035329045e-14,
+                "largest_eigenvalue": 6.707900317370385,
+                "negative_eigenvalue_tolerance": 6.707900317370385e-08
+              },
+              "M0_mean_training_diagonal": 1.0,
+              "M1_mean_training_diagonal": 1.0
+            }
+          },
+          {
+            "train_accessions": 274,
+            "heldout_accessions": 137,
+            "train_ids_sha256": "2fcd9d4c1b6e0fea7d64a7d23010b342e22b601e266d81df017b10280de20b49",
+            "heldout_ids_sha256": "9c23fbb503fda9a71f0859c0c76c9f3309add5c874c1d97395f7dcff898f9460",
+            "group_overlap": 27,
+            "kernel_diagnostics": {
+              "tau": 0.0721322,
+              "geographic_component_scale": 4.999999999999999,
+              "genetic_component_scale": 0.6330592960828633,
+              "combined_component_scale": 1.9999999999999996,
+              "genetic_kernel_psd": {
+                "minimum_eigenvalue": -1.288279608721541e-14,
+                "largest_eigenvalue": 9.277503572164509,
+                "negative_eigenvalue_tolerance": 9.277503572164509e-08
+              },
+              "M0_mean_training_diagonal": 0.9999999999999998,
+              "M1_mean_training_diagonal": 1.0000000000000002
+            }
+          }
+        ],
+        "kernel_diagnostics": {
+          "tau": 0.0722228,
+          "geographic_component_scale": 4.999999999999998,
+          "genetic_component_scale": 0.6341004843683521,
+          "combined_component_scale": 1.9999999999999998,
+          "genetic_kernel_psd": {
+            "minimum_eigenvalue": 1.1221384065006973e-14,
+            "largest_eigenvalue": 11.895573069148075,
+            "negative_eigenvalue_tolerance": 1.1895573069148074e-07
+          },
+          "M0_mean_training_diagonal": 1.0,
+          "M1_mean_training_diagonal": 1.0
+        },
+        "model_mse": {
+          "Mean": 0.7648008724080115,
+          "M0": 0.7531280925289191,
+          "M1": 0.7493424363221926
+        },
+        "M1_gain_over_M0": 0.003785656206726693
+      },
+      {
+        "fold": 2,
+        "train_accessions": 411,
+        "heldout_accessions": 103,
+        "train_geographic_cells": 59,
+        "heldout_geographic_cells": 32,
+        "geographic_cell_overlap": 26,
+        "train_ids_sha256": "4dc6a820cdf618140a1c087f90766f60c30ce1a6ceb07d272f22624a14343876",
+        "heldout_ids_sha256": "5c126faa32f2c809568607691ab392cb44c030f5ea272a4ff8b46a6e79af0db2",
+        "training_context_means": {
+          "mhi": 16820.416865600615,
+          "mhp": 723.9991165852736,
+          "mli": 1282.9670901270595,
+          "mlp": 11.935160282341172,
+          "thi": 9789.857617202748,
+          "thp": 398.87945829532725,
+          "tli": 2092.5504959886302,
+          "tlp": 47.16406708416063
+        },
+        "selected_lambdas": {
+          "M0": 1.0,
+          "M1": 0.1
+        },
+        "inner_mse": {
+          "M0": {
+            "0.01": 0.7113237643247701,
+            "0.1": 0.6876780228784628,
+            "1.0": 0.6837104767634076,
+            "10.0": 0.6900814003581975
+          },
+          "M1": {
+            "0.01": 0.6932458334337492,
+            "0.1": 0.6779832103963377,
+            "1.0": 0.6855810250489223,
+            "10.0": 0.6905366534719828
+          }
+        },
+        "inner_folds": [
+          {
+            "train_accessions": 274,
+            "heldout_accessions": 137,
+            "train_ids_sha256": "5ee1cdd61bd9bf85f9d5ea0fe16a68e88aae8995cb402ce6aeafd1b718972114",
+            "heldout_ids_sha256": "d80c6dd5b83ba37970902951bd4abbf5f0aad20c21eb0713f0f9d087692fd0cb",
+            "group_overlap": 27,
+            "kernel_diagnostics": {
+              "tau": 0.0724499,
+              "geographic_component_scale": 4.999999999999999,
+              "genetic_component_scale": 0.6319839548423433,
+              "combined_component_scale": 2.0,
+              "genetic_kernel_psd": {
+                "minimum_eigenvalue": 5.2130879907991146e-15,
+                "largest_eigenvalue": 7.666878411922573,
+                "negative_eigenvalue_tolerance": 7.666878411922573e-08
+              },
+              "M0_mean_training_diagonal": 1.0,
+              "M1_mean_training_diagonal": 1.0
+            }
+          },
+          {
+            "train_accessions": 274,
+            "heldout_accessions": 137,
+            "train_ids_sha256": "bb787b5b4cec838f7d47b645c1285d6fb96b14b16c01ada75ce4bbfcef4aee65",
+            "heldout_ids_sha256": "418b92d815d308d9ed783725332d2a860ef21df35208486054e91416fbe05dd0",
+            "group_overlap": 26,
+            "kernel_diagnostics": {
+              "tau": 0.0722869,
+              "geographic_component_scale": 5.0,
+              "genetic_component_scale": 0.6332235698462898,
+              "combined_component_scale": 2.0,
+              "genetic_kernel_psd": {
+                "minimum_eigenvalue": -1.921933176064994e-14,
+                "largest_eigenvalue": 7.48551957857347,
+                "negative_eigenvalue_tolerance": 7.48551957857347e-08
+              },
+              "M0_mean_training_diagonal": 1.0,
+              "M1_mean_training_diagonal": 1.0
+            }
+          },
+          {
+            "train_accessions": 274,
+            "heldout_accessions": 137,
+            "train_ids_sha256": "16588154da0da813825a8d2ed9275fe69216ebce6b35653b408c8fd122552fc6",
+            "heldout_ids_sha256": "c7f1a1efb005c45113cf2f8a08d388060a10e573f700b53e11c38d9de94c44cb",
+            "group_overlap": 27,
+            "kernel_diagnostics": {
+              "tau": 0.0723272,
+              "geographic_component_scale": 4.999999999999999,
+              "genetic_component_scale": 0.6348423036838832,
+              "combined_component_scale": 2.0,
+              "genetic_kernel_psd": {
+                "minimum_eigenvalue": -2.9261801921037356e-15,
+                "largest_eigenvalue": 8.12106066484191,
+                "negative_eigenvalue_tolerance": 8.12106066484191e-08
+              },
+              "M0_mean_training_diagonal": 1.0,
+              "M1_mean_training_diagonal": 1.0
+            }
+          }
+        ],
+        "kernel_diagnostics": {
+          "tau": 0.0723498,
+          "geographic_component_scale": 5.000000000000001,
+          "genetic_component_scale": 0.634163259198169,
+          "combined_component_scale": 1.9999999999999998,
+          "genetic_kernel_psd": {
+            "minimum_eigenvalue": 2.2068429511874044e-14,
+            "largest_eigenvalue": 11.18967865833569,
+            "negative_eigenvalue_tolerance": 1.1189678658335692e-07
+          },
+          "M0_mean_training_diagonal": 1.0,
+          "M1_mean_training_diagonal": 1.0
+        },
+        "model_mse": {
+          "Mean": 1.0689391761962876,
+          "M0": 1.0522758966108878,
+          "M1": 1.0301130358226998
+        },
+        "M1_gain_over_M0": 0.022162860788188042
+      },
+      {
+        "fold": 3,
+        "train_accessions": 411,
+        "heldout_accessions": 103,
+        "train_geographic_cells": 61,
+        "heldout_geographic_cells": 29,
+        "geographic_cell_overlap": 25,
+        "train_ids_sha256": "d2a3850a43497afcd3c86012a89778d2a52942d7a3b5b302b7583b4270205428",
+        "heldout_ids_sha256": "f2811903cb2b8f8984f2de837ead1f26c1afffcfd8c08aed520ff2726990c4ff",
+        "training_context_means": {
+          "mhi": 16685.338706089362,
+          "mhp": 708.3051297536055,
+          "mli": 1340.3651792603905,
+          "mlp": 12.93390404192485,
+          "thi": 9660.37820060441,
+          "thp": 397.36426516892857,
+          "tli": 2113.7720281670618,
+          "tlp": 48.65551503583943
+        },
+        "selected_lambdas": {
+          "M0": 1.0,
+          "M1": 0.1
+        },
+        "inner_mse": {
+          "M0": {
+            "0.01": 0.7760127648650341,
+            "0.1": 0.751759010074998,
+            "1.0": 0.7492105545803454,
+            "10.0": 0.7545919065766149
+          },
+          "M1": {
+            "0.01": 0.7593466195424873,
+            "0.1": 0.7440511942408325,
+            "1.0": 0.7508394422945422,
+            "10.0": 0.7549429080703312
+          }
+        },
+        "inner_folds": [
+          {
+            "train_accessions": 274,
+            "heldout_accessions": 137,
+            "train_ids_sha256": "1b5f92bae329777f8298c6f7ca788fdfba734b89320837c834e4aceb02aac7a9",
+            "heldout_ids_sha256": "4a8fca1794c1753434d113b6c16de24d0b2023973f6823d702bc7b6d1d1d4dfc",
+            "group_overlap": 25,
+            "kernel_diagnostics": {
+              "tau": 0.0727462,
+              "geographic_component_scale": 4.999999999999999,
+              "genetic_component_scale": 0.6321532196267973,
+              "combined_component_scale": 2.0,
+              "genetic_kernel_psd": {
+                "minimum_eigenvalue": 1.0325074129013956e-14,
+                "largest_eigenvalue": 9.580160954225011,
+                "negative_eigenvalue_tolerance": 9.580160954225011e-08
+              },
+              "M0_mean_training_diagonal": 1.0,
+              "M1_mean_training_diagonal": 1.0
+            }
+          },
+          {
+            "train_accessions": 274,
+            "heldout_accessions": 137,
+            "train_ids_sha256": "68f6ab73c46f1e184a0bcbb8a1bfd57862663e75f08872de600ad95ffe725ffc",
+            "heldout_ids_sha256": "31865a3440838885848a4723206b5ef6e1f8887f236b4bec71ba36e9b0eb39c6",
+            "group_overlap": 26,
+            "kernel_diagnostics": {
+              "tau": 0.072205,
+              "geographic_component_scale": 5.000000000000002,
+              "genetic_component_scale": 0.6342013293810208,
+              "combined_component_scale": 2.0,
+              "genetic_kernel_psd": {
+                "minimum_eigenvalue": 1.1856932614065017e-14,
+                "largest_eigenvalue": 8.404036094609893,
+                "negative_eigenvalue_tolerance": 8.404036094609893e-08
+              },
+              "M0_mean_training_diagonal": 1.0,
+              "M1_mean_training_diagonal": 1.0
+            }
+          },
+          {
+            "train_accessions": 274,
+            "heldout_accessions": 137,
+            "train_ids_sha256": "489ff7c13ebf31271e6ca1e667e4c9afba75fb9bf537cdba5a51ee9d9149edd9",
+            "heldout_ids_sha256": "e0e1a20b57347e1093d68615a895547e805974c363d21664e1d701ea0d22439a",
+            "group_overlap": 26,
+            "kernel_diagnostics": {
+              "tau": 0.0723539,
+              "geographic_component_scale": 5.0,
+              "genetic_component_scale": 0.6341332019500714,
+              "combined_component_scale": 2.0,
+              "genetic_kernel_psd": {
+                "minimum_eigenvalue": 9.669958518816746e-15,
+                "largest_eigenvalue": 8.033837118506455,
+                "negative_eigenvalue_tolerance": 8.033837118506455e-08
+              },
+              "M0_mean_training_diagonal": 1.0,
+              "M1_mean_training_diagonal": 1.0
+            }
+          }
+        ],
+        "kernel_diagnostics": {
+          "tau": 0.0724348,
+          "geographic_component_scale": 4.999999999999999,
+          "genetic_component_scale": 0.6342406916832319,
+          "combined_component_scale": 2.0,
+          "genetic_kernel_psd": {
+            "minimum_eigenvalue": -1.731947918427118e-14,
+            "largest_eigenvalue": 12.623013025659045,
+            "negative_eigenvalue_tolerance": 1.2623013025659045e-07
+          },
+          "M0_mean_training_diagonal": 1.0000000000000002,
+          "M1_mean_training_diagonal": 1.0
+        },
+        "model_mse": {
+          "Mean": 0.550317178718626,
+          "M0": 0.5453181640319049,
+          "M1": 0.5345729641925241
+        },
+        "M1_gain_over_M0": 0.010745199839380864
+      },
+      {
+        "fold": 4,
+        "train_accessions": 411,
+        "heldout_accessions": 103,
+        "train_geographic_cells": 55,
+        "heldout_geographic_cells": 33,
+        "geographic_cell_overlap": 23,
+        "train_ids_sha256": "110619eecde8d1f38723fdf6854b703b74ea5fda4688a5605a49be06cefeb3a6",
+        "heldout_ids_sha256": "c45950962ab94f48c29f15a1d87b128e918b6f41178e9183260223ef3de45fd1",
+        "training_context_means": {
+          "mhi": 16853.5505023053,
+          "mhp": 707.1924330760236,
+          "mli": 1287.5386044081947,
+          "mlp": 12.38866336074614,
+          "thi": 9639.985472548553,
+          "thp": 394.65010820475203,
+          "tli": 2085.9867435035953,
+          "tlp": 47.26887522506896
+        },
+        "selected_lambdas": {
+          "M0": 0.1,
+          "M1": 0.1
+        },
+        "inner_mse": {
+          "M0": {
+            "0.01": 0.7540982658508087,
+            "0.1": 0.7430960538334644,
+            "1.0": 0.7450013689229675,
+            "10.0": 0.7489347188656093
+          },
+          "M1": {
+            "0.01": 0.7388655712883753,
+            "0.1": 0.7381491187908445,
+            "1.0": 0.7461382518655021,
+            "10.0": 0.7491643311293896
+          }
+        },
+        "inner_folds": [
+          {
+            "train_accessions": 274,
+            "heldout_accessions": 137,
+            "train_ids_sha256": "37205270823974f097a0e40a7bc33457478d4ba7365144c989e91807867fc967",
+            "heldout_ids_sha256": "e47f7e00140ce252088a573e32853a922209db8118480c13bcd42abccc9d088b",
+            "group_overlap": 28,
+            "kernel_diagnostics": {
+              "tau": 0.0712752,
+              "geographic_component_scale": 5.0,
+              "genetic_component_scale": 0.6343534383978781,
+              "combined_component_scale": 2.0000000000000004,
+              "genetic_kernel_psd": {
+                "minimum_eigenvalue": -7.036944495500429e-15,
+                "largest_eigenvalue": 7.142541455047262,
+                "negative_eigenvalue_tolerance": 7.142541455047262e-08
+              },
+              "M0_mean_training_diagonal": 1.0,
+              "M1_mean_training_diagonal": 0.9999999999999998
+            }
+          },
+          {
+            "train_accessions": 274,
+            "heldout_accessions": 137,
+            "train_ids_sha256": "4f455950f90f1ac8edacc40e4714bc142ea87ceb6eb3a12bd01c6a498e6b639b",
+            "heldout_ids_sha256": "7b22411ab82d54e0871f0a7947673f437f1fbe0324f7a96f64510bd11d6c68cd",
+            "group_overlap": 31,
+            "kernel_diagnostics": {
+              "tau": 0.0728559,
+              "geographic_component_scale": 5.0,
+              "genetic_component_scale": 0.6342648665754497,
+              "combined_component_scale": 1.9999999999999996,
+              "genetic_kernel_psd": {
+                "minimum_eigenvalue": 1.9362170287223757e-14,
+                "largest_eigenvalue": 8.337049866722467,
+                "negative_eigenvalue_tolerance": 8.337049866722467e-08
+              },
+              "M0_mean_training_diagonal": 1.0,
+              "M1_mean_training_diagonal": 1.0
+            }
+          },
+          {
+            "train_accessions": 274,
+            "heldout_accessions": 137,
+            "train_ids_sha256": "d8faa66d48dd577be098c5471500879b6518812997e390eabb41df92c0f55982",
+            "heldout_ids_sha256": "180688ba8d99e536d55d3fd7959c9d334d3f7eee6672697d19e2e2405a48f9e8",
+            "group_overlap": 30,
+            "kernel_diagnostics": {
+              "tau": 0.0715913,
+              "geographic_component_scale": 4.999999999999998,
+              "genetic_component_scale": 0.6354178408434299,
+              "combined_component_scale": 2.0,
+              "genetic_kernel_psd": {
+                "minimum_eigenvalue": 4.0523138492006834e-15,
+                "largest_eigenvalue": 7.116906948731253,
+                "negative_eigenvalue_tolerance": 7.116906948731253e-08
+              },
+              "M0_mean_training_diagonal": 1.0,
+              "M1_mean_training_diagonal": 1.0
+            }
+          }
+        ],
+        "kernel_diagnostics": {
+          "tau": 0.0718908,
+          "geographic_component_scale": 5.0,
+          "genetic_component_scale": 0.6355504144739096,
+          "combined_component_scale": 2.0000000000000004,
+          "genetic_kernel_psd": {
+            "minimum_eigenvalue": -1.9177424828281673e-14,
+            "largest_eigenvalue": 10.898517490763243,
+            "negative_eigenvalue_tolerance": 1.0898517490763244e-07
+          },
+          "M0_mean_training_diagonal": 1.0,
+          "M1_mean_training_diagonal": 1.0
+        },
+        "model_mse": {
+          "Mean": 0.6656396580649802,
+          "M0": 0.6247025666428454,
+          "M1": 0.6282174208331849
+        },
+        "M1_gain_over_M0": -0.00351485419033937
+      },
+      {
+        "fold": 5,
+        "train_accessions": 412,
+        "heldout_accessions": 102,
+        "train_geographic_cells": 60,
+        "heldout_geographic_cells": 32,
+        "geographic_cell_overlap": 27,
+        "train_ids_sha256": "a974ba4bbc2e98813048c940db97dbcbdb1b462de7d8ded08b0f9010602c9468",
+        "heldout_ids_sha256": "bc04641726f7971c1594506dc2efb8a0c5db00f8efa573c14792bbdf00e42645",
+        "training_context_means": {
+          "mhi": 16773.81879451681,
+          "mhp": 716.8297047747969,
+          "mli": 1434.8391150340994,
+          "mlp": 13.26676222618123,
+          "thi": 9790.03857179439,
+          "thp": 394.7880978249706,
+          "tli": 2135.4831569089993,
+          "tlp": 48.585164803685295
+        },
+        "selected_lambdas": {
+          "M0": 0.1,
+          "M1": 0.01
+        },
+        "inner_mse": {
+          "M0": {
+            "0.01": 0.660819863686357,
+            "0.1": 0.6551000781590784,
+            "1.0": 0.6663986955191082,
+            "10.0": 0.673438072678167
+          },
+          "M1": {
+            "0.01": 0.6486121737813814,
+            "0.1": 0.6524735730718949,
+            "1.0": 0.668746014802493,
+            "10.0": 0.673841502434732
+          }
+        },
+        "inner_folds": [
+          {
+            "train_accessions": 274,
+            "heldout_accessions": 138,
+            "train_ids_sha256": "562dcdba119a0d015e0aa60ef28e4b391d7827715bc16f3962c1e95c5a3c5d72",
+            "heldout_ids_sha256": "cc125dde54555644400551f0c25509c72501cf3ee8df466f13cf1b42a9ace0f8",
+            "group_overlap": 26,
+            "kernel_diagnostics": {
+              "tau": 0.0728475,
+              "geographic_component_scale": 5.000000000000001,
+              "genetic_component_scale": 0.6346663956796578,
+              "combined_component_scale": 2.0,
+              "genetic_kernel_psd": {
+                "minimum_eigenvalue": 1.2434497850938568e-14,
+                "largest_eigenvalue": 7.805630469411535,
+                "negative_eigenvalue_tolerance": 7.805630469411535e-08
+              },
+              "M0_mean_training_diagonal": 1.0000000000000002,
+              "M1_mean_training_diagonal": 1.0
+            }
+          },
+          {
+            "train_accessions": 275,
+            "heldout_accessions": 137,
+            "train_ids_sha256": "7b07c7eca84a00a90b27c7e4ee68015f11dcce09db7ddd5bfc0236f2f0d82391",
+            "heldout_ids_sha256": "ab4746e7fb50433e52f845c9d137d47ad56eaa14a7bbfe7b2d4cd3456847774f",
+            "group_overlap": 26,
+            "kernel_diagnostics": {
+              "tau": 0.0729584,
+              "geographic_component_scale": 5.000000000000002,
+              "genetic_component_scale": 0.6352913140062635,
+              "combined_component_scale": 2.0,
+              "genetic_kernel_psd": {
+                "minimum_eigenvalue": 2.109423746760394e-14,
+                "largest_eigenvalue": 8.20879237274802,
+                "negative_eigenvalue_tolerance": 8.20879237274802e-08
+              },
+              "M0_mean_training_diagonal": 1.0,
+              "M1_mean_training_diagonal": 1.0
+            }
+          },
+          {
+            "train_accessions": 275,
+            "heldout_accessions": 137,
+            "train_ids_sha256": "9e03cc55e9ecabd587a4cc9ec18c1d61dde9fddb1d90e0ccf27364f27d5ec504",
+            "heldout_ids_sha256": "bdfe4d57a2916941c7f1c2627de396b7a46f7bdabf45610751834171e8a78812",
+            "group_overlap": 26,
+            "kernel_diagnostics": {
+              "tau": 0.0719875,
+              "geographic_component_scale": 5.0,
+              "genetic_component_scale": 0.6358051390187172,
+              "combined_component_scale": 2.0,
+              "genetic_kernel_psd": {
+                "minimum_eigenvalue": -9.007881293540646e-16,
+                "largest_eigenvalue": 7.259704129391261,
+                "negative_eigenvalue_tolerance": 7.259704129391261e-08
+              },
+              "M0_mean_training_diagonal": 0.9999999999999998,
+              "M1_mean_training_diagonal": 1.0
+            }
+          }
+        ],
+        "kernel_diagnostics": {
+          "tau": 0.0726105,
+          "geographic_component_scale": 4.999999999999999,
+          "genetic_component_scale": 0.6359451239500874,
+          "combined_component_scale": 2.0,
+          "genetic_kernel_psd": {
+            "minimum_eigenvalue": -1.6708856520608606e-14,
+            "largest_eigenvalue": 11.003078406841928,
+            "negative_eigenvalue_tolerance": 1.1003078406841928e-07
+          },
+          "M0_mean_training_diagonal": 0.9999999999999999,
+          "M1_mean_training_diagonal": 1.0
+        },
+        "model_mse": {
+          "Mean": 0.531059478627078,
+          "M0": 0.5225457804688401,
+          "M1": 0.5266337343673853
+        },
+        "M1_gain_over_M0": -0.004087953898545121
+      }
+    ],
+    "contrast": {
+      "definition": "M0 MSE minus M1 MSE; positive favors M1",
+      "mean_gain": 0.005837454386528967,
+      "context_gains": {
+        "mhi": -0.0002189393295114712,
+        "mhp": -7.442955770338906e-05,
+        "mli": 0.0037964563445722936,
+        "mlp": 0.0419631553841504,
+        "thi": 0.0004898821213753919,
+        "thp": 0.0019282626577862218,
+        "tli": 0.001175007777293056,
+        "tlp": -0.002359760305730772
+      },
+      "site_gains": {
+        "Madrid": 0.01136656071037696,
+        "Tuebingen": 0.0003083480626809743
+      },
+      "conditional_ci95": [
+        -0.003921185953775492,
+        0.01638341947668843
+      ],
+      "conditional_bootstrap": {
+        "point_estimate": 0.005837454386528967,
+        "ci95": [
+          -0.003921185953775492,
+          0.01638341947668843
+        ],
+        "draws": 2000,
+        "seed": 20261123,
+        "resampling_units": 514,
+        "unit": "accessions",
+        "conditioning": "fixed predictions, tuning, source summaries and preprocessing"
+      },
+      "M1_gain_over_mean_predictor": 0.02241027591609135
+    },
+    "numerical_gate": {
+      "role": "primary",
+      "conditions": {
+        "mean_gain_positive": true,
+        "conditional_interval_lower_positive": false,
+        "all_five_outer_folds_positive": false,
+        "both_sites_positive": true,
+        "M1_beats_mean_predictor": true
+      },
+      "passed": false
+    }
+  },
+  "geographic_sensitivity": {
+    "split": "geographic",
+    "accessions": 514,
+    "response_cells": 4112,
+    "geographic_cells": 65,
+    "cohort_ids_sha256": "781bdddcae7dd562802f76c1dea824e74a8ae2d62148bb015ceff441b017fb19",
+    "fold_assignment_sha256": "49c145af0475f3c04ac4a2a73da84a48918ba004ebbb83d0a6f0b651b96f5ed9",
+    "models": {
+      "Mean": {
+        "mse": 0.7088065528632609,
+        "context_mse": {
+          "mhi": 0.05399537289903093,
+          "mhp": 0.07329388053013072,
+          "mli": 1.0778182998913757,
+          "mlp": 3.342425076795172,
+          "thi": 0.05504747162990696,
+          "thp": 0.13406946654401472,
+          "tli": 0.2508823278984966,
+          "tlp": 0.6829205267179581
+        },
+        "site_mse": {
+          "Madrid": 1.1368831575289273,
+          "Tuebingen": 0.28072994819759417
+        }
+      },
+      "M0": {
+        "mse": 0.7031492341206113,
+        "context_mse": {
+          "mhi": 0.0532586389161037,
+          "mhp": 0.07319968974331714,
+          "mli": 1.0742829474764561,
+          "mlp": 3.309881889631437,
+          "thi": 0.053996541105728074,
+          "thp": 0.13030684686143432,
+          "tli": 0.2536398079297503,
+          "tlp": 0.6766275113006632
+        },
+        "site_mse": {
+          "Madrid": 1.1276557914418284,
+          "Tuebingen": 0.27864267679939403
+        }
+      },
+      "M1": {
+        "mse": 0.6995101279881281,
+        "context_mse": {
+          "mhi": 0.05292785207362462,
+          "mhp": 0.07267053010351994,
+          "mli": 1.0745147716924688,
+          "mlp": 3.2826539291199897,
+          "thi": 0.0533037847474267,
+          "thp": 0.12723291743259504,
+          "tli": 0.2541996202848323,
+          "tlp": 0.6785776184505679
+        },
+        "site_mse": {
+          "Madrid": 1.1206917707474007,
+          "Tuebingen": 0.27832848522885545
+        }
+      }
+    },
+    "folds": [
+      {
+        "fold": 1,
+        "train_accessions": 411,
+        "heldout_accessions": 103,
+        "train_geographic_cells": 53,
+        "heldout_geographic_cells": 12,
+        "geographic_cell_overlap": 0,
+        "train_ids_sha256": "40bb8e15ab0c0302ee7204c7e718aa16727834862a385ea829abe01124c6fbf4",
+        "heldout_ids_sha256": "ef19b4a0b3e70260e6711b76a688342ec15d15fe41a557b3580c6ee14b798cbf",
+        "training_context_means": {
+          "mhi": 16770.403279222133,
+          "mhp": 718.740630492775,
+          "mli": 1311.8471850634169,
+          "mlp": 12.943476780374429,
+          "thi": 9813.641624593143,
+          "thp": 398.157290555671,
+          "tli": 2121.8204282614224,
+          "tlp": 47.33007692906598
+        },
+        "selected_lambdas": {
+          "M0": 0.1,
+          "M1": 0.1
+        },
+        "inner_mse": {
+          "M0": {
+            "0.01": 0.6821661916855167,
+            "0.1": 0.6787923704504785,
+            "1.0": 0.6814502606396798,
+            "10.0": 0.6845793121549659
+          },
+          "M1": {
+            "0.01": 0.6785720157596985,
+            "0.1": 0.677593964923154,
+            "1.0": 0.6826374849230786,
+            "10.0": 0.6848136745917343
+          }
+        },
+        "inner_folds": [
+          {
+            "train_accessions": 274,
+            "heldout_accessions": 137,
+            "train_ids_sha256": "752654557b28cdb6a896f47feaad60f709ffb35d87b06919742a1d7e707272de",
+            "heldout_ids_sha256": "e3030c369a37ebea7301655b08b59cc5910ccd3e6a6117610d3c49faa438b114",
+            "group_overlap": 0,
+            "kernel_diagnostics": {
+              "tau": 0.0704738,
+              "geographic_component_scale": 5.000000000000001,
+              "genetic_component_scale": 0.6360624302099898,
+              "combined_component_scale": 2.0,
+              "genetic_kernel_psd": {
+                "minimum_eigenvalue": -1.1546319456101884e-14,
+                "largest_eigenvalue": 7.78499696506859,
+                "negative_eigenvalue_tolerance": 7.78499696506859e-08
+              },
+              "M0_mean_training_diagonal": 1.0,
+              "M1_mean_training_diagonal": 1.0
+            }
+          },
+          {
+            "train_accessions": 274,
+            "heldout_accessions": 137,
+            "train_ids_sha256": "9d13d9771985284b94d4eb7d8a7646e800a9fe36b57538928df0a7d548d4a828",
+            "heldout_ids_sha256": "22466e6f705e7a949701d62d21cde15a09db4136d01a79155c69b77ddf4eac16",
+            "group_overlap": 0,
+            "kernel_diagnostics": {
+              "tau": 0.0694402,
+              "geographic_component_scale": 4.999999999999999,
+              "genetic_component_scale": 0.6340649187272983,
+              "combined_component_scale": 1.9999999999999996,
+              "genetic_kernel_psd": {
+                "minimum_eigenvalue": 2.3314683517128268e-14,
+                "largest_eigenvalue": 8.548763366097297,
+                "negative_eigenvalue_tolerance": 8.548763366097297e-08
+              },
+              "M0_mean_training_diagonal": 1.0,
+              "M1_mean_training_diagonal": 1.0000000000000002
+            }
+          },
+          {
+            "train_accessions": 274,
+            "heldout_accessions": 137,
+            "train_ids_sha256": "f2dbf9acda485b2b438d91db8c24aaff525877abbd1c1cfeea017b1c7b977b75",
+            "heldout_ids_sha256": "d1bf27536357aa82821ed91ce88737e62c3d01e860b52575143ed3233f0684db",
+            "group_overlap": 0,
+            "kernel_diagnostics": {
+              "tau": 0.0727285,
+              "geographic_component_scale": 5.0,
+              "genetic_component_scale": 0.6292882541423926,
+              "combined_component_scale": 2.0,
+              "genetic_kernel_psd": {
+                "minimum_eigenvalue": -2.0428116113958104e-14,
+                "largest_eigenvalue": 8.265730934758441,
+                "negative_eigenvalue_tolerance": 8.265730934758441e-08
+              },
+              "M0_mean_training_diagonal": 1.0,
+              "M1_mean_training_diagonal": 1.0
+            }
+          }
+        ],
+        "kernel_diagnostics": {
+          "tau": 0.0711691,
+          "geographic_component_scale": 4.999999999999998,
+          "genetic_component_scale": 0.6344945726577518,
+          "combined_component_scale": 2.0,
+          "genetic_kernel_psd": {
+            "minimum_eigenvalue": 3.0108104594542273e-14,
+            "largest_eigenvalue": 9.702770335265601,
+            "negative_eigenvalue_tolerance": 9.702770335265601e-08
+          },
+          "M0_mean_training_diagonal": 0.9999999999999998,
+          "M1_mean_training_diagonal": 1.0
+        },
+        "model_mse": {
+          "Mean": 0.6854724946962718,
+          "M0": 0.6491828524604328,
+          "M1": 0.6505352584539056
+        },
+        "M1_gain_over_M0": -0.0013524059934730192
+      },
+      {
+        "fold": 2,
+        "train_accessions": 411,
+        "heldout_accessions": 103,
+        "train_geographic_cells": 53,
+        "heldout_geographic_cells": 12,
+        "geographic_cell_overlap": 0,
+        "train_ids_sha256": "c0496a76c45e27b159b4b6b460930b341f02ebb0037dfdb3071d7aaa7b5e82a6",
+        "heldout_ids_sha256": "62ca51ccc1f5b511277182219bf2a34420295353b40a9ae45d877b2ad5ff43a2",
+        "training_context_means": {
+          "mhi": 16830.976452211376,
+          "mhp": 719.7313113357019,
+          "mli": 1391.6853238514448,
+          "mlp": 13.16612137423493,
+          "thi": 9902.456125448374,
+          "thp": 408.96497603512154,
+          "tli": 2144.6859890590204,
+          "tlp": 48.88198163042851
+        },
+        "selected_lambdas": {
+          "M0": 0.1,
+          "M1": 0.1
+        },
+        "inner_mse": {
+          "M0": {
+            "0.01": 0.7046365364252081,
+            "0.1": 0.6953076564478451,
+            "1.0": 0.706185817512427,
+            "10.0": 0.7166526382459534
+          },
+          "M1": {
+            "0.01": 0.6940095188973591,
+            "0.1": 0.6925219256677491,
+            "1.0": 0.7101977775918472,
+            "10.0": 0.7173954004234071
+          }
+        },
+        "inner_folds": [
+          {
+            "train_accessions": 274,
+            "heldout_accessions": 137,
+            "train_ids_sha256": "fa3e1975677fad7b09312b5d688224d6f14b3066b744d180623d2a81c3031d44",
+            "heldout_ids_sha256": "8ac2bf8e5ec21615b7e453a50f8c414a8f7bb1f4a6d03b6d5beaee10b98e4516",
+            "group_overlap": 0,
+            "kernel_diagnostics": {
+              "tau": 0.071061,
+              "geographic_component_scale": 5.0,
+              "genetic_component_scale": 0.634847402156789,
+              "combined_component_scale": 2.0,
+              "genetic_kernel_psd": {
+                "minimum_eigenvalue": -1.0218388635241382e-14,
+                "largest_eigenvalue": 9.549485824431514,
+                "negative_eigenvalue_tolerance": 9.549485824431514e-08
+              },
+              "M0_mean_training_diagonal": 1.0,
+              "M1_mean_training_diagonal": 1.0
+            }
+          },
+          {
+            "train_accessions": 274,
+            "heldout_accessions": 137,
+            "train_ids_sha256": "36647b8f7c4995bce7f66f75a2643fb02554f2ce77dc1fcf0a5b92f6977eba72",
+            "heldout_ids_sha256": "3a3c215243d874a9582b3c10c7fe5d7016454d2c0f26891e15a7e15b23689b2a",
+            "group_overlap": 0,
+            "kernel_diagnostics": {
+              "tau": 0.0738427,
+              "geographic_component_scale": 5.0000000000000036,
+              "genetic_component_scale": 0.6320564683022756,
+              "combined_component_scale": 2.0,
+              "genetic_kernel_psd": {
+                "minimum_eigenvalue": -3.2838023967967544e-15,
+                "largest_eigenvalue": 10.156578549791721,
+                "negative_eigenvalue_tolerance": 1.0156578549791721e-07
+              },
+              "M0_mean_training_diagonal": 1.0,
+              "M1_mean_training_diagonal": 1.0
+            }
+          },
+          {
+            "train_accessions": 274,
+            "heldout_accessions": 137,
+            "train_ids_sha256": "747d25038dbc6f1699417ec8251201b8213da0f7876aaaed3d327ca7f122a88f",
+            "heldout_ids_sha256": "898fe322372de729ef562b126b50d6371ecab3a8a0574c54e14cf938119a4af0",
+            "group_overlap": 0,
+            "kernel_diagnostics": {
+              "tau": 0.0738997,
+              "geographic_component_scale": 4.999999999999997,
+              "genetic_component_scale": 0.6335153355801335,
+              "combined_component_scale": 2.0,
+              "genetic_kernel_psd": {
+                "minimum_eigenvalue": -2.8206603719382883e-15,
+                "largest_eigenvalue": 8.481456164711789,
+                "negative_eigenvalue_tolerance": 8.481456164711789e-08
+              },
+              "M0_mean_training_diagonal": 1.0,
+              "M1_mean_training_diagonal": 1.0
+            }
+          }
+        ],
+        "kernel_diagnostics": {
+          "tau": 0.0730324,
+          "geographic_component_scale": 5.0,
+          "genetic_component_scale": 0.6351340795486403,
+          "combined_component_scale": 2.0,
+          "genetic_kernel_psd": {
+            "minimum_eigenvalue": 7.914926016759392e-15,
+            "largest_eigenvalue": 12.151477812298484,
+            "negative_eigenvalue_tolerance": 1.2151477812298484e-07
+          },
+          "M0_mean_training_diagonal": 1.0,
+          "M1_mean_training_diagonal": 1.0
+        },
+        "model_mse": {
+          "Mean": 0.544943137181216,
+          "M0": 0.5572593672801194,
+          "M1": 0.5509366476166536
+        },
+        "M1_gain_over_M0": 0.0063227196634657685
+      },
+      {
+        "fold": 3,
+        "train_accessions": 411,
+        "heldout_accessions": 103,
+        "train_geographic_cells": 51,
+        "heldout_geographic_cells": 14,
+        "geographic_cell_overlap": 0,
+        "train_ids_sha256": "8152784038fdee226f4f8946503d29521538da08ce424d532643ad076789b0be",
+        "heldout_ids_sha256": "b6177d1af34d884b356d4392ed20c55b190e2d9c6c16caa8c123cef5aa459b7c",
+        "training_context_means": {
+          "mhi": 16689.53441678635,
+          "mhp": 706.5313216758551,
+          "mli": 1351.3802922249076,
+          "mlp": 12.154818843828066,
+          "thi": 9537.942245379385,
+          "thp": 378.8365003477945,
+          "tli": 2136.6998183559494,
+          "tlp": 50.37637795659506
+        },
+        "selected_lambdas": {
+          "M0": 1.0,
+          "M1": 0.1
+        },
+        "inner_mse": {
+          "M0": {
+            "0.01": 0.7832999944065347,
+            "0.1": 0.7690465506496069,
+            "1.0": 0.7668971827694272,
+            "10.0": 0.7713661327050414
+          },
+          "M1": {
+            "0.01": 0.7664300364193981,
+            "0.1": 0.761351143163654,
+            "1.0": 0.7679146715494267,
+            "10.0": 0.7716852233589624
+          }
+        },
+        "inner_folds": [
+          {
+            "train_accessions": 274,
+            "heldout_accessions": 137,
+            "train_ids_sha256": "45a4178b653b2ec84f57fc356ceda1542ae16216edc758a02a6e9aa7c378b6fe",
+            "heldout_ids_sha256": "095db1789d6e91a356cfcb354e61f3a76736c34a4ab6e2ef1d9bade17758177f",
+            "group_overlap": 0,
+            "kernel_diagnostics": {
+              "tau": 0.0686153,
+              "geographic_component_scale": 4.999999999999999,
+              "genetic_component_scale": 0.629751488975875,
+              "combined_component_scale": 2.0,
+              "genetic_kernel_psd": {
+                "minimum_eigenvalue": 5.513962217895776e-16,
+                "largest_eigenvalue": 9.06134809009835,
+                "negative_eigenvalue_tolerance": 9.06134809009835e-08
+              },
+              "M0_mean_training_diagonal": 1.0,
+              "M1_mean_training_diagonal": 1.0
+            }
+          },
+          {
+            "train_accessions": 274,
+            "heldout_accessions": 137,
+            "train_ids_sha256": "e846d77a1d7ef72e9a31e78989572fb31bd3b96bdc5b195a049156be4ae5aa9f",
+            "heldout_ids_sha256": "8b84aef21e2bfa7847d03b5bfd1a22a6f2fe4cc042631f6bbcfa3c46b3df7327",
+            "group_overlap": 0,
+            "kernel_diagnostics": {
+              "tau": 0.0720204,
+              "geographic_component_scale": 5.0,
+              "genetic_component_scale": 0.6321728387239899,
+              "combined_component_scale": 2.0,
+              "genetic_kernel_psd": {
+                "minimum_eigenvalue": -3.0650937517251453e-15,
+                "largest_eigenvalue": 12.218878130825136,
+                "negative_eigenvalue_tolerance": 1.2218878130825137e-07
+              },
+              "M0_mean_training_diagonal": 0.9999999999999998,
+              "M1_mean_training_diagonal": 1.0
+            }
+          },
+          {
+            "train_accessions": 274,
+            "heldout_accessions": 137,
+            "train_ids_sha256": "e3a97edae0f95d15260f2505926e8ec07698234ae834862358e7c5a7337c7a05",
+            "heldout_ids_sha256": "f13522e194a8f2db7367d4aa38e574df72b1a02874cd3bcd3f8ccc6f349c54a9",
+            "group_overlap": 0,
+            "kernel_diagnostics": {
+              "tau": 0.0736274,
+              "geographic_component_scale": 5.000000000000003,
+              "genetic_component_scale": 0.630462034087861,
+              "combined_component_scale": 2.0,
+              "genetic_kernel_psd": {
+                "minimum_eigenvalue": 1.7094797382408702e-14,
+                "largest_eigenvalue": 8.49549271183826,
+                "negative_eigenvalue_tolerance": 8.49549271183826e-08
+              },
+              "M0_mean_training_diagonal": 1.0,
+              "M1_mean_training_diagonal": 1.0
+            }
+          }
+        ],
+        "kernel_diagnostics": {
+          "tau": 0.0717018,
+          "geographic_component_scale": 5.0,
+          "genetic_component_scale": 0.6325372305133649,
+          "combined_component_scale": 2.0,
+          "genetic_kernel_psd": {
+            "minimum_eigenvalue": 5.773009235115954e-15,
+            "largest_eigenvalue": 13.076046379963639,
+            "negative_eigenvalue_tolerance": 1.307604637996364e-07
+          },
+          "M0_mean_training_diagonal": 1.0,
+          "M1_mean_training_diagonal": 1.0
+        },
+        "model_mse": {
+          "Mean": 0.619090793818622,
+          "M0": 0.6112109330898168,
+          "M1": 0.5988046270577959
+        },
+        "M1_gain_over_M0": 0.012406306032020777
+      },
+      {
+        "fold": 4,
+        "train_accessions": 411,
+        "heldout_accessions": 103,
+        "train_geographic_cells": 51,
+        "heldout_geographic_cells": 14,
+        "geographic_cell_overlap": 0,
+        "train_ids_sha256": "659145315582adcae9569a0fa26cb7cfbe9762f85885d2c7ee084f0fa0c23fc7",
+        "heldout_ids_sha256": "a8107d8f78fad6c42cb19ea59da5610b290fa4c0f8919eb186819eb84b79517c",
+        "training_context_means": {
+          "mhi": 16723.795334361315,
+          "mhp": 717.3939263431844,
+          "mli": 1303.752787451573,
+          "mlp": 12.112097712276292,
+          "thi": 9685.467704272713,
+          "thp": 397.0068229678687,
+          "tli": 2105.6520950742856,
+          "tlp": 46.56357148324144
+        },
+        "selected_lambdas": {
+          "M0": 1.0,
+          "M1": 0.1
+        },
+        "inner_mse": {
+          "M0": {
+            "0.01": 0.7962401539852512,
+            "0.1": 0.7512632021153441,
+            "1.0": 0.7338725224191107,
+            "10.0": 0.7386228432996752
+          },
+          "M1": {
+            "0.01": 0.7646389512324024,
+            "0.1": 0.7345210297084026,
+            "1.0": 0.734599876287014,
+            "10.0": 0.7389912662505987
+          }
+        },
+        "inner_folds": [
+          {
+            "train_accessions": 274,
+            "heldout_accessions": 137,
+            "train_ids_sha256": "861c18d356727d6ea0efea8e44baece3dd209145e7367f7335964246a7fed2b8",
+            "heldout_ids_sha256": "e0516b24026ae287aae95bbacd3aa0a2ae120e35b8d3eb183ede8e5fa5c9d9ce",
+            "group_overlap": 0,
+            "kernel_diagnostics": {
+              "tau": 0.0705757,
+              "geographic_component_scale": 5.000000000000003,
+              "genetic_component_scale": 0.6346323088852804,
+              "combined_component_scale": 2.0,
+              "genetic_kernel_psd": {
+                "minimum_eigenvalue": -1.3733798997934055e-15,
+                "largest_eigenvalue": 9.86595464804466,
+                "negative_eigenvalue_tolerance": 9.865954648044661e-08
+              },
+              "M0_mean_training_diagonal": 1.0,
+              "M1_mean_training_diagonal": 1.0
+            }
+          },
+          {
+            "train_accessions": 274,
+            "heldout_accessions": 137,
+            "train_ids_sha256": "620dad8c4d97781ccb15bc8dd79ee2813b004e5037a8e28fcc9eda647e2a0c1c",
+            "heldout_ids_sha256": "9f9545b5fbf6f9ffe9382bee05fa4b34c364edff8d8423e2edea11bd31465013",
+            "group_overlap": 0,
+            "kernel_diagnostics": {
+              "tau": 0.0728316,
+              "geographic_component_scale": 5.0,
+              "genetic_component_scale": 0.6368452982753392,
+              "combined_component_scale": 1.9999999999999996,
+              "genetic_kernel_psd": {
+                "minimum_eigenvalue": -9.228888134390698e-15,
+                "largest_eigenvalue": 8.666214664628422,
+                "negative_eigenvalue_tolerance": 8.666214664628422e-08
+              },
+              "M0_mean_training_diagonal": 1.0,
+              "M1_mean_training_diagonal": 1.0
+            }
+          },
+          {
+            "train_accessions": 274,
+            "heldout_accessions": 137,
+            "train_ids_sha256": "8843674c013e71763f658fb1d4a2747cfe92af4fd10a571481e0b88b055c96c6",
+            "heldout_ids_sha256": "fc9987423b866941fb48a9c4e9dfb53ef92d62e8772460194be72a93b266277f",
+            "group_overlap": 0,
+            "kernel_diagnostics": {
+              "tau": 0.0736488,
+              "geographic_component_scale": 5.000000000000002,
+              "genetic_component_scale": 0.6327478183488203,
+              "combined_component_scale": 2.0,
+              "genetic_kernel_psd": {
+                "minimum_eigenvalue": 1.5251688800788075e-14,
+                "largest_eigenvalue": 12.055390531006239,
+                "negative_eigenvalue_tolerance": 1.205539053100624e-07
+              },
+              "M0_mean_training_diagonal": 1.0,
+              "M1_mean_training_diagonal": 1.0
+            }
+          }
+        ],
+        "kernel_diagnostics": {
+          "tau": 0.072592,
+          "geographic_component_scale": 4.999999999999998,
+          "genetic_component_scale": 0.6359619507680857,
+          "combined_component_scale": 2.0000000000000004,
+          "genetic_kernel_psd": {
+            "minimum_eigenvalue": -2.3936413104506607e-14,
+            "largest_eigenvalue": 13.789220290760548,
+            "negative_eigenvalue_tolerance": 1.3789220290760548e-07
+          },
+          "M0_mean_training_diagonal": 1.0,
+          "M1_mean_training_diagonal": 0.9999999999999998
+        },
+        "model_mse": {
+          "Mean": 0.8503100242687102,
+          "M0": 0.8501174872056314,
+          "M1": 0.8530856164308849
+        },
+        "M1_gain_over_M0": -0.0029681292252536147
+      },
+      {
+        "fold": 5,
+        "train_accessions": 412,
+        "heldout_accessions": 102,
+        "train_geographic_cells": 52,
+        "heldout_geographic_cells": 13,
+        "geographic_cell_overlap": 0,
+        "train_ids_sha256": "6307ce8f1e945332b27c3262494ead010272e8a91070acd110311a0dcb0aafc1",
+        "heldout_ids_sha256": "1aef8ae67b657d8c6397d4dd965be59c5fb62e30f57d62f63e6ff8cb110baa88",
+        "training_context_means": {
+          "mhi": 16799.261288909656,
+          "mhp": 704.3181617793268,
+          "mli": 1299.6534155385837,
+          "mlp": 12.394602638675835,
+          "thi": 9623.264811534962,
+          "thp": 391.10902770302954,
+          "tli": 2073.5519955382024,
+          "tlp": 48.17963046041939
+        },
+        "selected_lambdas": {
+          "M0": 0.1,
+          "M1": 0.01
+        },
+        "inner_mse": {
+          "M0": {
+            "0.01": 0.6989450998629925,
+            "0.1": 0.6918224211088115,
+            "1.0": 0.6971313386658956,
+            "10.0": 0.7022093207475734
+          },
+          "M1": {
+            "0.01": 0.6842455124451904,
+            "0.1": 0.6873658497035279,
+            "1.0": 0.6986275750111928,
+            "10.0": 0.7025111956505797
+          }
+        },
+        "inner_folds": [
+          {
+            "train_accessions": 274,
+            "heldout_accessions": 138,
+            "train_ids_sha256": "6700e23ad247c29e5e1b531497bbb5a4573480bc3640c98f7eb68677f3a0f7e2",
+            "heldout_ids_sha256": "259efea6dd368e903477141313e9b6ce9113061a2a0fee5bcd2cbd8c775e0627",
+            "group_overlap": 0,
+            "kernel_diagnostics": {
+              "tau": 0.0702738,
+              "geographic_component_scale": 5.0000000000000036,
+              "genetic_component_scale": 0.6350087522930775,
+              "combined_component_scale": 2.0,
+              "genetic_kernel_psd": {
+                "minimum_eigenvalue": 2.220446049250313e-16,
+                "largest_eigenvalue": 8.96196549039486,
+                "negative_eigenvalue_tolerance": 8.96196549039486e-08
+              },
+              "M0_mean_training_diagonal": 0.9999999999999998,
+              "M1_mean_training_diagonal": 1.0
+            }
+          },
+          {
+            "train_accessions": 275,
+            "heldout_accessions": 137,
+            "train_ids_sha256": "195292efd2c092a4692566537170054e3b99ffb8e275d969f37d38c8f3ed2c67",
+            "heldout_ids_sha256": "a369ba954c85e46531f5e645e20afb1edc434f32b6127380becea43eb41126da",
+            "group_overlap": 0,
+            "kernel_diagnostics": {
+              "tau": 0.0734014,
+              "geographic_component_scale": 5.000000000000002,
+              "genetic_component_scale": 0.6330090978776822,
+              "combined_component_scale": 2.0,
+              "genetic_kernel_psd": {
+                "minimum_eigenvalue": 1.2933347492534007e-16,
+                "largest_eigenvalue": 10.086183354330567,
+                "negative_eigenvalue_tolerance": 1.0086183354330567e-07
+              },
+              "M0_mean_training_diagonal": 1.0,
+              "M1_mean_training_diagonal": 1.0
+            }
+          },
+          {
+            "train_accessions": 275,
+            "heldout_accessions": 137,
+            "train_ids_sha256": "8c0aa47e1f2c702d961255c45e2a3502f10190261750c879b551b5ca99b30790",
+            "heldout_ids_sha256": "6b3315d137684400ed46186eef333b4dc7df892835e8da47ec11852133d180e3",
+            "group_overlap": 0,
+            "kernel_diagnostics": {
+              "tau": 0.0731516,
+              "geographic_component_scale": 5.0,
+              "genetic_component_scale": 0.6335977873193654,
+              "combined_component_scale": 2.0,
+              "genetic_kernel_psd": {
+                "minimum_eigenvalue": 2.563682850083015e-14,
+                "largest_eigenvalue": 8.497955012197865,
+                "negative_eigenvalue_tolerance": 8.497955012197865e-08
+              },
+              "M0_mean_training_diagonal": 1.0,
+              "M1_mean_training_diagonal": 1.0
+            }
+          }
+        ],
+        "kernel_diagnostics": {
+          "tau": 0.07237235,
+          "geographic_component_scale": 4.999999999999998,
+          "genetic_component_scale": 0.6355923760059313,
+          "combined_component_scale": 2.0,
+          "genetic_kernel_psd": {
+            "minimum_eigenvalue": -1.492841902936938e-14,
+            "largest_eigenvalue": 11.406858673331561,
+            "negative_eigenvalue_tolerance": 1.140685867333156e-07
+          },
+          "M0_mean_training_diagonal": 1.0,
+          "M1_mean_training_diagonal": 1.0
+        },
+        "model_mse": {
+          "Mean": 0.8455438610327405,
+          "M0": 0.8493953962184918,
+          "M1": 0.8456069056989812
+        },
+        "M1_gain_over_M0": 0.0037884905195105273
+      }
+    ],
+    "contrast": {
+      "definition": "M0 MSE minus M1 MSE; positive favors M1",
+      "mean_gain": 0.003639106132483161,
+      "context_gains": {
+        "mhi": 0.0003307868424790731,
+        "mhp": 0.0005291596397972102,
+        "mli": -0.00023182421601259455,
+        "mlp": 0.02722796051144738,
+        "thi": 0.0006927563583013683,
+        "thp": 0.0030739294288393065,
+        "tli": -0.0005598123550819946,
+        "tlp": -0.0019501071499044623
+      },
+      "site_gains": {
+        "Madrid": 0.0069640206944277675,
+        "Tuebingen": 0.00031419157053855473
+      },
+      "conditional_ci95": [
+        -0.0034422937816106954,
+        0.011120237499747545
+      ],
+      "conditional_bootstrap": {
+        "point_estimate": 0.003639106132483161,
+        "ci95": [
+          -0.0034422937816106954,
+          0.011120237499747545
+        ],
+        "draws": 2000,
+        "seed": 20261123,
+        "resampling_units": 65,
+        "unit": "five_degree_geographic_cells",
+        "conditioning": "fixed predictions, tuning, source summaries and preprocessing"
+      },
+      "M1_gain_over_mean_predictor": 0.009296424875132825
+    },
+    "numerical_gate": {
+      "role": "sensitivity_only",
+      "conditions": {
+        "mean_gain_positive": true,
+        "conditional_interval_lower_positive": false,
+        "all_five_outer_folds_positive": false,
+        "both_sites_positive": true,
+        "M1_beats_mean_predictor": true
+      },
+      "passed": false
+    }
+  },
+  "interpretation_limits": [
+    "Conditional on upstream measurement, calibration and published aggregation.",
+    "Accession holdout does not establish transfer to new biological populations or environments.",
+    "Genetic gain is relative to the specified quadratic-coordinate predictor.",
+    "Bootstrap intervals hold fits and targets fixed and do not include refitting uncertainty.",
+    "No treatment-policy value, causal-variant inference or exact MLTR theorem validation."
+  ]
+}
