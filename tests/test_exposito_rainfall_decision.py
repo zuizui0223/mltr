@@ -122,7 +122,7 @@ class RainfallChoiceTests(unittest.TestCase):
         with mock.patch.object(m,"COHORT_IDS_SHA256",cohort_sha):
             result=m.evaluate_policy(source,"accession",fit_function=stub_fitter_checked(log))
         self.assertEqual(len(log),5)
-        self.assertEqual(result["n_site_density_decisions"],80)
+        self.assertEqual(result["n_site_density_decisions"],514*4)
         self.assertTrue(result["numerical_gate"]["passed"])
         self.assertGreater(result["M1_minus_M0_mean_realized_estimated_fitness"],0)
         self.assertGreater(result["n_changed_accession_stratum_decisions"],0)
@@ -134,7 +134,7 @@ class RainfallChoiceTests(unittest.TestCase):
         log=[]
         with mock.patch.object(m,"COHORT_IDS_SHA256",cohort_sha):
             result=m.evaluate_policy(source,"geographic",fit_function=stub_fitter_checked(log))
-        self.assertEqual(result["n_site_density_decisions"],100)
+        self.assertEqual(result["n_site_density_decisions"],514*4)
         self.assertEqual(result["split"],"geographic")
         self.assertEqual(len(log),5)
         self.assertEqual(result["conditional_interval"]["unit"],"five_degree_origin_cell")
