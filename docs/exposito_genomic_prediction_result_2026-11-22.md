@@ -71,6 +71,8 @@ The [comparison audit](results/exposito_genomic_replay_comparison_2026-11-22.jso
 
 All **30 new synthetic tests** pass: ten source-admission tests and twenty prediction/CLI tests. The full local project suite passes **137 tests and 16 subtests**, with one deprecation warning from the installed anyio pytest plugin. The tests include ID-axis alignment, preserved zeros, failed hash admission, held-out-target isolation, nested geographic grouping, kernel scaling and a hand-derived intercept/ridge solution. A separate review found no material scientific or reporting error. The dedicated CI workflow runs these empirical tests without downloading original study records.
 
+Initial core-only CI failed during source-test collection because NumPy is intentionally absent from the theorem package's minimal environment. The source test now follows the existing optional-dependency skip convention; the dedicated empirical job installs NumPy and executes all 30 new tests. Rechecking an isolated environment with no NumPy gives **93 passed, five optional modules skipped and two subtests passed**. The full numerical environment still gives **137 passed and 16 subtests passed**. This integration correction changes test collection only; source preparation, prediction code, frozen protocol and numerical results are unchanged.
+
 ## Reproduce
 
 Use an isolated environment with Python 3.11 or 3.12, NumPy, openpyxl and rdata. The recorded execution used Python 3.12.14, NumPy 2.3.5, openpyxl 3.1.5 and rdata 1.1.0. Obtain the two originals using the source URLs in `SOURCE_FILES` in the preparation script. Keep them and the prepared array file outside the repository.

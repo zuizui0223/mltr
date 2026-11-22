@@ -10,7 +10,10 @@ import tempfile
 import unittest
 from pathlib import Path
 
-import numpy as np
+try:
+    import numpy as np
+except ImportError:
+    raise unittest.SkipTest("NumPy unavailable; dedicated empirical CI installs it")
 
 MODULE_PATH = Path(__file__).resolve().parents[1] / "scripts" / "prepare_exposito_genomic_fitness.py"
 source = None
