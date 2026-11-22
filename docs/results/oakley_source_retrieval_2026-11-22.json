@@ -1,0 +1,102 @@
+{
+  "dataset_doi": "10.5061/dryad.g1jwstqw6",
+  "dataset_id": 109134,
+  "version_id": 238395,
+  "recorded_utc": "2026-11-22T01:05:47.223481+00:00",
+  "state": "BLOCKED_DOWNLOAD_AUTHENTICATION",
+  "metadata_payloads": {
+    "dataset_api.json": {
+      "source_url": "https://datadryad.org/api/v2/datasets/doi%3A10.5061%2Fdryad.g1jwstqw6",
+      "bytes": 4657,
+      "sha256": "838e2d83d6652275d52972163a03577a903402a33e19206c3b61c0cc1b6be8f2",
+      "retention": "source metadata checked during 2026-11-22 audit; original API URL recorded"
+    },
+    "version_api.json": {
+      "source_url": "https://datadryad.org/api/v2/versions/238395",
+      "bytes": 4578,
+      "sha256": "d8dac673f1a8f09db4c9f56c593bdb5eafe8d1a6e2d499c89efdc21bdfc5a170",
+      "retention": "source metadata checked during 2026-11-22 audit; original API URL recorded"
+    },
+    "files_api.json": {
+      "source_url": "https://datadryad.org/api/v2/versions/238395/files",
+      "bytes": 3943,
+      "sha256": "69a7e475f73d1d76de023a80e1c4837b71fe22e6f0ee1b3c36c324f4828fe084",
+      "retention": "source metadata checked during 2026-11-22 audit; original API URL recorded"
+    }
+  },
+  "downloaded_original_files": 0,
+  "expected_files": [
+    {
+      "filename": "geno.csv",
+      "file_id": 2330061,
+      "expected_bytes": 290187,
+      "expected_digest": "ab790c17d37262a07283cb0973cd92fb8d9903fe65eaa49db65a40bb6e92d8c8",
+      "expected_digest_type": "sha-256",
+      "download_url": "https://datadryad.org/api/v2/files/2330061/download",
+      "retrieval_status": "HTTP401",
+      "actual_bytes": null,
+      "actual_sha256": null
+    },
+    {
+      "filename": "parentalecotypes.csv",
+      "file_id": 2330062,
+      "expected_bytes": 794,
+      "expected_digest": "22b2e92cfde2b02b2159fb69a34d969a0a98b4fc7bcbb2a123b15c215319284d",
+      "expected_digest_type": "sha-256",
+      "download_url": "https://datadryad.org/api/v2/files/2330062/download",
+      "retrieval_status": "not_attempted_after_same_endpoint_auth_requirement_confirmed",
+      "actual_bytes": null,
+      "actual_sha256": null
+    },
+    {
+      "filename": "pheno_fitness_components.csv",
+      "file_id": 2330065,
+      "expected_bytes": 308519,
+      "expected_digest": "8b1f54b4e21be92546be51b9db9f62411c17064f4542da834dd02fd58549412a",
+      "expected_digest_type": "sha-256",
+      "download_url": "https://datadryad.org/api/v2/files/2330065/download",
+      "retrieval_status": "not_attempted_after_same_endpoint_auth_requirement_confirmed",
+      "actual_bytes": null,
+      "actual_sha256": null
+    },
+    {
+      "filename": "pheno_fitness.csv",
+      "file_id": 2330063,
+      "expected_bytes": 172502,
+      "expected_digest": "71cf72e37f258142fec0646846039a67ccaaac20e63b6a1e8ba111c34cf740d2",
+      "expected_digest_type": "sha-256",
+      "download_url": "https://datadryad.org/api/v2/files/2330063/download",
+      "retrieval_status": "HTTP401",
+      "actual_bytes": null,
+      "actual_sha256": null
+    },
+    {
+      "filename": "README.md",
+      "file_id": 2330066,
+      "expected_bytes": 2607,
+      "expected_digest": "94beed97086d0c7c67125d605d0f34fffabb86c4a2d59c128c595aabee1d84e8",
+      "expected_digest_type": "sha-256",
+      "download_url": "https://datadryad.org/api/v2/files/2330066/download",
+      "retrieval_status": "HTTP401",
+      "actual_bytes": null,
+      "actual_sha256": null
+    },
+    {
+      "filename": "sampleRqtlscript_F8yrMean_SW_lsmNFruit.R",
+      "file_id": 2330064,
+      "expected_bytes": 7944,
+      "expected_digest": "94fb8c1558df5bfe73c26bb15e31c00cd48680f1cc14fa3e871031d008b8912c",
+      "expected_digest_type": "sha-256",
+      "download_url": "https://datadryad.org/api/v2/files/2330064/download",
+      "retrieval_status": "not_attempted_after_same_endpoint_auth_requirement_confirmed",
+      "actual_bytes": null,
+      "actual_sha256": null
+    }
+  ],
+  "documented_requirement": "https://github.com/datadryad/dryad-app/blob/main/documentation/apis/api_accounts.md",
+  "observations": [
+    "Public HTML download /downloads/file_stream/2330066 returned HTTP403.",
+    "Public API download /api/v2/files/2330066/download, /2330061/download, /2330063/download each returned HTTP401.",
+    "Dryad official API accounts documentation explicitly requires a token for downloading files. No credential lookup, login, bypass, or model fitting was attempted."
+  ]
+}

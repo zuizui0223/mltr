@@ -2,7 +2,7 @@
 
 **Status:** cross-repository evidence audit and prospective test protocol; **not** a theorem, genomic confirmation of MLTR, or a modification to the canonical Paper A manuscript.
 
-**Current empirical synthesis updated 2026-11-21:** the original Arabidopsis estimated-seed extension and unchanged-code replay are included below. Its known-accession rack holdouts are a different validation question from the out-of-lineage genomic-response proposal.
+**Current empirical synthesis updated 2026-11-22:** the original Arabidopsis estimated-seed extension, unchanged-code replay, and independent Exposito-Alonso genomic prediction benchmark are included below. Known-accession rack holdouts and within-panel accession/geographic-cell holdouts are distinct from the full out-of-lineage genomic-response proposal.
 
 ## Question
 
@@ -74,7 +74,15 @@ The mean realized action-choice difference is **+5.6416 estimated seeds per comp
 
 The 2026-11-21 [production replay](arabidopsis_seed_replay_and_claim_audit_2026-11-21.md) reproduces the archived estimates to reported numerical precision using the unchanged merged code and exact source hashes. This adds computational verification, not independent evidence about biological effects or treatment value.
 
-## Current decision — 2026-11-21
+## Independent Exposito-Alonso genomic prediction benchmark — 2026-11-22
+
+The [new source-pinned benchmark](exposito_genomic_prediction_result_2026-11-22.md) links author-published genetic distances to final published fitness summaries for **514 accessions × eight site/rainfall/density contexts (4,112 summaries)**. The protocol was committed before predictive scoring. It holds each accession's full response vector out together, with training-only preprocessing and nested tuning; a prespecified sensitivity holds out whole five-degree geographic cells. This is an independent experiment relative to the earlier Arabidopsis/clover datasets, but a reanalysis of published data, not a new genomic-selection discovery.
+
+Primary MSE is **0.716511** for the training-mean predictor, **0.699939** for quadratic collection coordinates (M0), and **0.694101** after adding genetic distance (M1). The M1 increment is **+0.005837** train-relative squared-error units (0.834% of M0 loss), conditional 95% interval **[−0.003921,+0.016383]**, with only **3/5 folds positive**. The frozen primary stability gate **fails**. Geographic-cell sensitivity also fails: gain **+0.003639**, conditional interval **[−0.003442,+0.011120]**, **3/5 folds positive**. Neither result establishes a stable genomic increment under this benchmark; neither shows an absence of biological genetic effects.
+
+The targets are image/calibration-derived published summaries. Repeated physical-pot keys have differing harvest-image records; no silent deduplication or independent plant-level reconstruction was performed. Resampling holds published targets and fitted predictors fixed. The primary is within-panel accession prediction, not an unseen biological population or new-environment test. No action policy or exact MLTR source–target relation was evaluated. [Frozen protocol](exposito_genomic_prediction_protocol_2026-11-22.md) · [aggregate results](results/exposito_genomic_prediction_2026-11-22.json).
+
+## Current decision — 2026-11-22
 
 | Evidence question | Current permitted conclusion |
 | --- | --- |
@@ -82,6 +90,7 @@ The 2026-11-21 [production replay](arabidopsis_seed_replay_and_claim_audit_2026-
 | Do the five clover haploblocks improve the frozen out-of-origin-population fitness prediction? | **Not supported** under the specified garden/geography baseline. Preserve this result without tuning further variants to obtain a positive outcome. |
 | Does finer Arabidopsis accession×action response improve prediction? | Pooled fitted errors can improve, but the **primary centered raw estimated-seed gate fails**; the exploratory sensitivity is scale-dependent and conditional on in-study calibration. |
 | Does accession-specific Arabidopsis treatment selection improve realized output? | **Not supported** for the evaluated fruit or estimated-seed policies. The seed analysis also does not establish harm. |
+| Does the independent Exposito genetic-distance representation improve held-out fitness prediction over quadratic coordinates? | A small positive pooled gain is observed, but **stable improvement is not established**: the primary and geographic sensitivity both have intervals crossing zero and only 3/5 positive folds. This conclusion is conditional on the published summaries and specified predictors. |
 | Has exact MLTR decision sufficiency or historical transport been tested? | **Not tested**: declared finite source–target relations and the required action-conditioned law are absent. The Arabidopsis extension does not satisfy the proposed out-of-lineage genomic-response test. |
 
 The empirical distinction is between evidence for biological state structure, performance of a specified predictor and value of a specified action rule. They require separate observations and comparisons; a positive result for one does not authorize the other claims. This synthesis preserves the frozen models, thresholds and biological conclusions.

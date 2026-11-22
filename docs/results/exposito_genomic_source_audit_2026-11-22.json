@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "n_accessions": 514,
+  "n_contexts": 8,
+  "n_response_cells": 4112,
+  "contexts": [
+    "mhi",
+    "mhp",
+    "mli",
+    "mlp",
+    "thi",
+    "thp",
+    "tli",
+    "tlp"
+  ],
+  "cohort_ids_sha256": "781bdddcae7dd562802f76c1dea824e74a8ae2d62148bb015ceff441b017fb19",
+  "source_record_counts": {
+    "D2_accessions": 517,
+    "D4_summaries": 4135,
+    "genetic_distance_accessions": 1135,
+    "D2_with_genetic_distance": 515,
+    "D2_with_complete_fitness_contexts": 516
+  },
+  "excluded_accessions": [
+    {
+      "id": "9098",
+      "name": "Istisu-8",
+      "reasons": [
+        "missing_genetic_distance"
+      ],
+      "missing_contexts": []
+    },
+    {
+      "id": "9918",
+      "name": "SAUL-24",
+      "reasons": [
+        "incomplete_contexts"
+      ],
+      "missing_contexts": [
+        "mlp"
+      ]
+    },
+    {
+      "id": "9992",
+      "name": "Dog-4",
+      "reasons": [
+        "missing_genetic_distance"
+      ],
+      "missing_contexts": []
+    }
+  ],
+  "zero_response_cells_preserved": 518,
+  "distance_qc": {
+    "source_shape": [
+      1135,
+      1135
+    ],
+    "row_column_source_order_identical": true,
+    "aligned_by_explicit_ids": true,
+    "finite_nonnegative": true,
+    "exactly_symmetric": true,
+    "diagonal_zero": true,
+    "admitted_offdiagonal_zero_pairs": 0
+  },
+  "array_contract": {
+    "keys": [
+      "ids",
+      "coords",
+      "distance",
+      "fitness",
+      "contexts"
+    ],
+    "id_order": "numeric ascending",
+    "coordinate_order": [
+      "latitude",
+      "longitude"
+    ],
+    "coordinate_source": "final D2_accessions",
+    "fitness_source": "untransformed final D4_datsummary Fitness",
+    "distance_source": "author R object kkk, explicit ID axes"
+  },
+  "processing": {
+    "response_transformation": false,
+    "imputation": false,
+    "D3_deduplication": false,
+    "model_fitting": false
+  },
+  "source_files": [
+    {
+      "name": "S_DATASETS.xlsx",
+      "bytes": 3725000,
+      "sha256": "032045433e3ace035977c11ff5d0ae8731335e8210c6cee14d64575ae0bebd05",
+      "url": "https://ndownloader.figshare.com/files/17131214"
+    },
+    {
+      "name": "ibs1001g.rda",
+      "bytes": 8947948,
+      "sha256": "906724ce620a30a8c199ade07c5ffaa27aa7b1a91e8229f63b27e882547a70ad",
+      "url": "https://raw.githubusercontent.com/MoisesExpositoAlonso/dryAR/ddf703c91a01a990b8041f0aea9c94de119cd60b/data-cleaning/ibs1001g.rda"
+    }
+  ],
+  "software_versions": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "openpyxl": "3.1.5",
+    "rdata": "1.1.0"
+  },
+  "target_scope": "Published estimated seed output per planted seed, aggregated by accession and context. Shared calibration and upstream summary uncertainty are not validated here. The individual-pot table contains 360 repeated physical-pot keys with conflicting outcomes (375 extra rows); this loader uses the final published D4 summaries without deduplicating D3 or claiming independent plant-level reconstruction.",
+  "prepared_npz_sha256": "cf0838bb2e026a9cc571d61a3cb7db8da0a7a26310c791ce3e3f22f103a928c5"
+}
